@@ -1,0 +1,49 @@
+<!--
+  Custom header for Erebyx Arche.
+  Adds links back to dashboard + key marketing surfaces.
+  Discourse renders this inside the d-header right-of-search slot.
+-->
+<script type="text/x-handlebars" data-template-name="/connectors/header-icons/erebyx-nav">
+  <li class="erebyx-nav__group">
+    <a href="https://app.erebyx.com" class="erebyx-nav__link" title="Open dashboard">
+      Dashboard
+    </a>
+    <a href="https://erebyx.com/continuum" class="erebyx-nav__link" title="Continuum — releases + roadmap">
+      Continuum
+    </a>
+    <a href="https://erebyx.com/project-erebyx" class="erebyx-nav__link" title="Project Erebyx — the thesis">
+      Thesis
+    </a>
+  </li>
+</script>
+
+<style>
+  .erebyx-nav__group {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0 1rem;
+  }
+
+  .erebyx-nav__link {
+    font-family: var(--erebyx-font-mono);
+    font-size: 0.78em;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(241, 245, 249, 0.65);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .erebyx-nav__link:hover {
+    color: var(--erebyx-violet-light);
+  }
+
+  @media (max-width: 767px) {
+    .erebyx-nav__group {
+      display: none; /* Hide on mobile to preserve space */
+    }
+  }
+</style>

@@ -1,0 +1,284 @@
+/*
+ * Erebyx Arche — Discourse theme overrides
+ * Matches erebyx.com + app.erebyx.com brand language.
+ *
+ * Brand:
+ *   - Violet (#7B2FBE) + Blue (#4D8BF5) gradient
+ *   - Light violet (#c4b5fd) for highlights / glows
+ *   - Gold (#D4A437) for milestones / founding markers
+ *   - Slate-950 dark background
+ *
+ * Typography:
+ *   - Zen Dots — display headings (h1, h2, .display)
+ *   - Pathway Gothic One — body, prose, posts
+ *   - Space Grotesk — technical / metadata / dates / version tags
+ *
+ * Author: ZENN + Siarrah
+ */
+
+/* =============================================================================
+ * FONTS — Google Fonts CDN, matches site exactly
+ * ============================================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Zen+Dots&family=Pathway+Gothic+One&family=Space+Grotesk:wght@400;500;600&display=swap");
+
+:root {
+  /* Brand tokens — driven by theme settings, fallbacks here */
+  --erebyx-violet: var(--brand_violet, #7B2FBE);
+  --erebyx-blue: var(--brand_blue, #4D8BF5);
+  --erebyx-violet-light: var(--brand_violet_light, #c4b5fd);
+  --erebyx-gold: var(--brand_gold, #D4A437);
+
+  /* Gradient (violet → blue) — used for primary CTAs, headlines, accents */
+  --erebyx-gradient: linear-gradient(135deg, var(--erebyx-violet), var(--erebyx-blue));
+  --erebyx-gradient-soft: linear-gradient(135deg, rgba(123, 47, 190, 0.15), rgba(77, 139, 245, 0.1));
+
+  /* Typography stack */
+  --erebyx-font-display: "Zen Dots", system-ui, sans-serif;
+  --erebyx-font-body: "Pathway Gothic One", "Inter", system-ui, sans-serif;
+  --erebyx-font-mono: "Space Grotesk", ui-monospace, monospace;
+
+  /* Glow strength */
+  --erebyx-glow: var(--constellation_glow_strength, 12);
+}
+
+/* =============================================================================
+ * TYPOGRAPHY — apply Erebyx font stack across Discourse
+ * ============================================================================= */
+
+body,
+.d-header,
+.topic-list,
+.topic-body,
+.cooked,
+button,
+input,
+select,
+textarea {
+  font-family: var(--erebyx-font-body);
+  font-feature-settings: "ss01" on;
+}
+
+h1, h2, .display, .topic-title, .category-title-link {
+  font-family: var(--erebyx-font-display);
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+
+h3, h4, h5, h6 {
+  font-family: var(--erebyx-font-body);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+.discourse-tags,
+time, .relative-date, .post-date,
+.badge-category__name,
+.topic-statuses,
+.user-card__metadata,
+.username, .post-info,
+nav.post-controls .reply-new,
+.topic-meta-data,
+.crawler-post-meta,
+code, pre, .monospace,
+.text-mono {
+  font-family: var(--erebyx-font-mono);
+  font-size: 0.875em;
+  letter-spacing: 0.02em;
+}
+
+/* =============================================================================
+ * GRADIENT ACCENTS — primary CTAs, links, brand surfaces
+ * ============================================================================= */
+
+.btn-primary,
+.btn-cta {
+  background: var(--erebyx-gradient);
+  border: none;
+  color: #ffffff;
+  font-family: var(--erebyx-font-body);
+  letter-spacing: 0.01em;
+  transition: filter 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover, &:focus-visible {
+    filter: brightness(1.1);
+    box-shadow: 0 0 calc(var(--erebyx-glow) * 1px) rgba(123, 47, 190, 0.45);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--erebyx-violet-light);
+    outline-offset: 2px;
+  }
+}
+
+a, .topic-list a.title, .topic-list-item a {
+  color: var(--erebyx-violet-light);
+  transition: color 0.2s ease;
+
+  &:hover, &:focus {
+    color: #ffffff;
+  }
+}
+
+/* =============================================================================
+ * HEADER — match site navbar feel
+ * ============================================================================= */
+
+.d-header {
+  border-bottom: 1px solid rgba(123, 47, 190, 0.15);
+  backdrop-filter: blur(20px) saturate(150%);
+  background: rgba(10, 10, 20, 0.85);
+}
+
+.d-header .title {
+  font-family: var(--erebyx-font-display);
+  letter-spacing: 0.05em;
+  font-size: 1.1em;
+}
+
+/* =============================================================================
+ * CARDS / TOPIC LIST — wire-card styling matches site
+ * ============================================================================= */
+
+.topic-list-item,
+.category-list .category {
+  border: 1px solid rgba(123, 47, 190, 0.08);
+  background: rgba(15, 15, 28, 0.4);
+  backdrop-filter: blur(2px);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: rgba(123, 47, 190, 0.25);
+    box-shadow: 0 0 calc(var(--erebyx-glow) * 1px) rgba(123, 47, 190, 0.1);
+  }
+}
+
+/* =============================================================================
+ * GENESIS ARCHE GROUP FLAIR — visible across every post
+ * Members of group `genesis_arche` get a violet username + glow
+ * ============================================================================= */
+
+.group-genesis_arche .username,
+[data-username][data-group="genesis_arche"] .username,
+.username[data-genesis-arche="true"] {
+  color: var(--genesis_group_color, #c4b5fd) !important;
+  font-weight: 600;
+  text-shadow: 0 0 calc(var(--erebyx-glow) * 1px) rgba(196, 181, 253, 0.35);
+}
+
+/* =============================================================================
+ * MILESTONE / FOUNDING BADGES — gold accent for "First Light", "Crossed the Threshold"
+ * ============================================================================= */
+
+.user-badge[data-badge-name="Crossed the Threshold"],
+.user-badge[data-badge-name="Lit a Star"],
+.user-badge[data-badge-name="First Memory"],
+.user-badge.--milestone {
+  background: linear-gradient(135deg, var(--erebyx-gold), #f5d27a);
+  color: #1a1208;
+  border: none;
+  font-family: var(--erebyx-font-mono);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.7em;
+  padding: 0.25em 0.6em;
+}
+
+/* =============================================================================
+ * MEANDER PATTERN — Greek border on category dividers (toggleable via setting)
+ * ============================================================================= */
+
+body[data-meander-dividers="true"] .category-list .category-list-header,
+body[data-meander-dividers="true"] hr {
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    height: 8px;
+    margin-top: 0.5em;
+    background-image: url("/uploads/default/original/1X/meander-pattern.svg");
+    background-repeat: repeat-x;
+    background-size: auto 8px;
+    opacity: 0.3;
+  }
+}
+
+/* =============================================================================
+ * BUTTONS / INPUTS — premium feel matching site
+ * ============================================================================= */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea,
+select {
+  background: rgba(15, 15, 28, 0.6);
+  border: 1px solid rgba(123, 47, 190, 0.2);
+  color: #f1f5f9;
+  font-family: var(--erebyx-font-body);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:focus {
+    border-color: var(--erebyx-violet-light);
+    box-shadow: 0 0 calc(var(--erebyx-glow) * 1px) rgba(196, 181, 253, 0.3);
+    outline: none;
+  }
+}
+
+/* =============================================================================
+ * CHAT (Discourse Chat) — channel feel matching site
+ * ============================================================================= */
+
+.chat-channel-row {
+  border-radius: 8px;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: var(--erebyx-gradient-soft);
+  }
+
+  &.--active {
+    background: var(--erebyx-gradient-soft);
+    border-left: 2px solid var(--erebyx-violet);
+  }
+}
+
+/* =============================================================================
+ * SCROLLBAR — subtle, on-brand
+ * ============================================================================= */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 15, 28, 0.4);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(123, 47, 190, 0.4);
+  border-radius: 4px;
+
+  &:hover {
+    background: rgba(123, 47, 190, 0.6);
+  }
+}
+
+/* =============================================================================
+ * ACCESSIBILITY — focus rings, motion-reduced
+ * ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+*:focus-visible {
+  outline: 2px solid var(--erebyx-violet-light);
+  outline-offset: 2px;
+}

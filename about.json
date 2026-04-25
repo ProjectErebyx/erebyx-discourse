@@ -1,0 +1,36 @@
+{
+  "name": "Erebyx Arche",
+  "about_url": "https://erebyx.com",
+  "license_url": "https://github.com/ProjectErebyx/erebyx-discourse-theme/blob/main/LICENSE",
+  "component": false,
+  "color_schemes": {
+    "Erebyx Cosmic": {
+      "primary": "e2e8f0",
+      "secondary": "020617",
+      "tertiary": "7B2FBE",
+      "quaternary": "4D8BF5",
+      "header_background": "0a0a14",
+      "header_primary": "f1f5f9",
+      "highlight": "c4b5fd",
+      "selected": "1e1b4b",
+      "hover": "0f0f1c",
+      "danger": "ef4444",
+      "success": "22c55e",
+      "love": "ec4899"
+    },
+    "Erebyx Dawn": {
+      "primary": "1e293b",
+      "secondary": "f8fafc",
+      "tertiary": "7B2FBE",
+      "quaternary": "4D8BF5",
+      "header_background": "ffffff",
+      "header_primary": "1e293b",
+      "highlight": "c4b5fd",
+      "selected": "ede9fe",
+      "hover": "f1f5f9",
+      "danger": "dc2626",
+      "success": "16a34a",
+      "love": "db2777"
+    }
+  }
+}

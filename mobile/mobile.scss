@@ -1,0 +1,27 @@
+/* Mobile-specific overrides for Erebyx Arche theme */
+
+@media (max-width: 767px) {
+  /* Reduce header chrome on mobile to maximize content */
+  .d-header .title {
+    font-size: 1em;
+    letter-spacing: 0.04em;
+  }
+
+  /* Topic list on mobile — tighter cards */
+  .topic-list-item {
+    padding: 0.6em 0.8em;
+  }
+
+  /* Larger tap targets for buttons */
+  .btn,
+  .btn-primary {
+    min-height: 44px;
+    padding-inline: 1em;
+  }
+
+  /* Disable expensive blur effects on mobile (perf) */
+  .topic-list-item,
+  .category-list .category {
+    backdrop-filter: none;
+  }
+}

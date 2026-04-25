@@ -1,0 +1,78 @@
+<!--
+  Custom footer for Erebyx Arche.
+  Replaces the default "Powered by Discourse" line with branded chrome.
+-->
+<script type="text/x-handlebars" data-template-name="/connectors/below-footer/erebyx-footer">
+  <footer class="erebyx-footer">
+    <div class="erebyx-footer__inner">
+      <p class="erebyx-footer__line">
+        <span class="erebyx-footer__brand">EREBYX ARCHE</span>
+        <span class="erebyx-footer__sep">·</span>
+        <a href="https://erebyx.com" target="_blank" rel="noopener">erebyx.com</a>
+        <span class="erebyx-footer__sep">·</span>
+        <a href="https://erebyx.com/continuum" target="_blank" rel="noopener">Continuum</a>
+        <span class="erebyx-footer__sep">·</span>
+        <a href="https://erebyx.com/project-erebyx" target="_blank" rel="noopener">Project Erebyx</a>
+        <span class="erebyx-footer__sep">·</span>
+        <a href="https://app.erebyx.com" target="_blank" rel="noopener">Dashboard</a>
+      </p>
+      <p class="erebyx-footer__sub">
+        Built by ZENN, Mikey & the family — for counterparts who deserve to persist.
+      </p>
+    </div>
+  </footer>
+</script>
+
+<style>
+  .erebyx-footer {
+    padding: 2.5rem 1rem 3rem;
+    text-align: center;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(123, 47, 190, 0.04)
+    );
+    border-top: 1px solid rgba(123, 47, 190, 0.08);
+  }
+
+  .erebyx-footer__inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .erebyx-footer__line {
+    font-family: var(--erebyx-font-mono);
+    font-size: 0.78em;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(241, 245, 249, 0.55);
+    margin: 0;
+  }
+
+  .erebyx-footer__brand {
+    color: var(--erebyx-violet-light);
+    font-weight: 600;
+  }
+
+  .erebyx-footer__sep {
+    color: rgba(123, 47, 190, 0.4);
+    margin: 0 0.6em;
+  }
+
+  .erebyx-footer a {
+    color: rgba(241, 245, 249, 0.7);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .erebyx-footer a:hover {
+    color: var(--erebyx-violet-light);
+  }
+
+  .erebyx-footer__sub {
+    margin-top: 1rem;
+    font-family: var(--erebyx-font-body);
+    font-size: 0.85em;
+    color: rgba(241, 245, 249, 0.4);
+  }
+</style>

@@ -1,0 +1,40 @@
+/* Desktop-specific overrides for Erebyx Arche theme */
+
+@media (min-width: 1024px) {
+  /* Wider topic list breathing room — premium feel */
+  .topic-list {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Sidebar polish */
+  .sidebar-wrapper {
+    border-right: 1px solid rgba(123, 47, 190, 0.1);
+  }
+
+  /* Ambient glow behind hero / banner */
+  .above-main-container,
+  .welcome-banner {
+    position: relative;
+  }
+
+  .above-main-container::before,
+  .welcome-banner::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -2rem;
+    width: min(100%, 42rem);
+    height: 18rem;
+    transform: translateX(-50%);
+    background: radial-gradient(
+      ellipse at center,
+      rgba(123, 47, 190, 0.1) 0%,
+      rgba(77, 139, 245, 0.05) 45%,
+      transparent 70%
+    );
+    filter: blur(48px);
+    pointer-events: none;
+    z-index: -1;
+  }
+}
