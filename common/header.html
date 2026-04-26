@@ -313,22 +313,36 @@
       heroInstance = startHero(canvas);
     }
 
-    // Discourse PluginAPI — onPageChange fires every Ember route change
-    if (window.require) {
-      try {
-        var apiMod = window.require("discourse/lib/plugin-api");
-        if (apiMod && apiMod.withPluginApi) {
-          apiMod.withPluginApi("0.8.31", function (api) {
-            api.onPageChange(function () {
-              // Defer to next tick so DOM connectors have rendered
-              window.requestAnimationFrame(mount);
-            });
-          });
-        }
-      } catch (e) {
-        // Fall through to load fallback
+    // Route-change detection via vanilla observers — does NOT touch Discourse's
+    // plugin-api module. Earlier versions called `window.require(
+    // "discourse/lib/plugin-api").withPluginApi(...)` from this raw <script> tag,
+    // which fired BEFORE Ember had finished booting and corrupted the module's
+    // imports — breaking core's `freeze-block-registry` initializer with
+    // "Cannot read properties of undefined (reading 'getOwnerWithFallback')".
+    // Vanilla MutationObserver + popstate avoids the issue entirely.
+    var lastPath = location.pathname;
+    function checkRouteChange() {
+      if (location.pathname !== lastPath) {
+        lastPath = location.pathname;
+        window.requestAnimationFrame(mount);
       }
     }
+    // Observe DOM mutations as a proxy for Ember route renders
+    if ("MutationObserver" in window) {
+      var routeObserver = new MutationObserver(checkRouteChange);
+      // Wait for body to exist before observing
+      function startObserving() {
+        if (document.body) {
+          routeObserver.observe(document.body, { childList: true, subtree: false });
+        } else {
+          setTimeout(startObserving, 50);
+        }
+      }
+      startObserving();
+    }
+    window.addEventListener("popstate", checkRouteChange);
+    // Also poll periodically as final safety net (cheap — just a path comparison)
+    setInterval(checkRouteChange, 1000);
 
     // Load fallback (first paint, before withPluginApi resolves)
     if (document.readyState === "loading") {
