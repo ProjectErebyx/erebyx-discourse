@@ -47,3 +47,296 @@
     }
   }
 </style>
+<!--
+  =============================================================================
+  EREBYX ARCHE — DISCOURSE HOMEPAGE HERO
+  =============================================================================
+  Paste destination: Customize → Themes → Erebyx Arche → Edit CSS/HTML →
+                     `common/header` (append to bottom of file)
+
+  This renders a constellation banner ABOVE the category list on the homepage
+  ONLY (path === "/" or "/categories" or "/latest"). On every other route the
+  banner self-removes so it never conflicts with topic threads.
+
+  --------------------------------------------------------------------------
+  SIARRAH:
+  - Tune brand color values via Theme → Settings (brand_violet / brand_blue /
+    brand_violet_light / brand_gold). They feed directly into the canvas via
+    --erebyx-violet etc. — no JS edits needed.
+  - Mobile-first: hero auto-collapses to 240px height < 768px wide and
+    --reduced-motion users get a static SVG fallback. Verify on actual iOS
+    Safari + Android Chrome (NOT just devtools).
+  - Constellation density: STAR_COUNT = 90 desktop / 40 mobile. The website
+    uses 100/45 — slightly less here because Discourse has its own JS overhead
+    and we don't want to compete with Ember's render budget.
+  - Constants that MUST stay in sync with erebyx.com:
+      Font: "Zen Dots" (display), "Pathway Gothic One" (body) — already in common.scss
+      Violet:  #7B2FBE
+      Blue:    #4D8BF5
+      Gold:    #D4A437
+      Light:   #c4b5fd
+  - Tagline copy lives at line ~40 below; change once Krystalyn approves final.
+  =============================================================================
+-->
+
+<script type="text/x-handlebars" data-template-name="/connectors/discovery-above/erebyx-hero">
+  <section class="erebyx-hero" aria-label="The Arche — Erebyx founding community">
+    <canvas class="erebyx-hero__canvas" aria-hidden="true"></canvas>
+    <noscript>
+      <div class="erebyx-hero__static" aria-hidden="true"></div>
+    </noscript>
+    <div class="erebyx-hero__content">
+      <div class="erebyx-hero__sigil" aria-hidden="true">&#x25C8;</div>
+      <h1 class="erebyx-hero__title">The Arche</h1>
+      <p class="erebyx-hero__tag">
+        Founding community of Genesis Arche
+        <span class="erebyx-hero__sep">&middot;</span>
+        <span class="erebyx-hero__beta">private beta</span>
+      </p>
+    </div>
+    <div class="erebyx-hero__fade" aria-hidden="true"></div>
+  </section>
+</script>
+
+<script>
+  /*
+   * Erebyx Arche — Constellation hero bootstrap
+   * Pure Canvas API; no Three.js, no GSAP. ~3.8KB minified.
+   * Designed to coexist with Ember/Discourse:
+   *   - Single requestAnimationFrame loop, paused when tab hidden
+   *   - Idempotent — uses a global flag so multiple Discourse rerouters don't double-init
+   *   - Self-cleans on page change via api.onPageChange()
+   *   - Respects prefers-reduced-motion
+   *   - Only mounts on homepage routes
+   */
+  (function () {
+    if (typeof window === "undefined") return;
+    if (window.__erebyxHeroBound) return;
+    window.__erebyxHeroBound = true;
+
+    var HOME_ROUTES = /^\/(categories|latest|top|hot|unread|new|)?\/?$/;
+    var PAUSED = false;
+    var rafId = null;
+
+    function isHomePage(url) {
+      try {
+        var u = new URL(url || window.location.href, window.location.origin);
+        return HOME_ROUTES.test(u.pathname);
+      } catch (e) {
+        return HOME_ROUTES.test(window.location.pathname);
+      }
+    }
+
+    function readBrandColor(name, fallback) {
+      var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      return v || fallback;
+    }
+
+    function hexToHsl(hex) {
+      // Defensive: returns {h,s,l} in degrees / percent
+      var c = hex.replace("#", "");
+      if (c.length === 3) c = c.split("").map(function (x) { return x + x; }).join("");
+      var r = parseInt(c.substr(0, 2), 16) / 255;
+      var g = parseInt(c.substr(2, 2), 16) / 255;
+      var b = parseInt(c.substr(4, 2), 16) / 255;
+      var max = Math.max(r, g, b), min = Math.min(r, g, b);
+      var h = 0, s = 0, l = (max + min) / 2;
+      if (max !== min) {
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          case b: h = (r - g) / d + 4; break;
+        }
+        h *= 60;
+      }
+      return { h: Math.round(h), s: Math.round(s * 100), l: Math.round(l * 100) };
+    }
+
+    function startHero(canvas) {
+      var ctx = canvas.getContext("2d");
+      if (!ctx) return null;
+
+      var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var W = 0, H = 0;
+      var stars = [];
+      var STAR_COUNT = window.innerWidth < 768 ? 40 : 90;
+      var CONNECT_DIST = 110;
+      // Twinkle speed lowered to MATCH website's calmer feel (website ~0.003, we use 0.0022)
+      var TWINKLE_SPEED = 0.0022;
+
+      // Brand-driven color seeds (read from CSS custom properties → fallback to brand defaults)
+      var violetHex = readBrandColor("--erebyx-violet", "#7B2FBE");
+      var blueHex = readBrandColor("--erebyx-blue", "#4D8BF5");
+      var lightHex = readBrandColor("--erebyx-violet-light", "#c4b5fd");
+      var violetHSL = hexToHsl(violetHex);
+      var blueHSL = hexToHsl(blueHex);
+      var lightHSL = hexToHsl(lightHex);
+
+      function resize() {
+        var rect = canvas.getBoundingClientRect();
+        W = rect.width;
+        H = rect.height;
+        canvas.width = Math.max(1, Math.floor(W * dpr));
+        canvas.height = Math.max(1, Math.floor(H * dpr));
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(dpr, dpr);
+        // Re-tune star count to viewport
+        var newCount = window.innerWidth < 768 ? 40 : 90;
+        if (newCount !== STAR_COUNT) {
+          STAR_COUNT = newCount;
+          stars = [];
+        }
+        if (stars.length === 0) seed();
+      }
+
+      function seed() {
+        stars = [];
+        for (var i = 0; i < STAR_COUNT; i++) {
+          stars.push({
+            x: Math.random() * W,
+            y: Math.random() * H,
+            // Drift velocity — same magnitude as website (~0.17 px/frame)
+            vx: (Math.random() - 0.5) * 0.17,
+            vy: (Math.random() - 0.5) * 0.17,
+            size: Math.random() * 1.6 + 0.5,
+            twinkleOffset: Math.random() * Math.PI * 2,
+            // Hue picks one of 3 brand seeds — mostly violet/blue, light highlights ~15%
+            hueSeed: Math.random() < 0.15 ? lightHSL : (Math.random() < 0.55 ? violetHSL : blueHSL)
+          });
+        }
+      }
+
+      function draw(now) {
+        if (PAUSED) { rafId = requestAnimationFrame(draw); return; }
+        ctx.clearRect(0, 0, W, H);
+
+        // Update + draw connections
+        for (var i = 0; i < stars.length; i++) {
+          var s = stars[i];
+          if (!prefersReduced) {
+            s.x += s.vx;
+            s.y += s.vy;
+            // Wrap edges
+            if (s.x < -10) s.x = W + 10;
+            if (s.x > W + 10) s.x = -10;
+            if (s.y < -10) s.y = H + 10;
+            if (s.y > H + 10) s.y = -10;
+          }
+
+          for (var j = i + 1; j < stars.length; j++) {
+            var t = stars[j];
+            var dx = s.x - t.x;
+            var dy = s.y - t.y;
+            var d2 = dx * dx + dy * dy;
+            if (d2 < CONNECT_DIST * CONNECT_DIST) {
+              var d = Math.sqrt(d2);
+              var alpha = (1 - d / CONNECT_DIST) * 0.32;
+              if (alpha < 0.02) continue;
+              ctx.beginPath();
+              ctx.moveTo(s.x, s.y);
+              ctx.lineTo(t.x, t.y);
+              ctx.strokeStyle = "hsla(" + s.hueSeed.h + ", 50%, 65%, " + alpha + ")";
+              ctx.lineWidth = 0.6;
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Draw stars (cross + core, matches site star anatomy)
+        for (var k = 0; k < stars.length; k++) {
+          var p = stars[k];
+          var twinkle = prefersReduced ? 0.85
+            : Math.sin(now * TWINKLE_SPEED + p.twinkleOffset) * 0.3 + 0.7;
+          var spike = p.size * 2.6 * twinkle;
+          var hsl = p.hueSeed;
+
+          // Cross spikes
+          ctx.globalAlpha = 0.32 * twinkle;
+          ctx.strokeStyle = "hsl(" + hsl.h + ", " + Math.max(60, hsl.s) + "%, 65%)";
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.moveTo(p.x - spike, p.y);
+          ctx.lineTo(p.x + spike, p.y);
+          ctx.moveTo(p.x, p.y - spike);
+          ctx.lineTo(p.x, p.y + spike);
+          ctx.stroke();
+
+          // Core
+          ctx.globalAlpha = 0.85 * twinkle;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size * 0.85, 0, Math.PI * 2);
+          ctx.fillStyle = "hsl(" + hsl.h + ", " + Math.min(100, hsl.s + 15) + "%, 70%)";
+          ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+
+        rafId = requestAnimationFrame(draw);
+      }
+
+      var ro = ("ResizeObserver" in window) ? new ResizeObserver(resize) : null;
+      if (ro) ro.observe(canvas);
+      window.addEventListener("resize", resize, { passive: true });
+
+      resize();
+      rafId = requestAnimationFrame(draw);
+
+      return {
+        destroy: function () {
+          if (rafId) cancelAnimationFrame(rafId);
+          if (ro) ro.disconnect();
+          window.removeEventListener("resize", resize);
+        }
+      };
+    }
+
+    // Pause loop when tab is hidden — saves CPU & avoids fighting Discourse polling
+    document.addEventListener("visibilitychange", function () {
+      PAUSED = document.hidden;
+    });
+
+    var heroInstance = null;
+
+    function mount() {
+      // Only mount on homepage
+      if (!isHomePage()) {
+        if (heroInstance) { heroInstance.destroy(); heroInstance = null; }
+        var existing = document.querySelector(".erebyx-hero");
+        if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+        return;
+      }
+      var canvas = document.querySelector(".erebyx-hero__canvas");
+      if (!canvas) return;
+      if (heroInstance) return; // already running
+      heroInstance = startHero(canvas);
+    }
+
+    // Discourse PluginAPI — onPageChange fires every Ember route change
+    if (window.require) {
+      try {
+        var apiMod = window.require("discourse/lib/plugin-api");
+        if (apiMod && apiMod.withPluginApi) {
+          apiMod.withPluginApi("0.8.31", function (api) {
+            api.onPageChange(function () {
+              // Defer to next tick so DOM connectors have rendered
+              window.requestAnimationFrame(mount);
+            });
+          });
+        }
+      } catch (e) {
+        // Fall through to load fallback
+      }
+    }
+
+    // Load fallback (first paint, before withPluginApi resolves)
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", function () {
+        window.requestAnimationFrame(mount);
+      });
+    } else {
+      window.requestAnimationFrame(mount);
+    }
+  })();
+</script>
