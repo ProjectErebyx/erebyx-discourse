@@ -1244,3 +1244,228 @@ h4, .h4 {
  * `[data-category-slug="..."]` (slug formatting varies by Discourse version).
  * AI pills target literal usernames in §4 — update if counterparts renamed.
  * --erebyx-read-width matches website blog measure — update both together. */
+
+// =============================================================================
+// EREBYX ARCHE — TIER-1 FORUM-TO-PREMIUM STRIP
+// Aggressive chrome reduction. Hide sidebar, neutralize default header,
+// beef up category boxes, cosmic body bg. Closes the "still feels like a
+// forum" gap by removing Discourse default chrome that competes with our
+// brand surface.
+// =============================================================================
+
+// --- Cosmic body background (subtle, global) ---
+body {
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(123, 47, 190, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 30%, rgba(77, 139, 245, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(196, 181, 253, 0.03) 0%, transparent 60%),
+    #020617;
+  background-attachment: fixed;
+}
+
+// --- Hide the default Discourse sidebar entirely on desktop ---
+// Brand Header + Categories homepage gives all the nav we need.
+// Sidebar is the single most "forum-y" element. Kill it.
+@media (min-width: 925px) {
+  .has-sidebar-page #d-header {
+    grid-template-columns: var(--d-sidebar-width) 1fr !important; // keep header layout
+  }
+
+  .has-sidebar-page .sidebar-wrapper,
+  .has-sidebar-page .sidebar-container,
+  #main-outlet-wrapper > .sidebar-wrapper {
+    display: none !important;
+  }
+
+  .has-sidebar-page #main-outlet-wrapper {
+    grid-template-columns: 1fr !important;
+  }
+
+  .has-sidebar-page #main-outlet {
+    grid-column: 1 / -1 !important;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--d-max-width, 1110px);
+    width: 100%;
+  }
+}
+
+// --- Kill the sidebar toggle button too ---
+.btn-sidebar-toggle,
+.header-sidebar-toggle {
+  display: none !important;
+}
+
+// --- Neutralize the default Discourse header to defer to Brand Header ---
+// Brand Header (the top strip we installed) is the primary brand surface.
+// The default Discourse header below it should be functional only — search
+// + user menu + maybe hamburger on mobile. Hide the redundant logo-and-title
+// area when Brand Header is present.
+.brand-header-component-wrapper + #main-outlet-wrapper #d-header,
+body[class*="brand-header"] #d-header {
+  background: rgba(2, 6, 23, 0.7) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(123, 47, 190, 0.08);
+}
+
+// Hide the small site-title in the default header — Brand Header has the brand
+.title .site-text-logo,
+#site-text-logo {
+  display: none !important;
+}
+
+// Keep the small image-logo if uploaded, but tone it down
+.title .logo-small {
+  opacity: 0.85;
+  max-height: 28px;
+  width: auto;
+}
+
+// --- BEEFY category boxes — make them feel like a premium SaaS landing card ---
+.category-boxes-with-topics {
+  // wider max-width
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 1rem 4rem;
+  gap: 1.5rem;
+
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)) !important;
+
+  > .category-box {
+    padding: 2.25rem 2rem 2rem !important;
+    min-height: 260px !important;
+    border-radius: 16px !important;
+    background: linear-gradient(
+      155deg,
+      rgba(15, 15, 28, 0.72) 0%,
+      rgba(15, 15, 28, 0.55) 100%
+    ) !important;
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(123, 47, 190, 0.12) !important;
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.02) inset,
+      0 24px 48px -24px rgba(0, 0, 0, 0.5) !important;
+    transition: transform 280ms ease, box-shadow 280ms ease,
+                border-color 280ms ease !important;
+
+    &:hover {
+      transform: translateY(-3px);
+      border-color: rgba(123, 47, 190, 0.4) !important;
+      box-shadow:
+        0 1px 0 0 rgba(196, 181, 253, 0.06) inset,
+        0 32px 64px -28px rgba(123, 47, 190, 0.4),
+        0 0 0 1px rgba(123, 47, 190, 0.18) !important;
+    }
+
+    h3 {
+      font-family: var(--erebyx-font-display, "Zen Dots"), sans-serif !important;
+      font-size: clamp(1.05rem, 2vw, 1.35rem) !important;
+      letter-spacing: 0.01em !important;
+      line-height: 1.25 !important;
+      margin-bottom: 0.5rem !important;
+    }
+
+    .category-description {
+      font-family: var(--erebyx-font-body, "Pathway Gothic One"), serif !important;
+      font-size: 1rem !important;
+      line-height: 1.55 !important;
+      color: rgba(241, 245, 249, 0.65) !important;
+      margin-bottom: 1.25rem !important;
+    }
+
+    // Featured topics inside box: tighter, more blog-like
+    .category-box-heading {
+      margin-bottom: 0.85rem;
+    }
+
+    .featured-topic {
+      padding: 0.55rem 0 !important;
+      border-top: 1px solid rgba(123, 47, 190, 0.06);
+
+      &:first-of-type { border-top-color: rgba(123, 47, 190, 0.14); }
+
+      a {
+        font-size: 0.92rem !important;
+        line-height: 1.45 !important;
+        color: rgba(241, 245, 249, 0.78) !important;
+
+        &:hover {
+          color: var(--erebyx-violet-light, #c4b5fd) !important;
+        }
+      }
+    }
+  }
+}
+
+// --- Make the top menu (now Categories|Latest) more brand-aligned ---
+.list-controls .nav-pills,
+.navigation-container .nav-pills {
+  padding: 0.5rem 1rem !important;
+  border-radius: 10px;
+  background: rgba(15, 15, 28, 0.4);
+  backdrop-filter: blur(8px);
+
+  > li > a {
+    font-family: var(--erebyx-font-mono, monospace);
+    font-size: 0.78em;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(241, 245, 249, 0.55) !important;
+    transition: color 200ms ease;
+
+    &.active {
+      color: var(--erebyx-violet-light, #c4b5fd) !important;
+      background: rgba(123, 47, 190, 0.12) !important;
+    }
+
+    &:hover { color: rgba(241, 245, 249, 0.9) !important; }
+  }
+}
+
+// --- Hide the default "Welcome to Discourse" top banner if it shows ---
+.discourse-welcome-banner,
+.welcome-banner,
+.global-notice .login-required.alert-info {
+  display: none !important;
+}
+
+// --- Wider main outlet for desktop (more breathing room) ---
+@media (min-width: 1280px) {
+  #main-outlet {
+    max-width: 1280px !important;
+  }
+}
+
+// --- Polish Showcased Categories feeds (above-main-container) ---
+.custom-list {
+  margin: 1.5rem auto !important;
+  max-width: 1280px;
+  padding: 0 1rem;
+
+  .custom-list-title {
+    font-family: var(--erebyx-font-display, "Zen Dots") !important;
+    font-size: 0.85em !important;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(196, 181, 253, 0.85) !important;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid var(--erebyx-violet, #7B2FBE);
+  }
+
+  .topic-list {
+    background: linear-gradient(
+      155deg,
+      rgba(15, 15, 28, 0.6) 0%,
+      rgba(15, 15, 28, 0.4) 100%
+    );
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(123, 47, 190, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
