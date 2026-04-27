@@ -3661,3 +3661,219 @@ body.topic-page #main-outlet::before {
     height: 2.25rem;
   }
 }
+
+// =============================================================================
+// EREBYX ARCHE — TIER-11 OFFICIAL BRAND ALIGNMENT
+// Source: EREBYX Branding Guide.pdf (locked 2026-04-26)
+// 
+// SHIFT: This surface IS the Arche. Per brand kit:
+//   Primary Face: Arche · Primary Color: Arche Amber · 60% Mythic / 40% Tech
+//   Accents: Nyx Violet, Architect Blue
+//
+// Updates official colors (we'd been close but slightly off), shifts amber
+// prominence on Arche-specific surfaces, swaps to Outfit + Fireside fonts,
+// and tightens tone toward oracle / ancient-wisdom-meeting-future-intelligence.
+// =============================================================================
+
+// --- OFFICIAL COLOR TOKENS (override prior approximations) ---
+:root {
+  // Primary palette (per brand kit)
+  --erebyx-nyx-violet: #7503E0;        // was #7B2FBE — more vibrant
+  --erebyx-architect-blue: #4492FC;    // was #4D8BF5 — slightly more saturated
+  --erebyx-arche-amber: #FAB232;       // was #D4A437 — much brighter amber
+  --erebyx-erebus-blue: #030712;       // dark void anchor
+  --erebyx-white: #FFFFFF;
+
+  // Override prior tokens to match official
+  --erebyx-violet: #7503E0;
+  --erebyx-blue: #4492FC;
+  --erebyx-gold: #FAB232;
+  --erebyx-violet-light: #c4b5fd;
+  --erebyx-dark: #030712;
+
+  // Primary energy gradient (Nyx Violet → Architect Blue)
+  --erebyx-energy-gradient: linear-gradient(135deg, #7503E0 0%, #4492FC 100%);
+
+  // Arche-specific ratio markers
+  --erebyx-mythic-tone: rgba(250, 178, 50, 0.06);   // soft amber wash
+  --erebyx-tech-tone: rgba(117, 3, 224, 0.04);      // subtle violet wash
+}
+
+// --- FONT LOADING — Outfit (Google Fonts) + Architects Daughter
+//     Fireside is custom-distributed; Mikey uploads via theme asset later.
+//     Until then, Outfit handles display + body. ---
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Architects+Daughter&display=swap');
+
+:root {
+  --erebyx-font-display: 'Fireside', 'Outfit', 'Zen Dots', sans-serif;
+  --erebyx-font-body: 'Outfit', 'Pathway Gothic One', system-ui, sans-serif;
+  --erebyx-font-accent: 'Architects Daughter', cursive;
+  --erebyx-font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+}
+
+// Apply Outfit Light to body globally
+body,
+.cooked,
+.topic-body,
+.user-content,
+.discourse-no-touch body,
+.regular .cooked p {
+  font-family: var(--erebyx-font-body) !important;
+  font-weight: 300 !important;
+}
+
+// Outfit Regular for UI/headers
+.btn, button, .nav-pills > li > a, .navigation-container,
+.topic-list-item .raw-topic-link,
+h1, h2, h3, h4, h5, h6,
+.fancy-title {
+  font-family: var(--erebyx-font-body) !important;
+  font-weight: 500 !important;
+}
+
+// Display headings use Fireside fallback chain (Outfit medium)
+.topic-title h1,
+#topic-title h1,
+.category-title-wrapper h1,
+.user-profile-names .username {
+  font-family: var(--erebyx-font-display) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+}
+
+// --- BODY BG: Erebus Blue (#030712) instead of #020617 (deeper void) ---
+body {
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(117, 3, 224, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 30%, rgba(68, 146, 252, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(250, 178, 50, 0.03) 0%, transparent 60%),
+    var(--erebyx-erebus-blue) !important;
+  background-attachment: fixed;
+}
+
+// --- ARCHE AMBER PROMINENCE — pinned topics, founder treatments, Genesis surfaces ---
+
+// Pinned topic gold edge — UPGRADE to Arche Amber
+.topic-list tr.topic-list-item.pinned {
+  border-left: 3px solid var(--erebyx-arche-amber, #FAB232) !important;
+  background: linear-gradient(
+    155deg,
+    rgba(250, 178, 50, 0.05) 0%,
+    rgba(15, 15, 28, 0.4) 100%
+  ) !important;
+
+  &:hover {
+    border-left-color: rgba(250, 178, 50, 0.95) !important;
+    box-shadow: 0 0 24px -8px rgba(250, 178, 50, 0.45) !important;
+  }
+}
+
+.topic-list .topic-list-item .topic-statuses .pinned {
+  color: var(--erebyx-arche-amber, #FAB232) !important;
+}
+
+// Founder pill — re-key to official amber
+.user-title.user-title--founder {
+  background: linear-gradient(135deg, rgba(250, 178, 50, 0.32), rgba(250, 178, 50, 0.18)) !important;
+  border: 1px solid rgba(250, 178, 50, 0.5) !important;
+  color: #fef3c7 !important;
+  box-shadow: 0 0 0 1px rgba(250, 178, 50, 0.15), 0 0 10px rgba(250, 178, 50, 0.2) !important;
+}
+
+// Solved reply elevation — Arche Amber
+.topic-post.accepted-answer,
+article.accepted-answer {
+  background: linear-gradient(155deg, rgba(250, 178, 50, 0.08) 0%, rgba(250, 178, 50, 0.03) 100%) !important;
+  border-left: 3px solid rgba(250, 178, 50, 0.6) !important;
+
+  &::before {
+    background: linear-gradient(135deg, var(--erebyx-arche-amber, #FAB232), #fcd34d);
+  }
+}
+
+// Mikey founder post left edge — official amber
+article.boxed[data-user-id="1"] {
+  border-left: 3px solid rgba(250, 178, 50, 0.65) !important;
+  background:
+    linear-gradient(90deg, rgba(250, 178, 50, 0.04) 0%, transparent 80px),
+    inherit !important;
+}
+
+// Genesis seats banner — amber-primary now
+.erebyx-genesis-seats-banner,
+[class*="genesis-seats"] {
+  background: linear-gradient(
+    135deg,
+    rgba(250, 178, 50, 0.12) 0%,
+    rgba(117, 3, 224, 0.08) 100%
+  ) !important;
+  border: 1px solid rgba(250, 178, 50, 0.35) !important;
+  box-shadow: 0 0 24px -8px rgba(250, 178, 50, 0.3);
+}
+
+// --- MYTHIC FOUNDATION 60% — marble texture overlay on category cards ---
+// Subtle marble vein effect via SVG noise + soft cosmic
+.category-boxes-with-topics > .category-box {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='m'><feTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.9  0 0 0 0 0.9  0 0 0 0 0.9  0 0 0 0.6 0'/></filter><rect width='200' height='200' filter='url(%23m)'/></svg>");
+    background-size: 240px 240px;
+    mix-blend-mode: overlay;
+  }
+}
+
+// --- GREEK MEANDER ACCENT — sparing use, only in section dividers ---
+.topic-list-bottom hr,
+hr.cooked,
+.divider {
+  border: none !important;
+  height: 12px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='12' viewBox='0 0 32 12'><path d='M0 6 h4 v-4 h4 v4 h4 v-4 h4 v4 h4 v-4 h4 v4 h4 v-4 h4 v4' stroke='%23FAB232' stroke-width='0.8' fill='none' opacity='0.32'/></svg>");
+  background-repeat: repeat-x;
+  background-position: center;
+  margin: 2.5rem auto !important;
+  max-width: 200px;
+  opacity: 0.5;
+}
+
+// --- ORACLE TONE — empty states fully aligned ---
+.no-topics-message::before,
+.empty-state-body::before {
+  content: "✦ ";
+  color: var(--erebyx-arche-amber, #FAB232);
+  font-size: 1.4em;
+}
+
+// --- HARD-NO CLEANUP — soften any glow that risks "sci-fi cliché" ---
+// Reduce hover-glow particle bursts (per brand kit "use glitches sparingly")
+.category-list-item:hover h3::after,
+a.category-name:hover::after {
+  opacity: 0.7;
+  animation-duration: 1.6s;  // slower bloom (was 1.2s) — ancient pace
+}
+
+// Soften reply-button breathing (was sci-fi-fast)
+@media (prefers-reduced-motion: no-preference) {
+  .topic-footer-buttons .btn-primary {
+    animation-duration: 8s;  // slower (was 6s) — oracle, not gaming
+  }
+}
+
+// --- BRAND HEADER FONT ALIGNMENT ---
+.erebyx-brand-header,
+[class*="brand-header"] a,
+[class*="brand-header"] li {
+  font-family: var(--erebyx-font-body) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.18em !important;
+}
+
