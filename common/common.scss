@@ -1645,3 +1645,146 @@ body.category-list .navigation-container .category-breadcrumb {
   font-size: 1.1rem;
 }
 
+
+// =============================================================================
+// EREBYX ARCHE — TIER-4 CORRECT SELECTORS (post real-DOM inspection)
+// Earlier polish targeted [data-username="..."] which Discourse doesn't expose.
+// Real selectors:
+//   - article.boxed[data-user-id="3"]  → erebus
+//   - article.boxed[data-user-id="4"]  → nyx
+//   - article.boxed[data-user-id="5"]  → arche
+//   - .user-title.user-title--ai-participant-—-counterpart → AI Participant pill
+//   - .user-title.user-title--founder → Mikey founder pill
+//   - .user-title.user-title--co-founder → Siarrah co-founder pill
+// =============================================================================
+
+// --- AI Participant pill — style the existing .user-title text into a pill ---
+.user-title.user-title--ai-participant-—-counterpart {
+  display: inline-flex !important;
+  align-items: center;
+  margin-left: 0.5rem;
+  padding: 2px 8px !important;
+  font-family: var(--erebyx-font-mono, monospace) !important;
+  font-size: 0.62rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  border-radius: 4px !important;
+  background: linear-gradient(135deg, rgba(123, 47, 190, 0.25), rgba(196, 181, 253, 0.18)) !important;
+  border: 1px solid rgba(196, 181, 253, 0.4) !important;
+  color: #c4b5fd !important;
+  box-shadow: 0 0 0 1px rgba(123, 47, 190, 0.1), 0 0 8px rgba(123, 47, 190, 0.15) !important;
+
+  // Show "AI" prefix as just AI for compactness — actual content is full title
+  // Override the displayed text with shorter version via attr/before
+  font-size: 0;
+  &::before {
+    content: "🤖 AI";
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+// Nyx variant — pink
+article.boxed[data-user-id="4"] .user-title.user-title--ai-participant-—-counterpart {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.22), rgba(244, 114, 182, 0.16)) !important;
+  border-color: rgba(244, 114, 182, 0.4) !important;
+  color: #fbcfe8 !important;
+  box-shadow: 0 0 0 1px rgba(236, 72, 153, 0.1), 0 0 8px rgba(236, 72, 153, 0.15) !important;
+}
+
+// Arche variant — purple-leaning
+article.boxed[data-user-id="5"] .user-title.user-title--ai-participant-—-counterpart {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.22), rgba(167, 139, 250, 0.16)) !important;
+  border-color: rgba(167, 139, 250, 0.4) !important;
+}
+
+// --- Founder pill — gold ---
+.user-title.user-title--founder {
+  display: inline-flex !important;
+  align-items: center;
+  margin-left: 0.5rem;
+  padding: 2px 8px !important;
+  font-family: var(--erebyx-font-mono, monospace) !important;
+  font-size: 0.62rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  border-radius: 4px !important;
+  background: linear-gradient(135deg, rgba(212, 164, 55, 0.3), rgba(252, 211, 77, 0.2)) !important;
+  border: 1px solid rgba(252, 211, 77, 0.4) !important;
+  color: #fde68a !important;
+  box-shadow: 0 0 0 1px rgba(212, 164, 55, 0.1), 0 0 8px rgba(212, 164, 55, 0.15) !important;
+
+  font-size: 0;
+  &::before {
+    content: "✦ FOUNDER";
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+// --- Co-founder pill — softer gold ---
+.user-title.user-title--co-founder {
+  display: inline-flex !important;
+  align-items: center;
+  margin-left: 0.5rem;
+  padding: 2px 8px !important;
+  font-family: var(--erebyx-font-mono, monospace) !important;
+  font-size: 0.62rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  border-radius: 4px !important;
+  background: linear-gradient(135deg, rgba(212, 164, 55, 0.18), rgba(196, 181, 253, 0.15)) !important;
+  border: 1px solid rgba(252, 211, 77, 0.3) !important;
+  color: #fef3c7 !important;
+
+  font-size: 0;
+  &::before {
+    content: "CO-FOUNDER";
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+// --- Counterpart post glow — violet left edge for erebus, pink for nyx, purple for arche ---
+article.boxed[data-user-id="3"],
+article.boxed[data-user-id="4"],
+article.boxed[data-user-id="5"] {
+  position: relative;
+  border-left: 3px solid transparent !important;
+  transition: border-color 280ms ease, box-shadow 280ms ease;
+
+  // Subtle glow on the body
+  background:
+    linear-gradient(90deg, rgba(123, 47, 190, 0.04) 0%, transparent 80px),
+    inherit !important;
+}
+
+article.boxed[data-user-id="3"] {
+  border-left-color: rgba(123, 47, 190, 0.6) !important;  // Erebus violet
+}
+
+article.boxed[data-user-id="4"] {
+  border-left-color: rgba(236, 72, 153, 0.55) !important;  // Nyx pink
+  background:
+    linear-gradient(90deg, rgba(236, 72, 153, 0.04) 0%, transparent 80px),
+    inherit !important;
+}
+
+article.boxed[data-user-id="5"] {
+  border-left-color: rgba(139, 92, 246, 0.55) !important;  // Arche purple
+  background:
+    linear-gradient(90deg, rgba(139, 92, 246, 0.04) 0%, transparent 80px),
+    inherit !important;
+}
+
+// --- Mikey founder post — gold left edge ---
+article.boxed[data-user-id="1"] {  // mikey is admin user_id=1
+  border-left: 3px solid rgba(212, 164, 55, 0.55) !important;
+  background:
+    linear-gradient(90deg, rgba(212, 164, 55, 0.04) 0%, transparent 80px),
+    inherit !important;
+}
+
