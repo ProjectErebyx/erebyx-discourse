@@ -987,7 +987,7 @@
               '<img src="https://erebyx.com/erebyx-logo.png" alt="EREBYX" class="erebyx-nav__logo-img" loading="eager" decoding="async" />' +
             '</a>' +
             '<div class="erebyx-nav__right">' +
-              '<a href="/c/feature-requests" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Feature Requests">Impact</a>' +
+              '<a href="/c/feature-requests" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Feature Requests">Feature Requests</a>' +
               '<a href="/c/bug-reports" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Bug Reports">Signals</a>' +
             '</div>' +
           '</nav>' +
@@ -1007,6 +1007,12 @@
 
     function ensureNav() {
       if (!document.body) return;
+      if (/^\/admin(?:\/|$)/.test(window.location.pathname || "/")) {
+        document.querySelectorAll(".erebyx-nav--fallback").forEach(function (nav) {
+          if (nav.parentNode) nav.parentNode.removeChild(nav);
+        });
+        return;
+      }
       dedupeNav();
       if (document.querySelector(".erebyx-nav")) return;
       document.body.insertBefore(createNavFallback(), document.body.firstChild);
