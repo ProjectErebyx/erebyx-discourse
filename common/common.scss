@@ -2425,3 +2425,394 @@ article.accepted-answer {
   font-family: "JetBrains Mono", "Fira Code", monospace !important;
 }
 
+
+// =============================================================================
+// EREBYX ARCHE — TIER-9 LIST + INTERACTION DEPTH
+// Mikey: "the way we list conversations gives it forum feel" — break the table
+//        + reply/react polish + more hover/glow
+// =============================================================================
+
+// --- 1. TOPIC LIST: BREAK THE TABLE FEEL ---
+
+// Hide column headers — "Topic | Posters | Replies | Activity"
+.topic-list > thead,
+.custom-list .topic-list > thead,
+table.topic-list > thead {
+  display: none !important;
+}
+
+// Reset table to behave like a stack of cards
+.topic-list {
+  border-collapse: separate !important;
+  border-spacing: 0 0.5rem !important;
+  width: 100% !important;
+
+  tbody {
+    display: block !important;
+  }
+
+  tr.topic-list-item {
+    display: grid !important;
+    grid-template-columns: auto 1fr auto;
+    grid-gap: 1rem;
+    align-items: center;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(
+      155deg,
+      rgba(15, 15, 28, 0.5) 0%,
+      rgba(15, 15, 28, 0.3) 100%
+    ) !important;
+    border: 1px solid rgba(123, 47, 190, 0.06) !important;
+    border-radius: 12px !important;
+    backdrop-filter: blur(8px);
+    transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease, background 240ms ease;
+    cursor: pointer;
+
+    // Cells inside flow as flex items
+    td {
+      border: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+    }
+
+    // Hover: card lifts with violet glow
+    &:hover {
+      transform: translateY(-2px);
+      border-color: rgba(123, 47, 190, 0.32) !important;
+      background: linear-gradient(
+        155deg,
+        rgba(15, 15, 28, 0.7) 0%,
+        rgba(15, 15, 28, 0.5) 100%
+      ) !important;
+      box-shadow:
+        0 14px 30px -16px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(123, 47, 190, 0.18),
+        0 0 24px -8px rgba(123, 47, 190, 0.4);
+    }
+
+    // PINNED topics get gold left-edge strip
+    &.pinned {
+      border-left: 3px solid rgba(252, 211, 77, 0.45) !important;
+      background: linear-gradient(
+        155deg,
+        rgba(212, 164, 55, 0.04) 0%,
+        rgba(15, 15, 28, 0.4) 100%
+      ) !important;
+
+      &:hover {
+        border-left-color: rgba(252, 211, 77, 0.8) !important;
+      }
+    }
+  }
+}
+
+// Topic-list cell adjustments
+.topic-list .topic-list-item .main-link,
+.topic-list .topic-list-item .topic-list-data {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+// Title — bigger, brand font, prominent
+.topic-list .topic-list-item .raw-topic-link,
+.topic-list .topic-list-item .main-link a.title {
+  font-family: var(--erebyx-font-body, "Pathway Gothic One"), serif !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  color: rgba(241, 245, 249, 0.92) !important;
+  letter-spacing: 0.005em;
+  transition: color 200ms ease;
+
+  &:hover {
+    color: var(--erebyx-violet-light, #c4b5fd) !important;
+  }
+}
+
+// Category breadcrumb on each row — quieter
+.topic-list .topic-list-item .badge-category-bg,
+.topic-list .topic-list-item .category-name {
+  font-size: 0.7rem !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: var(--erebyx-font-mono, monospace) !important;
+  opacity: 0.7;
+}
+
+// Avatar (last-poster, originally cell .posters) — larger, glowing
+.topic-list .posters,
+.topic-list .topic-list-item .posters {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  a > img.avatar {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    transition: box-shadow 240ms ease, transform 240ms ease;
+  }
+}
+
+.topic-list .topic-list-item:hover .posters a > img.avatar {
+  box-shadow: 0 0 0 2px rgba(123, 47, 190, 0.4), 0 0 12px rgba(123, 47, 190, 0.4);
+}
+
+// Reply count + activity time — right side, mono, cosmic
+.topic-list .num,
+.topic-list .topic-list-item .num.posts-map,
+.topic-list .topic-list-item .activity {
+  font-family: var(--erebyx-font-mono, monospace) !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.05em;
+  color: rgba(196, 181, 253, 0.55);
+  white-space: nowrap;
+}
+
+// Make pinned-icon less default-Discourse, more sigil-like
+.topic-list .topic-list-item .topic-statuses .pinned {
+  color: rgba(252, 211, 77, 0.7) !important;
+
+  &::before {
+    content: "✦ ";
+    margin-right: 0.2em;
+  }
+}
+
+// "About this category" + new-topic icon are noisy in our list — calm them
+.topic-list .topic-list-item .topic-statuses .unpinned {
+  display: none;  // don't show "unpinned" indicator
+}
+
+// Empty cells (replies = 0, no badges) shouldn't take space
+.topic-list .topic-list-item .num.likes:empty,
+.topic-list .topic-list-item .num.views:empty {
+  display: none;
+}
+
+// --- 2. REPLY / REACT POLISH ---
+
+// Reply button — breathing gradient pulse (subtle attractor)
+.topic-footer-buttons .btn-primary,
+.create.btn-primary,
+button.create.btn-primary,
+button.btn-primary[data-action*="reply"] {
+  background: linear-gradient(
+    135deg,
+    var(--erebyx-violet, #7B2FBE) 0%,
+    var(--erebyx-blue, #4D8BF5) 50%,
+    var(--erebyx-violet, #7B2FBE) 100%
+  ) !important;
+  background-size: 200% 200% !important;
+  animation: erebyx-reply-breathe 6s ease-in-out infinite;
+  border: 1px solid rgba(196, 181, 253, 0.3) !important;
+  font-family: var(--erebyx-font-mono, monospace) !important;
+  font-size: 0.78em !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  padding: 0.65rem 1.5rem !important;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    animation-play-state: paused;
+    transform: translateY(-1px);
+    box-shadow:
+      0 8px 24px -6px rgba(123, 47, 190, 0.5),
+      0 0 0 1px rgba(196, 181, 253, 0.4) !important;
+  }
+
+  // Light sweep on hover
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: -100%; right: 0; bottom: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.18) 50%,
+      transparent 100%
+    );
+    transition: left 600ms ease;
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+}
+
+@keyframes erebyx-reply-breathe {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topic-footer-buttons .btn-primary,
+  button.btn-primary[data-action*="reply"] {
+    animation: none !important;
+  }
+}
+
+// Reaction button bounce on click
+.discourse-reactions-list,
+.discourse-reactions-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: rgba(15, 15, 28, 0.4);
+  border: 1px solid rgba(123, 47, 190, 0.1);
+  border-radius: 999px;
+  padding: 2px 10px;
+  transition: border-color 200ms ease, background 200ms ease;
+
+  &:hover {
+    border-color: rgba(123, 47, 190, 0.3);
+    background: rgba(15, 15, 28, 0.6);
+  }
+}
+
+.discourse-reactions-list .reaction:active,
+.discourse-reactions-counter .reaction:active {
+  animation: erebyx-react-bounce 280ms ease-out;
+}
+
+@keyframes erebyx-react-bounce {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.45); }
+  100% { transform: scale(1); }
+}
+
+// Topic actions panel — glassmorphic, spaced
+.topic-footer-buttons,
+.timeline-controls,
+.post-controls {
+  background: rgba(15, 15, 28, 0.45) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 0.6rem 0.85rem !important;
+  border: 1px solid rgba(123, 47, 190, 0.1);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+// --- 3. HOVER / GLOW DEEPER ---
+
+// Sigil bloom on category-link hover — more pronounced
+.category-list-item h3,
+.category-name,
+.badge-category {
+  position: relative;
+  transition: text-shadow 320ms ease;
+}
+
+.category-list-item:hover h3::after,
+a.category-name:hover::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(196, 181, 253, 0.18) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  animation: erebyx-bloom 1.2s ease-out;
+}
+
+@keyframes erebyx-bloom {
+  0% { opacity: 0; transform: scale(0.6); }
+  40% { opacity: 1; }
+  100% { opacity: 0; transform: scale(1.6); }
+}
+
+// Animated underline draw on body links
+.cooked a[href]:not(.mention):not(.hashtag-cooked):not(.lightbox),
+.user-content a[href]:not(.mention):not(.hashtag-cooked) {
+  position: relative;
+  text-decoration: none !important;
+  color: var(--erebyx-violet-light, #c4b5fd) !important;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      var(--erebyx-violet, #7B2FBE),
+      var(--erebyx-blue, #4D8BF5)
+    );
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 300ms ease;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+// Avatar hover ring expansion (already had glow — add ring)
+.topic-avatar img,
+.post-avatar img,
+.main-avatar img {
+  position: relative;
+}
+
+.topic-avatar:hover,
+.post-avatar:hover,
+.main-avatar:hover {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border: 1px solid rgba(123, 47, 190, 0.35);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: erebyx-ring-expand 600ms ease-out;
+  }
+}
+
+@keyframes erebyx-ring-expand {
+  0% { transform: scale(0.85); opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+// Activity timestamps in cosmic mono ("8h" → keep but style)
+.relative-date,
+.last-activity-time,
+.first-poster .when,
+.posts-count + .activity {
+  font-family: var(--erebyx-font-mono, monospace) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.05em !important;
+  color: rgba(196, 181, 253, 0.55) !important;
+}
+
+// MOBILE — keep card layout but tighten
+@media (max-width: 767px) {
+  .topic-list tr.topic-list-item {
+    grid-template-columns: 1fr !important;
+    grid-gap: 0.5rem !important;
+    padding: 0.85rem 1rem !important;
+  }
+
+  .topic-list .posters {
+    margin-top: 0.5rem;
+  }
+
+  .topic-list .num,
+  .topic-list .activity {
+    margin-top: 0.25rem;
+    font-size: 0.7rem !important;
+  }
+}
+
