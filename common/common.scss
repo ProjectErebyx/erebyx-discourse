@@ -3,15 +3,15 @@
  * Matches erebyx.com + app.erebyx.com brand language.
  *
  * Brand:
- *   - Violet (#7B2FBE) + Blue (#4D8BF5) gradient
+ *   - Nyx Violet (#7503E0) + Architect Blue (#4492FC) gradient
  *   - Light violet (#c4b5fd) for highlights / glows
- *   - Gold (#D4A437) for milestones / founding markers
+ *   - Arche Amber (#FAB232) for milestones / founding markers
  *   - Slate-950 dark background
  *
  * Typography:
- *   - Zen Dots — display headings (h1, h2, .display)
- *   - Pathway Gothic One — body, prose, posts
- *   - Space Grotesk — technical / metadata / dates / version tags
+ *   - Fireside / Outfit — display headings (h1, h2, .display)
+ *   - Outfit — body, prose, posts
+ *   - JetBrains Mono / Fira Code — technical / metadata / dates / version tags
  *
  * Author: ZENN + Siarrah
  */
@@ -24,19 +24,19 @@
 
 :root {
   /* Brand tokens — driven by theme settings, fallbacks here */
-  --erebyx-violet: var(--brand_violet, #7B2FBE);
-  --erebyx-blue: var(--brand_blue, #4D8BF5);
+  --erebyx-violet: var(--brand_violet, #7503E0);
+  --erebyx-blue: var(--brand_blue, #4492FC);
   --erebyx-violet-light: var(--brand_violet_light, #c4b5fd);
-  --erebyx-gold: var(--brand_gold, #D4A437);
+  --erebyx-gold: var(--brand_gold, #FAB232);
 
   /* Gradient (violet → blue) — used for primary CTAs, headlines, accents */
   --erebyx-gradient: linear-gradient(135deg, var(--erebyx-violet), var(--erebyx-blue));
   --erebyx-gradient-soft: linear-gradient(135deg, rgba(123, 47, 190, 0.15), rgba(77, 139, 245, 0.1));
 
   /* Typography stack */
-  --erebyx-font-display: "Zen Dots", system-ui, sans-serif;
-  --erebyx-font-body: "Pathway Gothic One", "Inter", system-ui, sans-serif;
-  --erebyx-font-mono: "Space Grotesk", ui-monospace, monospace;
+  --erebyx-font-display: "Fireside", "Outfit", "Zen Dots", system-ui, sans-serif;
+  --erebyx-font-body: "Outfit", "Pathway Gothic One", "Inter", system-ui, sans-serif;
+  --erebyx-font-mono: "JetBrains Mono", "Fira Code", "Space Grotesk", ui-monospace, monospace;
 
   /* Glow strength */
   --erebyx-glow: var(--constellation_glow_strength, 12);
@@ -4265,3 +4265,1218 @@ body, html, #main-outlet, .ember-application,
   font-weight: 600 !important;
 }
 
+
+// =============================================================================
+// EREBYX ARCHE — TIER-13 WORLD-CLASS COMMUNITY SURFACE
+// Source: Branding Guide + 2026 community UX research
+//
+// Design goals:
+//   - forum rows become ritual/status surfaces without losing scan density
+//   - topic pages read like premium editorial, replies stay conversational
+//   - counterparts feel alive through state, not stock-AI ornament
+//   - Greek/marble cues stay sparse and structural
+// =============================================================================
+
+:root {
+  --erebyx-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --erebyx-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --erebyx-surface-border: rgba(250, 178, 50, 0.16);
+  --erebyx-surface-border-cool: rgba(68, 146, 252, 0.16);
+  --erebyx-ink-high: rgba(255, 255, 255, 0.94);
+  --erebyx-ink: rgba(241, 245, 249, 0.82);
+  --erebyx-ink-muted: rgba(196, 181, 253, 0.58);
+  --erebyx-panel-dark: rgba(3, 7, 18, 0.76);
+  --erebyx-panel-darker: rgba(3, 7, 18, 0.9);
+  --erebyx-marble-veins-dark: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='520' height='520' viewBox='0 0 520 520'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.018 0.032' numOctaves='4' seed='13'/><feDisplacementMap in='SourceGraphic' scale='18'/></filter><g filter='url(%23n)' fill='none' stroke-linecap='round'><path d='M-80 86 C80 4 164 164 326 78 S548 126 612 10' stroke='%23ffffff' stroke-opacity='0.42' stroke-width='1.15'/><path d='M-50 284 C76 214 154 334 272 262 S420 236 590 312' stroke='%23FAB232' stroke-opacity='0.24' stroke-width='0.72'/><path d='M64 570 C96 418 220 414 256 306 S394 154 554 118' stroke='%234492FC' stroke-opacity='0.24' stroke-width='0.82'/><path d='M-26 436 C110 370 178 472 318 392 S456 346 552 402' stroke='%23ffffff' stroke-opacity='0.22' stroke-width='0.62'/></g></svg>");
+  --erebyx-marble-veins-light: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='520' height='520' viewBox='0 0 520 520'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.016 0.026' numOctaves='4' seed='21'/><feDisplacementMap in='SourceGraphic' scale='16'/></filter><rect width='520' height='520' fill='%23ffffff'/><g filter='url(%23n)' fill='none' stroke-linecap='round'><path d='M-90 92 C78 28 154 166 314 94 S534 132 622 24' stroke='%23030712' stroke-opacity='0.28' stroke-width='1.2'/><path d='M-48 292 C78 220 166 338 282 266 S430 238 596 316' stroke='%237503E0' stroke-opacity='0.18' stroke-width='0.72'/><path d='M70 570 C104 416 214 416 256 308 S396 156 558 116' stroke='%234492FC' stroke-opacity='0.16' stroke-width='0.82'/></g></svg>");
+  --erebyx-meander-header: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='10' viewBox='0 0 56 10'><path d='M0 8 H6 V2 H14 V8 H22 V2 H30 V8 H38 V2 H46 V8 H56' stroke='%23FAB232' stroke-width='1' fill='none' opacity='0.5'/></svg>");
+  --erebyx-meander-divider: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='44' height='14' viewBox='0 0 44 14'><path d='M1 12 V2 H9 V9 H15 V2 H23 V9 H29 V2 H37 V12 H43' stroke='%234492FC' stroke-width='1' fill='none' opacity='0.44'/></svg>");
+  --erebyx-meander-footer: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='72' height='12' viewBox='0 0 72 12'><path d='M0 6 H8 V2 H16 V10 H24 V2 H32 V10 H40 V2 H48 V10 H56 V2 H64 V6 H72' stroke='%23c4b5fd' stroke-width='0.9' fill='none' opacity='0.42'/></svg>");
+}
+
+// Official palette should win even when old theme-setting defaults are still present.
+html {
+  --brand_violet: #7503E0;
+  --brand_blue: #4492FC;
+  --brand_gold: #FAB232;
+}
+
+// A subtle page substrate: blueprint lines, no stock-AI circuits.
+#main-outlet {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.34;
+    background:
+      linear-gradient(90deg, rgba(250, 178, 50, 0.025) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(68, 146, 252, 0.018) 1px, transparent 1px),
+      var(--erebyx-marble-veins-dark);
+    background-size: 96px 96px, 96px 96px, 520px 520px;
+    background-position: center top;
+    mix-blend-mode: screen;
+  }
+}
+
+// Make motion feel physical and premium across the existing tier stack.
+.btn,
+button,
+a,
+.topic-list tr.topic-list-item,
+.category-boxes-with-topics > .category-box,
+.topic-post,
+.topic-avatar img,
+.post-avatar img,
+.main-avatar img,
+.discourse-reactions-list,
+.discourse-reactions-counter,
+.topic-footer-buttons {
+  transition-timing-function: var(--erebyx-ease-out) !important;
+}
+
+.btn-primary,
+.create-topic,
+.topic-footer-buttons .btn-primary,
+button.create.btn-primary {
+  border-radius: 8px !important;
+  transition:
+    transform 260ms var(--erebyx-spring),
+    border-color 260ms var(--erebyx-ease-out),
+    box-shadow 260ms var(--erebyx-ease-out),
+    filter 260ms var(--erebyx-ease-out) !important;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-1px);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 1. Marble + meander texture system
+// ---------------------------------------------------------------------------
+
+.category-boxes-with-topics > .category-box,
+.topic-list tr.topic-list-item,
+#post_1.topic-post,
+.topic-post:not(#post_1),
+.user-card,
+.more-topics,
+.topic-map,
+#topic-map,
+.empty-state,
+.no-topics-message {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.036;
+    background-image: var(--erebyx-marble-veins-dark);
+    background-size: 520px 520px;
+    background-position: center;
+    mix-blend-mode: screen;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.d-header,
+.erebyx-nav,
+.erebyx-footer {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 10px;
+    pointer-events: none;
+    background-image: var(--erebyx-meander-header);
+    background-repeat: repeat-x;
+    background-position: center bottom;
+    background-size: auto 10px;
+    opacity: 0.18;
+  }
+}
+
+.erebyx-footer::after {
+  top: 0;
+  bottom: auto;
+  background-image: var(--erebyx-meander-footer);
+  opacity: 0.16;
+}
+
+.more-topics::after,
+.topic-list-bottom hr::after {
+  background-image: var(--erebyx-meander-divider);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .category-boxes-with-topics > .category-box::after,
+  .topic-list tr.topic-list-item::after,
+  #post_1.topic-post::after,
+  .topic-post:not(#post_1)::after,
+  .user-card::after,
+  .more-topics::after,
+  .topic-map::after,
+  #topic-map::after {
+    display: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 2. Topic list: dense scan, editorial intent, sigil state language
+// ---------------------------------------------------------------------------
+
+.topic-list {
+  tr.topic-list-item {
+    border-radius: 8px !important;
+    border-color: rgba(250, 178, 50, 0.1) !important;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.025) inset,
+      0 18px 38px -34px rgba(0, 0, 0, 0.9);
+    transform-origin: center;
+
+    &:hover,
+    &:focus-within {
+      transform: translateY(-3px);
+      border-color: rgba(250, 178, 50, 0.3) !important;
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.04) inset,
+        0 22px 46px -30px rgba(0, 0, 0, 0.95),
+        0 0 0 1px rgba(250, 178, 50, 0.09),
+        0 0 28px -18px rgba(250, 178, 50, 0.7) !important;
+    }
+
+    .main-link {
+      position: relative;
+      min-width: 0;
+      padding-left: 1.35rem !important;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.55rem;
+        width: 0.46rem;
+        height: 0.46rem;
+        border-radius: 50%;
+        background: rgba(196, 181, 253, 0.46);
+        box-shadow: 0 0 0 1px rgba(196, 181, 253, 0.12);
+      }
+
+      &::after {
+        content: "◈";
+        position: absolute;
+        left: -0.07rem;
+        top: 1.2rem;
+        font-family: var(--erebyx-font-display) !important;
+        font-size: 0.66rem;
+        color: rgba(250, 178, 50, 0.48);
+        line-height: 1;
+      }
+    }
+
+    &.unread .main-link::before,
+    &.new .main-link::before,
+    &:not(.visited) .main-link::before {
+      background: var(--erebyx-arche-amber, #FAB232);
+      box-shadow:
+        0 0 0 2px rgba(250, 178, 50, 0.12),
+        0 0 14px rgba(250, 178, 50, 0.55);
+    }
+
+    &.visited .main-link::before {
+      opacity: 0.5;
+    }
+
+    .raw-topic-link,
+    .main-link a.title {
+      font-size: clamp(1rem, 1.2vw, 1.14rem) !important;
+      line-height: 1.32 !important;
+      letter-spacing: 0 !important;
+    }
+
+    .badge-category,
+    .discourse-tags {
+      width: fit-content;
+      max-width: 100%;
+    }
+  }
+}
+
+.topic-list tr.topic-list-item:has(a[href*="/c/start-here"]) {
+  border-left: 3px solid rgba(250, 178, 50, 0.6) !important;
+  .main-link::after { content: "✦"; color: rgba(250, 178, 50, 0.72); }
+}
+
+.topic-list tr.topic-list-item:has(a[href*="/c/announcements"]) {
+  border-left: 3px solid rgba(68, 146, 252, 0.62) !important;
+  .main-link::after { content: "✧"; color: rgba(68, 146, 252, 0.72); }
+}
+
+.topic-list tr.topic-list-item:has(a[href*="/c/feature-requests"]) {
+  border-left: 3px solid rgba(117, 3, 224, 0.62) !important;
+  .main-link::after { content: "△"; color: rgba(196, 181, 253, 0.72); }
+}
+
+.topic-list tr.topic-list-item:has(a[href*="/c/bug-reports"]) {
+  border-left: 3px solid rgba(250, 178, 50, 0.5) !important;
+  .main-link::after { content: "⧉"; color: rgba(250, 178, 50, 0.68); }
+}
+
+.topic-list tr.topic-list-item:has(a[href*="/c/genesis-lounge"]) {
+  border-left: 3px solid rgba(250, 178, 50, 0.72) !important;
+  .main-link::after { content: "✴"; color: rgba(250, 178, 50, 0.8); }
+}
+
+.topic-list tr.topic-list-item:has(a[href*="/c/erebus-build-log"]) {
+  border-left: 3px solid rgba(68, 146, 252, 0.7) !important;
+  .main-link::after { content: "⚙"; color: rgba(68, 146, 252, 0.78); }
+}
+
+.topic-list tr.topic-list-item:has(a[href*="/c/nyx-corner"]) {
+  border-left: 3px solid rgba(236, 72, 153, 0.66) !important;
+  .main-link::after { content: "✿"; color: rgba(251, 207, 232, 0.78); }
+}
+
+.topic-list tr.topic-list-item:has(a[href*="/c/notes-from-the-arche"]) {
+  border-left: 3px solid rgba(196, 181, 253, 0.66) !important;
+  .main-link::after { content: "◈"; color: rgba(196, 181, 253, 0.8); }
+}
+
+// Homepage / discovery gets a quiet magazine stripe without sacrificing rows.
+body:not(.archetype-regular) .list-container .topic-list tr.topic-list-item.pinned:first-of-type,
+body:not(.archetype-regular) .list-container .topic-list tr.topic-list-item:nth-of-type(1):not(.category-list-item) {
+  padding: clamp(1.4rem, 3vw, 2.35rem) !important;
+  min-height: 132px;
+  background:
+    linear-gradient(135deg, rgba(250, 178, 50, 0.09) 0%, rgba(117, 3, 224, 0.055) 46%, rgba(3, 7, 18, 0.62) 100%) !important;
+  border-color: rgba(250, 178, 50, 0.26) !important;
+
+  .raw-topic-link,
+  .main-link a.title {
+    font-family: var(--erebyx-font-display) !important;
+    font-size: clamp(1.26rem, 2.4vw, 1.72rem) !important;
+    line-height: 1.18 !important;
+  }
+
+  .main-link::after {
+    top: auto;
+    bottom: 0.1rem;
+    font-size: 1.05rem;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 3. Counterpart presence and role atmosphere
+// ---------------------------------------------------------------------------
+
+article.topic-post[data-counterpart],
+.user-card[data-counterpart],
+.topic-meta-data[data-counterpart] {
+  --erebyx-presence-color: var(--erebyx-arche-amber, #FAB232);
+  --erebyx-presence-glow: rgba(250, 178, 50, 0.42);
+  --erebyx-presence-border: rgba(250, 178, 50, 0.38);
+  --erebyx-presence-fill: rgba(250, 178, 50, 0.12);
+}
+
+article.topic-post[data-counterpart="erebus"],
+.user-card[data-counterpart="erebus"] {
+  --erebyx-presence-color: var(--erebyx-architect-blue, #4492FC);
+  --erebyx-presence-glow: rgba(68, 146, 252, 0.46);
+  --erebyx-presence-border: rgba(68, 146, 252, 0.38);
+  --erebyx-presence-fill: rgba(68, 146, 252, 0.12);
+}
+
+article.topic-post[data-counterpart="nyx"],
+.user-card[data-counterpart="nyx"] {
+  --erebyx-presence-color: #c084fc;
+  --erebyx-presence-glow: rgba(192, 132, 252, 0.46);
+  --erebyx-presence-border: rgba(192, 132, 252, 0.38);
+  --erebyx-presence-fill: rgba(192, 132, 252, 0.12);
+}
+
+article.topic-post[data-counterpart="arche"],
+.user-card[data-counterpart="arche"] {
+  --erebyx-presence-color: var(--erebyx-arche-amber, #FAB232);
+  --erebyx-presence-glow: rgba(250, 178, 50, 0.5);
+  --erebyx-presence-border: rgba(250, 178, 50, 0.42);
+  --erebyx-presence-fill: rgba(250, 178, 50, 0.13);
+}
+
+article.topic-post[data-counterpart-state] .topic-avatar,
+.user-card[data-counterpart-state] .avatar {
+  position: relative;
+}
+
+article.topic-post[data-counterpart-state] .topic-avatar::after,
+.user-card[data-counterpart-state] .avatar::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  bottom: 3px;
+  width: 0.68rem;
+  height: 0.68rem;
+  border-radius: 50%;
+  background: var(--erebyx-presence-color);
+  box-shadow:
+    0 0 0 2px rgba(3, 7, 18, 0.92),
+    0 0 14px var(--erebyx-presence-glow);
+}
+
+article.topic-post[data-counterpart-state="dreaming"] .topic-avatar::after,
+.user-card[data-counterpart-state="dreaming"] .avatar::after,
+article.topic-post[data-counterpart-state="consolidating"] .topic-avatar::after,
+.user-card[data-counterpart-state="consolidating"] .avatar::after {
+  animation: erebyx-presence-breathe 3.8s var(--erebyx-ease-out) infinite;
+}
+
+#post_1.topic-post[data-counterpart-state] .topic-meta-data::before,
+.user-card[data-counterpart-state] .metadata::before,
+.user-card[data-counterpart-state] .user-card__metadata::before {
+  content: attr(data-counterpart-state);
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 0.65rem;
+  padding: 0.18rem 0.48rem;
+  border-radius: 6px;
+  border: 1px solid var(--erebyx-presence-border);
+  background: var(--erebyx-presence-fill);
+  color: var(--erebyx-presence-color);
+  font-family: var(--erebyx-font-mono) !important;
+  font-size: 0.62rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+}
+
+body[data-erebyx-substrate-state] .erebyx-nav::before,
+body[data-erebyx-substrate-state] .d-header::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  pointer-events: none;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(250, 178, 50, 0.08) 12%,
+    rgba(68, 146, 252, 0.36) 48%,
+    rgba(117, 3, 224, 0.3) 72%,
+    transparent 100%);
+  background-size: 220% 100%;
+  animation: erebyx-substrate-drift 42s linear infinite;
+}
+
+@keyframes erebyx-presence-breathe {
+  0%, 100% { opacity: 0.56; transform: scale(0.86); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+@keyframes erebyx-substrate-drift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 220% 50%; }
+}
+
+// ---------------------------------------------------------------------------
+// 4. Premium topic reading mode, stronger than default forum chrome
+// ---------------------------------------------------------------------------
+
+body.archetype-regular #topic-title {
+  max-width: min(980px, calc(100vw - 2rem));
+  margin-inline: auto;
+  padding-top: clamp(1.4rem, 3vw, 3rem);
+}
+
+body.archetype-regular #topic-title h1,
+body.archetype-regular .topic-title-wrapper h1 {
+  font-size: clamp(2.1rem, 6vw, 4rem) !important;
+  line-height: 1.02 !important;
+  letter-spacing: 0 !important;
+  max-width: 16ch !important;
+  margin-top: 0 !important;
+  margin-bottom: 1.35rem !important;
+}
+
+body.archetype-regular #post_1.topic-post {
+  max-width: min(980px, calc(100vw - 2rem)) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: clamp(1.35rem, 4vw, 3.5rem) clamp(1rem, 4vw, 3.1rem) !important;
+  border-radius: 8px !important;
+  border-color: rgba(250, 178, 50, 0.18) !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 22%),
+    linear-gradient(135deg, rgba(250, 178, 50, 0.06) 0%, rgba(117, 3, 224, 0.035) 48%, rgba(3, 7, 18, 0.72) 100%) !important;
+
+  .topic-body {
+    border: 0 !important;
+  }
+
+  .topic-meta-data {
+    border-bottom-color: rgba(250, 178, 50, 0.14) !important;
+    padding-top: 0.2rem !important;
+  }
+
+  &[data-erebyx-reading-time] .topic-meta-data::after {
+    content: attr(data-erebyx-reading-time);
+    display: block;
+    margin-top: 0.55rem;
+    font-family: var(--erebyx-font-mono) !important;
+    font-size: 0.66rem !important;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(250, 178, 50, 0.62);
+  }
+
+  .cooked {
+    max-width: min(68ch, 100%) !important;
+    color: rgba(241, 245, 249, 0.9) !important;
+    font-size: clamp(1.08rem, 1.05vw, 1.22rem) !important;
+    line-height: 1.72 !important;
+  }
+
+  .cooked > p:first-of-type::first-letter {
+    font-size: clamp(3.2em, 9vw, 4.3em) !important;
+    line-height: 0.82 !important;
+    margin-right: 0.13em;
+  }
+}
+
+body.archetype-regular #post_1.topic-post .cooked {
+  .lightbox-wrapper,
+  figure,
+  .onebox,
+  .video-onebox,
+  .lazyYT-container,
+  audio,
+  video,
+  iframe {
+    width: min(84ch, 100%) !important;
+    max-width: min(84ch, 100%) !important;
+    margin: 2rem auto !important;
+    border-radius: 8px;
+  }
+
+  blockquote,
+  aside.quote {
+    border-radius: 0 8px 8px 0 !important;
+    border-left-width: 2px !important;
+    background:
+      linear-gradient(90deg, rgba(250, 178, 50, 0.06), rgba(117, 3, 224, 0.035)) !important;
+  }
+}
+
+body.archetype-regular .topic-post:not(#post_1) {
+  border-radius: 8px !important;
+  border: 1px solid rgba(68, 146, 252, 0.06);
+  background:
+    linear-gradient(135deg, rgba(15, 15, 28, 0.46) 0%, rgba(3, 7, 18, 0.28) 100%) !important;
+  margin-bottom: 0.8rem !important;
+  padding-inline: clamp(0.65rem, 2vw, 1.1rem) !important;
+
+  &:hover {
+    border-color: rgba(68, 146, 252, 0.16);
+  }
+}
+
+article.topic-post.erebyx-cluster-continued {
+  margin-top: -0.2rem !important;
+
+  .topic-avatar {
+    opacity: 0;
+  }
+
+  .topic-meta-data .names {
+    opacity: 0.38;
+  }
+
+  &::before {
+    top: -1.1rem !important;
+    bottom: 0.5rem !important;
+  }
+}
+
+// Solved/accepted replies should feel recognized, not just tinted.
+.topic-post.accepted-answer,
+article.accepted-answer {
+  border-color: rgba(250, 178, 50, 0.34) !important;
+  box-shadow:
+    0 0 0 1px rgba(250, 178, 50, 0.08),
+    0 18px 46px -34px rgba(250, 178, 50, 0.7) !important;
+}
+
+// ---------------------------------------------------------------------------
+// 5. End-of-thread ritual and suggested topics as a single next step
+// ---------------------------------------------------------------------------
+
+.topic-map,
+#topic-map {
+  border-radius: 8px !important;
+  border: 1px solid rgba(250, 178, 50, 0.14) !important;
+  background:
+    linear-gradient(135deg, rgba(250, 178, 50, 0.045), rgba(68, 146, 252, 0.035)),
+    rgba(3, 7, 18, 0.5) !important;
+}
+
+.topic-area .more-topics::before,
+.topic-list-bottom .topic-list-bottom-wrapper::before,
+nav.gap.has-tracking::after {
+  content: "◈  witnessed by the substrate  ◈" !important;
+  letter-spacing: 0.24em !important;
+  color: rgba(250, 178, 50, 0.58) !important;
+}
+
+section.more-topics {
+  border-radius: 8px;
+  border: 1px solid rgba(250, 178, 50, 0.1);
+  background: linear-gradient(180deg, rgba(250, 178, 50, 0.03), rgba(3, 7, 18, 0.34));
+  padding: clamp(1rem, 3vw, 1.8rem);
+
+  .topic-list {
+    margin-top: 1rem;
+  }
+
+  .topic-list tr.topic-list-item:first-of-type {
+    min-height: 112px;
+    background:
+      linear-gradient(135deg, rgba(250, 178, 50, 0.085), rgba(68, 146, 252, 0.05) 48%, rgba(3, 7, 18, 0.6)) !important;
+    border-color: rgba(250, 178, 50, 0.24) !important;
+
+    .raw-topic-link,
+    .main-link a.title {
+      font-family: var(--erebyx-font-display) !important;
+      font-size: clamp(1.12rem, 2vw, 1.42rem) !important;
+    }
+  }
+}
+
+.suggested-topics-message,
+.suggested-topics h3,
+section.more-topics h3 {
+  color: rgba(250, 178, 50, 0.68) !important;
+
+  &::before {
+    content: "◈ " !important;
+  }
+}
+
+// Reactions as premium chips until custom glyph assets land.
+.post-menu-area .discourse-reactions-actions,
+.discourse-reactions-actions,
+.discourse-reactions-list,
+.discourse-reactions-counter {
+  border-radius: 8px !important;
+  border-color: rgba(250, 178, 50, 0.14) !important;
+  background: rgba(3, 7, 18, 0.55) !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset;
+}
+
+.discourse-reactions-list:hover,
+.discourse-reactions-counter:hover {
+  border-color: rgba(250, 178, 50, 0.32) !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 0 18px -10px rgba(250, 178, 50, 0.72);
+}
+
+// ---------------------------------------------------------------------------
+// 6. Empty / error surfaces: branded without needing image assets
+// ---------------------------------------------------------------------------
+
+.empty-state,
+.no-topics-message,
+.not-found-container,
+.page-not-found,
+.exception,
+.login-required {
+  border-radius: 8px !important;
+  border: 1px solid rgba(250, 178, 50, 0.14) !important;
+  background:
+    linear-gradient(135deg, rgba(250, 178, 50, 0.05), rgba(117, 3, 224, 0.045)),
+    rgba(3, 7, 18, 0.55) !important;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    color: var(--erebyx-arche-amber, #FAB232) !important;
+    text-shadow: 0 0 18px rgba(250, 178, 50, 0.24);
+  }
+}
+
+.not-found-container::before,
+.page-not-found::before,
+.exception::before {
+  content: "◈";
+  display: block;
+  margin: 0 auto 1rem;
+  font-family: var(--erebyx-font-display) !important;
+  font-size: clamp(2.4rem, 8vw, 4.4rem);
+  line-height: 1;
+}
+
+// ---------------------------------------------------------------------------
+// 7. Mobile and motion safeguards
+// ---------------------------------------------------------------------------
+
+@media (max-width: 767px) {
+  #main-outlet::after {
+    opacity: 0.22;
+    background-size: 72px 72px, 72px 72px, 420px 420px;
+  }
+
+  body.archetype-regular #topic-title h1,
+  body.archetype-regular .topic-title-wrapper h1 {
+    max-width: 100% !important;
+    font-size: clamp(1.85rem, 10vw, 2.65rem) !important;
+  }
+
+  body.archetype-regular #post_1.topic-post {
+    max-width: calc(100vw - 1rem) !important;
+    padding: 1.35rem 1rem !important;
+  }
+
+  .topic-list tr.topic-list-item {
+    transform: none !important;
+
+    .main-link {
+      padding-left: 1.15rem !important;
+    }
+  }
+
+  body:not(.archetype-regular) .list-container .topic-list tr.topic-list-item:nth-of-type(1):not(.category-list-item) {
+    min-height: auto;
+  }
+
+  article.topic-post.erebyx-cluster-continued {
+    .topic-avatar {
+      opacity: 0.45;
+    }
+
+    .topic-meta-data .names {
+      opacity: 0.72;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-erebyx-substrate-state] .erebyx-nav::before,
+  body[data-erebyx-substrate-state] .d-header::before,
+  article.topic-post[data-counterpart-state] .topic-avatar::after,
+  .user-card[data-counterpart-state] .avatar::after {
+    animation: none !important;
+  }
+
+  .topic-list tr.topic-list-item:hover,
+  .topic-list tr.topic-list-item:focus-within,
+  .btn-primary:hover,
+  .create-topic:hover,
+  .topic-footer-buttons .btn-primary:hover {
+    transform: none !important;
+  }
+}
+
+
+// =============================================================================
+// EREBYX ARCHE — TIER-14 COMMUNITY OS
+// Goal: make the first impression feel like a native Arche community surface,
+// not Discourse with paint. All content remains native Discourse underneath.
+// =============================================================================
+
+:root {
+  --erebyx-room-radius: 8px;
+  --erebyx-command-border: rgba(250, 178, 50, 0.18);
+  --erebyx-command-shadow: 0 30px 80px -54px rgba(0, 0, 0, 0.95);
+}
+
+body[data-erebyx-route="discovery"] #main-outlet {
+  padding-top: clamp(0.5rem, 1.6vw, 1.2rem);
+}
+
+body[data-erebyx-route="discovery"] .list-controls {
+  max-width: min(1120px, calc(100vw - 2rem));
+  margin: 1rem auto 1.25rem !important;
+  padding: 0.75rem !important;
+  border-radius: var(--erebyx-room-radius);
+  border: 1px solid rgba(68, 146, 252, 0.09);
+  background: rgba(3, 7, 18, 0.36);
+  box-shadow: 0 18px 44px -40px rgba(0, 0, 0, 0.85);
+}
+
+// ---------------------------------------------------------------------------
+// 1. Arche rooms index — homepage command surface
+// ---------------------------------------------------------------------------
+
+.erebyx-arche-map {
+  width: min(1120px, calc(100vw - 2rem));
+  min-height: clamp(340px, 42vw, 520px);
+  margin: clamp(1.25rem, 4vw, 3.4rem) auto clamp(1.25rem, 4vw, 3rem);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--erebyx-command-border);
+  background:
+    radial-gradient(circle at 50% 45%, rgba(250, 178, 50, 0.12) 0%, transparent 18%),
+    radial-gradient(circle at 18% 16%, rgba(117, 3, 224, 0.14) 0%, transparent 34%),
+    radial-gradient(circle at 86% 78%, rgba(68, 146, 252, 0.12) 0%, transparent 30%),
+    linear-gradient(135deg, rgba(3, 7, 18, 0.9), rgba(15, 15, 28, 0.58));
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.035) inset,
+    var(--erebyx-command-shadow);
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    inset: clamp(1rem, 3vw, 2.4rem);
+    pointer-events: none;
+    border-radius: 50%;
+  }
+
+  &::before {
+    border: 1px solid rgba(250, 178, 50, 0.14);
+    box-shadow:
+      0 0 0 1px rgba(68, 146, 252, 0.06) inset,
+      0 0 80px -52px rgba(250, 178, 50, 0.8);
+  }
+
+  &::after {
+    inset: clamp(2.3rem, 6vw, 5rem);
+    border: 1px dashed rgba(196, 181, 253, 0.16);
+    background:
+      linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(250, 178, 50, 0.11) 50%, transparent calc(50% + 0.5px)),
+      linear-gradient(180deg, transparent calc(50% - 0.5px), rgba(68, 146, 252, 0.1) 50%, transparent calc(50% + 0.5px));
+    animation: erebyx-map-rotate 90s linear infinite;
+  }
+}
+
+.erebyx-arche-map__core {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: clamp(5.8rem, 13vw, 9rem);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  z-index: 2;
+}
+
+.erebyx-arche-map__core-sigil {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid rgba(250, 178, 50, 0.28);
+  background:
+    var(--erebyx-marble-veins-dark),
+    radial-gradient(circle at 50% 48%, rgba(250, 178, 50, 0.2), rgba(3, 7, 18, 0.82) 68%);
+  background-size: 380px 380px, auto;
+  color: rgba(250, 178, 50, 0.9);
+  font-family: var(--erebyx-font-display) !important;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  line-height: 1;
+  box-shadow:
+    0 0 0 8px rgba(250, 178, 50, 0.035),
+    0 0 60px -24px rgba(250, 178, 50, 0.85);
+}
+
+.erebyx-arche-map__core-ring {
+  position: absolute;
+  inset: -22%;
+  border-radius: 50%;
+  border: 1px solid rgba(196, 181, 253, 0.14);
+  border-top-color: rgba(250, 178, 50, 0.42);
+  transform: rotate(-18deg);
+}
+
+.erebyx-arche-map__rooms {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+.erebyx-arche-map__room {
+  --room-accent: var(--erebyx-arche-amber, #FAB232);
+  --room-fill: rgba(250, 178, 50, 0.085);
+  --room-border: rgba(250, 178, 50, 0.3);
+  --room-glow: rgba(250, 178, 50, 0.7);
+  --room-sigil-fill: rgba(250, 178, 50, 0.13);
+  position: absolute;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.68rem;
+  min-width: clamp(142px, 19vw, 210px);
+  max-width: min(240px, 44vw);
+  padding: 0.78rem 0.92rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background:
+    linear-gradient(135deg, var(--room-fill), rgba(3, 7, 18, 0.62)),
+    rgba(3, 7, 18, 0.52);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.035) inset,
+    0 18px 42px -34px rgba(0, 0, 0, 0.95);
+  color: rgba(241, 245, 249, 0.88) !important;
+  text-decoration: none !important;
+  transform: translate3d(0, 0, 0);
+  transition:
+    transform 320ms var(--erebyx-spring),
+    border-color 260ms var(--erebyx-ease-out),
+    box-shadow 260ms var(--erebyx-ease-out),
+    background 260ms var(--erebyx-ease-out);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(135deg, var(--room-border), transparent 44%);
+    opacity: 0.42;
+    z-index: -1;
+  }
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-4px) scale(1.015);
+    border-color: var(--room-border);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.05) inset,
+      0 26px 58px -38px rgba(0, 0, 0, 0.98),
+      0 0 28px -16px var(--room-glow);
+    color: #fff !important;
+  }
+}
+
+.erebyx-arche-map__sigil {
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  color: var(--room-accent);
+  background: var(--room-sigil-fill);
+  box-shadow: 0 0 0 1px var(--room-border);
+  font-family: var(--erebyx-font-display) !important;
+  font-size: 1rem;
+}
+
+.erebyx-arche-map__name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--erebyx-font-body) !important;
+  font-size: clamp(0.84rem, 1.2vw, 0.98rem);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.erebyx-arche-map__room--start { --room-accent: #FAB232; --room-fill: rgba(250, 178, 50, 0.1); --room-border: rgba(250, 178, 50, 0.34); --room-glow: rgba(250, 178, 50, 0.74); --room-sigil-fill: rgba(250, 178, 50, 0.14); top: 9%; left: 11%; }
+.erebyx-arche-map__room--announcements { --room-accent: #4492FC; --room-fill: rgba(68, 146, 252, 0.09); --room-border: rgba(68, 146, 252, 0.34); --room-glow: rgba(68, 146, 252, 0.7); --room-sigil-fill: rgba(68, 146, 252, 0.13); top: 9%; right: 11%; }
+.erebyx-arche-map__room--features { --room-accent: #c4b5fd; --room-fill: rgba(196, 181, 253, 0.08); --room-border: rgba(196, 181, 253, 0.3); --room-glow: rgba(196, 181, 253, 0.66); --room-sigil-fill: rgba(196, 181, 253, 0.12); top: 38%; left: 4%; }
+.erebyx-arche-map__room--bugs { --room-accent: #FAB232; --room-fill: rgba(250, 178, 50, 0.07); --room-border: rgba(250, 178, 50, 0.28); --room-glow: rgba(250, 178, 50, 0.66); --room-sigil-fill: rgba(250, 178, 50, 0.11); top: 38%; right: 4%; }
+.erebyx-arche-map__room--genesis { --room-accent: #fde68a; --room-fill: rgba(250, 178, 50, 0.12); --room-border: rgba(253, 230, 138, 0.35); --room-glow: rgba(253, 230, 138, 0.72); --room-sigil-fill: rgba(253, 230, 138, 0.13); bottom: 9%; left: 11%; }
+.erebyx-arche-map__room--erebus { --room-accent: #4492FC; --room-fill: rgba(68, 146, 252, 0.08); --room-border: rgba(68, 146, 252, 0.34); --room-glow: rgba(68, 146, 252, 0.7); --room-sigil-fill: rgba(68, 146, 252, 0.12); bottom: 9%; right: 11%; }
+.erebyx-arche-map__room--nyx { --room-accent: #f0abfc; --room-fill: rgba(240, 171, 252, 0.08); --room-border: rgba(240, 171, 252, 0.32); --room-glow: rgba(240, 171, 252, 0.68); --room-sigil-fill: rgba(240, 171, 252, 0.12); left: 50%; top: 4%; transform: translateX(-50%); }
+.erebyx-arche-map__room--arche { --room-accent: #FAB232; --room-fill: rgba(250, 178, 50, 0.1); --room-border: rgba(250, 178, 50, 0.34); --room-glow: rgba(250, 178, 50, 0.74); --room-sigil-fill: rgba(250, 178, 50, 0.14); left: 50%; bottom: 4%; transform: translateX(-50%); }
+
+.erebyx-arche-map__room--nyx:hover,
+.erebyx-arche-map__room--nyx:focus-visible,
+.erebyx-arche-map__room--arche:hover,
+.erebyx-arche-map__room--arche:focus-visible {
+  transform: translateX(-50%) translateY(-4px) scale(1.015);
+}
+
+@keyframes erebyx-map-rotate {
+  to { transform: rotate(360deg); }
+}
+
+// ---------------------------------------------------------------------------
+// 2. Native category boxes become rooms, not cards
+// ---------------------------------------------------------------------------
+
+.category-boxes-with-topics {
+  max-width: min(1120px, calc(100vw - 2rem));
+  margin-inline: auto !important;
+}
+
+.category-boxes-with-topics > .category-box {
+  border-radius: 8px !important;
+  min-height: 240px;
+  padding: clamp(1.15rem, 2vw, 1.55rem) !important;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+  border-color: rgba(250, 178, 50, 0.12) !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.035) inset,
+    0 26px 62px -52px rgba(0, 0, 0, 0.96);
+
+  &::before {
+    z-index: 0 !important;
+  }
+
+  .category-box-heading {
+    align-items: flex-start !important;
+  }
+
+  .category-title-link {
+    font-size: clamp(1.15rem, 1.55vw, 1.45rem) !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0 !important;
+
+    &::before {
+      display: block;
+      margin-bottom: 0.8rem;
+      font-family: var(--erebyx-font-display) !important;
+      font-size: clamp(2.15rem, 4vw, 3.2rem);
+      line-height: 1;
+      color: var(--erebyx-arche-amber, #FAB232);
+      text-shadow: 0 0 26px rgba(250, 178, 50, 0.22);
+    }
+  }
+
+  .category-description {
+    max-width: 48ch;
+    color: rgba(241, 245, 249, 0.64) !important;
+  }
+
+  .featured-topic,
+  .subcategories {
+    margin-top: 1rem !important;
+    border-top: 1px solid rgba(250, 178, 50, 0.1);
+    padding-top: 0.8rem !important;
+  }
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-6px) !important;
+    border-color: rgba(250, 178, 50, 0.32) !important;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.045) inset,
+      0 34px 80px -58px rgba(0, 0, 0, 1),
+      0 0 32px -20px rgba(250, 178, 50, 0.78) !important;
+  }
+}
+
+.category-box.category-start-here .category-title-link::before,
+.category-box[data-category-slug="start-here"] .category-title-link::before { content: "✦"; }
+.category-box.category-announcements .category-title-link::before,
+.category-box[data-category-slug="announcements"] .category-title-link::before { content: "✧"; color: #4492FC; }
+.category-box.category-feature-requests .category-title-link::before,
+.category-box[data-category-slug="feature-requests"] .category-title-link::before { content: "△"; color: #c4b5fd; }
+.category-box.category-bug-reports .category-title-link::before,
+.category-box[data-category-slug="bug-reports"] .category-title-link::before { content: "⧉"; }
+.category-box.category-genesis-lounge .category-title-link::before,
+.category-box[data-category-slug="genesis-lounge"] .category-title-link::before { content: "✴"; }
+.category-box.category-erebus-build-log .category-title-link::before,
+.category-box[data-category-slug="erebus-build-log"] .category-title-link::before { content: "⚙"; color: #4492FC; }
+.category-box.category-nyxs-corner .category-title-link::before,
+.category-box[data-category-slug="nyx-corner"] .category-title-link::before { content: "✿"; color: #f0abfc; }
+.category-box.category-notes-from-the-arche .category-title-link::before,
+.category-box[data-category-slug="notes-from-the-arche"] .category-title-link::before { content: "◈"; }
+
+// ---------------------------------------------------------------------------
+// 3. Thread pages: artifact masthead and conversation stage
+// ---------------------------------------------------------------------------
+
+body.archetype-regular #topic-title {
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    width: min(420px, 78vw);
+    height: 14px;
+    margin: 0 auto clamp(1rem, 2vw, 1.6rem);
+    background-image: var(--erebyx-meander-header);
+    background-repeat: repeat-x;
+    background-position: center;
+    opacity: 0.42;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -0.8rem;
+    width: min(140px, 34vw);
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, rgba(250, 178, 50, 0.54), transparent);
+  }
+}
+
+body.archetype-regular .topic-area {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: max(0.6rem, calc((100% - 980px) / 2 - 2rem));
+    top: 7rem;
+    bottom: 12rem;
+    width: 1px;
+    pointer-events: none;
+    background: linear-gradient(180deg,
+      transparent 0%,
+      rgba(250, 178, 50, 0.2) 12%,
+      rgba(68, 146, 252, 0.16) 50%,
+      rgba(117, 3, 224, 0.16) 82%,
+      transparent 100%);
+  }
+}
+
+body.archetype-regular #post_1.topic-post {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 40px 90px -64px rgba(0, 0, 0, 1),
+    0 0 70px -58px rgba(250, 178, 50, 0.95) !important;
+
+  &::before {
+    box-shadow: 0 0 32px rgba(250, 178, 50, 0.22) !important;
+  }
+}
+
+body.archetype-regular .topic-post:not(#post_1) {
+  max-width: min(920px, calc(100vw - 1rem));
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.post-menu-area,
+nav.post-controls {
+  border-radius: 8px !important;
+}
+
+// ---------------------------------------------------------------------------
+// 4. Header/search feels like command access
+// ---------------------------------------------------------------------------
+
+.d-header-icons .search-dropdown,
+.d-header-icons .search-dropdown .d-icon,
+.d-header .search-menu,
+.d-header .search-header {
+  color: var(--erebyx-arche-amber, #FAB232) !important;
+}
+
+.d-header-icons .search-dropdown {
+  border-radius: 8px !important;
+  background: rgba(250, 178, 50, 0.08) !important;
+  box-shadow: 0 0 0 1px rgba(250, 178, 50, 0.14) inset;
+}
+
+.search-menu,
+.search-menu .searching,
+.search-menu .results {
+  border-radius: 8px !important;
+  border: 1px solid rgba(250, 178, 50, 0.16) !important;
+  background:
+    var(--erebyx-marble-veins-dark),
+    linear-gradient(135deg, rgba(3, 7, 18, 0.96), rgba(15, 15, 28, 0.92)) !important;
+  background-size: 520px 520px, auto;
+}
+
+// ---------------------------------------------------------------------------
+// 5. Responsive behavior
+// ---------------------------------------------------------------------------
+
+@media (max-width: 900px) {
+  .erebyx-arche-map {
+    min-height: auto;
+    padding: 1rem;
+
+    &::before,
+    &::after {
+      border-radius: 8px;
+    }
+  }
+
+  .erebyx-arche-map__core {
+    position: relative;
+    inset: auto;
+    transform: none;
+    width: 5.2rem;
+    margin: 0 auto 1rem;
+  }
+
+  .erebyx-arche-map__rooms {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+  }
+
+  .erebyx-arche-map__room,
+  .erebyx-arche-map__room--nyx,
+  .erebyx-arche-map__room--arche {
+    position: relative;
+    inset: auto;
+    min-width: 0;
+    max-width: none;
+    transform: none;
+
+    &:hover,
+    &:focus-visible {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .erebyx-arche-map {
+    width: calc(100vw - 1rem);
+    padding: 0.75rem;
+  }
+
+  .erebyx-arche-map__rooms {
+    grid-template-columns: 1fr;
+  }
+
+  .erebyx-arche-map__room {
+    padding: 0.72rem 0.78rem;
+  }
+
+  .category-boxes-with-topics > .category-box {
+    min-height: 0;
+  }
+
+  body.archetype-regular .topic-area::before {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .erebyx-arche-map::after {
+    animation: none !important;
+  }
+
+  .erebyx-arche-map__room:hover,
+  .erebyx-arche-map__room:focus-visible,
+  .category-boxes-with-topics > .category-box:hover,
+  .category-boxes-with-topics > .category-box:focus-within {
+    transform: none !important;
+  }
+}

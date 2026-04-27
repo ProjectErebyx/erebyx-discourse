@@ -3,13 +3,13 @@
 
 brand_violet:
   type: string
-  default: "#7B2FBE"
-  description: "Primary brand violet (Erebyx). Used for accents, links, primary CTAs."
+  default: "#7503E0"
+  description: "Official Nyx Violet. Used for accents, links, and primary energy moments."
 
 brand_blue:
   type: string
-  default: "#4D8BF5"
-  description: "Secondary brand blue. Used in gradients with violet."
+  default: "#4492FC"
+  description: "Official Architect Blue. Used in gradients with Nyx Violet."
 
 brand_violet_light:
   type: string
@@ -18,8 +18,8 @@ brand_violet_light:
 
 brand_gold:
   type: string
-  default: "#D4A437"
-  description: "Gold accent for milestones, founding badges, special markers."
+  default: "#FAB232"
+  description: "Official Arche Amber. Primary accent for Arche surfaces, milestones, founding badges, and special markers."
 
 constellation_glow_strength:
   type: integer

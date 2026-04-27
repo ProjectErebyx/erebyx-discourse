@@ -4,8 +4,8 @@ Custom Discourse theme for **arche.erebyx.com**. Matches the visual language of 
 
 ## What this theme provides
 
-- **Brand color tokens** (violet `#7B2FBE` + blue `#4D8BF5` + gold milestone accent + light-violet glow)
-- **Typography stack** matching site: Zen Dots (display), Pathway Gothic One (body), Space Grotesk (technical)
+- **Official brand color tokens** (Nyx Violet `#7503E0` + Architect Blue `#4492FC` + Arche Amber `#FAB232` + light-violet glow)
+- **Typography stack** matching the brand guide: Fireside/Outfit display, Outfit body, Architects Daughter accent, JetBrains/Fira mono
 - **Wire-card styling** for topic list + category cards (matches `PricingPage` / `FAQ` / `/continuum` chrome)
 - **Genesis Arche group flair** — violet username color + subtle glow on every post by `genesis_arche` group members
 - **Milestone badges** with gold accent ("Crossed the Threshold", "Lit a Star", "First Memory", etc.)
@@ -21,10 +21,10 @@ After install, configure under **Admin → Customize → Themes → Erebyx Arche
 
 | Setting | Default | Purpose |
 |---|---|---|
-| `brand_violet` | `#7B2FBE` | Primary brand color |
-| `brand_blue` | `#4D8BF5` | Secondary brand color |
+| `brand_violet` | `#7503E0` | Official Nyx Violet |
+| `brand_blue` | `#4492FC` | Official Architect Blue |
 | `brand_violet_light` | `#c4b5fd` | Highlights, hover, glow |
-| `brand_gold` | `#D4A437` | Milestone / founding accents |
+| `brand_gold` | `#FAB232` | Official Arche Amber |
 | `constellation_glow_strength` | `12` | Glow size in px |
 | `show_meander_dividers` | `true` | Greek meander pattern on dividers |
 | `genesis_group_color` | `#c4b5fd` | Username + flair color for `genesis_arche` group |

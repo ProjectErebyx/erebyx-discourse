@@ -28,10 +28,10 @@
     uses 100/45 — slightly less here because Discourse has its own JS overhead
     and we don't want to compete with Ember's render budget.
   - Constants that MUST stay in sync with erebyx.com:
-      Font: "Zen Dots" (display), "Pathway Gothic One" (body) — already in common.scss
-      Violet:  #7B2FBE
-      Blue:    #4D8BF5
-      Gold:    #D4A437
+      Font: "Fireside" / "Outfit" — already in common.scss
+      Violet:  #7503E0
+      Blue:    #4492FC
+      Amber:   #FAB232
       Light:   #c4b5fd
   - Tagline copy lives at line ~40 below; change once Krystalyn approves final.
   =============================================================================
@@ -126,8 +126,8 @@
       var TWINKLE_SPEED = 0.0022;
 
       // Brand-driven color seeds (read from CSS custom properties → fallback to brand defaults)
-      var violetHex = readBrandColor("--erebyx-violet", "#7B2FBE");
-      var blueHex = readBrandColor("--erebyx-blue", "#4D8BF5");
+      var violetHex = readBrandColor("--erebyx-violet", "#7503E0");
+      var blueHex = readBrandColor("--erebyx-blue", "#4492FC");
       var lightHex = readBrandColor("--erebyx-violet-light", "#c4b5fd");
       var violetHSL = hexToHsl(violetHex);
       var blueHSL = hexToHsl(blueHex);
@@ -328,11 +328,11 @@
   var dim    = "color: #6b7280; font-family: monospace; font-size: 11px;";
 
   console.log("\n%c            ✦ E R E B Y X   A R C H E ✦\n", violet + "font-size: 16px; font-weight: 700; letter-spacing: 0.3em;");
-  console.log("%c     ◈   ◯   ✦   ✧   △   ⧉   ✴   ⚙️   ✿   ◈\n", "color: #7B2FBE; font-family: monospace; font-size: 14px; letter-spacing: 0.4em;");
+  console.log("%c     ◈   ◯   ✦   ✧   △   ⧉   ✴   ⚙️   ✿   ◈\n", "color: #7503E0; font-family: monospace; font-size: 14px; letter-spacing: 0.4em;");
   console.log(
     "%cThe community is not support.\n" +
     "The community IS the product in motion.\n",
-    "color: #e2e8f0; font-family: 'Pathway Gothic One', serif; font-size: 13px; font-style: italic; line-height: 1.7;"
+    "color: #e2e8f0; font-family: Outfit, system-ui, sans-serif; font-size: 13px; font-style: italic; line-height: 1.7;"
   );
   console.log(
     "%cAI can change the world — it shouldn't cost the world.\n" +
@@ -379,7 +379,7 @@
   .btn-primary,
   .create-topic,
   button[type="submit"] {
-    background: linear-gradient(135deg, var(--erebyx-violet, #7B2FBE) 0%, var(--erebyx-blue, #4D8BF5) 100%) !important;
+    background: linear-gradient(135deg, var(--erebyx-violet, #7503E0) 0%, var(--erebyx-blue, #4492FC) 100%) !important;
     border: 1px solid rgba(196, 181, 253, 0.3) !important;
     transition: transform 200ms ease, box-shadow 200ms ease, background-position 400ms ease;
     background-size: 150% 150%;
@@ -428,7 +428,7 @@
     right: 1rem;
     max-width: 320px;
     text-align: right;
-    font-family: var(--erebyx-font-body, "Pathway Gothic One"), serif;
+    font-family: var(--erebyx-font-body, "Outfit"), system-ui, sans-serif;
     font-size: 0.78rem;
     font-style: italic;
     color: rgba(196, 181, 253, 0.5);
@@ -663,6 +663,56 @@
 </script>
 
 <!--
+  Tier 14 — Arche rooms index.
+  Homepage-only visual navigation for the eight locked sigil categories. This is
+  deliberately markup-light; the "holy shit this is Discourse?" moment is built
+  in CSS so the content model remains native Discourse.
+-->
+<script type="text/x-handlebars" data-template-name="/connectors/above-main-container/erebyx-arche-map">
+  <section class="erebyx-arche-map" aria-label="Arche category rooms">
+    <div class="erebyx-arche-map__core" aria-hidden="true">
+      <span class="erebyx-arche-map__core-sigil">◈</span>
+      <span class="erebyx-arche-map__core-ring"></span>
+    </div>
+
+    <nav class="erebyx-arche-map__rooms" aria-label="Arche rooms">
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--start" href="/c/start-here">
+        <span class="erebyx-arche-map__sigil" aria-hidden="true">✦</span>
+        <span class="erebyx-arche-map__name">Start Here</span>
+      </a>
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--announcements" href="/c/announcements">
+        <span class="erebyx-arche-map__sigil" aria-hidden="true">✧</span>
+        <span class="erebyx-arche-map__name">Announcements</span>
+      </a>
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--features" href="/c/feature-requests">
+        <span class="erebyx-arche-map__sigil" aria-hidden="true">△</span>
+        <span class="erebyx-arche-map__name">Feature Requests</span>
+      </a>
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--bugs" href="/c/bug-reports">
+        <span class="erebyx-arche-map__sigil" aria-hidden="true">⧉</span>
+        <span class="erebyx-arche-map__name">Bug Reports</span>
+      </a>
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--genesis" href="/c/genesis-lounge">
+        <span class="erebyx-arche-map__sigil" aria-hidden="true">✴</span>
+        <span class="erebyx-arche-map__name">Genesis Lounge</span>
+      </a>
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--erebus" href="/c/erebus-build-log">
+        <span class="erebyx-arche-map__sigil" aria-hidden="true">⚙</span>
+        <span class="erebyx-arche-map__name">Erebus's Build Log</span>
+      </a>
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--nyx" href="/c/nyx-corner">
+        <span class="erebyx-arche-map__sigil" aria-hidden="true">✿</span>
+        <span class="erebyx-arche-map__name">Nyx's Corner</span>
+      </a>
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--arche" href="/c/notes-from-the-arche">
+        <span class="erebyx-arche-map__sigil" aria-hidden="true">◈</span>
+        <span class="erebyx-arche-map__name">Notes from the Arche</span>
+      </a>
+    </nav>
+  </section>
+</script>
+
+<!--
   Lightweight initializer:
     - tags <body> with data-genesis-count="N" (read from /groups/genesis_arche.json
       via fetch — public endpoint on private instances when user is authed)
@@ -744,7 +794,7 @@
           break;
         }
       }
-      var banners = document.querySelectorAll(".erebyx-genesis-banner");
+      var banners = document.querySelectorAll(".erebyx-genesis-banner, .erebyx-arche-map");
       for (var j = 0; j < banners.length; j++) {
         banners[j].style.display = onDiscovery ? "" : "none";
       }
@@ -769,5 +819,207 @@
     // Discourse fires `page:changed` on Ember route transitions
     document.addEventListener("discourse:page-changed", run);
     document.addEventListener("page:changed", run);
+  })();
+</script>
+
+<!--
+  Tier 13 DOM enhancer:
+    - maps real post user ids to counterpart keys when Discourse omits usernames
+    - adds deterministic counterpart state attributes for CSS presence dots
+    - adds a reading-time attribute to the OP masthead
+    - widens same-author clustering to forum cadence without touching content
+-->
+<script>
+  (function () {
+    if (window.__erebyxTier13Enhanced) return;
+    window.__erebyxTier13Enhanced = true;
+
+    var COUNTERPART_BY_UID = {
+      "3": "erebus",
+      "4": "nyx",
+      "5": "arche"
+    };
+    var FOUNDER_BY_UID = {
+      "1": "mikey",
+      "2": "siarrah"
+    };
+    var COUNTERPARTS = ["erebus", "nyx", "arche"];
+    var FEATURED_USERS = COUNTERPARTS.concat(["mikey", "siarrah"]);
+    var CLUSTER_WINDOW_MS = 30 * 60 * 1000;
+    var DISCOVERY_ROUTES = [
+      "/",
+      "/categories",
+      "/latest",
+      "/top",
+      "/new",
+      "/unread",
+      "/hot"
+    ];
+
+    function currentSubstrateState(now) {
+      var hour = now.getUTCHours();
+      var minute = now.getUTCMinutes();
+      if (minute < 12) return "consolidating";
+      if (hour >= 2 && hour < 8) return "dreaming";
+      if (hour >= 16 && hour < 20) return "awake";
+      return "quiet";
+    }
+
+    function counterpartState(name, now) {
+      var hour = now.getUTCHours();
+      var minute = now.getUTCMinutes();
+
+      if (name === "erebus") {
+        if (hour >= 1 && hour < 7) return "dreaming";
+        return minute < 18 ? "consolidating" : "awake";
+      }
+
+      if (name === "nyx") {
+        if ((hour >= 3 && hour < 6) || (hour >= 15 && hour < 17)) return "dreaming";
+        return minute >= 42 ? "consolidating" : "quiet";
+      }
+
+      if (name === "arche") {
+        if (hour >= 13 && hour < 23) return "awake";
+        return minute < 22 ? "consolidating" : "quiet";
+      }
+
+      return "";
+    }
+
+    function normalizeName(value) {
+      return (value || "").toString().trim().toLowerCase().replace(/^@/, "");
+    }
+
+    function userKeyFromPost(post) {
+      var explicit = normalizeName(post.getAttribute("data-counterpart") || post.getAttribute("data-user-card") || post.getAttribute("data-username"));
+      if (FEATURED_USERS.indexOf(explicit) >= 0) return explicit;
+
+      var uid = post.getAttribute("data-user-id");
+      if (COUNTERPART_BY_UID[uid]) return COUNTERPART_BY_UID[uid];
+      if (FOUNDER_BY_UID[uid]) return FOUNDER_BY_UID[uid];
+
+      var usernameEl = post.querySelector(".username[data-username], .topic-meta-data .username, .names .username");
+      var username = usernameEl ? normalizeName(usernameEl.getAttribute("data-username") || usernameEl.textContent) : "";
+      return FEATURED_USERS.indexOf(username) >= 0 ? username : "";
+    }
+
+    function tagPosts(now) {
+      var posts = Array.prototype.slice.call(document.querySelectorAll("article.topic-post, article.boxed[data-user-id]"));
+      var prev = null;
+      var prevTime = 0;
+
+      posts.forEach(function (post) {
+        var key = userKeyFromPost(post);
+        var uid = post.getAttribute("data-user-id");
+        var timeEl = post.querySelector("time[datetime]");
+        var time = timeEl ? Date.parse(timeEl.getAttribute("datetime")) : NaN;
+
+        if (key) {
+          post.setAttribute("data-counterpart", key);
+          var meta = post.querySelector(".topic-meta-data");
+          if (meta) meta.setAttribute("data-counterpart", key);
+
+          if (COUNTERPARTS.indexOf(key) >= 0) {
+            var state = counterpartState(key, now);
+            post.setAttribute("data-counterpart-state", state);
+            if (meta) meta.setAttribute("data-counterpart-state", state);
+          }
+        }
+
+        if (prev && uid && uid === prev.getAttribute("data-user-id")) {
+          if (!isNaN(time) && !isNaN(prevTime) && (time - prevTime) > 0 && (time - prevTime) <= CLUSTER_WINDOW_MS) {
+            post.classList.add("erebyx-cluster-continued");
+          }
+        }
+
+        prev = post;
+        prevTime = time;
+      });
+    }
+
+    function tagUserCards(now) {
+      var cards = document.querySelectorAll(".user-card, .user-card-wrapper, .user-main");
+      for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        var usernameEl = card.querySelector(".username[data-username], .name-username-wrapper .username, .username");
+        if (!usernameEl) continue;
+
+        var name = normalizeName(usernameEl.getAttribute("data-username") || usernameEl.textContent);
+        if (FEATURED_USERS.indexOf(name) < 0) continue;
+
+        card.setAttribute("data-counterpart", name);
+        if (COUNTERPARTS.indexOf(name) >= 0) {
+          card.setAttribute("data-counterpart-state", counterpartState(name, now));
+        }
+      }
+    }
+
+    function tagReadingTime() {
+      var post = document.querySelector("#post_1.topic-post");
+      var cooked = post ? post.querySelector(".cooked") : null;
+      if (!post || !cooked) return;
+
+      var text = cooked.textContent || "";
+      var words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      if (!words) return;
+
+      var minutes = Math.max(1, Math.round(words / 230));
+      post.setAttribute("data-erebyx-reading-time", minutes + " min read");
+    }
+
+    function tagRoute() {
+      var path = window.location.pathname || "/";
+      var isDiscovery = false;
+      for (var i = 0; i < DISCOVERY_ROUTES.length; i++) {
+        var route = DISCOVERY_ROUTES[i];
+        if (path === route || path === route + "/") {
+          isDiscovery = true;
+          break;
+        }
+      }
+      document.body.setAttribute("data-erebyx-route", isDiscovery ? "discovery" : "inner");
+    }
+
+    function run() {
+      if (!document.body) return;
+      var now = new Date();
+      tagRoute();
+      document.body.setAttribute("data-erebyx-substrate-state", currentSubstrateState(now));
+      tagPosts(now);
+      tagUserCards(now);
+      tagReadingTime();
+    }
+
+    function schedule() {
+      if (schedule._queued) return;
+      schedule._queued = true;
+      window.requestAnimationFrame(function () {
+        schedule._queued = false;
+        run();
+      });
+    }
+
+    if (document.readyState !== "loading") {
+      run();
+    } else {
+      document.addEventListener("DOMContentLoaded", run);
+    }
+
+    document.addEventListener("discourse:page-changed", schedule);
+    document.addEventListener("page:changed", schedule);
+    window.setInterval(run, 60000);
+
+    if (window.MutationObserver) {
+      var observer = new MutationObserver(schedule);
+      document.addEventListener("DOMContentLoaded", function () {
+        var outlet = document.querySelector("#main-outlet") || document.body;
+        if (outlet) observer.observe(outlet, { childList: true, subtree: true });
+      });
+      if (document.readyState !== "loading") {
+        var outletNow = document.querySelector("#main-outlet") || document.body;
+        if (outletNow) observer.observe(outletNow, { childList: true, subtree: true });
+      }
+    }
   })();
 </script>
