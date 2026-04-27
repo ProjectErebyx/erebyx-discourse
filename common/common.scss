@@ -9102,3 +9102,768 @@ body.category-feature-requests.archetype-regular {
     }
   }
 }
+
+// =============================================================================
+// EREBYX ARCHE — TIER-25 FEATURE IMPACT LABEL GEOMETRY FIX
+// Live QA target: the impact chips were visually right, but inherited the older
+// card hover pseudo geometry. This keeps them compact, centered, and intentional.
+// =============================================================================
+
+body.category-feature-requests:not(.archetype-regular):not([data-erebyx-route="discovery"]) {
+  .category-title-contents {
+    padding-top: clamp(1.45rem, 2.6vw, 1.9rem);
+  }
+
+  .category-title-contents::before {
+    position: absolute !important;
+    inset: auto !important;
+    left: 50% !important;
+    top: 0 !important;
+    right: auto !important;
+    bottom: auto !important;
+    z-index: 3;
+    display: inline-flex !important;
+    width: fit-content !important;
+    min-width: 0 !important;
+    max-width: calc(100vw - 2rem) !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    margin: 0 !important;
+    padding: 0.24rem 0.62rem !important;
+    pointer-events: none !important;
+    opacity: 1 !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .list-container .topic-list tr.topic-list-item::before {
+    position: absolute !important;
+    inset: auto !important;
+    left: auto !important;
+    right: clamp(0.9rem, 1.8vw, 1.2rem) !important;
+    top: clamp(0.9rem, 1.8vw, 1.1rem) !important;
+    bottom: auto !important;
+    z-index: 4;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: fit-content !important;
+    min-width: 0 !important;
+    max-width: calc(100% - 1.8rem) !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    padding: 0.2rem 0.5rem !important;
+    pointer-events: none !important;
+    opacity: 0.94 !important;
+    transform: none !important;
+    transition:
+      opacity 180ms var(--erebyx-ease-out),
+      border-color 180ms var(--erebyx-ease-out),
+      color 180ms var(--erebyx-ease-out) !important;
+    box-shadow: 0 10px 32px -26px rgba(0, 0, 0, 0.96);
+  }
+
+  .list-container .topic-list tr.topic-list-item:hover::before,
+  .list-container .topic-list tr.topic-list-item:focus-within::before {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .list-container .topic-list tr.topic-list-item:has(a[href*="what-were-voting-on-next"])::before {
+    border-color: rgba(250, 178, 50, 0.3) !important;
+    background:
+      linear-gradient(90deg, rgba(250, 178, 50, 0.14), rgba(117, 3, 224, 0.08)),
+      rgba(3, 7, 18, 0.62) !important;
+    color: rgba(250, 218, 151, 0.9) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  body.category-feature-requests:not(.archetype-regular):not([data-erebyx-route="discovery"]) {
+    .category-title-contents {
+      padding-top: 1.35rem;
+    }
+
+    .category-title-contents::before {
+      max-width: calc(100vw - 1.25rem) !important;
+      padding-inline: 0.54rem !important;
+      font-size: 0.6rem !important;
+    }
+
+    .list-container .topic-list tr.topic-list-item::before {
+      right: 0.72rem !important;
+      top: 0.72rem !important;
+      max-width: calc(100% - 1.44rem) !important;
+      font-size: 0.54rem !important;
+    }
+  }
+}
+
+// =============================================================================
+// EREBYX ARCHE — TIER-26 CONSISTENT COMMUNITY CARD DENSITY PASS
+// Audit target: category and continuation cards looked premium, but still carried
+// stretched table geometry. This makes every room card use intentional product
+// density, anchored signal chips, and no floating forum stats.
+// =============================================================================
+
+body.category:not(.archetype-regular):not([data-erebyx-route="discovery"]) {
+  .list-container .topic-list tbody {
+    align-items: stretch;
+    gap: clamp(0.62rem, 1.2vw, 0.86rem) !important;
+  }
+
+  .list-container .topic-list tr.topic-list-item,
+  .list-container .topic-list tr.topic-list-item.pinned:first-of-type,
+  .list-container .topic-list tr.topic-list-item:nth-of-type(1):not(.category-list-item) {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto auto auto auto;
+    grid-template-areas:
+      "main main main main main"
+      "posters replies views activity activity";
+    align-content: space-between;
+    min-height: clamp(8.1rem, 13vw, 10.6rem) !important;
+    padding: 0 !important;
+  }
+
+  .list-container .topic-list tr.topic-list-item td.topic-list-data,
+  .list-container .topic-list tr.topic-list-item.pinned:first-of-type td.topic-list-data {
+    display: block !important;
+    width: auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  .list-container .topic-list td.main-link.topic-list-data {
+    grid-area: main;
+    padding: clamp(1rem, 1.7vw, 1.22rem) clamp(1rem, 1.7vw, 1.28rem) 0.7rem !important;
+  }
+
+  .list-container .topic-list td.posters.topic-list-data {
+    grid-area: posters;
+    align-self: end;
+    justify-self: start;
+    width: auto !important;
+    min-width: 0 !important;
+    padding: 0 0 clamp(0.82rem, 1.4vw, 1rem) clamp(1rem, 1.7vw, 1.28rem) !important;
+  }
+
+  .list-container .topic-list td.num.posts-map {
+    grid-area: replies;
+  }
+
+  .list-container .topic-list td.num.views {
+    grid-area: views;
+  }
+
+  .list-container .topic-list td.num.activity {
+    grid-area: activity;
+    padding-right: clamp(1rem, 1.7vw, 1.28rem) !important;
+  }
+
+  .list-container .topic-list td.num.posts-map,
+  .list-container .topic-list td.num.views,
+  .list-container .topic-list td.num.activity {
+    align-self: end;
+    justify-self: end;
+    margin: 0 !important;
+    padding-bottom: clamp(0.82rem, 1.4vw, 1rem) !important;
+  }
+
+  .list-container .topic-list td.num.posts-map a,
+  .list-container .topic-list td.num.views,
+  .list-container .topic-list td.num.activity a {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 0.28rem;
+    width: auto !important;
+    min-width: 2.35rem;
+    height: 1.72rem;
+    padding: 0 0.46rem !important;
+    border-radius: 999px;
+    border: 1px solid rgba(196, 181, 253, 0.13);
+    background: rgba(3, 7, 18, 0.46);
+    color: rgba(232, 222, 255, 0.74) !important;
+    font-family: var(--erebyx-font-mono) !important;
+    font-size: 0.66rem !important;
+    line-height: 1;
+    text-decoration: none !important;
+    white-space: nowrap;
+  }
+
+  .list-container .topic-list td.num.posts-map a::after,
+  .list-container .topic-list td.num.views::after,
+  .list-container .topic-list td.num.activity a::after {
+    color: rgba(196, 181, 253, 0.52);
+    font-size: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .list-container .topic-list td.num.posts-map a::after {
+    content: "replies";
+  }
+
+  .list-container .topic-list td.num.posts-map a[aria-label^="1 reply"]::after {
+    content: "reply";
+  }
+
+  .list-container .topic-list td.num.views::after {
+    content: "views";
+  }
+
+  .list-container .topic-list td.num.activity a::after {
+    content: "ago";
+  }
+
+  .list-container .topic-list .raw-topic-link,
+  .list-container .topic-list .main-link a.title,
+  .list-container .topic-list tr.topic-list-item.pinned:first-of-type .raw-topic-link,
+  .list-container .topic-list tr.topic-list-item.pinned:first-of-type .main-link a.title {
+    max-width: min(31ch, 100%) !important;
+    font-size: clamp(1.08rem, 1.8vw, 1.46rem) !important;
+    line-height: 1.08 !important;
+  }
+
+  .list-container .topic-list .posters a > img.avatar,
+  .list-container .topic-list .posters img.avatar {
+    width: 2.35rem !important;
+    height: 2.35rem !important;
+  }
+}
+
+body.archetype-regular {
+  .more-topics__list tr.topic-list-item {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto auto auto;
+    grid-template-areas:
+      "main main main main"
+      "replies views activity activity";
+    align-content: space-between;
+    min-height: clamp(6.9rem, 8vw, 8.4rem) !important;
+    padding: 0 !important;
+  }
+
+  .more-topics__list tr.topic-list-item td.topic-list-data {
+    display: block !important;
+    width: auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  .more-topics__list td.main-link.topic-list-data {
+    grid-area: main;
+    padding: clamp(0.9rem, 1.5vw, 1.08rem) clamp(0.92rem, 1.5vw, 1.12rem) 0.58rem !important;
+  }
+
+  .more-topics__list td.num.posts-map {
+    grid-area: replies;
+    padding-left: clamp(0.92rem, 1.5vw, 1.12rem) !important;
+  }
+
+  .more-topics__list td.num.views {
+    grid-area: views;
+  }
+
+  .more-topics__list td.num.activity {
+    grid-area: activity;
+    padding-right: clamp(0.92rem, 1.5vw, 1.12rem) !important;
+  }
+
+  .more-topics__list td.num.posts-map,
+  .more-topics__list td.num.views,
+  .more-topics__list td.num.activity {
+    align-self: end;
+    justify-self: end;
+    margin: 0 !important;
+    padding-bottom: clamp(0.78rem, 1.2vw, 0.94rem) !important;
+  }
+
+  .more-topics__list td.num.posts-map a,
+  .more-topics__list td.num.views,
+  .more-topics__list td.num.activity a {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 0.26rem;
+    width: auto !important;
+    min-width: 2.18rem;
+    height: 1.58rem;
+    padding: 0 0.42rem !important;
+    border-radius: 999px;
+    border: 1px solid rgba(196, 181, 253, 0.12);
+    background: rgba(3, 7, 18, 0.44);
+    color: rgba(232, 222, 255, 0.72) !important;
+    font-family: var(--erebyx-font-mono) !important;
+    font-size: 0.62rem !important;
+    line-height: 1;
+    text-decoration: none !important;
+    white-space: nowrap;
+  }
+
+  .more-topics__list td.num.posts-map a::after,
+  .more-topics__list td.num.views::after,
+  .more-topics__list td.num.activity a::after {
+    color: rgba(196, 181, 253, 0.5);
+    font-size: 0.47rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .more-topics__list td.num.posts-map a::after {
+    content: "replies";
+  }
+
+  .more-topics__list td.num.posts-map a[aria-label^="1 reply"]::after {
+    content: "reply";
+  }
+
+  .more-topics__list td.num.views::after {
+    content: "views";
+  }
+
+  .more-topics__list td.num.activity a::after {
+    content: "ago";
+  }
+
+  .more-topics__list .raw-topic-link,
+  .more-topics__list .main-link a.title {
+    max-width: min(32ch, 100%) !important;
+  }
+}
+
+@media (min-width: 1180px) {
+  body.category:not(.archetype-regular):not([data-erebyx-route="discovery"]) {
+    .list-container .topic-list tbody {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 390px), 1fr)) !important;
+    }
+  }
+}
+
+@media (min-width: 1620px) {
+  body.category:not(.archetype-regular):not([data-erebyx-route="discovery"]) {
+    .list-container .topic-list tbody {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)) !important;
+    }
+
+    .list-container .topic-list tr.topic-list-item.pinned:first-of-type {
+      grid-column: auto !important;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  body.category:not(.archetype-regular):not([data-erebyx-route="discovery"]) {
+    .list-container .topic-list tr.topic-list-item,
+    .list-container .topic-list tr.topic-list-item.pinned:first-of-type,
+    .list-container .topic-list tr.topic-list-item:nth-of-type(1):not(.category-list-item) {
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      grid-template-areas:
+        "main main main"
+        "posters replies activity";
+      min-height: 7.7rem !important;
+    }
+
+    .list-container .topic-list td.num.views {
+      display: none !important;
+    }
+
+    .list-container .topic-list .raw-topic-link,
+    .list-container .topic-list .main-link a.title,
+    .list-container .topic-list tr.topic-list-item.pinned:first-of-type .raw-topic-link,
+    .list-container .topic-list tr.topic-list-item.pinned:first-of-type .main-link a.title {
+      max-width: 100% !important;
+      font-size: 1.08rem !important;
+    }
+  }
+
+  body.archetype-regular {
+    .more-topics__list tr.topic-list-item {
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      grid-template-areas:
+        "main main main"
+        "replies activity activity";
+      min-height: 6.5rem !important;
+    }
+
+    .more-topics__list td.num.views {
+      display: none !important;
+    }
+  }
+}
+
+// =============================================================================
+// EREBYX ARCHE — TIER-27 AUTHORED SYSTEM SURFACES PASS
+// Creative target: remove the last "forum plumbing" tells by making repeated
+// system moments feel like native Arche controls, without changing locked copy.
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// 1. Category command strips: compact, centered, and product-native
+// ---------------------------------------------------------------------------
+
+body.category:not(.archetype-regular):not([data-erebyx-route="discovery"]) {
+  .list-controls {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    backdrop-filter: blur(18px) saturate(140%);
+  }
+
+  .list-controls::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, var(--erebyx-live-cat-accent, #FAB232), transparent);
+    opacity: 0.46;
+  }
+
+  .list-controls::after {
+    content: "";
+    position: absolute;
+    inset: auto clamp(0.7rem, 2vw, 1.1rem) 0;
+    height: 1px;
+    pointer-events: none;
+    background-image: var(--erebyx-meander-footer);
+    background-repeat: repeat-x;
+    background-position: center;
+    background-size: auto 9px;
+    opacity: 0.2;
+  }
+
+  .navigation-container.category-navigation {
+    min-height: 2.9rem;
+  }
+
+  .navigation-container .nav-pills > li > a,
+  .navigation-container .category-breadcrumb a,
+  .navigation-container .combo-box-header {
+    min-height: 2.28rem;
+    border-radius: 8px !important;
+    border: 1px solid rgba(196, 181, 253, 0.13) !important;
+    background: rgba(3, 7, 18, 0.46) !important;
+    color: rgba(241, 245, 249, 0.74) !important;
+    transition:
+      border-color 180ms var(--erebyx-ease-out),
+      color 180ms var(--erebyx-ease-out),
+      background 180ms var(--erebyx-ease-out);
+  }
+
+  .navigation-container .nav-pills > li > a:hover,
+  .navigation-container .category-breadcrumb a:hover,
+  .navigation-container .combo-box-header:hover,
+  .navigation-controls .btn:hover,
+  .navigation-controls button:hover {
+    border-color: color-mix(in srgb, var(--erebyx-live-cat-accent, #FAB232) 34%, transparent) !important;
+    color: #fff !important;
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--erebyx-live-cat-accent, #FAB232) 12%, transparent), rgba(3, 7, 18, 0.52)) !important;
+  }
+
+  .navigation-controls #create-topic,
+  .navigation-controls .btn.create,
+  .navigation-controls button.create {
+    position: relative;
+    isolation: isolate;
+    width: auto !important;
+    min-width: max-content !important;
+    padding-inline: 0.78rem !important;
+    gap: 0.38rem !important;
+  }
+
+  .navigation-controls #create-topic::after,
+  .navigation-controls .btn.create::after,
+  .navigation-controls button.create::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: -1;
+    border-radius: 7px;
+    background: linear-gradient(135deg, rgba(250, 178, 50, 0.16), rgba(117, 3, 224, 0.12));
+    opacity: 0;
+    transition: opacity 180ms var(--erebyx-ease-out);
+  }
+
+  .navigation-controls #create-topic:hover::after,
+  .navigation-controls .btn.create:hover::after,
+  .navigation-controls button.create:hover::after {
+    opacity: 1;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 2. Topic action/status surfaces: no raw notice rows
+// ---------------------------------------------------------------------------
+
+body.archetype-regular {
+  .topic-footer-main-buttons {
+    position: relative;
+    isolation: isolate;
+    backdrop-filter: blur(18px) saturate(135%);
+  }
+
+  .topic-footer-main-buttons::after {
+    content: "";
+    position: absolute;
+    inset: auto clamp(0.5rem, 2vw, 0.9rem) 0;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(250, 178, 50, 0.34), rgba(68, 146, 252, 0.22), transparent);
+    opacity: 0.72;
+  }
+
+  .topic-footer-main-buttons .btn,
+  .topic-footer-main-buttons button,
+  article.boxed[data-user-id] nav.post-controls .btn,
+  article.boxed[data-user-id] nav.post-controls button {
+    transition:
+      transform 180ms var(--erebyx-spring),
+      border-color 180ms var(--erebyx-ease-out),
+      color 180ms var(--erebyx-ease-out),
+      background 180ms var(--erebyx-ease-out),
+      box-shadow 180ms var(--erebyx-ease-out);
+  }
+
+  .topic-footer-main-buttons .btn:hover,
+  .topic-footer-main-buttons button:hover,
+  article.boxed[data-user-id] nav.post-controls .btn:hover,
+  article.boxed[data-user-id] nav.post-controls button:hover {
+    transform: translateY(-1px);
+    border-color: rgba(250, 178, 50, 0.32) !important;
+    color: #fff !important;
+    background:
+      linear-gradient(135deg, rgba(250, 178, 50, 0.12), rgba(117, 3, 224, 0.08)),
+      rgba(3, 7, 18, 0.62) !important;
+    box-shadow: 0 12px 34px -28px rgba(250, 178, 50, 0.9) !important;
+  }
+
+  .small-action {
+    position: relative;
+    isolation: isolate;
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    min-height: 3.2rem;
+    padding: 0.62rem 0.72rem !important;
+    overflow: hidden;
+    backdrop-filter: blur(14px) saturate(130%);
+  }
+
+  .small-action::before {
+    content: "";
+    display: block;
+    width: 0.54rem;
+    height: 0.54rem;
+    border-radius: 999px;
+    background: var(--erebyx-arche-amber, #FAB232);
+    box-shadow:
+      0 0 0 4px rgba(250, 178, 50, 0.08),
+      0 0 22px -8px rgba(250, 178, 50, 0.86);
+  }
+
+  .small-action::after {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 2px;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent, rgba(250, 178, 50, 0.42), transparent);
+    opacity: 0.7;
+  }
+
+  .small-action .btn,
+  .small-action button {
+    grid-column: 2;
+    justify-self: start;
+    min-height: 2rem !important;
+    padding-inline: 0.62rem !important;
+  }
+
+  .small-action .small-action-desc {
+    grid-column: 2;
+    max-width: 62ch;
+    color: rgba(226, 232, 240, 0.68) !important;
+    text-wrap: pretty;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 3. Composer: make replying feel like entering the build surface
+// ---------------------------------------------------------------------------
+
+#reply-control,
+.composer-popup {
+  --erebyx-composer-accent: var(--erebyx-arche-amber, #FAB232);
+  border-radius: 8px 8px 0 0 !important;
+  border-top-color: rgba(250, 178, 50, 0.2) !important;
+  background:
+    var(--erebyx-marble-veins-dark),
+    radial-gradient(circle at 18% 0%, rgba(250, 178, 50, 0.1), transparent 32%),
+    linear-gradient(155deg, rgba(3, 7, 18, 0.94), rgba(10, 14, 28, 0.82)) !important;
+  background-size: 620px 620px, auto, auto !important;
+}
+
+#reply-control .reply-area,
+#reply-control .composer-fields,
+#reply-control .submit-panel,
+.composer-popup .reply-area,
+.composer-popup .composer-fields,
+.composer-popup .submit-panel {
+  max-width: min(1180px, calc(100vw - 1rem));
+  margin-inline: auto !important;
+}
+
+#reply-control .d-editor-container,
+#reply-control .d-editor,
+.composer-popup .d-editor-container,
+.composer-popup .d-editor {
+  border-radius: 8px !important;
+  border: 1px solid rgba(196, 181, 253, 0.14) !important;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.025), transparent 42%),
+    rgba(3, 7, 18, 0.58) !important;
+  overflow: hidden;
+}
+
+#reply-control .d-editor-button-bar,
+.composer-popup .d-editor-button-bar {
+  min-height: 2.6rem;
+  padding: 0.34rem 0.42rem !important;
+  border-bottom: 1px solid rgba(196, 181, 253, 0.1);
+  background: rgba(3, 7, 18, 0.46) !important;
+}
+
+#reply-control .d-editor-button-bar .btn,
+#reply-control .d-editor-button-bar button,
+.composer-popup .d-editor-button-bar .btn,
+.composer-popup .d-editor-button-bar button {
+  width: 2rem !important;
+  min-width: 2rem !important;
+  height: 2rem !important;
+  min-height: 2rem !important;
+  border-radius: 8px !important;
+  color: rgba(232, 222, 255, 0.72) !important;
+}
+
+#reply-control textarea,
+#reply-control .d-editor-input,
+.composer-popup textarea,
+.composer-popup .d-editor-input {
+  min-height: clamp(9rem, 24vh, 18rem) !important;
+  padding: clamp(0.9rem, 1.6vw, 1.12rem) !important;
+  background: rgba(3, 7, 18, 0.38) !important;
+  color: rgba(248, 250, 252, 0.92) !important;
+  font-family: var(--erebyx-font-body) !important;
+  font-size: clamp(1rem, 1.25vw, 1.08rem) !important;
+  line-height: 1.62 !important;
+}
+
+#reply-control .submit-panel .btn-primary,
+#reply-control .save-or-cancel .btn-primary,
+.composer-popup .submit-panel .btn-primary,
+.composer-popup .save-or-cancel .btn-primary {
+  min-height: 2.35rem;
+  border-radius: 8px !important;
+  border: 1px solid rgba(250, 178, 50, 0.28) !important;
+  background:
+    linear-gradient(135deg, rgba(250, 178, 50, 0.22), rgba(117, 3, 224, 0.14)),
+    rgba(3, 7, 18, 0.64) !important;
+  color: #fff !important;
+  box-shadow: 0 18px 38px -30px rgba(250, 178, 50, 0.82) !important;
+}
+
+// ---------------------------------------------------------------------------
+// 4. Empty/error rooms: authored even when there is nothing there yet
+// ---------------------------------------------------------------------------
+
+body.category:not(.archetype-regular):not([data-erebyx-route="discovery"]) {
+  .list-container .empty-state,
+  .topic-list-bottom .empty-state,
+  .no-topics-message {
+    width: min(920px, calc(100vw - 1rem));
+    min-height: clamp(15rem, 32vw, 24rem);
+    margin: 1rem auto clamp(2rem, 6vw, 4rem) !important;
+    display: grid;
+    place-items: center;
+    padding: clamp(1.4rem, 4vw, 2.4rem) !important;
+    border-style: solid !important;
+    border-color: color-mix(in srgb, var(--erebyx-live-cat-accent, #FAB232) 22%, transparent) !important;
+    background:
+      var(--erebyx-marble-veins-dark),
+      radial-gradient(circle at 50% 20%, color-mix(in srgb, var(--erebyx-live-cat-accent, #FAB232) 16%, transparent), transparent 32%),
+      rgba(3, 7, 18, 0.62) !important;
+    background-size: 620px 620px, auto, auto !important;
+    text-align: center;
+  }
+
+  .list-container .empty-state::after,
+  .topic-list-bottom .empty-state::after,
+  .no-topics-message::after {
+    content: "";
+    width: min(240px, 52vw);
+    height: 12px;
+    margin-top: 1rem;
+    background-image: var(--erebyx-meander-footer);
+    background-repeat: repeat-x;
+    background-position: center;
+    opacity: 0.38;
+  }
+}
+
+.not-found-container,
+.page-not-found,
+.exception,
+.login-required {
+  width: min(920px, calc(100vw - 1rem));
+  min-height: clamp(18rem, 40vw, 30rem);
+  margin: clamp(1rem, 4vw, 2.5rem) auto clamp(2rem, 7vw, 5rem) !important;
+  display: grid;
+  place-items: center;
+  padding: clamp(1.6rem, 5vw, 3rem) !important;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  body.category:not(.archetype-regular):not([data-erebyx-route="discovery"]) {
+    .navigation-container.category-navigation {
+      gap: 0.4rem;
+    }
+
+    .navigation-container .nav-pills > li > a,
+    .navigation-container .category-breadcrumb a,
+    .navigation-container .combo-box-header {
+      min-height: 2.18rem;
+    }
+
+    .navigation-controls #create-topic,
+    .navigation-controls .btn.create,
+    .navigation-controls button.create {
+      width: 2.28rem !important;
+      min-width: 2.28rem !important;
+      padding-inline: 0 !important;
+    }
+  }
+
+  body.archetype-regular {
+    .small-action {
+      grid-template-columns: auto minmax(0, 1fr) !important;
+      width: calc(100vw - 0.75rem) !important;
+      padding: 0.62rem !important;
+    }
+
+    .small-action .btn,
+    .small-action button,
+    .small-action .small-action-desc {
+      grid-column: 2;
+    }
+  }
+}
