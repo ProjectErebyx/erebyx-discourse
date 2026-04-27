@@ -56,6 +56,50 @@
   </section>
 </script>
 
+<!--
+  Tier 31 route stabilizer:
+  Keep SPA/back-button category and discovery routes anchored at the authored
+  Arche stage. Topic pages are excluded so Discourse can still honor unread
+  and last-reply navigation.
+-->
+<script>
+  (function () {
+    if (window.__erebyxTier31RouteStabilizer) return;
+    window.__erebyxTier31RouteStabilizer = true;
+
+    var lastPath = window.location.pathname || "/";
+    var CATEGORY_PATH = /^\/c(\/|$)/;
+
+    function shouldStabilize(path) {
+      if (!path) return false;
+      if (path === "/" || path === "/latest" || path === "/u") return true;
+      return CATEGORY_PATH.test(path);
+    }
+
+    function stabilizeRoute() {
+      var path = window.location.pathname || "/";
+      var changed = path !== lastPath;
+      lastPath = path;
+
+      if (!changed || window.location.hash || !shouldStabilize(path)) return;
+
+      window.requestAnimationFrame(function () {
+        window.setTimeout(function () {
+          var outlet = document.querySelector("#main-outlet");
+          var top = outlet ? Math.max(0, outlet.getBoundingClientRect().top + window.pageYOffset - 88) : 0;
+          window.scrollTo({ top: top, left: 0, behavior: "auto" });
+        }, 80);
+      });
+    }
+
+    document.addEventListener("discourse:page-changed", stabilizeRoute);
+    document.addEventListener("page:changed", stabilizeRoute);
+    window.addEventListener("popstate", function () {
+      window.setTimeout(stabilizeRoute, 80);
+    });
+  })();
+</script>
+
 <script>
   /*
    * Erebyx Arche — Constellation hero bootstrap
