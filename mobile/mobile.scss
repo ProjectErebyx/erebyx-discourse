@@ -24,4 +24,45 @@
   .category-list .category {
     backdrop-filter: none;
   }
+
+  /* Tier 10 navbar mobile tuning */
+  .erebyx-nav__inner {
+    padding: 0 0.5rem;
+  }
+
+  /* Hide the Continuum link on the smallest phones — it's external + heavy */
+  .erebyx-nav__link[href*="continuum"] {
+    display: none;
+  }
+
+  /* Tighter social rail on mobile */
+  .erebyx-nav__social-link {
+    padding: 0.25rem;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  /* OP drop cap looks oversized on small viewports */
+  #post_1.topic-post .cooked > p:first-of-type::first-letter {
+    font-size: 2.6em;
+  }
+
+  /* Sigil watermark scaled down */
+  #post_1.topic-post .cooked > p:first-of-type::before {
+    font-size: 5rem;
+    top: -1.5rem;
+    right: -0.5rem;
+  }
+
+  /* Genesis banner stacks softly on small viewports */
+  .erebyx-genesis-banner__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .erebyx-genesis-banner__cta {
+    margin-left: 0;
+    align-self: flex-end;
+  }
 }

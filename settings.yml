@@ -33,6 +33,18 @@ show_meander_dividers:
   default: true
   description: "Show Greek meander pattern as section dividers."
 
+show_starfield_backdrop:
+  type: bool
+  default: true
+  description: "Show ambient starfield behind topic pages (disable if it competes with reading)."
+
+genesis_total_seats:
+  type: integer
+  default: 2000
+  min: 1
+  max: 100000
+  description: "Total Genesis Arche seat count shown in the banner. Update if cohort size changes."
+
 genesis_group_color:
   type: string
   default: "#c4b5fd"

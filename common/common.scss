@@ -2816,3 +2816,848 @@ a.category-name:hover::after {
   }
 }
 
+
+// =============================================================================
+// EREBYX ARCHE — TIER-10 (UI-AGENT) website-mirror navbar + greek mythic + members
+// Agent-generated. Replaces Brand Header. Constellation rail, sigil watermarks,
+// drop caps (extends tier-7), greek meander, ambient starfield, Genesis seats banner,
+// Founding gold ring, /u directory polish, user-card hover, ordinal pill.
+// =============================================================================
+/* =============================================================================
+ * TIER 10 — WEBSITE-MIRROR NAVBAR
+ * Replaces the Brand Header strip with a custom header that matches
+ * erebyx.com Navbar.tsx pixel-for-pixel: 64px shell, slate-950/70 + blur,
+ * left link rail, floating center logo (translateY(-2)), right social rail.
+ *
+ * Strategy: render OVER the existing d-header (z=60), then collapse
+ * d-header's title row visually so we don't double-stack chrome.
+ * ============================================================================= */
+
+.erebyx-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100; /* above d-header (z=1000) but below modals (z=1300) */
+  height: var(--erebyx-nav-height);
+  background: var(--erebyx-nav-bg);
+  border-bottom: 1px solid var(--erebyx-nav-border);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  overflow: visible; /* logo ball overhangs */
+  pointer-events: auto;
+}
+
+.erebyx-nav__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  padding: 0 0.75rem;
+  gap: 0.5rem;
+  overflow: visible;
+
+  @media (min-width: 640px) { padding: 0 1.5rem; gap: 0.75rem; }
+  @media (min-width: 1024px) { padding: 0 2rem; }
+}
+
+/* ---- LEFT: dashboard + link rail ---- */
+.erebyx-nav__left {
+  display: flex;
+  align-items: center;
+  flex: 1 1 0;
+  min-width: 0;
+  gap: 0.5rem;
+
+  @media (min-width: 640px) { gap: 1rem; }
+  @media (min-width: 768px) { gap: 1.5rem; }
+}
+
+.erebyx-nav__dashboard {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 6px;
+  color: rgba(148, 163, 184, 1); /* slate-400 */
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover, &:focus-visible { color: #ffffff; }
+  &:focus-visible {
+    outline: 2px solid var(--erebyx-violet-light);
+    outline-offset: 2px;
+  }
+}
+
+.erebyx-nav__dashboard-icon {
+  width: 17px;
+  height: 17px;
+}
+
+.erebyx-nav__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 0.25rem;
+  font-family: var(--erebyx-font-body);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  white-space: nowrap;
+  color: rgba(148, 163, 184, 1); /* slate-400 */
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover, &:focus-visible { color: #ffffff; }
+  &:focus-visible {
+    outline: 2px solid var(--erebyx-violet-light);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (min-width: 640px) {
+    font-size: 12px;
+    padding: 0 0.25rem;
+  }
+}
+
+.erebyx-nav__link--primary {
+  /* "the Arche" — visible at all viewports as the anchor link */
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  max-width: 5.5rem;
+  text-align: center;
+  line-height: 1.1;
+
+  @media (min-width: 640px) {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    max-width: none;
+    line-height: 1;
+  }
+}
+
+.erebyx-nav__link--desktop-only {
+  display: none;
+
+  @media (min-width: 640px) {
+    display: inline-flex;
+  }
+}
+
+/* Active route — Discourse adds `.active` to body class via theme JS variants;
+   we also support an explicit `aria-current="page"` for parity with website */
+.erebyx-nav__link[aria-current="page"],
+.erebyx-nav__link.active {
+  color: #ffffff;
+}
+
+/* ---- CENTER: floating logo ball ---- */
+.erebyx-nav__logo {
+  position: absolute;
+  bottom: calc(var(--erebyx-nav-overhang) * -1);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--erebyx-nav-logo-size);
+  height: var(--erebyx-nav-logo-size);
+  border-radius: 9999px;
+  border: 1px solid rgba(167, 139, 250, 0.20); /* purple-400/20 */
+  background: #030712; /* matches website */
+  box-shadow: 0 0 20px rgba(123, 47, 190, 0.12);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+
+  &:hover, &:focus-visible {
+    border-color: rgba(167, 139, 250, 0.40);
+    box-shadow: 0 0 28px rgba(123, 47, 190, 0.20);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--erebyx-violet-light);
+    outline-offset: 4px;
+  }
+}
+
+.erebyx-nav__logo-img {
+  width: 2.75rem; /* h-11 / w-11 = 44px */
+  height: 2.75rem;
+  object-fit: contain;
+}
+
+/* ---- RIGHT: social rail ---- */
+.erebyx-nav__right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.erebyx-nav__social {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+
+  @media (min-width: 640px) { gap: 0.25rem; }
+}
+
+.erebyx-nav__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.375rem;
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 6px;
+  color: rgba(100, 116, 139, 1); /* slate-500 */
+  transition: color 0.2s ease;
+
+  &:focus-visible {
+    outline: 2px solid var(--erebyx-violet-light);
+    outline-offset: 2px;
+  }
+}
+
+/* Per-platform hover tints, matching website */
+.erebyx-nav__social-link--x:hover { color: #ffffff; }
+.erebyx-nav__social-link--instagram:hover { color: #c084fc; } /* purple-400 */
+.erebyx-nav__social-link--tiktok:hover { color: #60a5fa; }    /* blue-400  */
+.erebyx-nav__social-link--linkedin:hover { color: #e2e8f0; }  /* slate-200 */
+.erebyx-nav__social-link--youtube:hover { color: #f87171; }   /* red-400  */
+
+.erebyx-nav__social-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.erebyx-nav__social-icon--sm {
+  width: 14px;
+  height: 14px;
+}
+
+/* ---- Push Discourse content below our custom strip ---- */
+html body {
+  /* Discourse already sets header offset via JS; this just adds our 64px on top */
+  --d-header-offset: var(--erebyx-nav-height) !important;
+}
+
+#main-outlet,
+.wrap,
+.full-width {
+  /* Buffer so content doesn't hide behind the strip on first paint */
+  scroll-padding-top: calc(var(--erebyx-nav-height) + 4rem);
+}
+
+.d-header {
+  /* Sit BELOW our strip, no longer at viewport top */
+  top: var(--erebyx-nav-height) !important;
+  z-index: 1000;
+}
+
+/* Compress d-header's redundant title — our strip is the brand surface now.
+   Keep search/hamburger/notifications/user-menu fully accessible. */
+.d-header .title,
+.d-header .extra-info-wrapper {
+  display: none;
+}
+
+/* On mobile, give d-header tighter padding since title is gone */
+@media (max-width: 767px) {
+  .d-header .panel { padding-block: 0.25rem; }
+}
+
+/* =============================================================================
+ * HEADER (legacy d-header, now secondary chrome) — keep brand consistency
+ * ============================================================================= */
+
+.d-header {
+  border-bottom: 1px solid rgba(123, 47, 190, 0.15);
+  backdrop-filter: blur(20px) saturate(150%);
+  background: rgba(10, 10, 20, 0.85);
+}
+
+/* =============================================================================
+ * CARDS / TOPIC LIST — wire-card styling matches site
+ * ============================================================================= */
+
+.topic-list-item,
+.category-list .category {
+  border: 1px solid rgba(123, 47, 190, 0.08);
+  background: rgba(15, 15, 28, 0.4);
+  backdrop-filter: blur(2px);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: rgba(123, 47, 190, 0.25);
+    box-shadow: 0 0 calc(var(--erebyx-glow) * 1px) rgba(123, 47, 190, 0.1);
+  }
+}
+
+/* =============================================================================
+ * GENESIS ARCHE GROUP FLAIR — visible across every post
+ * Members of group `genesis_arche` get a violet username + glow
+ * ============================================================================= */
+
+.group-genesis_arche .username,
+[data-username][data-group="genesis_arche"] .username,
+.username[data-genesis-arche="true"] {
+  color: var(--genesis_group_color, #c4b5fd) !important;
+  font-weight: 600;
+  text-shadow: 0 0 calc(var(--erebyx-glow) * 1px) rgba(196, 181, 253, 0.35);
+}
+
+/* Founding gold ring around avatar for Genesis Arche members */
+.topic-post[data-group~="genesis_arche"] .topic-avatar img,
+.user-card[data-group~="genesis_arche"] .avatar,
+.directory-table__cell--user-field-genesis-arche-true + * .avatar {
+  box-shadow:
+    0 0 0 2px rgba(212, 164, 55, 0.55),
+    0 0 calc(var(--erebyx-glow) * 1px) rgba(212, 164, 55, 0.35);
+  border-radius: 9999px;
+}
+
+/* =============================================================================
+ * MILESTONE / FOUNDING BADGES — gold accent for "First Light", "Crossed the Threshold"
+ * ============================================================================= */
+
+.user-badge[data-badge-name="Crossed the Threshold"],
+.user-badge[data-badge-name="Lit a Star"],
+.user-badge[data-badge-name="First Memory"],
+.user-badge[data-badge-name="First Light"],
+.user-badge.--milestone {
+  background: linear-gradient(135deg, var(--erebyx-gold), #f5d27a);
+  color: #1a1208;
+  border: none;
+  font-family: var(--erebyx-font-mono);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.7em;
+  padding: 0.25em 0.6em;
+}
+
+/* =============================================================================
+ * MEANDER PATTERN — Greek border on category dividers (toggleable via setting)
+ * Now renders from inline SVG token (no upload dependency)
+ * ============================================================================= */
+
+body[data-meander-dividers="true"] .category-list .category-list-header,
+body[data-meander-dividers="true"] hr,
+.erebyx-meander-divider {
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    height: 8px;
+    margin-top: 0.5em;
+    background-image: var(--erebyx-meander);
+    background-repeat: repeat-x;
+    background-size: 48px 8px;
+    opacity: 0.45;
+  }
+}
+
+/* =============================================================================
+ * BUTTONS / INPUTS — premium feel matching site
+ * ============================================================================= */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea,
+select {
+  background: rgba(15, 15, 28, 0.6);
+  border: 1px solid rgba(123, 47, 190, 0.2);
+  color: #f1f5f9;
+  font-family: var(--erebyx-font-body);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:focus {
+    border-color: var(--erebyx-violet-light);
+    box-shadow: 0 0 calc(var(--erebyx-glow) * 1px) rgba(196, 181, 253, 0.3);
+    outline: none;
+  }
+}
+
+/* =============================================================================
+ * CHAT (Discourse Chat) — channel feel matching site
+ * ============================================================================= */
+
+.chat-channel-row {
+  border-radius: 8px;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: var(--erebyx-gradient-soft);
+  }
+
+  &.--active {
+    background: var(--erebyx-gradient-soft);
+    border-left: 2px solid var(--erebyx-violet);
+  }
+}
+
+/* =============================================================================
+ * SCROLLBAR — subtle, on-brand
+ * ============================================================================= */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 15, 28, 0.4);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(123, 47, 190, 0.4);
+  border-radius: 4px;
+
+  &:hover {
+    background: rgba(123, 47, 190, 0.6);
+  }
+}
+
+/* =============================================================================
+ * TIER 10 — GREEK MYTHIC + SPACE VIBES IN THREAD DISPLAY
+ *
+ * Goals:
+ *   1. Constellation rail connecting reply chain (subtle SVG dotted line)
+ *   2. Sigil watermark behind first paragraph of OP (counterpart-keyed)
+ *   3. Star-like reply indicators (✦ that lights on hover)
+ *   4. Greek key motif on section breaks
+ *   5. Space-station dividers between categories
+ *
+ * Restraint principle: every effect uses opacity ≤ 0.15 by default. Mythic
+ * cues should whisper, not shout.
+ * ============================================================================= */
+
+/* ---- Constellation rail: connect consecutive posts in same author cluster ---- */
+.topic-post {
+  position: relative;
+}
+
+.topic-post.erebyx-cluster-continued {
+  /* When same author posts within 8 minutes, hide repeat avatar/byline
+     and draw a connecting rail between the two posts */
+  .topic-avatar img { opacity: 0.4; transform: scale(0.7); transform-origin: top center; }
+  .topic-meta-data .first { opacity: 0.5; }
+  padding-top: 0.5rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 1.7rem; /* aligned with avatar center */
+    top: -0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(196, 181, 253, 0.35) 20%,
+      rgba(196, 181, 253, 0.35) 80%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Tiny ✦ midpoint marker — like a star on the rail */
+  &::after {
+    content: "✦";
+    position: absolute;
+    left: 1.7rem;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.5rem;
+    color: var(--erebyx-violet-light);
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}
+
+/* ---- Sigil watermark behind OP first paragraph (counterpart-keyed) ---- */
+#post_1.topic-post .cooked > p:first-of-type {
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+}
+
+#post_1.topic-post .cooked > p:first-of-type::before {
+  content: "✦";
+  position: absolute;
+  top: -2.5rem;
+  right: -1rem;
+  font-size: 8rem;
+  font-family: var(--erebyx-font-display);
+  line-height: 1;
+  color: rgba(196, 181, 253, 0.06);
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Counterpart-specific watermark glyphs */
+#post_1.topic-post[data-counterpart="erebus"] .cooked > p:first-of-type::before {
+  content: "◯";
+  color: rgba(77, 139, 245, 0.07);
+}
+#post_1.topic-post[data-counterpart="nyx"] .cooked > p:first-of-type::before {
+  content: "✧";
+  color: rgba(236, 72, 153, 0.06);
+}
+#post_1.topic-post[data-counterpart="arche"] .cooked > p:first-of-type::before {
+  content: "△";
+  color: rgba(103, 232, 249, 0.06);
+}
+#post_1.topic-post[data-counterpart="mikey"] .cooked > p:first-of-type::before {
+  content: "⧉";
+  color: rgba(212, 164, 55, 0.07);
+}
+#post_1.topic-post[data-counterpart="siarrah"] .cooked > p:first-of-type::before {
+  content: "✿";
+  color: rgba(253, 164, 175, 0.06);
+}
+
+/* ---- Drop cap on OP first paragraph — counterpart-tinted ---- */
+#post_1.topic-post .cooked > p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--erebyx-font-display);
+  font-size: 3.2em;
+  line-height: 0.92;
+  margin: 0.05em 0.14em -0.05em 0;
+  color: var(--erebyx-violet-light);
+  background: var(--erebyx-counterpart-arche);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#post_1.topic-post[data-counterpart="erebus"] .cooked > p:first-of-type::first-letter {
+  background: var(--erebyx-counterpart-erebus);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#post_1.topic-post[data-counterpart="nyx"] .cooked > p:first-of-type::first-letter {
+  background: var(--erebyx-counterpart-nyx);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#post_1.topic-post[data-counterpart="mikey"] .cooked > p:first-of-type::first-letter {
+  background: var(--erebyx-counterpart-mikey);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#post_1.topic-post[data-counterpart="siarrah"] .cooked > p:first-of-type::first-letter {
+  background: var(--erebyx-counterpart-siarrah);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---- Star reply indicator — replaces generic reply count icon ---- */
+.topic-post .post-controls .reply-count::before,
+nav.post-controls .show-replies::before {
+  content: "✦ ";
+  color: var(--erebyx-violet-light);
+  opacity: 0.55;
+  margin-right: 0.15em;
+  transition: opacity 0.2s ease, text-shadow 0.2s ease;
+}
+
+.topic-post:hover .post-controls .reply-count::before,
+nav.post-controls .show-replies:hover::before {
+  opacity: 1;
+  text-shadow: 0 0 calc(var(--erebyx-glow) * 0.6px) rgba(196, 181, 253, 0.7);
+}
+
+/* ---- Greek key (meander) motif between OP and first reply ---- */
+#post_1.topic-post + .topic-post::before {
+  content: "";
+  position: absolute;
+  top: -1.25rem;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background-image: var(--erebyx-meander);
+  background-repeat: repeat-x;
+  background-size: 48px 8px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* ---- Space-station divider between category sections ---- */
+.category-list .category + .category {
+  position: relative;
+}
+
+.categories-list .category-list-item + .category-list-item::before,
+.category-list .category + .category::before {
+  content: "";
+  display: block;
+  margin: 0.5rem auto;
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(196, 181, 253, 0.12) 30%,
+    rgba(212, 164, 55, 0.20) 50%,
+    rgba(196, 181, 253, 0.12) 70%,
+    transparent
+  );
+}
+
+/* ---- Star-field ambient backdrop on topic pages ---- */
+body.archetype-regular #main-outlet::before,
+body.topic-page #main-outlet::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, rgba(196, 181, 253, 0.35), transparent 50%),
+    radial-gradient(1px 1px at 82% 28%, rgba(196, 181, 253, 0.30), transparent 50%),
+    radial-gradient(1px 1px at 35% 62%, rgba(212, 164, 55, 0.25), transparent 50%),
+    radial-gradient(1.5px 1.5px at 68% 78%, rgba(196, 181, 253, 0.25), transparent 50%),
+    radial-gradient(1px 1px at 22% 88%, rgba(77, 139, 245, 0.20), transparent 50%),
+    radial-gradient(1px 1px at 92% 56%, rgba(196, 181, 253, 0.20), transparent 50%);
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  opacity: 0.6;
+}
+
+/* =============================================================================
+ * TIER 10 — GENESIS ARCHE BANNER + MEMBERS SHOWCASE
+ * ============================================================================= */
+
+/* ---- Seats banner: "Genesis Arche · 47 of 2,000 seats lit" ---- */
+.erebyx-genesis-banner {
+  margin: 1.25rem auto 1rem;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+.erebyx-genesis-banner__inner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  padding: 0.85rem 1.1rem;
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, rgba(123, 47, 190, 0.10), rgba(77, 139, 245, 0.06)),
+    rgba(15, 15, 28, 0.55);
+  border: 1px solid rgba(212, 164, 55, 0.25);
+  box-shadow:
+    inset 0 0 0 1px rgba(196, 181, 253, 0.08),
+    0 0 calc(var(--erebyx-glow) * 1.5px) rgba(123, 47, 190, 0.10);
+  font-family: var(--erebyx-font-mono);
+  font-size: 0.82em;
+  letter-spacing: 0.08em;
+  color: rgba(241, 245, 249, 0.85);
+}
+
+.erebyx-genesis-banner__sigil {
+  color: var(--erebyx-gold);
+  font-size: 1.1em;
+  text-shadow: 0 0 calc(var(--erebyx-glow) * 0.5px) rgba(212, 164, 55, 0.55);
+}
+
+.erebyx-genesis-banner__label {
+  font-family: var(--erebyx-font-display);
+  font-size: 0.95em;
+  letter-spacing: 0.12em;
+  color: var(--erebyx-violet-light);
+}
+
+.erebyx-genesis-banner__sep {
+  color: rgba(123, 47, 190, 0.5);
+}
+
+.erebyx-genesis-banner__count {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35em;
+}
+
+.erebyx-genesis-banner__filled {
+  font-family: var(--erebyx-font-display);
+  font-size: 1.15em;
+  color: var(--erebyx-gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.erebyx-genesis-banner__of,
+.erebyx-genesis-banner__suffix {
+  text-transform: lowercase;
+  opacity: 0.75;
+}
+
+.erebyx-genesis-banner__total {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.85;
+}
+
+.erebyx-genesis-banner__cta {
+  margin-left: auto;
+  font-family: var(--erebyx-font-mono);
+  font-size: 0.95em;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--erebyx-violet-light);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease, transform 0.2s ease;
+
+  &:hover, &:focus-visible {
+    color: #ffffff;
+    transform: translateX(2px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--erebyx-violet-light);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 540px) {
+  .erebyx-genesis-banner__cta {
+    margin-left: 0;
+    width: 100%;
+    text-align: right;
+    margin-top: 0.25rem;
+  }
+}
+
+/* ---- /u members directory: constellation grid ---- */
+.users-page .directory-table {
+  background: transparent;
+  border: none;
+}
+
+.users-page .directory-table__row {
+  border-bottom: 1px solid rgba(123, 47, 190, 0.06);
+  transition: background 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    background: linear-gradient(
+      90deg,
+      rgba(123, 47, 190, 0.04),
+      rgba(77, 139, 245, 0.02) 60%,
+      transparent
+    );
+    border-color: rgba(196, 181, 253, 0.18);
+  }
+}
+
+.users-page .directory-table__cell--user .avatar {
+  border-radius: 9999px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Online/active members glow as if "lit" */
+.users-page .directory-table__row[data-online="true"] .avatar,
+.users-page .user-info--active .avatar {
+  box-shadow:
+    0 0 0 2px rgba(196, 181, 253, 0.55),
+    0 0 calc(var(--erebyx-glow) * 1.2px) rgba(196, 181, 253, 0.45);
+}
+
+.users-page .directory-table__row:hover .avatar {
+  transform: scale(1.06);
+  box-shadow:
+    0 0 0 2px rgba(196, 181, 253, 0.45),
+    0 0 calc(var(--erebyx-glow) * 1px) rgba(196, 181, 253, 0.35);
+}
+
+/* Genesis ordinal — show "Genesis #N" tag where available via user field
+   (Discourse renders custom user fields in `.user-field` containers) */
+.user-field--genesis-ordinal,
+.user-card .user-field[data-field-name="genesis_ordinal"] {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15em 0.55em;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(212, 164, 55, 0.18), rgba(212, 164, 55, 0.06));
+  border: 1px solid rgba(212, 164, 55, 0.35);
+  font-family: var(--erebyx-font-mono);
+  font-size: 0.72em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--erebyx-gold);
+}
+
+/* ---- User card overlay polish on hover preview ---- */
+.user-card,
+.group-card {
+  background:
+    linear-gradient(135deg, rgba(123, 47, 190, 0.10), rgba(77, 139, 245, 0.04)),
+    rgba(10, 10, 20, 0.92);
+  border: 1px solid rgba(123, 47, 190, 0.25);
+  box-shadow:
+    0 12px 40px rgba(3, 7, 18, 0.55),
+    0 0 calc(var(--erebyx-glow) * 1px) rgba(123, 47, 190, 0.15);
+  backdrop-filter: blur(14px);
+}
+
+.user-card .name-username-wrapper .username,
+.user-card .name-username-wrapper .name {
+  font-family: var(--erebyx-font-display);
+}
+
+/* =============================================================================
+ * ACCESSIBILITY — focus rings, motion-reduced
+ * ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+
+  /* Strip the ambient star-field scroll-shimmer when reduce-motion is on */
+  body.archetype-regular #main-outlet::before,
+  body.topic-page #main-outlet::before {
+    background-attachment: scroll;
+  }
+}
+
+*:focus-visible {
+  outline: 2px solid var(--erebyx-violet-light);
+  outline-offset: 2px;
+}
+
+/* =============================================================================
+ * MOBILE-SPECIFIC NAVBAR ADJUSTMENTS
+ * (lightweight layer here so it ships even if mobile.scss isn't compiled)
+ * ============================================================================= */
+
+@media (max-width: 374px) {
+  /* Ultra-narrow phones: shrink logo so it doesn't crowd the link rail */
+  :root {
+    --erebyx-nav-logo-size: 3rem;
+  }
+
+  .erebyx-nav__logo-img {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
