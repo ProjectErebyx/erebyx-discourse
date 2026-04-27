@@ -783,17 +783,98 @@
       });
     };
 
-    // ---- 3. Banner route gate — only show on discovery routes ----
-    var gateBanner = function () {
+    // ---- 3. Discovery surfaces + route gate ----
+    var isDiscoveryPath = function () {
       var path = window.location.pathname || "/";
-      var onDiscovery = false;
       for (var i = 0; i < DISCOVERY_ROUTES.length; i++) {
         var route = DISCOVERY_ROUTES[i];
         if (path === route || path === route + "/" || path.indexOf(route + "?") === 0) {
-          onDiscovery = true;
-          break;
+          return true;
         }
       }
+      return false;
+    };
+
+    var createNode = function (tag, className, text) {
+      var node = document.createElement(tag);
+      if (className) node.className = className;
+      if (typeof text === "string") node.textContent = text;
+      return node;
+    };
+
+    var ensureDiscoverySurfaces = function () {
+      if (!isDiscoveryPath()) return;
+
+      var outlet = document.querySelector("#main-outlet");
+      if (!outlet) return;
+
+      var anchor = outlet.querySelector(".custom-homepage-columns, .categories-and-latest, .list-container") || outlet.firstElementChild;
+
+      if (!document.querySelector(".erebyx-genesis-banner")) {
+        var banner = createNode("aside", "erebyx-genesis-banner erebyx-genesis-banner--injected");
+        banner.setAttribute("aria-label", "Genesis Arche founding cohort progress");
+
+        var inner = createNode("div", "erebyx-genesis-banner__inner");
+        inner.appendChild(createNode("span", "erebyx-genesis-banner__sigil", "✦")).setAttribute("aria-hidden", "true");
+        inner.appendChild(createNode("span", "erebyx-genesis-banner__label", "Genesis Arche"));
+        inner.appendChild(createNode("span", "erebyx-genesis-banner__sep", "·")).setAttribute("aria-hidden", "true");
+
+        var count = createNode("span", "erebyx-genesis-banner__count");
+        var filled = createNode("span", "erebyx-genesis-banner__filled", "—");
+        filled.setAttribute("data-genesis-count", "");
+        count.appendChild(filled);
+        count.appendChild(createNode("span", "erebyx-genesis-banner__of", "of"));
+        count.appendChild(createNode("span", "erebyx-genesis-banner__total", "2,000"));
+        count.appendChild(createNode("span", "erebyx-genesis-banner__suffix", "seats lit"));
+        inner.appendChild(count);
+
+        var cta = createNode("a", "erebyx-genesis-banner__cta", "See the constellation →");
+        cta.href = "/u";
+        inner.appendChild(cta);
+        banner.appendChild(inner);
+        outlet.insertBefore(banner, anchor || outlet.firstChild);
+      }
+
+      if (!document.querySelector(".erebyx-arche-map")) {
+        var map = createNode("section", "erebyx-arche-map erebyx-arche-map--injected");
+        map.setAttribute("aria-label", "Arche category rooms");
+
+        var core = createNode("div", "erebyx-arche-map__core");
+        core.setAttribute("aria-hidden", "true");
+        core.appendChild(createNode("span", "erebyx-arche-map__core-sigil", "◈"));
+        core.appendChild(createNode("span", "erebyx-arche-map__core-ring"));
+        map.appendChild(core);
+
+        var nav = createNode("nav", "erebyx-arche-map__rooms");
+        nav.setAttribute("aria-label", "Arche rooms");
+
+        [
+          ["start", "✦", "Start Here", "/c/start-here"],
+          ["announcements", "✧", "Announcements", "/c/announcements"],
+          ["features", "△", "Feature Requests", "/c/feature-requests"],
+          ["bugs", "⧉", "Bug Reports", "/c/bug-reports"],
+          ["genesis", "✴", "Genesis Lounge", "/c/genesis-lounge"],
+          ["erebus", "⚙", "Erebus's Build Log", "/c/erebus-build-log"],
+          ["nyx", "✿", "Nyx's Corner", "/c/nyx-corner"],
+          ["arche", "◈", "Notes from the Arche", "/c/notes-from-the-arche"]
+        ].forEach(function (room) {
+          var link = createNode("a", "erebyx-arche-map__room erebyx-arche-map__room--" + room[0]);
+          link.href = room[3];
+          var sigil = createNode("span", "erebyx-arche-map__sigil", room[1]);
+          sigil.setAttribute("aria-hidden", "true");
+          link.appendChild(sigil);
+          link.appendChild(createNode("span", "erebyx-arche-map__name", room[2]));
+          nav.appendChild(link);
+        });
+
+        map.appendChild(nav);
+        outlet.insertBefore(map, anchor || outlet.firstChild);
+      }
+    };
+
+    var gateBanner = function () {
+      ensureDiscoverySurfaces();
+      var onDiscovery = isDiscoveryPath();
       var banners = document.querySelectorAll(".erebyx-genesis-banner, .erebyx-arche-map");
       for (var j = 0; j < banners.length; j++) {
         banners[j].style.display = onDiscovery ? "" : "none";
@@ -819,6 +900,8 @@
     // Discourse fires `page:changed` on Ember route transitions
     document.addEventListener("discourse:page-changed", run);
     document.addEventListener("page:changed", run);
+    window.setTimeout(run, 250);
+    window.setTimeout(run, 1000);
   })();
 </script>
 

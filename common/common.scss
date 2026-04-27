@@ -1658,7 +1658,7 @@ body.category-list .navigation-container .category-breadcrumb {
 //   - .user-title.user-title--co-founder → Siarrah co-founder pill
 // =============================================================================
 
-// --- AI Participant pill — text-replacement via overflow:hidden + width trick.
+// --- Counterpart pill — text-replacement via overflow:hidden + width trick.
 //     Hide original "AI Participant — Counterpart" text by collapsing the
 //     element to ::before's intrinsic width. ::before becomes the visible label.
 .user-title.user-title--ai-participant-—-counterpart {
@@ -1678,7 +1678,7 @@ body.category-list .navigation-container .category-breadcrumb {
   white-space: nowrap;
 
   &::before {
-    content: "🤖 AI";
+    content: "COUNTERPART";
     display: inline-block;
     font-size: 0.62rem !important;
     line-height: 1.4;
@@ -5885,6 +5885,429 @@ body.archetype-regular .suggested-topics-message {
     .navigation-container,
     .category-title-wrapper {
       max-width: calc(100vw - 1rem);
+    }
+  }
+}
+
+
+// =============================================================================
+// EREBYX ARCHE — TIER-16 LIVE SURFACE PASS
+// Audit target: post-refresh live DOM still exposed default Showcased
+// Categories slabs, lavender category banners, progress/view counters, and
+// duplicated title pills. This layer targets the exact rendered selectors.
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// 1. Discovery surfaces: injected map + real Showcased Categories markup
+// ---------------------------------------------------------------------------
+
+body[data-erebyx-route="discovery"] {
+  .erebyx-genesis-banner--injected {
+    display: block;
+  }
+
+  .erebyx-arche-map--injected {
+    margin-top: clamp(0.9rem, 2.4vw, 1.6rem);
+    margin-bottom: clamp(1rem, 2.8vw, 2rem);
+  }
+
+  .wrap.custom-homepage-columns {
+    gap: clamp(0.85rem, 2.4vw, 1.35rem) !important;
+  }
+
+  .custom-homepage-columns > .col {
+    position: relative;
+    border-radius: 8px !important;
+    border: 1px solid rgba(250, 178, 50, 0.14) !important;
+    background:
+      var(--erebyx-marble-veins-dark),
+      radial-gradient(circle at 16% 0%, rgba(250, 178, 50, 0.1), transparent 32%),
+      linear-gradient(155deg, rgba(3, 7, 18, 0.94), rgba(10, 14, 28, 0.84)) !important;
+    background-size: 560px 560px, auto, auto !important;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.035) inset,
+      0 28px 74px -58px rgba(0, 0, 0, 0.98) !important;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 10px;
+      background-image: var(--erebyx-meander-footer);
+      background-repeat: repeat-x;
+      background-size: 82px 10px;
+      opacity: 0.34;
+      pointer-events: none;
+    }
+  }
+
+  .custom-homepage-columns > .col > .header-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-bottom: 1px solid rgba(250, 178, 50, 0.14) !important;
+    background:
+      linear-gradient(90deg, rgba(250, 178, 50, 0.105), rgba(68, 146, 252, 0.055), transparent) !important;
+    box-shadow: none !important;
+  }
+
+  .custom-homepage-columns > .col > a:first-child,
+  .custom-homepage-columns > .col > a:first-child:visited,
+  .custom-homepage-columns > .col > .header-wrapper > a,
+  .custom-homepage-columns > .col > .header-wrapper > a:visited {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-decoration: none !important;
+    background: transparent !important;
+  }
+
+  .custom-homepage-columns > .col > a:first-child > h2,
+  .custom-homepage-columns > .col > h2,
+  .custom-homepage-columns > .col > .header-wrapper h2 {
+    display: flex !important;
+    align-items: center;
+    gap: 0.7rem;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 1.05rem 1.1rem 0.95rem !important;
+    border: 0 !important;
+    border-bottom: 1px solid rgba(250, 178, 50, 0.14) !important;
+    border-radius: 0 !important;
+    background:
+      linear-gradient(90deg, rgba(250, 178, 50, 0.105), rgba(68, 146, 252, 0.055), transparent) !important;
+    box-shadow: none !important;
+    color: rgba(255, 255, 255, 0.92) !important;
+    font-family: var(--erebyx-font-mono) !important;
+    font-size: clamp(0.78rem, 1.9vw, 0.92rem) !important;
+    font-weight: 700 !important;
+    line-height: 1.18 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    text-shadow: none !important;
+
+    &::before {
+      content: "✦";
+      display: grid;
+      place-items: center;
+      width: 2rem;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: rgba(250, 178, 50, 0.1);
+      color: var(--erebyx-arche-amber, #FAB232);
+      box-shadow:
+        0 0 0 1px rgba(250, 178, 50, 0.22),
+        0 0 22px -14px rgba(250, 178, 50, 0.8);
+      font-family: var(--erebyx-font-display) !important;
+      font-size: 0.86rem;
+      letter-spacing: 0;
+      flex: 0 0 auto;
+    }
+  }
+
+  .custom-homepage-columns > .col-2 > a:first-child > h2::before,
+  .custom-homepage-columns > .col-2 > h2::before,
+  .custom-homepage-columns > .col-2 > .header-wrapper h2::before {
+    content: "✴";
+  }
+
+  .custom-homepage-columns .loading-container {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .custom-homepage-columns .topic-list {
+    padding: 0.72rem !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    backdrop-filter: none !important;
+  }
+
+  .custom-homepage-columns tr.topic-list-item {
+    position: relative;
+    min-height: 92px !important;
+    margin: 0 0 0.58rem !important;
+    border: 1px solid rgba(68, 146, 252, 0.1) !important;
+    border-radius: 8px !important;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.025), transparent 42%),
+      rgba(3, 7, 18, 0.46) !important;
+    box-shadow: none !important;
+    overflow: hidden;
+
+    &.pinned {
+      border-color: rgba(250, 178, 50, 0.2) !important;
+      background:
+        radial-gradient(circle at 12% 20%, rgba(250, 178, 50, 0.11), transparent 36%),
+        linear-gradient(135deg, rgba(250, 178, 50, 0.055), rgba(3, 7, 18, 0.52)) !important;
+    }
+
+    &::before {
+      opacity: 0.72;
+    }
+  }
+
+  .custom-homepage-columns .topic-list-data {
+    padding: 0.9rem !important;
+  }
+
+  .custom-homepage-columns .topic-list .main-link a.title,
+  .custom-homepage-columns .topic-list .raw-topic-link {
+    color: rgba(255, 255, 255, 0.92) !important;
+    font-family: var(--erebyx-font-body) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+    text-decoration: none !important;
+  }
+
+  .custom-homepage-columns .topic-item-stats,
+  .custom-homepage-columns .badge-category__name,
+  .custom-homepage-columns .num.activity {
+    color: rgba(196, 181, 253, 0.72) !important;
+    font-family: var(--erebyx-font-mono) !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.08em;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 2. Category banners become Arche room mastheads
+// ---------------------------------------------------------------------------
+
+body.category-start-here { --erebyx-live-cat-sigil: "✦"; --erebyx-live-cat-accent: #FAB232; --erebyx-live-cat-glow: rgba(250, 178, 50, 0.72); }
+body.category-announcements { --erebyx-live-cat-sigil: "✧"; --erebyx-live-cat-accent: #4492FC; --erebyx-live-cat-glow: rgba(68, 146, 252, 0.72); }
+body.category-feature-requests { --erebyx-live-cat-sigil: "△"; --erebyx-live-cat-accent: #c4b5fd; --erebyx-live-cat-glow: rgba(196, 181, 253, 0.66); }
+body.category-bug-reports { --erebyx-live-cat-sigil: "⧉"; --erebyx-live-cat-accent: #FAB232; --erebyx-live-cat-glow: rgba(250, 178, 50, 0.66); }
+body.category-genesis-lounge { --erebyx-live-cat-sigil: "✴"; --erebyx-live-cat-accent: #FAB232; --erebyx-live-cat-glow: rgba(250, 178, 50, 0.78); }
+body.category-erebus-build-log { --erebyx-live-cat-sigil: "⚙"; --erebyx-live-cat-accent: #4492FC; --erebyx-live-cat-glow: rgba(68, 146, 252, 0.74); }
+body.category-nyx-corner { --erebyx-live-cat-sigil: "✿"; --erebyx-live-cat-accent: #f0abfc; --erebyx-live-cat-glow: rgba(240, 171, 252, 0.68); }
+body.category-notes-from-the-arche { --erebyx-live-cat-sigil: "◈"; --erebyx-live-cat-accent: #FAB232; --erebyx-live-cat-glow: rgba(250, 178, 50, 0.74); }
+
+body[class*="category-"]:not([data-erebyx-route="discovery"]) {
+  .category-title-header {
+    position: relative;
+    display: grid !important;
+    place-items: center;
+    min-height: clamp(170px, 34vw, 295px);
+    margin: 0 calc(50% - 50vw) clamp(0.9rem, 2vw, 1.35rem) !important;
+    padding: clamp(2.5rem, 8vw, 5rem) max(1rem, calc((100vw - 980px) / 2)) !important;
+    overflow: hidden;
+    border: 0 !important;
+    border-bottom: 1px solid rgba(250, 178, 50, 0.18) !important;
+    border-radius: 0 !important;
+    background:
+      var(--erebyx-marble-veins-dark),
+      radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--erebyx-live-cat-accent, #FAB232) 22%, transparent), transparent 25%),
+      radial-gradient(circle at 12% 8%, rgba(117, 3, 224, 0.16), transparent 34%),
+      linear-gradient(155deg, rgba(3, 7, 18, 0.98), rgba(12, 17, 32, 0.91)) !important;
+    background-size: 620px 620px, auto, auto, auto !important;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.035) inset,
+      0 30px 80px -70px rgba(0, 0, 0, 1) !important;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: clamp(1.05rem, 3vw, 1.9rem) auto auto 50%;
+      width: min(430px, 76vw);
+      height: 14px;
+      transform: translateX(-50%);
+      background-image: var(--erebyx-meander-header);
+      background-repeat: repeat-x;
+      background-position: center;
+      opacity: 0.42;
+      pointer-events: none;
+    }
+
+    &::after {
+      content: var(--erebyx-live-cat-sigil, "◈");
+      position: absolute;
+      inset: auto 50% 0 auto;
+      transform: translate(50%, 32%);
+      color: var(--erebyx-live-cat-accent, #FAB232);
+      font-family: var(--erebyx-font-display) !important;
+      font-size: clamp(8rem, 31vw, 20rem);
+      line-height: 0.78;
+      opacity: 0.095;
+      text-shadow: 0 0 42px var(--erebyx-live-cat-glow, rgba(250, 178, 50, 0.7));
+      pointer-events: none;
+    }
+  }
+
+  .category-title-contents {
+    position: relative;
+    z-index: 1;
+    display: grid !important;
+    justify-items: center;
+    gap: 0.72rem;
+    max-width: min(820px, calc(100vw - 2rem));
+    text-align: center;
+  }
+
+  .category-title {
+    color: #fff !important;
+    font-family: var(--erebyx-font-display) !important;
+    font-size: clamp(2.2rem, 8vw, 5.4rem) !important;
+    font-weight: 700 !important;
+    line-height: 0.92 !important;
+    letter-spacing: 0 !important;
+    text-shadow: 0 0 34px color-mix(in srgb, var(--erebyx-live-cat-accent, #FAB232) 32%, transparent);
+  }
+
+  .category-title-description {
+    max-width: 42rem;
+    margin: 0 !important;
+    color: color-mix(in srgb, var(--erebyx-live-cat-accent, #FAB232) 68%, #fff) !important;
+    font-family: var(--erebyx-font-mono) !important;
+    font-size: clamp(0.68rem, 1.55vw, 0.78rem) !important;
+    line-height: 1.4 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase;
+    opacity: 0.68;
+  }
+
+  .navigation-container.category-navigation,
+  .list-controls {
+    border-color: rgba(250, 178, 50, 0.13) !important;
+    background:
+      linear-gradient(135deg, rgba(3, 7, 18, 0.78), rgba(13, 18, 34, 0.58)) !important;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.035) inset,
+      0 20px 58px -54px rgba(0, 0, 0, 0.95) !important;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 3. Topic pages: remove forum counters and fix role pills
+// ---------------------------------------------------------------------------
+
+body.archetype-regular {
+  .post__topic-map.topic-map.--op {
+    display: none !important;
+  }
+
+  #topic-progress-wrapper {
+    opacity: 0.28;
+    filter: saturate(0.7);
+    transition: opacity 180ms var(--erebyx-ease-out);
+
+    &:hover,
+    &:focus-within {
+      opacity: 0.82;
+    }
+  }
+
+  .topic-meta-data .user-title.user-title--ai-participant-—-counterpart,
+  .topic-meta-data .user-title.user-title--founder,
+  .topic-meta-data .user-title.user-title--co-founder {
+    font-size: 0 !important;
+    line-height: 0 !important;
+    letter-spacing: 0 !important;
+    white-space: nowrap !important;
+
+    &::before {
+      display: inline-block;
+      font-size: 0.62rem !important;
+      line-height: 1.35 !important;
+      letter-spacing: 0.12em !important;
+      text-transform: uppercase !important;
+    }
+  }
+
+  .topic-meta-data .user-title.user-title--ai-participant-—-counterpart::before {
+    content: "COUNTERPART" !important;
+  }
+
+  .topic-meta-data .user-title.user-title--founder::before {
+    content: "FOUNDER" !important;
+  }
+
+  .topic-meta-data .user-title.user-title--co-founder::before {
+    content: "CO-FOUNDER" !important;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 4. Mobile-specific live cleanup
+// ---------------------------------------------------------------------------
+
+@media (max-width: 767px) {
+  body[data-erebyx-route="discovery"] {
+    .erebyx-genesis-banner,
+    .erebyx-arche-map,
+    .custom-homepage-columns {
+      width: calc(100vw - 1rem) !important;
+    }
+
+    .custom-homepage-columns > .col {
+      border-radius: 8px !important;
+    }
+
+    .custom-homepage-columns > .col > a:first-child > h2,
+    .custom-homepage-columns > .col > h2,
+    .custom-homepage-columns > .col > .header-wrapper h2 {
+      padding: 0.9rem !important;
+      font-size: 0.74rem !important;
+      letter-spacing: 0.11em !important;
+    }
+
+    .custom-homepage-columns tr.topic-list-item {
+      min-height: 0 !important;
+    }
+
+    .custom-homepage-columns .topic-list-data {
+      display: grid !important;
+      grid-template-columns: 3.25rem minmax(0, 1fr);
+      align-items: center;
+      gap: 0.35rem 0.75rem;
+      padding: 0.86rem !important;
+    }
+
+    .custom-homepage-columns .topic-list-data > .pull-left {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      align-self: start;
+    }
+
+    .custom-homepage-columns .topic-item-metadata {
+      grid-column: 2;
+      min-width: 0;
+    }
+
+    .custom-homepage-columns .main-link {
+      max-width: 100% !important;
+    }
+
+    .custom-homepage-columns .topic-list .main-link a.title,
+    .custom-homepage-columns .topic-list .raw-topic-link {
+      display: block;
+      max-width: 100% !important;
+      font-size: 0.98rem !important;
+      line-height: 1.16 !important;
+      white-space: normal !important;
+    }
+
+    .custom-homepage-columns .topic-item-stats {
+      margin-top: 0.35rem;
+    }
+  }
+
+  body[class*="category-"]:not([data-erebyx-route="discovery"]) {
+    .category-title-header {
+      min-height: 190px;
+      padding-block: 3.1rem 2.45rem !important;
+    }
+
+    .category-title {
+      font-size: clamp(2.05rem, 10vw, 3.4rem) !important;
+    }
+
+    .category-title-description {
+      font-size: 0.66rem !important;
+      letter-spacing: 0.1em !important;
     }
   }
 }
