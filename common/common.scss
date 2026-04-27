@@ -6071,6 +6071,11 @@ body[data-erebyx-route="discovery"] {
     font-size: 0.68rem !important;
     letter-spacing: 0.08em;
   }
+
+  .list-controls,
+  .navigation-container {
+    display: none !important;
+  }
 }
 
 // ---------------------------------------------------------------------------

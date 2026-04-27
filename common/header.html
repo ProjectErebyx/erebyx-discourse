@@ -652,10 +652,10 @@
       <span class="erebyx-genesis-banner__label">Genesis Arche</span>
       <span class="erebyx-genesis-banner__sep" aria-hidden="true">·</span>
       <span class="erebyx-genesis-banner__count">
-        <span class="erebyx-genesis-banner__filled" data-genesis-count>—</span>
-        <span class="erebyx-genesis-banner__of">of</span>
+        <span class="erebyx-genesis-banner__filled" data-genesis-count>Beta live</span>
+        <span class="erebyx-genesis-banner__of">·</span>
         <span class="erebyx-genesis-banner__total">2,000</span>
-        <span class="erebyx-genesis-banner__suffix">seats lit</span>
+        <span class="erebyx-genesis-banner__suffix">seats available</span>
       </span>
       <a href="/u" class="erebyx-genesis-banner__cta">See the constellation →</a>
     </div>
@@ -750,8 +750,14 @@
             for (var i = 0; i < nodes.length; i++) {
               if (nodes[i].tagName !== "BODY") nodes[i].textContent = n.toLocaleString();
             }
+            document.querySelectorAll(".erebyx-genesis-banner__of").forEach(function (node) {
+              node.textContent = "of";
+            });
+            document.querySelectorAll(".erebyx-genesis-banner__suffix").forEach(function (node) {
+              node.textContent = "seats lit";
+            });
           })
-          .catch(function () { /* silent — banner shows "—" */ });
+          .catch(function () { /* silent — banner keeps beta-live fallback */ });
       } catch (e) { /* old browsers */ }
     };
 
@@ -820,12 +826,12 @@
         inner.appendChild(createNode("span", "erebyx-genesis-banner__sep", "·")).setAttribute("aria-hidden", "true");
 
         var count = createNode("span", "erebyx-genesis-banner__count");
-        var filled = createNode("span", "erebyx-genesis-banner__filled", "—");
+        var filled = createNode("span", "erebyx-genesis-banner__filled", "Beta live");
         filled.setAttribute("data-genesis-count", "");
         count.appendChild(filled);
-        count.appendChild(createNode("span", "erebyx-genesis-banner__of", "of"));
+        count.appendChild(createNode("span", "erebyx-genesis-banner__of", "·"));
         count.appendChild(createNode("span", "erebyx-genesis-banner__total", "2,000"));
-        count.appendChild(createNode("span", "erebyx-genesis-banner__suffix", "seats lit"));
+        count.appendChild(createNode("span", "erebyx-genesis-banner__suffix", "seats available"));
         inner.appendChild(count);
 
         var cta = createNode("a", "erebyx-genesis-banner__cta", "See the constellation →");
