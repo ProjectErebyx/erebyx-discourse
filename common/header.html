@@ -814,6 +814,10 @@
       var outlet = document.querySelector("#main-outlet");
       if (!outlet) return;
 
+      document.querySelectorAll(".erebyx-genesis-banner--injected, .erebyx-arche-map--injected").forEach(function (node) {
+        if (!outlet.contains(node) && node.parentNode) node.parentNode.removeChild(node);
+      });
+
       var anchor = outlet.querySelector(".custom-homepage-columns, .categories-and-latest, .list-container") || outlet.firstElementChild;
 
       if (!document.querySelector(".erebyx-genesis-banner")) {
@@ -908,6 +912,78 @@
     document.addEventListener("page:changed", run);
     window.setTimeout(run, 250);
     window.setTimeout(run, 1000);
+  })();
+</script>
+
+<!--
+  Tier 29 resilience:
+  - If the Discourse connector fails to paint the Arche navbar on a route, inject
+    a minimal native fallback so the top chrome never becomes an empty forum bar.
+  - De-dupe automatically if the connector appears later.
+-->
+<script>
+  (function () {
+    if (window.__erebyxTier29Resilience) return;
+    window.__erebyxTier29Resilience = true;
+
+    function createNavFallback() {
+      var wrap = document.createElement("div");
+      wrap.innerHTML =
+        '<div class="erebyx-nav erebyx-nav--fallback" role="banner">' +
+          '<nav class="erebyx-nav__inner" aria-label="Erebyx primary navigation">' +
+            '<div class="erebyx-nav__left">' +
+              '<a href="https://app.erebyx.com" class="erebyx-nav__dashboard" aria-label="Open Erebyx app dashboard" title="Erebyx dashboard">' +
+                '<svg class="erebyx-nav__dashboard-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>' +
+              '</a>' +
+              '<a href="/" class="erebyx-nav__link erebyx-nav__link--primary" title="The Arche homepage">the Arche</a>' +
+              '<a href="/latest" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Latest threads">Threads</a>' +
+              '<a href="/u" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Founding members">Members</a>' +
+            '</div>' +
+            '<a href="/" class="erebyx-nav__logo" aria-label="Erebyx Arche home">' +
+              '<img src="https://erebyx.com/erebyx-logo.png" alt="EREBYX" class="erebyx-nav__logo-img" loading="eager" decoding="async" />' +
+            '</a>' +
+            '<div class="erebyx-nav__right">' +
+              '<a href="/c/feature-requests" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Feature Requests">Impact</a>' +
+              '<a href="/c/bug-reports" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Bug Reports">Signals</a>' +
+            '</div>' +
+          '</nav>' +
+        '</div>';
+      return wrap.firstElementChild;
+    }
+
+    function dedupeNav() {
+      var navs = Array.prototype.slice.call(document.querySelectorAll(".erebyx-nav"));
+      if (navs.length < 2) return;
+      navs.forEach(function (nav) {
+        if (nav.classList.contains("erebyx-nav--fallback") && nav.parentNode) {
+          nav.parentNode.removeChild(nav);
+        }
+      });
+    }
+
+    function ensureNav() {
+      if (!document.body) return;
+      dedupeNav();
+      if (document.querySelector(".erebyx-nav")) return;
+      document.body.insertBefore(createNavFallback(), document.body.firstChild);
+    }
+
+    function schedule() {
+      window.requestAnimationFrame(function () {
+        ensureNav();
+        window.setTimeout(dedupeNav, 400);
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", schedule);
+    } else {
+      schedule();
+    }
+
+    document.addEventListener("discourse:page-changed", schedule);
+    document.addEventListener("page:changed", schedule);
+    window.setTimeout(schedule, 900);
   })();
 </script>
 
