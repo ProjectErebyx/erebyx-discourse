@@ -8421,3 +8421,385 @@ body[data-erebyx-route="discovery"] .custom-homepage-columns .loading-container 
     width: min(20rem, calc(100vw - 0.75rem)) !important;
   }
 }
+
+// =============================================================================
+// EREBYX ARCHE — TIER-22 ACTION CTA UNCRUSH PASS
+// Live QA target: text-bearing reply/create buttons were inheriting icon-button
+// sizing in post controls and topic-footer actions, causing labels to collide.
+// =============================================================================
+
+body.archetype-regular {
+  article.boxed[data-user-id] .post-menu-area {
+    width: 100%;
+  }
+
+  article.boxed[data-user-id] nav.post-controls {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 0.38rem;
+  }
+
+  article.boxed[data-user-id] nav.post-controls .actions,
+  article.boxed[data-user-id] nav.post-controls .double-button {
+    display: inline-flex !important;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.32rem;
+  }
+
+  article.boxed[data-user-id] nav.post-controls .btn-icon-text,
+  article.boxed[data-user-id] nav.post-controls button.btn-icon-text,
+  article.boxed[data-user-id] nav.post-controls .reply.create,
+  article.boxed[data-user-id] nav.post-controls button.reply.create {
+    width: auto !important;
+    min-width: max-content !important;
+    max-width: 100% !important;
+    height: 2.35rem !important;
+    min-height: 2.35rem !important;
+    padding-inline: 0.72rem !important;
+    gap: 0.38rem !important;
+  }
+
+  article.boxed[data-user-id] nav.post-controls .btn-icon-text .d-button-label,
+  article.boxed[data-user-id] nav.post-controls .reply.create .d-button-label {
+    display: inline !important;
+    max-width: none !important;
+    overflow: visible !important;
+    white-space: nowrap !important;
+    font-family: var(--erebyx-font-body) !important;
+    font-size: 0.88rem !important;
+    letter-spacing: 0 !important;
+  }
+
+  .topic-footer-main-buttons .btn-icon-text,
+  .topic-footer-main-buttons button.btn-icon-text,
+  .topic-footer-main-buttons .btn-primary.create,
+  .topic-footer-main-buttons button.btn-primary.create,
+  .topic-footer-main-buttons .topic-footer-button.create {
+    width: auto !important;
+    min-width: max-content !important;
+    max-width: min(100%, 18rem) !important;
+    height: 2.45rem !important;
+    min-height: 2.45rem !important;
+    padding-inline: 0.86rem !important;
+    gap: 0.42rem !important;
+  }
+
+  .topic-footer-main-buttons .btn-icon-text .d-button-label,
+  .topic-footer-main-buttons .topic-footer-button.create .d-button-label {
+    display: inline !important;
+    overflow: visible !important;
+    white-space: nowrap !important;
+    font-family: var(--erebyx-font-body) !important;
+    font-size: 0.9rem !important;
+    letter-spacing: 0 !important;
+  }
+
+  .small-action {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.62rem 0.72rem;
+    padding: 0.7rem 0.8rem !important;
+  }
+
+  .small-action .btn,
+  .small-action button {
+    width: auto !important;
+    min-width: max-content !important;
+    max-width: 100% !important;
+    min-height: 2.25rem !important;
+    padding-inline: 0.72rem !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(250, 178, 50, 0.13) !important;
+    background:
+      linear-gradient(135deg, rgba(250, 178, 50, 0.08), rgba(117, 3, 224, 0.08)) !important;
+    color: rgba(241, 245, 249, 0.86) !important;
+    box-shadow: none !important;
+  }
+
+  .small-action .small-action-desc {
+    min-width: 0;
+    line-height: 1.35 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  body.archetype-regular {
+    article.boxed[data-user-id] nav.post-controls {
+      justify-content: flex-start;
+    }
+
+    article.boxed[data-user-id] nav.post-controls .btn-icon-text,
+    article.boxed[data-user-id] nav.post-controls button.btn-icon-text,
+    .topic-footer-main-buttons .btn-icon-text,
+    .topic-footer-main-buttons button.btn-icon-text {
+      max-width: 100% !important;
+    }
+
+    article.boxed[data-user-id] nav.post-controls .btn-icon-text .d-button-label,
+    .topic-footer-main-buttons .btn-icon-text .d-button-label {
+      white-space: normal !important;
+      text-align: left;
+    }
+
+    .small-action {
+      grid-template-columns: 1fr;
+      justify-items: start;
+      width: calc(100vw - 0.75rem) !important;
+      margin-inline: auto !important;
+    }
+  }
+}
+
+// =============================================================================
+// EREBYX ARCHE — TIER-23 COMMUNITY STAGE COMPOSITION PASS
+// Live QA target: the visual language was strong, but mastheads, rails, category
+// cards, and footer controls still inherited forum-like spacing decisions. This
+// layer centers the stage and makes controls feel like Arche command surfaces.
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// 1. Topic masthead: one centered artifact instead of title + metadata split
+// ---------------------------------------------------------------------------
+
+body.archetype-regular #topic-title {
+  max-width: min(1040px, calc(100vw - 2rem)) !important;
+  padding-top: clamp(3rem, 7vw, 5.4rem) !important;
+  padding-bottom: clamp(1.35rem, 3vw, 2rem);
+}
+
+body.archetype-regular #topic-title .title-wrapper {
+  display: grid !important;
+  justify-items: center;
+  gap: 0.78rem;
+  width: 100%;
+  text-align: center;
+}
+
+body.archetype-regular #topic-title h1,
+body.archetype-regular .topic-title-wrapper h1 {
+  display: grid !important;
+  justify-items: center;
+  gap: 0.62rem;
+  max-width: min(15.5ch, 100%) !important;
+  margin-inline: auto !important;
+  margin-bottom: 0 !important;
+  text-align: center !important;
+}
+
+body.archetype-regular #topic-title h1 .topic-statuses {
+  display: inline-grid !important;
+  place-items: center;
+  order: -1;
+  width: 2.55rem;
+  height: 2.55rem;
+  margin: 0 0 0.18rem !important;
+  border-radius: 50%;
+  border: 1px solid rgba(250, 178, 50, 0.18);
+  background:
+    radial-gradient(circle at 50% 35%, rgba(250, 178, 50, 0.16), transparent 58%),
+    rgba(3, 7, 18, 0.54);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.035) inset,
+    0 0 28px -18px rgba(250, 178, 50, 0.84);
+}
+
+body.archetype-regular #topic-title h1 .topic-statuses .d-icon,
+body.archetype-regular #topic-title h1 .topic-statuses svg {
+  width: 1rem;
+  height: 1rem;
+  color: color-mix(in srgb, var(--erebyx-live-cat-accent, #FAB232) 66%, #ffffff) !important;
+}
+
+body.archetype-regular #topic-title h1 .fancy-title {
+  display: block;
+  max-width: 100%;
+}
+
+body.archetype-regular #topic-title .topic-category {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: min(100%, 28rem);
+  margin: 0 auto !important;
+  padding: 0.32rem 0.72rem;
+  border-radius: 999px;
+  border: 1px solid rgba(250, 178, 50, 0.12);
+  background:
+    linear-gradient(90deg, rgba(250, 178, 50, 0.07), rgba(117, 3, 224, 0.06)),
+    rgba(3, 7, 18, 0.38);
+  box-shadow: 0 14px 44px -38px rgba(0, 0, 0, 0.94);
+}
+
+body.archetype-regular #topic-title .topic-category .badge-category,
+body.archetype-regular #topic-title .topic-category a {
+  margin: 0 !important;
+  color: rgba(241, 245, 249, 0.78) !important;
+  font-family: var(--erebyx-font-mono) !important;
+  font-size: 0.68rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+// ---------------------------------------------------------------------------
+// 2. Reading stage: center sooner, reserve the side rail only for wide screens
+// ---------------------------------------------------------------------------
+
+body.archetype-regular .topic-area,
+body.archetype-regular .container.posts {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body.archetype-regular article.boxed[data-user-id] {
+  margin-block: clamp(0.85rem, 2.4vw, 1.45rem) !important;
+}
+
+body.archetype-regular article.boxed#post_1 {
+  margin-top: 0 !important;
+}
+
+@media (max-width: 1279px) {
+  body.archetype-regular .topic-navigation {
+    display: none !important;
+  }
+
+  body.archetype-regular #topic-title,
+  body.archetype-regular .topic-area,
+  body.archetype-regular .container.posts,
+  body.archetype-regular article.boxed[data-user-id],
+  body.archetype-regular article.boxed#post_1,
+  body.archetype-regular .topic-footer-main-buttons,
+  body.archetype-regular .more-topics__container {
+    max-width: min(1040px, calc(100vw - 1.25rem)) !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  body.archetype-regular .topic-area {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(9rem, 13rem);
+    gap: clamp(1.4rem, 3vw, 2.6rem);
+    align-items: start;
+  }
+
+  body.archetype-regular .container.posts {
+    min-width: 0;
+  }
+
+  body.archetype-regular .topic-navigation {
+    justify-self: stretch;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 3. Category interiors: less void, more intentional artifact rhythm
+// ---------------------------------------------------------------------------
+
+body.category:not(.archetype-regular):not([data-erebyx-route="discovery"]) {
+  .list-container .topic-list tbody {
+    gap: clamp(0.72rem, 1.4vw, 1rem);
+  }
+
+  .list-container .topic-list tr.topic-list-item td.topic-list-data {
+    min-height: clamp(8rem, 10.5vw, 10.75rem);
+  }
+
+  .list-container .topic-list .topic-item-metadata,
+  .list-container .topic-list .topic-item-metadata.right {
+    min-height: clamp(5.8rem, 8vw, 7.2rem);
+  }
+
+  .list-container .topic-list .raw-topic-link,
+  .list-container .topic-list .main-link a.title {
+    font-size: clamp(1.16rem, 1.85vw, 1.58rem) !important;
+    max-width: min(31ch, 100%) !important;
+  }
+
+  .list-container .topic-list tr.topic-list-item.pinned:first-of-type .raw-topic-link,
+  .list-container .topic-list tr.topic-list-item.pinned:first-of-type .main-link a.title {
+    font-size: clamp(1.38rem, 2.65vw, 2.32rem) !important;
+  }
+}
+
+@media (min-width: 1180px) {
+  body.category:not(.archetype-regular):not([data-erebyx-route="discovery"]) {
+    .list-container .topic-list tbody {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 4. Footer/status command surfaces: center, separate, breathe
+// ---------------------------------------------------------------------------
+
+body.archetype-regular {
+  .topic-footer-main-buttons {
+    justify-content: center !important;
+    width: fit-content !important;
+    max-width: min(920px, calc(100vw - 1rem)) !important;
+    margin-top: clamp(1.1rem, 3vw, 1.8rem) !important;
+  }
+
+  .topic-footer-main-buttons .btn:not(.btn-icon-text),
+  .topic-footer-main-buttons button:not(.btn-icon-text) {
+    flex: 0 0 auto;
+  }
+
+  .small-action {
+    max-width: min(920px, calc(100vw - 1rem)) !important;
+    margin: 0.7rem auto !important;
+    opacity: 0.86;
+  }
+
+  .small-action + .small-action {
+    margin-top: 0.48rem !important;
+  }
+
+  .small-action .btn,
+  .small-action button {
+    justify-self: start;
+  }
+
+  .small-action .small-action-desc {
+    color: rgba(241, 245, 249, 0.62) !important;
+    font-family: var(--erebyx-font-body) !important;
+    font-size: 0.88rem !important;
+    letter-spacing: 0 !important;
+  }
+
+  .more-topics__container {
+    margin-top: clamp(1.4rem, 4vw, 2.2rem) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  body.archetype-regular #topic-title {
+    padding-top: 3.25rem !important;
+  }
+
+  body.archetype-regular #topic-title h1,
+  body.archetype-regular .topic-title-wrapper h1 {
+    max-width: min(12ch, 100%) !important;
+  }
+
+  body.archetype-regular #topic-title h1 .topic-statuses {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  body.archetype-regular #topic-title .topic-category {
+    max-width: calc(100vw - 2rem);
+  }
+
+  body.category:not(.archetype-regular):not([data-erebyx-route="discovery"]) {
+    .list-container .topic-list tr.topic-list-item td.topic-list-data {
+      min-height: 5.15rem;
+    }
+  }
+}
