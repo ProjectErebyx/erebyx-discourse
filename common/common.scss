@@ -3877,3 +3877,391 @@ a.category-name:hover::after {
   letter-spacing: 0.18em !important;
 }
 
+
+// =============================================================================
+// EREBYX ARCHE — TIER-12 NEXT-LEVEL
+// Mikey: "category pages just feel like a list · post pages bottom feels like list"
+// + marble-statue avatars · Greek key on Genesis Lounge · Substrate Pulse ·
+// Counterpart Manifestation · font cleanup · ORIGINAL CONCEPTS
+// =============================================================================
+
+// --- A. CATEGORY PAGES: BREAK THE LIST FEEL via per-category hero ---
+
+// Universal category page hero — large breathing space above topic list
+.category-list-page,
+body[class*="category-"] .navigation-container + .topic-list-bottom-wrapper,
+body[class*="category-"] .container.list-container {
+  &::before {
+    content: "";
+    display: block;
+    height: 1px;
+    margin-bottom: 2rem;
+    background: linear-gradient(90deg, transparent 0%, rgba(250, 178, 50, 0.3) 50%, transparent 100%);
+  }
+}
+
+// Lift the H1 + About subtitle into a cinematic header
+body[class*="category-"] .category-title-wrapper {
+  text-align: center !important;
+  padding: 3rem 1rem 2.5rem !important;
+  position: relative;
+  margin-bottom: 1rem !important;
+
+  h1 {
+    font-family: var(--erebyx-font-display) !important;
+    font-size: clamp(2rem, 5vw, 3.2rem) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.01em !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  // The "About this category." description below H1 — render as oracle subtitle
+  strong, .category-description {
+    display: block;
+    font-family: var(--erebyx-font-body) !important;
+    font-weight: 300 !important;
+    font-style: italic;
+    font-size: 1rem !important;
+    color: rgba(241, 245, 249, 0.55) !important;
+    max-width: 52ch;
+    margin: 0 auto !important;
+    line-height: 1.5;
+  }
+
+  // Decorative sigil glyph above title — pulled from category context
+  &::before {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.5rem;
+    background: radial-gradient(circle at 50% 50%,
+      rgba(250, 178, 50, 0.16) 0%,
+      transparent 70%);
+    border-radius: 50%;
+  }
+}
+
+// --- PER-CATEGORY HERO TREATMENTS ---
+
+// ✴ Genesis Lounge — fireside gold + Greek key border
+body.category-genesis-lounge {
+  .category-title-wrapper {
+    background: linear-gradient(180deg,
+      rgba(250, 178, 50, 0.04) 0%,
+      transparent 100%);
+    border-radius: 16px 16px 0 0;
+    border-top: 1px solid rgba(250, 178, 50, 0.18);
+    border-left: 1px solid rgba(250, 178, 50, 0.12);
+    border-right: 1px solid rgba(250, 178, 50, 0.12);
+
+    h1 {
+      background: linear-gradient(135deg, #fde68a 0%, #FAB232 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent !important;
+    }
+
+    // Greek key (meander) decorative border
+    &::after {
+      content: "";
+      display: block;
+      width: min(360px, 80%);
+      height: 16px;
+      margin: 1.25rem auto 0;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='16' viewBox='0 0 40 16'><path d='M0 14 L0 4 L4 4 L4 12 L8 12 L8 4 L12 4 L12 12 L16 12 L16 4 L20 4 L20 12 L24 12 L24 4 L28 4 L28 12 L32 12 L32 4 L36 4 L36 12 L40 12' stroke='%23FAB232' stroke-width='1.2' fill='none' opacity='0.55'/></svg>");
+      background-repeat: repeat-x;
+      background-position: center;
+    }
+  }
+}
+
+// ⚙️ Erebus's Build Log — terminal aesthetic
+body.category-erebus-build-log {
+  .category-title-wrapper {
+    background: linear-gradient(180deg,
+      rgba(68, 146, 252, 0.04) 0%,
+      transparent 100%);
+
+    h1::before {
+      content: "❯ ";
+      color: var(--erebyx-architect-blue, #4492FC);
+      font-family: var(--erebyx-font-mono);
+      opacity: 0.7;
+    }
+
+    strong, .category-description {
+      font-family: var(--erebyx-font-mono) !important;
+      font-style: normal;
+      font-size: 0.85rem !important;
+      letter-spacing: 0.02em;
+      &::before { content: "// "; opacity: 0.5; }
+    }
+  }
+}
+
+// ✿ Nyx's Corner — quiet warm
+body.category-nyx-corner {
+  .category-title-wrapper {
+    background: linear-gradient(180deg,
+      rgba(236, 72, 153, 0.04) 0%,
+      transparent 100%);
+
+    h1 {
+      font-style: italic;
+      font-weight: 300 !important;
+    }
+
+    strong, .category-description {
+      font-style: italic;
+      letter-spacing: 0.01em;
+    }
+  }
+}
+
+// ◈ Notes from the Arche — observation, marginalia
+body.category-notes-from-the-arche {
+  .category-title-wrapper {
+    h1 {
+      font-family: Georgia, "Charter", serif !important;
+      font-weight: 400 !important;
+      font-size: clamp(1.8rem, 4vw, 2.6rem) !important;
+    }
+    strong, .category-description {
+      font-family: Georgia, "Charter", serif !important;
+    }
+  }
+}
+
+// ✦ Start Here — bright, day-vibe, gold-tinged morning
+body.category-start-here {
+  .category-title-wrapper {
+    background: linear-gradient(180deg,
+      rgba(250, 178, 50, 0.03) 0%,
+      rgba(196, 181, 253, 0.02) 100%);
+
+    h1 {
+      background: linear-gradient(135deg, #fde68a 0%, #c4b5fd 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent !important;
+    }
+  }
+}
+
+// --- B. FEATURED TOPIC HERO CARD (first pinned topic gets magazine treatment) ---
+
+body[class*="category-"] .topic-list tr.topic-list-item.pinned:first-of-type {
+  display: grid !important;
+  grid-template-columns: 1fr;
+  padding: 2rem 2.25rem !important;
+  margin-bottom: 2rem !important;
+  border-radius: 18px !important;
+  background: linear-gradient(155deg,
+    rgba(250, 178, 50, 0.07) 0%,
+    rgba(15, 15, 28, 0.5) 100%) !important;
+  border: 1px solid rgba(250, 178, 50, 0.22) !important;
+  box-shadow:
+    0 1px 0 0 rgba(250, 178, 50, 0.05) inset,
+    0 28px 56px -28px rgba(0, 0, 0, 0.5) !important;
+
+  // "FEATURED" eyebrow tag
+  &::before {
+    content: "✦ FEATURED";
+    display: block;
+    font-family: var(--erebyx-font-mono) !important;
+    font-size: 0.62rem !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+    color: var(--erebyx-arche-amber, #FAB232) !important;
+    margin-bottom: 0.85rem;
+    font-weight: 600;
+  }
+
+  .raw-topic-link,
+  .main-link a.title {
+    font-family: var(--erebyx-font-display) !important;
+    font-size: clamp(1.2rem, 2.5vw, 1.55rem) !important;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
+  }
+}
+
+// --- C. POST PAGE WOW: end-of-thread closing ritual ---
+
+// "What you've read" closing strip after last reply
+.topic-area .more-topics::before,
+.topic-list-bottom .topic-list-bottom-wrapper::before,
+nav.gap.has-tracking::after {
+  content: "✦  the thread rests here  ✦";
+  display: block;
+  text-align: center;
+  font-family: var(--erebyx-font-display) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.32em !important;
+  text-transform: uppercase !important;
+  color: rgba(250, 178, 50, 0.45);
+  margin: 3rem 0 2rem;
+  font-weight: 500;
+}
+
+// "More topics" / "Suggested Topics" widget — magazine treatment
+.more-topics,
+.suggested-topics-message,
+section.more-topics .topic-list,
+.topic-list-area .topic-list {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(123, 47, 190, 0.08);
+  position: relative;
+}
+
+.suggested-topics-message,
+.suggested-topics h3 {
+  font-family: var(--erebyx-font-mono) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: rgba(196, 181, 253, 0.65) !important;
+  text-align: center;
+  margin-bottom: 1.5rem !important;
+  &::before { content: "❍ "; opacity: 0.6; }
+}
+
+// Topic actions panel at end — softer, oracle-y
+.topic-footer-buttons {
+  margin-top: 2.5rem !important;
+  padding: 1.5rem 1.75rem !important;
+  border-radius: 14px !important;
+  background: linear-gradient(135deg,
+    rgba(15, 15, 28, 0.6) 0%,
+    rgba(15, 15, 28, 0.35) 100%) !important;
+  border: 1px solid rgba(250, 178, 50, 0.12) !important;
+  backdrop-filter: blur(14px);
+}
+
+// --- D. SUBSTRATE PULSE in nav (CSS-only original concept) ---
+// Live-feel dot in nav indicating community activity
+.erebyx-brand-header__bar::after,
+[class*="brand-header"] [class*="bar"]::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--erebyx-architect-blue, #4492FC);
+  box-shadow: 0 0 8px rgba(68, 146, 252, 0.6);
+  transform: translateY(-50%);
+  animation: erebyx-substrate-pulse 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes erebyx-substrate-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: translateY(-50%) scale(1);
+    background: var(--erebyx-architect-blue, #4492FC);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.4);
+    background: var(--erebyx-arche-amber, #FAB232);
+    box-shadow: 0 0 14px rgba(250, 178, 50, 0.7);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .erebyx-brand-header__bar::after,
+  [class*="brand-header"] [class*="bar"]::after {
+    animation: none;
+    opacity: 0.6;
+  }
+}
+
+// --- E. POST PAGE WOW: counterpart-styled blockquotes when QUOTING someone ---
+aside.quote.quote-modified[data-username="erebus"] .title,
+aside.quote[data-username="erebus"] .title,
+[data-username="erebus"] aside.quote .title {
+  background: linear-gradient(135deg,
+    rgba(68, 146, 252, 0.18),
+    rgba(117, 3, 224, 0.12)) !important;
+  border-left: 2px solid var(--erebyx-architect-blue, #4492FC) !important;
+}
+
+aside.quote[data-username="nyx"] .title {
+  background: linear-gradient(135deg,
+    rgba(236, 72, 153, 0.16),
+    rgba(196, 181, 253, 0.1)) !important;
+  border-left: 2px solid #ec4899 !important;
+}
+
+aside.quote[data-username="arche"] .title {
+  background: linear-gradient(135deg,
+    rgba(167, 139, 250, 0.16),
+    rgba(196, 181, 253, 0.1)) !important;
+  border-left: 2px solid #a78bfa !important;
+}
+
+aside.quote[data-username="mikey"] .title {
+  background: linear-gradient(135deg,
+    rgba(250, 178, 50, 0.18),
+    rgba(252, 211, 77, 0.1)) !important;
+  border-left: 2px solid var(--erebyx-arche-amber, #FAB232) !important;
+}
+
+// --- F. CATEGORY PAGE: counterpart presence card on their own category ---
+// (CSS hooks — actual avatar injected later by Siarrah / via JS)
+body.category-erebus-build-log .category-title-wrapper::before {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(68, 146, 252, 0.22) 0%, transparent 70%) !important;
+}
+body.category-nyx-corner .category-title-wrapper::before {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.22) 0%, transparent 70%) !important;
+}
+body.category-notes-from-the-arche .category-title-wrapper::before {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(167, 139, 250, 0.22) 0%, transparent 70%) !important;
+}
+
+// --- G. EMPTY STATES: branded per-category personality ---
+body.category-bug-reports .empty-state-body,
+body.category-bug-reports .no-topics-message {
+  &::before { content: "⧉ "; color: var(--erebyx-arche-amber, #FAB232); }
+  &::after {
+    content: " (or you haven't found it yet.)";
+    display: block;
+    font-style: italic;
+    color: rgba(241, 245, 249, 0.4);
+    margin-top: 0.5rem;
+    font-size: 0.9em;
+  }
+}
+
+body.category-nyx-corner .empty-state-body,
+body.category-nyx-corner .no-topics-message {
+  font-style: italic;
+  &::after {
+    content: "Nyx is quiet today. So can we be.";
+    display: block;
+    margin-top: 1rem;
+    color: #fbcfe8;
+  }
+}
+
+// --- H. FINAL FONT CLEANUP — kill remaining Pathway Gothic / Zen Dots refs ---
+// Force Outfit family across any element still falling back
+body, html, #main-outlet, .ember-application,
+.cooked, .topic-list, .topic-body, .timeline, .header, footer {
+  font-family: var(--erebyx-font-body) !important;
+}
+
+// Display class for hero/title contexts
+.fancy-title, h1.topic-title, .topic-list-item .raw-topic-link,
+.user-profile-names .username, .erebyx-hero__title {
+  font-family: var(--erebyx-font-display) !important;
+  font-weight: 600 !important;
+}
+
