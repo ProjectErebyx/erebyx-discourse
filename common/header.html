@@ -1045,7 +1045,7 @@
     }
 
     function tagReadingTime() {
-      var post = document.querySelector("#post_1.topic-post");
+      var post = document.querySelector("#post_1.topic-post, article.boxed#post_1");
       var cooked = post ? post.querySelector(".cooked") : null;
       if (!post || !cooked) return;
 
@@ -1055,6 +1055,23 @@
 
       var minutes = Math.max(1, Math.round(words / 230));
       post.setAttribute("data-erebyx-reading-time", minutes + " min read");
+    }
+
+    function tagArtifactKickers() {
+      var nodes = document.querySelectorAll(".cooked p:not(.erebyx-artifact-kicker)");
+      nodes.forEach(function (node) {
+        var text = (node.textContent || "").replace(/\s+/g, " ").trim();
+        if (!text || text.length > 84 || !/[:：]\s*$/.test(text)) return;
+
+        var letters = text.replace(/[^A-Za-z]/g, "");
+        if (letters.length < 4) return;
+
+        var uppercase = letters.replace(/[^A-Z]/g, "");
+        var ratio = uppercase.length / letters.length;
+        if (ratio >= 0.55 || /[A-Z]{3,}/.test(text)) {
+          node.classList.add("erebyx-artifact-kicker");
+        }
+      });
     }
 
     function tagRoute() {
@@ -1078,6 +1095,7 @@
       tagPosts(now);
       tagUserCards(now);
       tagReadingTime();
+      tagArtifactKickers();
     }
 
     function schedule() {
