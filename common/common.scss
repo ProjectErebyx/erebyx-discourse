@@ -1658,30 +1658,33 @@ body.category-list .navigation-container .category-breadcrumb {
 //   - .user-title.user-title--co-founder → Siarrah co-founder pill
 // =============================================================================
 
-// --- AI Participant pill — style the existing .user-title text into a pill ---
+// --- AI Participant pill — text-replacement via overflow:hidden + width trick.
+//     Hide original "AI Participant — Counterpart" text by collapsing the
+//     element to ::before's intrinsic width. ::before becomes the visible label.
 .user-title.user-title--ai-participant-—-counterpart {
-  display: inline-flex !important;
-  align-items: center;
+  display: inline-block !important;
   margin-left: 0.5rem;
   padding: 2px 8px !important;
   font-family: var(--erebyx-font-mono, monospace) !important;
-  font-size: 0.62rem !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase !important;
-  font-weight: 600 !important;
   border-radius: 4px !important;
   background: linear-gradient(135deg, rgba(123, 47, 190, 0.25), rgba(196, 181, 253, 0.18)) !important;
   border: 1px solid rgba(196, 181, 253, 0.4) !important;
   color: #c4b5fd !important;
   box-shadow: 0 0 0 1px rgba(123, 47, 190, 0.1), 0 0 8px rgba(123, 47, 190, 0.15) !important;
+  // Collapse original text — width=0 + overflow:visible exposes only ::before
+  font-size: 0 !important;
+  line-height: 0 !important;
+  letter-spacing: 0 !important;
+  white-space: nowrap;
 
-  // Show "AI" prefix as just AI for compactness — actual content is full title
-  // Override the displayed text with shorter version via attr/before
-  font-size: 0;
   &::before {
     content: "🤖 AI";
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
+    display: inline-block;
+    font-size: 0.62rem !important;
+    line-height: 1.4;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase;
+    font-weight: 600;
   }
 }
 
@@ -1701,50 +1704,54 @@ article.boxed[data-user-id="5"] .user-title.user-title--ai-participant-—-count
 
 // --- Founder pill — gold ---
 .user-title.user-title--founder {
-  display: inline-flex !important;
-  align-items: center;
+  display: inline-block !important;
   margin-left: 0.5rem;
   padding: 2px 8px !important;
   font-family: var(--erebyx-font-mono, monospace) !important;
-  font-size: 0.62rem !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase !important;
-  font-weight: 600 !important;
   border-radius: 4px !important;
   background: linear-gradient(135deg, rgba(212, 164, 55, 0.3), rgba(252, 211, 77, 0.2)) !important;
   border: 1px solid rgba(252, 211, 77, 0.4) !important;
   color: #fde68a !important;
   box-shadow: 0 0 0 1px rgba(212, 164, 55, 0.1), 0 0 8px rgba(212, 164, 55, 0.15) !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  letter-spacing: 0 !important;
+  white-space: nowrap;
 
-  font-size: 0;
   &::before {
     content: "✦ FOUNDER";
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
+    display: inline-block;
+    font-size: 0.62rem !important;
+    line-height: 1.4;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase;
+    font-weight: 600;
   }
 }
 
 // --- Co-founder pill — softer gold ---
 .user-title.user-title--co-founder {
-  display: inline-flex !important;
-  align-items: center;
+  display: inline-block !important;
   margin-left: 0.5rem;
   padding: 2px 8px !important;
   font-family: var(--erebyx-font-mono, monospace) !important;
-  font-size: 0.62rem !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase !important;
-  font-weight: 600 !important;
   border-radius: 4px !important;
   background: linear-gradient(135deg, rgba(212, 164, 55, 0.18), rgba(196, 181, 253, 0.15)) !important;
   border: 1px solid rgba(252, 211, 77, 0.3) !important;
   color: #fef3c7 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  letter-spacing: 0 !important;
+  white-space: nowrap;
 
-  font-size: 0;
   &::before {
     content: "CO-FOUNDER";
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
+    display: inline-block;
+    font-size: 0.62rem !important;
+    line-height: 1.4;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase;
+    font-weight: 600;
   }
 }
 
