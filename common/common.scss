@@ -8803,3 +8803,302 @@ body.archetype-regular {
     }
   }
 }
+
+// =============================================================================
+// EREBYX ARCHE — TIER-24 IMPACT + PARTICIPATION SYSTEM PASS
+// Live QA target: Feature Requests had the right content, but the surrounding UI
+// did not yet make members feel their replies/votes shape the build. This layer
+// turns proposal rows, priority lists, and CTA zones into impact surfaces.
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// 1. Feature Requests room: make the category itself feel like an impact queue
+// ---------------------------------------------------------------------------
+
+body.category-feature-requests:not(.archetype-regular):not([data-erebyx-route="discovery"]) {
+  .category-title-header {
+    border-bottom-color: rgba(196, 181, 253, 0.2) !important;
+  }
+
+  .category-title-contents {
+    position: relative;
+  }
+
+  .category-title-contents::before {
+    content: "IMPACT QUEUE";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin: 0 auto 0.82rem;
+    padding: 0.24rem 0.62rem;
+    border-radius: 999px;
+    border: 1px solid rgba(196, 181, 253, 0.22);
+    background:
+      linear-gradient(90deg, rgba(117, 3, 224, 0.14), rgba(68, 146, 252, 0.08)),
+      rgba(3, 7, 18, 0.36);
+    color: rgba(241, 245, 249, 0.76);
+    font-family: var(--erebyx-font-mono) !important;
+    font-size: 0.66rem !important;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    box-shadow: 0 0 28px -20px rgba(196, 181, 253, 0.92);
+  }
+
+  .list-controls {
+    border-color: rgba(196, 181, 253, 0.18) !important;
+  }
+
+  .list-container .topic-list::before {
+    opacity: 0.4;
+  }
+
+  .list-container .topic-list tr.topic-list-item {
+    border-color: rgba(196, 181, 253, 0.13) !important;
+    background:
+      var(--erebyx-marble-veins-dark),
+      radial-gradient(circle at 10% 0%, rgba(196, 181, 253, 0.12), transparent 34%),
+      linear-gradient(140deg, rgba(255, 255, 255, 0.025), transparent 42%),
+      rgba(3, 7, 18, 0.62) !important;
+  }
+
+  .list-container .topic-list tr.topic-list-item::before {
+    content: "proposal";
+    position: absolute;
+    right: clamp(0.9rem, 1.8vw, 1.2rem);
+    top: clamp(0.9rem, 1.8vw, 1.1rem);
+    z-index: 2;
+    width: auto;
+    height: auto;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    border: 1px solid rgba(196, 181, 253, 0.16);
+    background: rgba(3, 7, 18, 0.46);
+    color: rgba(196, 181, 253, 0.68);
+    font-family: var(--erebyx-font-mono) !important;
+    font-size: 0.58rem !important;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.9;
+    transform: none;
+  }
+
+  .list-container .topic-list tr.topic-list-item:has(a[href*="what-were-voting-on-next"])::before {
+    content: "live vote";
+    border-color: rgba(250, 178, 50, 0.28);
+    color: rgba(250, 218, 151, 0.86);
+    background:
+      linear-gradient(90deg, rgba(250, 178, 50, 0.12), rgba(117, 3, 224, 0.08)),
+      rgba(3, 7, 18, 0.54);
+  }
+
+  .list-container .topic-list tr.topic-list-item:has(a[href*="what-were-voting-on-next"]) {
+    border-color: rgba(250, 178, 50, 0.22) !important;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.04) inset,
+      0 34px 78px -62px rgba(0, 0, 0, 1),
+      0 0 36px -28px rgba(250, 178, 50, 0.86) !important;
+  }
+
+  .list-container .topic-list .topic-excerpt,
+  .list-container .topic-list .excerpt {
+    color: rgba(226, 232, 240, 0.72) !important;
+    font-size: clamp(0.92rem, 1.2vw, 1rem) !important;
+    line-height: 1.48 !important;
+    text-wrap: pretty;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 2. Priority threads: turn lists into voting slates and participation prompts
+// ---------------------------------------------------------------------------
+
+body.category-feature-requests.archetype-regular {
+  #topic-title .topic-category {
+    border-color: rgba(196, 181, 253, 0.18);
+    background:
+      linear-gradient(90deg, rgba(117, 3, 224, 0.12), rgba(68, 146, 252, 0.07)),
+      rgba(3, 7, 18, 0.42);
+  }
+
+  article.boxed#post_1 {
+    border-color: rgba(196, 181, 253, 0.22) !important;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.045) inset,
+      0 44px 104px -74px rgba(0, 0, 0, 1),
+      0 0 74px -58px rgba(196, 181, 253, 0.95) !important;
+  }
+
+  article.boxed#post_1 .cooked p:first-of-type {
+    position: relative;
+    margin-bottom: clamp(1.2rem, 3vw, 1.7rem) !important;
+    padding: clamp(0.9rem, 2vw, 1.1rem) clamp(0.95rem, 2vw, 1.25rem) !important;
+    border-radius: 8px;
+    border: 1px solid rgba(196, 181, 253, 0.16);
+    background:
+      linear-gradient(135deg, rgba(117, 3, 224, 0.1), rgba(68, 146, 252, 0.045)),
+      rgba(3, 7, 18, 0.36);
+  }
+
+  article.boxed#post_1 .cooked p:first-of-type::before {
+    content: "community signal";
+    display: inline-flex;
+    width: fit-content;
+    margin: 0 0 0.55rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    border: 1px solid rgba(196, 181, 253, 0.16);
+    color: rgba(196, 181, 253, 0.78);
+    background: rgba(3, 7, 18, 0.42);
+    font-family: var(--erebyx-font-mono) !important;
+    font-size: 0.62rem !important;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  article.boxed#post_1 .cooked p.erebyx-artifact-kicker {
+    border-color: rgba(196, 181, 253, 0.24);
+    background:
+      linear-gradient(90deg, rgba(117, 3, 224, 0.14), rgba(250, 178, 50, 0.07)) !important;
+    color: rgba(232, 222, 255, 0.96) !important;
+  }
+
+  article.boxed#post_1 .cooked ul,
+  article.boxed#post_1 .cooked ol {
+    counter-reset: erebyx-impact-item;
+    display: grid;
+    gap: 0.58rem;
+    margin-block: 1rem 1.45rem !important;
+    padding: 0.9rem !important;
+    border-color: rgba(196, 181, 253, 0.14);
+    background:
+      radial-gradient(circle at 8% 0%, rgba(196, 181, 253, 0.08), transparent 30%),
+      rgba(3, 7, 18, 0.36);
+  }
+
+  article.boxed#post_1 .cooked li {
+    counter-increment: erebyx-impact-item;
+    position: relative;
+    min-height: 2.35rem;
+    padding: 0.62rem 0.8rem 0.62rem 2.85rem;
+    border-radius: 8px;
+    border: 1px solid rgba(196, 181, 253, 0.1);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.022), transparent 48%),
+      rgba(10, 14, 28, 0.42);
+    list-style: none;
+  }
+
+  article.boxed#post_1 .cooked li::before {
+    content: counter(erebyx-impact-item, decimal-leading-zero);
+    position: absolute;
+    left: 0.72rem;
+    top: 0.68rem;
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.55rem;
+    height: 1.55rem;
+    border-radius: 999px;
+    border: 1px solid rgba(250, 178, 50, 0.18);
+    color: rgba(250, 218, 151, 0.86);
+    background: rgba(250, 178, 50, 0.07);
+    font-family: var(--erebyx-font-mono) !important;
+    font-size: 0.62rem !important;
+    letter-spacing: 0.04em;
+  }
+
+  article.boxed#post_1 .cooked li::marker {
+    content: "";
+  }
+
+  .topic-footer-main-buttons {
+    position: relative;
+    margin-top: clamp(1.35rem, 4vw, 2.1rem) !important;
+  }
+
+  .topic-footer-main-buttons::before {
+    content: "shape the next build";
+    position: absolute;
+    left: 50%;
+    top: -1.65rem;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: calc(100vw - 2rem);
+    color: rgba(196, 181, 253, 0.68);
+    font-family: var(--erebyx-font-mono) !important;
+    font-size: 0.64rem !important;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .more-topics__list-title {
+    color: rgba(232, 222, 255, 0.92) !important;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 3. Future-proof actual voting widgets when the plugin renders them
+// ---------------------------------------------------------------------------
+
+.voting,
+.vote-button,
+.vote-count,
+.topic-voting,
+.topic-vote-button,
+.voting-wrapper,
+.topic-vote,
+.topic-list-data.votes,
+.num.votes {
+  border-radius: 999px !important;
+  border: 1px solid rgba(196, 181, 253, 0.18) !important;
+  background:
+    linear-gradient(135deg, rgba(117, 3, 224, 0.12), rgba(68, 146, 252, 0.07)),
+    rgba(3, 7, 18, 0.5) !important;
+  color: rgba(232, 222, 255, 0.9) !important;
+  font-family: var(--erebyx-font-mono) !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.035) inset,
+    0 0 28px -22px rgba(196, 181, 253, 0.92) !important;
+}
+
+.vote-button:hover,
+.topic-vote-button:hover,
+.voting:hover {
+  border-color: rgba(250, 178, 50, 0.3) !important;
+  color: #fff !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 0 34px -22px rgba(250, 178, 50, 0.9) !important;
+}
+
+@media (max-width: 767px) {
+  body.category-feature-requests.archetype-regular {
+    article.boxed#post_1 .cooked li {
+      padding-left: 2.55rem;
+    }
+
+    article.boxed#post_1 .cooked li::before {
+      left: 0.58rem;
+    }
+
+    .topic-footer-main-buttons::before {
+      position: static;
+      transform: none;
+      flex: 1 0 100%;
+      margin: 0.1rem 0 0.22rem;
+      text-align: left;
+    }
+  }
+
+  body.category-feature-requests:not(.archetype-regular):not([data-erebyx-route="discovery"]) {
+    .list-container .topic-list tr.topic-list-item::before {
+      right: 0.72rem;
+      top: 0.72rem;
+    }
+  }
+}
