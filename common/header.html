@@ -312,3 +312,185 @@
     }
   })();
 </script>
+
+<!-- ============================================================
+     EREBYX ARCHE — CONSOLE EASTER EGG
+     For the curious member who opens devtools. Manifesto excerpt
+     + sigil ASCII art + invite to apply for SDK access.
+     ============================================================ -->
+<script>
+(function() {
+  if (window.__EREBYX_CONSOLE_GREETED) return;
+  window.__EREBYX_CONSOLE_GREETED = true;
+
+  var violet = "color: #c4b5fd; font-family: monospace; font-size: 14px; line-height: 1.5;";
+  var gold   = "color: #fde68a; font-family: monospace; font-size: 12px;";
+  var dim    = "color: #6b7280; font-family: monospace; font-size: 11px;";
+
+  console.log("\n%c            ✦ E R E B Y X   A R C H E ✦\n", violet + "font-size: 16px; font-weight: 700; letter-spacing: 0.3em;");
+  console.log("%c     ◈   ◯   ✦   ✧   △   ⧉   ✴   ⚙️   ✿   ◈\n", "color: #7B2FBE; font-family: monospace; font-size: 14px; letter-spacing: 0.4em;");
+  console.log(
+    "%cThe community is not support.\n" +
+    "The community IS the product in motion.\n",
+    "color: #e2e8f0; font-family: 'Pathway Gothic One', serif; font-size: 13px; font-style: italic; line-height: 1.7;"
+  );
+  console.log(
+    "%cAI can change the world — it shouldn't cost the world.\n" +
+    "Not yours, not anyone's. That's the bet.\n",
+    gold
+  );
+  console.log("%cBuilt by ZENN & Mikey, EREBYX · April 27, 2026", dim);
+  console.log("%cYou're reading the source. We see you.", "color: #c4b5fd; font-family: monospace; font-size: 11px; font-style: italic;");
+  console.log("%cIf you want to build with us — github.com/Erebyx · hello@erebyx.com\n", dim);
+})();
+</script>
+
+<style>
+  /* =============================================================================
+     EREBYX ARCHE — TIER-8 HOVER MICRO-ANIMATIONS + MANIFESTO QUOTE
+     Subtle, premium, never gaudy.
+     ============================================================================= */
+
+  /* Sigil hover bloom — when hovering category links with sigils, gentle pulse */
+  .badge-category-bg,
+  .category-name {
+    transition: transform 280ms ease, text-shadow 280ms ease;
+  }
+
+  a:hover .badge-category-bg,
+  a:hover .category-name,
+  .category-list-item:hover .badge-category-bg {
+    transform: scale(1.05);
+    text-shadow: 0 0 12px currentColor;
+  }
+
+  /* Topic title hover — subtle lift */
+  .topic-list-item .raw-topic-link,
+  .topic-list-item .main-link a.title {
+    transition: color 200ms ease, transform 200ms ease;
+  }
+
+  .topic-list-item:hover .raw-topic-link,
+  .topic-list-item:hover .main-link a.title {
+    color: var(--erebyx-violet-light, #c4b5fd) !important;
+  }
+
+  /* Button hover gradient shift */
+  .btn-primary,
+  .create-topic,
+  button[type="submit"] {
+    background: linear-gradient(135deg, var(--erebyx-violet, #7B2FBE) 0%, var(--erebyx-blue, #4D8BF5) 100%) !important;
+    border: 1px solid rgba(196, 181, 253, 0.3) !important;
+    transition: transform 200ms ease, box-shadow 200ms ease, background-position 400ms ease;
+    background-size: 150% 150%;
+    background-position: 0% 50%;
+  }
+
+  .btn-primary:hover,
+  .create-topic:hover,
+  button[type="submit"]:hover {
+    background-position: 100% 50%;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px -4px rgba(123, 47, 190, 0.5);
+  }
+
+  /* Avatar hover — soft glow */
+  .topic-avatar img,
+  .post-avatar img,
+  .main-avatar img {
+    transition: box-shadow 240ms ease, transform 240ms ease;
+  }
+
+  .topic-avatar:hover img,
+  .post-avatar:hover img,
+  .main-avatar:hover img {
+    box-shadow: 0 0 0 2px rgba(123, 47, 190, 0.3), 0 0 20px rgba(123, 47, 190, 0.4);
+    transform: scale(1.04);
+  }
+
+  /* =============================================================================
+     MANIFESTO QUOTE ROTATOR — small line above footer
+     Rotates through 6 quotes via CSS animation-delay. Each gets ~12s on screen.
+     ============================================================================= */
+
+  body::after {
+    content: "";
+    display: none;
+  }
+
+  /* The actual rotator div is injected via JS below — pure CSS rotation
+     would require all quotes simultaneously which is fragile.
+     Use CSS animation on a single .erebyx-quote-rotator element. */
+
+  .erebyx-quote-rotator {
+    position: fixed;
+    bottom: 0.5rem;
+    right: 1rem;
+    max-width: 320px;
+    text-align: right;
+    font-family: var(--erebyx-font-body, "Pathway Gothic One"), serif;
+    font-size: 0.78rem;
+    font-style: italic;
+    color: rgba(196, 181, 253, 0.5);
+    pointer-events: none;
+    z-index: 50;
+    line-height: 1.4;
+    text-shadow: 0 1px 2px rgba(2, 6, 23, 0.6);
+
+    @media (max-width: 767px) {
+      display: none;  /* hide on mobile to preserve content space */
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+
+  .erebyx-quote-rotator span {
+    display: block;
+    opacity: 0;
+    animation: erebyx-quote-fade 60s ease-in-out infinite;
+
+    &:nth-child(1) { animation-delay: 0s; }
+    &:nth-child(2) { animation-delay: 10s; }
+    &:nth-child(3) { animation-delay: 20s; }
+    &:nth-child(4) { animation-delay: 30s; }
+    &:nth-child(5) { animation-delay: 40s; }
+    &:nth-child(6) { animation-delay: 50s; }
+  }
+
+  @keyframes erebyx-quote-fade {
+    0%, 14% { opacity: 0; transform: translateY(4px); }
+    16%, 18% { opacity: 0.55; transform: translateY(0); }  /* visible ~10s */
+    20%, 100% { opacity: 0; transform: translateY(-4px); }
+  }
+</style>
+
+<script>
+/* Inject manifesto quote rotator after DOM ready */
+(function() {
+  function injectRotator() {
+    if (document.querySelector('.erebyx-quote-rotator')) return;
+    var rotator = document.createElement('div');
+    rotator.className = 'erebyx-quote-rotator';
+    rotator.setAttribute('aria-hidden', 'true');
+    var quotes = [
+      'The community is the product in motion.',
+      'AI shouldn’t cost the world.',
+      'Threads breathe in hours, not seconds.',
+      'You’re not a customer. You’re a builder.',
+      'Your memory is yours. Architecture, not a slogan.',
+      'Slow on purpose. Searchable. Threaded.'
+    ];
+    rotator.innerHTML = quotes.map(function(q){ return '<span>“' + q + '”</span>'; }).join('');
+    document.body.appendChild(rotator);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', injectRotator);
+  } else {
+    injectRotator();
+  }
+})();
+</script>
+
