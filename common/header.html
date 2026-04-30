@@ -573,7 +573,7 @@
         </a>
 
         <a href="/" class="erebyx-nav__link erebyx-nav__link--primary" title="The Arche — homepage">
-          the Arche
+          The Arche
         </a>
 
         <a href="/latest" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Latest threads">
@@ -584,15 +584,6 @@
           Members
         </a>
 
-        <a
-          href="https://erebyx.com/continuum"
-          class="erebyx-nav__link erebyx-nav__link--desktop-only"
-          target="_blank"
-          rel="noopener"
-          title="Continuum — releases + roadmap"
-        >
-          Continuum
-        </a>
       </div>
 
       <!-- CENTER: floating logo ball (translateY(-2) overhang per website pattern) -->
@@ -601,17 +592,27 @@
         class="erebyx-nav__logo"
         aria-label="Erebyx Arche home"
       >
-        <img
-          src="https://erebyx.com/erebyx-logo.png"
-          alt="EREBYX"
-          class="erebyx-nav__logo-img"
-          loading="eager"
-          decoding="async"
-        />
+        <span class="erebyx-nav__logo-mark" aria-hidden="true">◈</span>
       </a>
 
-      <!-- RIGHT: social rail (paths verbatim from siteSocialLinks.ts) -->
+      <!-- RIGHT: impact/action rail + social rail (paths verbatim from siteSocialLinks.ts) -->
       <div class="erebyx-nav__right">
+        <a
+          href="/c/feature-requests"
+          class="erebyx-nav__link erebyx-nav__link--desktop-only"
+          title="Feature Requests"
+        >
+          Feature Requests
+        </a>
+
+        <a
+          href="/c/bug-reports"
+          class="erebyx-nav__link erebyx-nav__link--desktop-only"
+          title="Bug reports and product signals"
+        >
+          Signals
+        </a>
+
         <div class="erebyx-nav__social" role="list">
           <a
             href="https://x.com/EREBYXofficial"
@@ -845,6 +846,17 @@
       return false;
     };
 
+    var isAdminPath = function () {
+      var path = window.location.pathname || "/";
+      var body = document.body;
+      var html = document.documentElement;
+      return (
+        /^\/admin(?:\/|$)/.test(path) ||
+        (body && body.classList.contains("admin-interface")) ||
+        (html && html.classList.contains("admin-area"))
+      );
+    };
+
     var createNode = function (tag, className, text) {
       var node = document.createElement(tag);
       if (className) node.className = className;
@@ -852,7 +864,17 @@
       return node;
     };
 
+    var removeDiscoverySurfaces = function () {
+      document.querySelectorAll(".erebyx-genesis-banner--injected, .erebyx-arche-map--injected").forEach(function (node) {
+        if (node.parentNode) node.parentNode.removeChild(node);
+      });
+    };
+
     var ensureDiscoverySurfaces = function () {
+      if (isAdminPath()) {
+        removeDiscoverySurfaces();
+        return;
+      }
       if (!isDiscoveryPath()) return;
 
       var outlet = document.querySelector("#main-outlet");
@@ -927,6 +949,10 @@
     };
 
     var gateBanner = function () {
+      if (isAdminPath()) {
+        removeDiscoverySurfaces();
+        return;
+      }
       ensureDiscoverySurfaces();
       var onDiscovery = isDiscoveryPath();
       var banners = document.querySelectorAll(".erebyx-genesis-banner, .erebyx-arche-map");
@@ -979,13 +1005,11 @@
               '<a href="https://app.erebyx.com" class="erebyx-nav__dashboard" aria-label="Open Erebyx app dashboard" title="Erebyx dashboard">' +
                 '<svg class="erebyx-nav__dashboard-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>' +
               '</a>' +
-              '<a href="/" class="erebyx-nav__link erebyx-nav__link--primary" title="The Arche homepage">the Arche</a>' +
+              '<a href="/" class="erebyx-nav__link erebyx-nav__link--primary" title="The Arche homepage">The Arche</a>' +
               '<a href="/latest" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Latest threads">Threads</a>' +
               '<a href="/u" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Founding members">Members</a>' +
             '</div>' +
-            '<a href="/" class="erebyx-nav__logo" aria-label="Erebyx Arche home">' +
-              '<img src="https://erebyx.com/erebyx-logo.png" alt="EREBYX" class="erebyx-nav__logo-img" loading="eager" decoding="async" />' +
-            '</a>' +
+            '<a href="/" class="erebyx-nav__logo" aria-label="Erebyx Arche home"><span class="erebyx-nav__logo-mark" aria-hidden="true">◈</span></a>' +
             '<div class="erebyx-nav__right">' +
               '<a href="/c/feature-requests" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Feature Requests">Feature Requests</a>' +
               '<a href="/c/bug-reports" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Bug Reports">Signals</a>' +
@@ -1005,12 +1029,30 @@
       });
     }
 
+    function isAdminRoute() {
+      var path = window.location.pathname || "/";
+      var body = document.body;
+      var html = document.documentElement;
+      return (
+        /^\/admin(?:\/|$)/.test(path) ||
+        (body && body.classList.contains("admin-interface")) ||
+        (html && html.classList.contains("admin-area"))
+      );
+    }
+
+    function removePublicChrome() {
+      document.querySelectorAll(".erebyx-nav, .erebyx-genesis-banner, .erebyx-arche-map, .erebyx-quote-rotator").forEach(function (node) {
+        if (node.parentNode) node.parentNode.removeChild(node);
+      });
+    }
+
     function ensureNav() {
       if (!document.body) return;
-      if (/^\/admin(?:\/|$)/.test(window.location.pathname || "/")) {
-        document.querySelectorAll(".erebyx-nav--fallback").forEach(function (nav) {
-          if (nav.parentNode) nav.parentNode.removeChild(nav);
-        });
+      var adminRoute = isAdminRoute();
+      document.documentElement.classList.toggle("erebyx-admin-route", adminRoute);
+      document.body.classList.toggle("erebyx-admin-route", adminRoute);
+      if (adminRoute) {
+        removePublicChrome();
         return;
       }
       dedupeNav();
@@ -1025,6 +1067,16 @@
       });
     }
 
+    var observerQueued = false;
+    function queueAdminCheck() {
+      if (!isAdminRoute() || observerQueued) return;
+      observerQueued = true;
+      window.requestAnimationFrame(function () {
+        observerQueued = false;
+        ensureNav();
+      });
+    }
+
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", schedule);
     } else {
@@ -1033,6 +1085,12 @@
 
     document.addEventListener("discourse:page-changed", schedule);
     document.addEventListener("page:changed", schedule);
+    window.addEventListener("popstate", schedule);
+    window.addEventListener("hashchange", schedule);
+    if (window.MutationObserver) {
+      var observer = new MutationObserver(queueAdminCheck);
+      observer.observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ["class"] });
+    }
     window.setTimeout(schedule, 900);
   })();
 </script>
@@ -1200,8 +1258,44 @@
       });
     }
 
+    function labelCreateButton() {
+      var body = document.body;
+      if (!body || body.classList.contains("admin-interface")) return;
+
+      var button = document.querySelector(".navigation-controls #create-topic, .navigation-controls button#create-topic");
+      if (!button) return;
+
+      var label = "New Post";
+      if (body.classList.contains("category-feature-requests")) {
+        label = "New Proposal";
+      } else if (body.classList.contains("category-bug-reports")) {
+        label = "New Signal";
+      }
+
+      button.setAttribute("data-erebyx-create-label", label);
+      button.setAttribute("aria-label", label);
+      button.setAttribute("title", label);
+
+      var labelNode = button.querySelector(".d-button-label, .btn-text");
+      if (labelNode && labelNode.textContent !== label) {
+        labelNode.textContent = label;
+      }
+    }
+
     function tagRoute() {
       var path = window.location.pathname || "/";
+      var body = document.body;
+      var html = document.documentElement;
+      var isAdmin = /^\/admin(?:\/|$)/.test(path) ||
+        (body && body.classList.contains("admin-interface")) ||
+        (html && html.classList.contains("admin-area"));
+      if (html) html.classList.toggle("erebyx-admin-route", isAdmin);
+      if (body) body.classList.toggle("erebyx-admin-route", isAdmin);
+      if (isAdmin) {
+        if (body) body.setAttribute("data-erebyx-route", "admin");
+        return;
+      }
+      if (!body) return;
       var isDiscovery = false;
       for (var i = 0; i < DISCOVERY_ROUTES.length; i++) {
         var route = DISCOVERY_ROUTES[i];
@@ -1210,7 +1304,7 @@
           break;
         }
       }
-      document.body.setAttribute("data-erebyx-route", isDiscovery ? "discovery" : "inner");
+      body.setAttribute("data-erebyx-route", isDiscovery ? "discovery" : "inner");
     }
 
     function run() {
@@ -1222,6 +1316,7 @@
       tagUserCards(now);
       tagReadingTime();
       tagArtifactKickers();
+      labelCreateButton();
     }
 
     function schedule() {
