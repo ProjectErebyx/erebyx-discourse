@@ -1,5 +1,8 @@
 /*
+ * =============================================================================
  * Erebyx Arche — Discourse theme overrides
+ * =============================================================================
+ *
  * Matches erebyx.com + app.erebyx.com brand language.
  *
  * Brand:
@@ -13,7 +16,70 @@
  *   - Outfit — body, prose, posts
  *   - JetBrains Mono / Fira Code — technical / metadata / dates / version tags
  *
+ * =============================================================================
+ * FILE STRUCTURE (for navigating + finding things)
+ * =============================================================================
+ *
+ *   common/_tokens.scss        ← Edit this to tune brand colors, type, spacing
+ *                                 motion, glow. Single source of truth.
+ *
+ *   common/_categories.scss    ← Section 1: category boxes w/ gradient borders
+ *   common/_topic-list.scss    ← Section 2: topic list rows, pinned, voted
+ *   common/_topic-page.scss    ← Section 3: thread reading surface, counterparts
+ *   common/_pills.scss         ← Section 4: AI Participant + Founder pills
+ *   common/_login.scss         ← Section 5: login + signup glass cards
+ *   common/_empty-states.scss  ← Section 6: 404 + empty list/notifications
+ *   common/_sidebar.scss       ← Section 7: left-nav active state
+ *   common/_headings.scss      ← Section 8: h1-h4 fluid clamp() sizing
+ *   common/_motion.scss        ← Section 9: animation + reduced-motion guard
+ *   common/_print.scss         ← Section 10: paper-friendly stylesheet
+ *
+ *   common/common.scss (this file) ← @imports the partials above, then
+ *                                    accumulated TIER polish blocks for
+ *                                    surfaces that span multiple components
+ *                                    (use Cmd+F search by topic name).
+ *
+ *   common/header.html         ← Custom header chrome + hero canvas + console
+ *                                easter egg. Inline scripts kept here because
+ *                                vanilla-DOM lifecycle is known-stable; moving
+ *                                to api-initializer broke Ember booting last
+ *                                time (see comment in file).
+ *   common/footer.html         ← Replaces "Powered by Discourse" footer.
+ *
+ *   desktop/desktop.scss       ← Desktop-only (>= 1024px) overrides
+ *   mobile/mobile.scss         ← Mobile-only (< 768px) overrides
+ *
+ * =============================================================================
+ * TOPIC NAVIGATION INSIDE common.scss (TIER polish blocks)
+ * =============================================================================
+ *
+ * The file accumulates iterative polish passes appended to the bottom. Use
+ * Cmd+F to search for these anchors:
+ *
+ *   "TIER-1"            ← Forum-to-premium chrome strip
+ *   "PER-CATEGORY BG"   ← Category-specific background tints
+ *   "READING-PROGRESS"  ← Top-of-topic reading progress bar
+ *   "FOCUS RINGS"       ← Cosmic violet focus outline (a11y)
+ *   "GLASSMORPHIC"      ← Composer / reply form glass effect
+ *   "TITLE TREATMENT"   ← #topic-title display polish
+ *   "SOLVED REPLY"      ← Gold accent on solved replies
+ *   "INLINE REPLY"      ← Desktop ≥900px inline reply form
+ *   "BLOCKQUOTE"        ← Quote styling polish
+ *   "BREAK THE TABLE"   ← Topic list de-tableification
+ *   "REACT POLISH"      ← Reactions UI
+ *   "STAR REPLY"        ← Star icon as reply indicator
+ *   "GREEK KEY"         ← Meander motif dividers
+ *   "STAR-FIELD"        ← Ambient starfield backdrop
+ *   "USER CARD"         ← Hover card preview polish
+ *   "AMBER PROMINENCE"  ← Gold elevations for pinned + founder
+ *   "MYTHIC FOUNDATION" ← Marble texture overlay on cards
+ *   "ORACLE TONE"       ← Empty-state copy + sigil treatment
+ *   "PER-CATEGORY HERO" ← Category-page hero treatments
+ *   "FEATURED TOPIC"    ← First pinned topic magazine-card treatment
+ *   "COUNTERPART CARD"  ← AI counterpart presence cards
+ *
  * Author: ZENN + Siarrah
+ * =============================================================================
  */
 
 /* =============================================================================
