@@ -1,0 +1,118 @@
+// =============================================================================
+// TOPIC LIST ROWS — `.topic-list` table on category + latest views
+// =============================================================================
+// Polished rows with hover state, monospace metadata, gold-tinted pinned
+// shimmer, violet-pulse on voted topics, gold checkmark on solved.
+
+.topic-list {
+  border-collapse: separate;
+  border-spacing: 0 4px;
+  thead th {
+    font-family: var(--erebyx-font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(196, 181, 253, 0.45);
+    padding: 0.85rem 0.75rem;
+    border-bottom: 1px solid rgba(123, 47, 190, 0.12);
+    font-weight: 500;
+  }
+  tbody tr.topic-list-item {
+    background: rgba(10, 10, 20, 0.35);
+    transition: background var(--erebyx-fast),
+                border-color var(--erebyx-fast),
+                box-shadow var(--erebyx-fast);
+    > td { padding: 0.85rem 0.75rem; vertical-align: middle; }
+    &:hover {
+      background: rgba(20, 18, 40, 0.55);
+      border-color: rgba(123, 47, 190, 0.22);
+    }
+    .main-link a.title {
+      font-family: var(--erebyx-font-body);
+      font-size: 1.05rem;
+      line-height: 1.35;
+      color: #e2e8f0;
+      &:hover { color: #ffffff; }
+      &:visited { color: rgba(196, 181, 253, 0.7); }
+    }
+  }
+  // Last-poster avatar — slightly larger than default
+  .topic-list-item .posters a:last-child img.avatar,
+  .topic-list-item .posters .latest img.avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 1px solid rgba(123, 47, 190, 0.25);
+  }
+  // Genesis members — violet glow ring
+  .topic-list-item .posters a[data-group="genesis_arche"] img.avatar,
+  .topic-list-item .posters .group-genesis_arche img.avatar {
+    border-color: var(--erebyx-violet-light);
+    box-shadow: 0 0 6px rgba(196, 181, 253, 0.45);
+  }
+  // Reply count — monospace, brightens when high
+  .num.posts, .num.replies, .posts-count {
+    font-family: var(--erebyx-font-mono);
+    font-size: 0.85rem;
+    color: rgba(226, 232, 240, 0.65);
+    letter-spacing: 0.02em;
+    a { color: inherit; }
+    &.heatmap-high { color: var(--erebyx-violet-light); font-weight: 600; }
+  }
+  .activity {
+    font-family: var(--erebyx-font-mono);
+    font-size: 0.78rem;
+    color: rgba(196, 181, 253, 0.55);
+  }
+}
+// Pinned — gold accent + 6s shimmer (motion-reduced safe via _motion.scss)
+.topic-list-item.pinned,
+.topic-list-item[data-pinned="true"] {
+  position: relative;
+  background: linear-gradient(90deg,
+    rgba(212, 164, 55, 0.06) 0%,
+    rgba(15, 15, 28, 0.4) 18%,
+    rgba(15, 15, 28, 0.4) 100%);
+  border-left: 2px solid var(--erebyx-gold);
+  .main-link a.title { color: #f1f5f9; }
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(212, 164, 55, 0.04) 50%,
+      transparent 100%);
+    pointer-events: none;
+    animation: erebyx-pin-shimmer 6s ease-in-out infinite;
+  }
+}
+@keyframes erebyx-pin-shimmer {
+  0%, 100% { opacity: 0.4; }
+  50%      { opacity: 1; }
+}
+// Solved — subtle gold checkmark
+.topic-list-item .topic-statuses .solved,
+.topic-statuses .topic-status.solved,
+.topic-status.fa-check-square {
+  color: var(--erebyx-gold);
+  filter: drop-shadow(0 0 4px rgba(212, 164, 55, 0.4));
+  font-size: 0.95em;
+}
+// Voted (Feature Requests) — violet pulse on count
+.topic-list-item .topic-list-data.votes,
+.topic-list-item .vote-count,
+.topic-list-item .num.votes {
+  font-family: var(--erebyx-font-mono);
+  color: var(--erebyx-violet-light);
+  &.has-votes,
+  &[data-has-votes="true"] {
+    background: rgba(123, 47, 190, 0.18);
+    border-radius: 12px;
+    padding: 0.15em 0.55em;
+    animation: erebyx-vote-pulse 3.5s ease-in-out infinite;
+  }
+}
+@keyframes erebyx-vote-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(123, 47, 190, 0.0); }
+  50%      { box-shadow: 0 0 12px 2px rgba(123, 47, 190, 0.35); }
+}

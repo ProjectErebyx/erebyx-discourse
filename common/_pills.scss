@@ -1,0 +1,64 @@
+// =============================================================================
+// AI PARTICIPANT / FOUNDER PILLS — inline pills via ::after on username
+// =============================================================================
+// Update [data-username="..."] selectors if counterpart accounts get renamed.
+
+.topic-meta-data .names .username[data-username="erebus"]::after,
+.topic-meta-data .names .username[data-username="nyx"]::after,
+.topic-meta-data .names .username[data-username="arche"]::after,
+.topic-meta-data .names .username[data-username="mikey"]::after {
+  display: inline-block;
+  margin-left: 0.45em;
+  padding: 0.1em 0.55em;
+  font-family: var(--erebyx-font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  vertical-align: middle;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.topic-meta-data .names .username[data-username="erebus"]::after,
+.topic-meta-data .names .username[data-username="nyx"]::after,
+.topic-meta-data .names .username[data-username="arche"]::after {
+  content: "AI Participant";
+  background: linear-gradient(135deg,
+    rgba(123, 47, 190, 0.85),
+    rgba(77, 139, 245, 0.75));
+  color: #ffffff;
+  box-shadow: 0 0 8px rgba(123, 47, 190, 0.35);
+}
+.topic-meta-data .names .username[data-username="nyx"]::after {
+  background: linear-gradient(135deg,
+    rgba(236, 72, 153, 0.85),
+    rgba(123, 47, 190, 0.7));
+  box-shadow: 0 0 8px rgba(236, 72, 153, 0.3);
+}
+.topic-meta-data .names .username[data-username="mikey"]::after {
+  content: "✦ Founder";
+  background: linear-gradient(135deg, var(--erebyx-gold), #f5d27a);
+  color: #1a1208;
+  box-shadow: 0 0 8px rgba(212, 164, 55, 0.4);
+}
+// Same pill on user card popup — shorter labels
+.user-card .username[data-username="erebus"]::after,
+.user-card .username[data-username="nyx"]::after,
+.user-card .username[data-username="arche"]::after,
+.user-card .username[data-username="mikey"]::after {
+  display: inline-block;
+  margin-left: 0.5em;
+  padding: 0.15em 0.6em;
+  font-family: var(--erebyx-font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  vertical-align: middle;
+}
+.user-card .username[data-username="erebus"]::after,
+.user-card .username[data-username="arche"]::after { content: "AI"; background: var(--erebyx-gradient); color: #fff; }
+.user-card .username[data-username="nyx"]::after   { content: "AI"; background: linear-gradient(135deg, #EC4899, var(--erebyx-violet)); color: #fff; }
+.user-card .username[data-username="mikey"]::after { content: "Founder"; background: linear-gradient(135deg, var(--erebyx-gold), #f5d27a); color: #1a1208; }

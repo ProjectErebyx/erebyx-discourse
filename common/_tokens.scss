@@ -197,7 +197,7 @@
   --erebyx-duration-twinkle: 6s;      // Ambient pulses (pinned topics, glow shimmer)
 
   // Easings — feel matters. Tune deliberately.
-  --erebyx-ease:             cubic-bezier(0.20, 0.80, 0.20, 1);     // Default — smooth ease-out
+  --erebyx-ease:             cubic-bezier(0.22, 1, 0.36, 1);        // Default — strong ease-out (matches site)
   --erebyx-ease-in:          cubic-bezier(0.40, 0.00, 1.00, 1.00);
   --erebyx-ease-out:         cubic-bezier(0.00, 0.00, 0.20, 1.00);
   --erebyx-ease-in-out:      cubic-bezier(0.40, 0.00, 0.20, 1.00);
@@ -207,6 +207,43 @@
   --erebyx-transition:       all var(--erebyx-duration-medium) var(--erebyx-ease);
   --erebyx-transition-fast:  all var(--erebyx-duration-fast)   var(--erebyx-ease);
   --erebyx-transition-slow:  all var(--erebyx-duration-slow)   var(--erebyx-ease);
+
+  // Legacy compound tokens — used by many existing rules. Prefer the
+  // duration+easing pair above when writing new code.
+  --erebyx-fast:             200ms var(--erebyx-ease);
+  --erebyx-slow:             400ms var(--erebyx-ease);
+
+  // ===========================================================================
+  // GLOW SHADOWS — pre-composed for category + topic-list rules
+  // ===========================================================================
+
+  --glow-soft:   0 0 calc(var(--erebyx-glow) * 1px)   rgba(123, 47, 190, 0.18);
+  --glow-mid:    0 0 calc(var(--erebyx-glow) * 1.6px) rgba(123, 47, 190, 0.32);
+  --glow-strong: 0 4px 24px rgba(123, 47, 190, 0.45),
+                 0 0 calc(var(--erebyx-glow) * 2px)   rgba(196, 181, 253, 0.25);
+  --glow-gold:   0 0 calc(var(--erebyx-glow) * 1.4px) rgba(212, 164, 55, 0.35);
+
+  // ===========================================================================
+  // CATEGORY ACCENTS — per-category border + sigil tint colors
+  // ===========================================================================
+  //
+  // Each category in arche.erebyx.com has a signature accent color. Tuning
+  // these here propagates to category boxes, sidebar, topic list, etc.
+
+  --cat-genesis-lounge:  var(--erebyx-gold,         #D4A437);
+  --cat-erebus-build:    var(--erebyx-blue,         #4D8BF5);
+  --cat-nyx-corner:                                 #EC4899;
+  --cat-arche-notes:                                #a78bfa;
+  --cat-start-here:      var(--erebyx-violet-light, #c4b5fd);
+  --cat-announcements:   var(--erebyx-violet,       #7B2FBE);
+  --cat-feature-req:                                #60a5fa;
+  --cat-bug-reports:                                #f87171;
+
+  // ===========================================================================
+  // CONTENT WIDTH
+  // ===========================================================================
+
+  --erebyx-read-width:       46rem;  // Reading measure — matches erebyx.com blog
 
   // ===========================================================================
   // Z-INDEX — stacking discipline

@@ -1,0 +1,53 @@
+// =============================================================================
+// LOGIN + SIGNUP — full-page auth screens
+// =============================================================================
+// Radial violet+blue glow behind a glass-card form. Gradient-text headings.
+
+.login-fullpage,
+.signup-fullpage,
+body.login-page {
+  background:
+    radial-gradient(circle at 25% 15%, rgba(123, 47, 190, 0.15), transparent 45%),
+    radial-gradient(circle at 80% 85%, rgba(77, 139, 245, 0.12), transparent 50%),
+    #020617;
+  .login-content,
+  .signup-content,
+  .login-welcome {
+    position: relative;
+    max-width: 26rem;
+    margin: 4rem auto;
+    padding: 2.25rem 2rem;
+    background: rgba(10, 10, 20, 0.85);
+    border: 1px solid rgba(123, 47, 190, 0.25);
+    border-radius: 14px;
+    backdrop-filter: blur(20px) saturate(150%);
+    box-shadow: var(--glow-strong);
+    h1, h2 {
+      font-family: var(--erebyx-font-display);
+      font-size: 1.5rem;
+      letter-spacing: -0.01em;
+      text-align: center;
+      background: var(--erebyx-gradient);
+      -webkit-background-clip: text;
+              background-clip: text;
+      color: transparent;
+      margin-bottom: 0.75rem;
+    }
+    .login-subheader, .signup-subheader {
+      text-align: center;
+      color: rgba(226, 232, 240, 0.7);
+      font-size: 0.95rem;
+      margin-bottom: 1.75rem;
+    }
+  }
+}
+// Subtle glow ring behind form
+.login-fullpage .login-content::before,
+.signup-fullpage .signup-content::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(circle, rgba(123, 47, 190, 0.12) 0%, transparent 70%);
+  z-index: -1;
+  filter: blur(40px);
+}

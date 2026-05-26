@@ -1,0 +1,46 @@
+// =============================================================================
+// SIDEBAR — left-nav primary navigation
+// =============================================================================
+// Cosmic gradient bg, monospace section headers, violet active-state stripe.
+
+.sidebar-wrapper, #d-sidebar {
+  background: linear-gradient(180deg, rgba(10,10,20,0.95) 0%, rgba(2,6,23,1) 100%);
+  border-right: 1px solid rgba(123, 47, 190, 0.12);
+}
+.sidebar-section-header,
+.sidebar-section-header-text {
+  font-family: var(--erebyx-font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(196, 181, 253, 0.55);
+  font-weight: 500;
+}
+.sidebar-section-link-wrapper .sidebar-section-link,
+.sidebar-row {
+  border-radius: 6px;
+  padding: 0.45rem 0.65rem;
+  margin: 1px 0;
+  color: rgba(226, 232, 240, 0.78);
+  font-family: var(--erebyx-font-body);
+  font-size: 0.95rem;
+  transition: background var(--erebyx-fast), color var(--erebyx-fast);
+  &:hover {
+    background: rgba(123, 47, 190, 0.12);
+    color: #ffffff;
+  }
+  &.active, &--active, &[aria-current="page"] {
+    background: rgba(30, 27, 75, 0.7);
+    color: #ffffff;
+    border-left: 2px solid var(--erebyx-violet);
+    padding-left: calc(0.65rem - 2px);
+    .sidebar-section-link-prefix { color: var(--erebyx-violet-light); }
+  }
+}
+// Sigil glyph in sidebar category names
+.sidebar-section-link[data-link-name*="category"]
+  .sidebar-section-link-content-text::first-letter {
+  font-size: 1.25em;
+  color: var(--erebyx-violet-light);
+  margin-right: 0.15em;
+}

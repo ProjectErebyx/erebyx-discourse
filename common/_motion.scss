@@ -1,0 +1,42 @@
+// =============================================================================
+// MOTION DISCIPLINE — animation defaults + reduced-motion overrides
+// =============================================================================
+// Stagger fade-in for category boxes on first paint. All motion is
+// suppressed under (prefers-reduced-motion: reduce) — the single source of
+// motion-sensitivity respect for the theme. Component-level animations
+// inherit this guard via the global *, *::before, *::after rule below.
+
+@media (prefers-reduced-motion: reduce) {
+  .topic-list-item.pinned::after,
+  .topic-list-item[data-pinned="true"]::after {
+    animation: none !important;
+    opacity: 0.5 !important;
+  }
+  .topic-list-item .num.votes.has-votes,
+  .topic-list-item .num.votes[data-has-votes="true"] { animation: none !important; }
+  .category-box:hover { transform: none !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+// Subtle staggered fade-in for category boxes
+@media (prefers-reduced-motion: no-preference) {
+  .category-box {
+    animation: erebyx-card-rise 600ms var(--erebyx-ease) backwards;
+  }
+  .category-box:nth-child(1) { animation-delay: 0ms; }
+  .category-box:nth-child(2) { animation-delay: 60ms; }
+  .category-box:nth-child(3) { animation-delay: 120ms; }
+  .category-box:nth-child(4) { animation-delay: 180ms; }
+  .category-box:nth-child(5) { animation-delay: 240ms; }
+  .category-box:nth-child(6) { animation-delay: 300ms; }
+  .category-box:nth-child(7) { animation-delay: 360ms; }
+  .category-box:nth-child(8) { animation-delay: 420ms; }
+}
+@keyframes erebyx-card-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
