@@ -1,0 +1,104 @@
+// =============================================================================
+// TIER-25 — FEATURE IMPACT LABEL GEOMETRY FIX
+// =============================================================================
+// Extracted from common.scss for organizational clarity. @import position is
+// preserved so CSS cascade order matches the original inline placement.
+// =============================================================================
+
+// =============================================================================
+// EREBYX ARCHE — TIER-25 FEATURE IMPACT LABEL GEOMETRY FIX
+// Live QA target: the impact chips were visually right, but inherited the older
+// card hover pseudo geometry. This keeps them compact, centered, and intentional.
+// =============================================================================
+
+body.category-feature-requests:not(.archetype-regular):not([data-erebyx-route="discovery"]) {
+  .category-title-contents {
+    padding-top: clamp(1.45rem, 2.6vw, 1.9rem);
+  }
+
+  .category-title-contents::before {
+    position: absolute !important;
+    inset: auto !important;
+    left: 50% !important;
+    top: 0 !important;
+    right: auto !important;
+    bottom: auto !important;
+    z-index: 3;
+    display: inline-flex !important;
+    width: fit-content !important;
+    min-width: 0 !important;
+    max-width: calc(100vw - 2rem) !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    margin: 0 !important;
+    padding: 0.24rem 0.62rem !important;
+    pointer-events: none !important;
+    opacity: 1 !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .list-container .topic-list tr.topic-list-item::before {
+    position: absolute !important;
+    inset: auto !important;
+    left: auto !important;
+    right: clamp(0.9rem, 1.8vw, 1.2rem) !important;
+    top: clamp(0.9rem, 1.8vw, 1.1rem) !important;
+    bottom: auto !important;
+    z-index: 4;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: fit-content !important;
+    min-width: 0 !important;
+    max-width: calc(100% - 1.8rem) !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    padding: 0.2rem 0.5rem !important;
+    pointer-events: none !important;
+    opacity: 0.94 !important;
+    transform: none !important;
+    transition:
+      opacity 180ms var(--erebyx-ease-out),
+      border-color 180ms var(--erebyx-ease-out),
+      color 180ms var(--erebyx-ease-out) !important;
+    box-shadow: 0 10px 32px -26px rgba(0, 0, 0, 0.96);
+  }
+
+  .list-container .topic-list tr.topic-list-item:hover::before,
+  .list-container .topic-list tr.topic-list-item:focus-within::before {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .list-container .topic-list tr.topic-list-item:has(a[href*="what-were-voting-on-next"])::before {
+    border-color: rgba(250, 178, 50, 0.3) !important;
+    background:
+      linear-gradient(90deg, rgba(250, 178, 50, 0.14), rgba(117, 3, 224, 0.08)),
+      rgba(3, 7, 18, 0.62) !important;
+    color: rgba(250, 218, 151, 0.9) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  body.category-feature-requests:not(.archetype-regular):not([data-erebyx-route="discovery"]) {
+    .category-title-contents {
+      padding-top: 1.35rem;
+    }
+
+    .category-title-contents::before {
+      max-width: calc(100vw - 1.25rem) !important;
+      padding-inline: 0.54rem !important;
+      font-size: 0.6rem !important;
+    }
+
+    .list-container .topic-list tr.topic-list-item::before {
+      right: 0.72rem !important;
+      top: 0.72rem !important;
+      max-width: calc(100% - 1.44rem) !important;
+      font-size: 0.54rem !important;
+    }
+  }
+}
+

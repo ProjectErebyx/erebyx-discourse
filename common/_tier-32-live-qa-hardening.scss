@@ -1,0 +1,228 @@
+// =============================================================================
+// TIER-32 — LIVE QA HARDENING
+// =============================================================================
+// Extracted from common.scss for organizational clarity. @import position is
+// preserved so CSS cascade order matches the original inline placement.
+// =============================================================================
+
+// =============================================================================
+// EREBYX ARCHE — TIER-32 LIVE QA HARDENING
+// Final cascade layer for the live QA issues: visible post body stage, member
+// cards instead of a table, and nav fit across the desktop breakpoint range.
+// =============================================================================
+
+.erebyx-nav {
+  .erebyx-nav__inner {
+    padding-inline: clamp(0.7rem, 1.7vw, 1.6rem) !important;
+  }
+
+  .erebyx-nav__right {
+    padding-right: clamp(0.6rem, 1.5vw, 1.2rem) !important;
+    gap: clamp(0.42rem, 1vw, 0.82rem) !important;
+  }
+
+  .erebyx-nav__link {
+    font-size: clamp(0.58rem, 0.84vw, 0.72rem) !important;
+    letter-spacing: clamp(0.08em, 0.36vw, 0.16em) !important;
+  }
+}
+
+@media (max-width: 980px) {
+  .erebyx-nav .erebyx-nav__right {
+    display: none !important;
+  }
+}
+
+body.archetype-regular {
+  #topic,
+  .topic-area,
+  .topic-area .posts-wrapper,
+  .posts-wrapper,
+  .container.posts {
+    box-sizing: border-box !important;
+    display: block !important;
+    width: var(--erebyx-stage-thread) !important;
+    max-width: var(--erebyx-stage-thread) !important;
+    min-width: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .topic-post,
+  article.topic-post,
+  .regular.contents,
+  .boxed.onscreen-post,
+  article.boxed[data-user-id] {
+    box-sizing: border-box !important;
+    display: block !important;
+    width: min(1280px, 100%) !important;
+    max-width: min(1280px, 100%) !important;
+    min-width: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #post_1.topic-post,
+  article.boxed#post_1 {
+    width: min(1320px, 100%) !important;
+    max-width: min(1320px, 100%) !important;
+  }
+
+  .topic-post > .row,
+  .topic-post > .post__row,
+  .boxed.onscreen-post > .row,
+  .boxed.onscreen-post > .post__row,
+  article.boxed[data-user-id] > .row,
+  article.boxed[data-user-id] > .post__row {
+    box-sizing: border-box !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .regular .topic-body,
+  .topic-post .topic-body,
+  .topic-post .post__body.topic-body,
+  .boxed.onscreen-post .topic-body,
+  article.boxed[data-user-id] .topic-body {
+    box-sizing: border-box !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+.users-page {
+  .directory-table {
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  .directory-table thead {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    white-space: nowrap !important;
+  }
+
+  .directory-table tbody {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 620px), 1fr)) !important;
+    gap: clamp(0.8rem, 1.6vw, 1.15rem) !important;
+  }
+
+  .directory-table tbody tr {
+    position: relative;
+    display: grid !important;
+    grid-template-columns: minmax(13rem, 1.25fr) repeat(3, minmax(5.4rem, 0.7fr)) !important;
+    grid-template-areas:
+      "identity received given visits"
+      "identity topics replies read" !important;
+    gap: 0.58rem !important;
+    align-items: stretch !important;
+    padding: clamp(0.82rem, 1.6vw, 1.05rem) !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(250, 178, 50, 0.18) !important;
+    outline: 0 !important;
+    background:
+      var(--erebyx-marble-veins-dark),
+      radial-gradient(circle at 0% 12%, rgba(250, 178, 50, 0.18), transparent 24%),
+      linear-gradient(135deg, rgba(117, 3, 224, 0.12), rgba(68, 146, 252, 0.07) 42%, rgba(3, 7, 18, 0.82)) !important;
+    background-size: 620px 620px, auto, auto !important;
+  }
+
+  .directory-table tbody tr::before {
+    content: "Genesis founder";
+    position: absolute;
+    right: clamp(0.82rem, 1.4vw, 1rem);
+    top: clamp(0.72rem, 1.2vw, 0.9rem);
+    z-index: 1;
+    padding: 0.18rem 0.48rem;
+    border-radius: 999px;
+    border: 1px solid rgba(250, 178, 50, 0.22);
+    background: rgba(3, 7, 18, 0.58);
+    color: rgba(250, 218, 151, 0.86);
+    font-family: var(--erebyx-font-mono) !important;
+    font-size: 0.58rem !important;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .directory-table tbody tr > * {
+    box-sizing: border-box !important;
+    display: grid !important;
+    align-content: center !important;
+    justify-items: start !important;
+    min-width: 0 !important;
+    min-height: 4.25rem !important;
+    padding: 0.58rem 0.68rem !important;
+    border: 1px solid rgba(148, 163, 184, 0.09) !important;
+    border-radius: 8px !important;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(68, 146, 252, 0.025)),
+      rgba(3, 7, 18, 0.38) !important;
+  }
+
+  .directory-table tbody tr > :first-child {
+    grid-area: identity;
+    padding-right: clamp(3.8rem, 8vw, 5rem) !important;
+    border-color: rgba(250, 178, 50, 0.16) !important;
+    background:
+      radial-gradient(circle at 0% 50%, rgba(250, 178, 50, 0.12), transparent 34%),
+      rgba(3, 7, 18, 0.46) !important;
+  }
+
+  .directory-table tbody tr > :nth-child(2) { grid-area: received; }
+  .directory-table tbody tr > :nth-child(3) { grid-area: given; }
+  .directory-table tbody tr > :nth-child(4) { grid-area: topics; }
+  .directory-table tbody tr > :nth-child(5) { grid-area: replies; }
+  .directory-table tbody tr > :nth-child(6) { display: none !important; }
+  .directory-table tbody tr > :nth-child(7) { grid-area: read; }
+  .directory-table tbody tr > :nth-child(8) { grid-area: visits; }
+
+  .directory-table tbody tr > :not(:first-child) {
+    justify-items: center !important;
+    text-align: center !important;
+    color: rgba(226, 232, 240, 0.94) !important;
+    font-family: var(--erebyx-font-mono) !important;
+    font-size: clamp(1.05rem, 2.1vw, 1.35rem) !important;
+    line-height: 1.1 !important;
+  }
+
+  .directory-table tbody tr > :not(:first-child)::before {
+    display: block;
+    margin-bottom: 0.34rem;
+    color: rgba(191, 219, 254, 0.58);
+    font-family: var(--erebyx-font-mono) !important;
+    font-size: 0.55rem !important;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .directory-table tbody tr > :nth-child(2)::before { content: "received"; }
+  .directory-table tbody tr > :nth-child(3)::before { content: "given"; }
+  .directory-table tbody tr > :nth-child(4)::before { content: "topics"; }
+  .directory-table tbody tr > :nth-child(5)::before { content: "replies"; }
+  .directory-table tbody tr > :nth-child(7)::before { content: "read"; }
+  .directory-table tbody tr > :nth-child(8)::before { content: "visits"; }
+}
+
+@media (max-width: 900px) {
+  .users-page .directory-table tbody tr {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-areas:
+      "identity identity"
+      "received given"
+      "topics replies"
+      "read visits" !important;
+  }
+}
+

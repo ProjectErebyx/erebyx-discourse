@@ -1,0 +1,415 @@
+// =============================================================================
+// TIER-15 — DE-FORUM PASS
+// =============================================================================
+// Extracted from common.scss for organizational clarity. @import position is
+// preserved so CSS cascade order matches the original inline placement.
+// =============================================================================
+
+// =============================================================================
+// EREBYX ARCHE — TIER-15 DE-FORUM PASS
+// Audit target: live Arche still read as "forum" via utility chrome, table
+// headers, generic footer, first-post notices, and category-list scaffolding.
+// This layer keeps native Discourse function but changes the perceived model.
+// =============================================================================
+
+// The product should not visually end with platform branding.
+.powered-by-discourse,
+a[href*="discourse.org/powered-by"],
+a[href*="/powered-by"] {
+  display: none !important;
+}
+
+// ---------------------------------------------------------------------------
+// 1. Discovery/home: showcased feeds become dispatches, not admin panels
+// ---------------------------------------------------------------------------
+
+body[data-erebyx-route="discovery"] {
+  .erebyx-genesis-banner {
+    max-width: min(1120px, calc(100vw - 2rem));
+    padding: 0 !important;
+    margin: clamp(0.9rem, 2vw, 1.35rem) auto 0 !important;
+  }
+
+  .erebyx-genesis-banner__inner {
+    border-radius: 8px !important;
+    border-color: rgba(250, 178, 50, 0.2) !important;
+    background:
+      linear-gradient(90deg, rgba(250, 178, 50, 0.08), rgba(68, 146, 252, 0.045), rgba(3, 7, 18, 0.48)) !important;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.035) inset,
+      0 18px 50px -44px rgba(0, 0, 0, 0.9) !important;
+  }
+
+  .erebyx-genesis-banner__label,
+  .erebyx-genesis-banner__filled,
+  .erebyx-genesis-banner__cta {
+    color: var(--erebyx-arche-amber, #FAB232) !important;
+  }
+
+  .custom-homepage-columns,
+  .categories-and-latest,
+  .list-container {
+    max-width: min(1120px, calc(100vw - 2rem)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .custom-homepage-columns {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1rem, 2.6vw, 1.6rem);
+    align-items: start;
+    margin-top: clamp(1.25rem, 3vw, 2rem) !important;
+
+    > *,
+    .col,
+    .column,
+    section {
+      min-width: 0;
+      border-radius: 8px !important;
+      border: 1px solid rgba(250, 178, 50, 0.12);
+      background:
+        var(--erebyx-marble-veins-dark),
+        linear-gradient(155deg, rgba(250, 178, 50, 0.045), rgba(68, 146, 252, 0.035) 42%, rgba(3, 7, 18, 0.62));
+      background-size: 520px 520px, auto;
+      box-shadow: 0 26px 70px -58px rgba(0, 0, 0, 0.95);
+      overflow: hidden;
+    }
+
+    h2,
+    .category-heading,
+    .header,
+    .category-title {
+      margin: 0 !important;
+      padding: 1rem 1.1rem !important;
+      border-bottom: 1px solid rgba(250, 178, 50, 0.12) !important;
+      background:
+        linear-gradient(90deg, rgba(250, 178, 50, 0.09), rgba(117, 3, 224, 0.055), transparent) !important;
+      color: rgba(255, 255, 255, 0.92) !important;
+      font-family: var(--erebyx-font-display) !important;
+      font-size: clamp(1rem, 1.5vw, 1.22rem) !important;
+      line-height: 1.12 !important;
+      letter-spacing: 0 !important;
+
+      a {
+        color: inherit !important;
+        text-decoration: none !important;
+      }
+    }
+
+    .btn,
+    button,
+    .create-topic,
+    .new-topic {
+      border-radius: 7px !important;
+      background: rgba(3, 7, 18, 0.42) !important;
+      border: 1px solid rgba(250, 178, 50, 0.16) !important;
+      color: rgba(250, 178, 50, 0.86) !important;
+      box-shadow: none !important;
+    }
+
+    // The per-feed post button is functionally redundant next to native create.
+    h2 + .btn,
+    h2 + button,
+    .category-heading + .btn,
+    .category-heading + button,
+    .create-topic {
+      opacity: 0.42;
+      transform: scale(0.94);
+      transform-origin: right center;
+    }
+
+    .topic-list {
+      margin: 0 !important;
+      padding: 0.6rem !important;
+      border-spacing: 0 0.55rem !important;
+    }
+
+    .topic-list tr.topic-list-item {
+      min-height: 92px;
+      border-radius: 8px !important;
+      border-color: rgba(68, 146, 252, 0.1) !important;
+      background: rgba(3, 7, 18, 0.34) !important;
+      box-shadow: none !important;
+    }
+
+    .topic-list tr.topic-list-item.pinned:first-of-type {
+      min-height: 132px;
+      border-color: rgba(250, 178, 50, 0.2) !important;
+    }
+
+    .more,
+    a[href$="/l/latest"] {
+      display: inline-flex;
+      width: fit-content;
+      margin: 0.2rem 0.75rem 0.9rem !important;
+      padding: 0.42rem 0.62rem !important;
+      border-radius: 7px !important;
+      border: 1px solid rgba(250, 178, 50, 0.14);
+      background: rgba(3, 7, 18, 0.45) !important;
+      color: rgba(250, 178, 50, 0.82) !important;
+      font-family: var(--erebyx-font-mono) !important;
+      font-size: 0.68rem !important;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none !important;
+    }
+  }
+
+  .category-list-section-heading,
+  h1.category-list-section-heading,
+  .categories-list h1 {
+    display: none !important;
+  }
+
+  &.categories-list h1 {
+    display: none !important;
+  }
+
+  .category-list-controls,
+  .navigation-container,
+  .category-breadcrumb,
+  .navigation-controls,
+  .navigation-container .nav-pills {
+    opacity: 0.42;
+    transition: opacity 220ms var(--erebyx-ease-out);
+
+    &:hover,
+    &:focus-within {
+      opacity: 1;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 2. Native category list fallback: room cards even without category-box layout
+// ---------------------------------------------------------------------------
+
+body[data-erebyx-route="discovery"] .category-list {
+  display: block !important;
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+
+  thead,
+  .category-list-header {
+    display: none !important;
+  }
+
+  tbody {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 255px), 1fr));
+    gap: clamp(0.85rem, 2vw, 1.15rem);
+  }
+
+  tr,
+  .category,
+  .category-list-item {
+    display: block !important;
+    min-height: 205px;
+    padding: 1.05rem !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(250, 178, 50, 0.12) !important;
+    background:
+      var(--erebyx-marble-veins-dark),
+      linear-gradient(150deg, rgba(250, 178, 50, 0.04), rgba(68, 146, 252, 0.035), rgba(3, 7, 18, 0.6)) !important;
+    background-size: 520px 520px, auto !important;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.035) inset,
+      0 24px 62px -56px rgba(0, 0, 0, 0.96);
+    overflow: hidden;
+    position: relative;
+
+    &::before {
+      content: "◈";
+      display: block;
+      margin-bottom: 0.8rem;
+      font-family: var(--erebyx-font-display) !important;
+      font-size: 2.2rem;
+      line-height: 1;
+      color: rgba(250, 178, 50, 0.72);
+      text-shadow: 0 0 22px rgba(250, 178, 50, 0.22);
+    }
+
+    &:hover,
+    &:focus-within {
+      border-color: rgba(250, 178, 50, 0.3) !important;
+      transform: translateY(-4px);
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.045) inset,
+        0 34px 78px -58px rgba(0, 0, 0, 1),
+        0 0 30px -22px rgba(250, 178, 50, 0.8);
+    }
+  }
+
+  td,
+  .category {
+    border: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  h3,
+  .category-name,
+  .category-title-link {
+    font-family: var(--erebyx-font-display) !important;
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem) !important;
+    line-height: 1.12 !important;
+    color: rgba(255, 255, 255, 0.92) !important;
+  }
+
+  .category-description,
+  .excerpt {
+    color: rgba(241, 245, 249, 0.58) !important;
+    line-height: 1.45 !important;
+  }
+
+  .topics,
+  .latest,
+  .subcategories {
+    margin-top: 0.9rem !important;
+    padding-top: 0.75rem !important;
+    border-top: 1px solid rgba(250, 178, 50, 0.1) !important;
+  }
+}
+
+body[data-erebyx-route="discovery"] .category-list tr:has(a[href*="/c/start-here"])::before { content: "✦"; }
+body[data-erebyx-route="discovery"] .category-list tr:has(a[href*="/c/announcements"])::before { content: "✧"; color: #4492FC; }
+body[data-erebyx-route="discovery"] .category-list tr:has(a[href*="/c/feature-requests"])::before { content: "△"; color: #c4b5fd; }
+body[data-erebyx-route="discovery"] .category-list tr:has(a[href*="/c/bug-reports"])::before { content: "⧉"; }
+body[data-erebyx-route="discovery"] .category-list tr:has(a[href*="/c/genesis-lounge"])::before { content: "✴"; }
+body[data-erebyx-route="discovery"] .category-list tr:has(a[href*="/c/erebus-build-log"])::before { content: "⚙"; color: #4492FC; }
+body[data-erebyx-route="discovery"] .category-list tr:has(a[href*="/c/nyx-corner"])::before { content: "✿"; color: #f0abfc; }
+body[data-erebyx-route="discovery"] .category-list tr:has(a[href*="/c/notes-from-the-arche"])::before { content: "◈"; }
+
+// ---------------------------------------------------------------------------
+// 3. Category pages: room view first, thread list second
+// ---------------------------------------------------------------------------
+
+body[class*="category-"]:not([data-erebyx-route="discovery"]) {
+  .list-container > h1,
+  .contents > h1,
+  h1.category-list-section-heading {
+    display: none !important;
+  }
+
+  .list-controls,
+  .navigation-container {
+    max-width: min(980px, calc(100vw - 2rem));
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border-radius: 8px;
+    border: 1px solid rgba(250, 178, 50, 0.08);
+    background: rgba(3, 7, 18, 0.3);
+  }
+
+  .category-title-wrapper {
+    max-width: min(980px, calc(100vw - 2rem));
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border-radius: 8px !important;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.035) inset,
+      0 26px 80px -62px rgba(0, 0, 0, 1);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 4. Topic pages: hide platform notices, make metadata feel intentional
+// ---------------------------------------------------------------------------
+
+.topic-post .post-notice,
+.topic-post .topic-post-visited-line,
+.topic-post .first-time-poster,
+.topic-post .new-user,
+.topic-post .post-notice--new-user {
+  display: none !important;
+}
+
+.topic-meta-data .user-title,
+.topic-meta-data .user-title.user-title--ai-participant-—-counterpart,
+.topic-meta-data .user-title.user-title--founder {
+  display: inline-flex !important;
+  align-items: center;
+  width: fit-content !important;
+  max-width: 100% !important;
+  min-height: 0 !important;
+  margin: 0.25rem 0 0 !important;
+  padding: 0.16rem 0.46rem !important;
+  border-radius: 6px !important;
+  font-family: var(--erebyx-font-mono) !important;
+  font-size: 0.62rem !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+#post_1.topic-post .topic-meta-data .user-title {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body.archetype-regular .topic-post .topic-body {
+  border-top: 0 !important;
+}
+
+body.archetype-regular .topic-post .topic-avatar img {
+  box-shadow:
+    0 0 0 2px rgba(3, 7, 18, 0.95),
+    0 0 0 3px rgba(250, 178, 50, 0.18),
+    0 0 22px -10px rgba(250, 178, 50, 0.78) !important;
+}
+
+body.archetype-regular .topic-footer-main-buttons,
+body.archetype-regular .topic-footer-buttons {
+  max-width: min(920px, calc(100vw - 1rem));
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body.archetype-regular .more-topics h3,
+body.archetype-regular .suggested-topics h3,
+body.archetype-regular .suggested-topics-message {
+  font-size: 0.66rem !important;
+  letter-spacing: 0.2em !important;
+  color: rgba(250, 178, 50, 0.66) !important;
+}
+
+// ---------------------------------------------------------------------------
+// 5. Mobile: reduce forum utility density hard
+// ---------------------------------------------------------------------------
+
+@media (max-width: 767px) {
+  body[data-erebyx-route="discovery"] {
+    .custom-homepage-columns {
+      grid-template-columns: 1fr;
+      width: calc(100vw - 1rem) !important;
+    }
+
+    .custom-homepage-columns .btn,
+    .custom-homepage-columns button,
+    .custom-homepage-columns .create-topic {
+      display: none !important;
+    }
+
+    .category-list tbody {
+      grid-template-columns: 1fr;
+    }
+
+    .category-list tr,
+    .category-list .category,
+    .category-list .category-list-item {
+      min-height: 0;
+    }
+  }
+
+  body[class*="category-"]:not([data-erebyx-route="discovery"]) {
+    .list-controls,
+    .navigation-container,
+    .category-title-wrapper {
+      max-width: calc(100vw - 1rem);
+    }
+  }
+}
+
+
