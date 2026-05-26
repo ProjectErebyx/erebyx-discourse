@@ -56,50 +56,6 @@
   </section>
 </script>
 
-<!--
-  Tier 31 route stabilizer:
-  Keep SPA/back-button category and discovery routes anchored at the authored
-  Arche stage. Topic pages are excluded so Discourse can still honor unread
-  and last-reply navigation.
--->
-<script>
-  (function () {
-    if (window.__erebyxTier31RouteStabilizer) return;
-    window.__erebyxTier31RouteStabilizer = true;
-
-    var lastPath = window.location.pathname || "/";
-    var CATEGORY_PATH = /^\/c(\/|$)/;
-
-    function shouldStabilize(path) {
-      if (!path) return false;
-      if (path === "/" || path === "/latest" || path === "/u") return true;
-      return CATEGORY_PATH.test(path);
-    }
-
-    function stabilizeRoute() {
-      var path = window.location.pathname || "/";
-      var changed = path !== lastPath;
-      lastPath = path;
-
-      if (!changed || window.location.hash || !shouldStabilize(path)) return;
-
-      window.requestAnimationFrame(function () {
-        window.setTimeout(function () {
-          var outlet = document.querySelector("#main-outlet");
-          var top = outlet ? Math.max(0, outlet.getBoundingClientRect().top + window.pageYOffset - 88) : 0;
-          window.scrollTo({ top: top, left: 0, behavior: "auto" });
-        }, 80);
-      });
-    }
-
-    document.addEventListener("discourse:page-changed", stabilizeRoute);
-    document.addEventListener("page:changed", stabilizeRoute);
-    window.addEventListener("popstate", function () {
-      window.setTimeout(stabilizeRoute, 80);
-    });
-  })();
-</script>
-
 <script>
   /*
    * Erebyx Arche — Constellation hero bootstrap
@@ -598,15 +554,15 @@
       <!-- RIGHT: impact/action rail + social rail (paths verbatim from siteSocialLinks.ts) -->
       <div class="erebyx-nav__right">
         <a
-          href="/c/feature-requests"
+          href="/c/field-notes/6"
           class="erebyx-nav__link erebyx-nav__link--desktop-only"
-          title="Feature Requests"
+          title="Field Notes"
         >
-          Feature Requests
+          Field Notes
         </a>
 
         <a
-          href="/c/bug-reports"
+          href="/c/signal-room/9"
           class="erebyx-nav__link erebyx-nav__link--desktop-only"
           title="Bug reports and product signals"
         >
@@ -721,35 +677,35 @@
     </div>
 
     <nav class="erebyx-arche-map__rooms" aria-label="Arche rooms">
-      <a class="erebyx-arche-map__room erebyx-arche-map__room--start" href="/c/start-here">
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--start" href="/c/orientation/5">
         <span class="erebyx-arche-map__sigil" aria-hidden="true">✦</span>
         <span class="erebyx-arche-map__name">Start Here</span>
       </a>
-      <a class="erebyx-arche-map__room erebyx-arche-map__room--announcements" href="/c/announcements">
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--announcements" href="/c/general/4">
         <span class="erebyx-arche-map__sigil" aria-hidden="true">✧</span>
-        <span class="erebyx-arche-map__name">Announcements</span>
+        <span class="erebyx-arche-map__name">General</span>
       </a>
-      <a class="erebyx-arche-map__room erebyx-arche-map__room--features" href="/c/feature-requests">
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--features" href="/c/field-notes/6">
         <span class="erebyx-arche-map__sigil" aria-hidden="true">△</span>
-        <span class="erebyx-arche-map__name">Feature Requests</span>
+        <span class="erebyx-arche-map__name">Field Notes</span>
       </a>
-      <a class="erebyx-arche-map__room erebyx-arche-map__room--bugs" href="/c/bug-reports">
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--bugs" href="/c/signal-room/9">
         <span class="erebyx-arche-map__sigil" aria-hidden="true">⧉</span>
-        <span class="erebyx-arche-map__name">Bug Reports</span>
+        <span class="erebyx-arche-map__name">Signal Room</span>
       </a>
-      <a class="erebyx-arche-map__room erebyx-arche-map__room--genesis" href="/c/genesis-lounge">
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--genesis" href="/c/memory-work/7">
         <span class="erebyx-arche-map__sigil" aria-hidden="true">✴</span>
-        <span class="erebyx-arche-map__name">Genesis Lounge</span>
+        <span class="erebyx-arche-map__name">Memory Work</span>
       </a>
-      <a class="erebyx-arche-map__room erebyx-arche-map__room--erebus" href="/c/erebus-build-log">
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--erebus" href="/c/constellations/8">
         <span class="erebyx-arche-map__sigil" aria-hidden="true">⚙</span>
-        <span class="erebyx-arche-map__name">Erebus's Build Log</span>
+        <span class="erebyx-arche-map__name">Constellations</span>
       </a>
-      <a class="erebyx-arche-map__room erebyx-arche-map__room--nyx" href="/c/nyx-corner">
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--nyx" href="/c/general/4">
         <span class="erebyx-arche-map__sigil" aria-hidden="true">✿</span>
-        <span class="erebyx-arche-map__name">Nyx's Corner</span>
+        <span class="erebyx-arche-map__name">General</span>
       </a>
-      <a class="erebyx-arche-map__room erebyx-arche-map__room--arche" href="/c/notes-from-the-arche">
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--arche" href="/c/field-notes/6">
         <span class="erebyx-arche-map__sigil" aria-hidden="true">◈</span>
         <span class="erebyx-arche-map__name">Notes from the Arche</span>
       </a>
@@ -796,10 +752,10 @@
               if (nodes[i].tagName !== "BODY") nodes[i].textContent = n.toLocaleString();
             }
             document.querySelectorAll(".erebyx-genesis-banner__of").forEach(function (node) {
-              node.textContent = "of";
+              node.textContent = " of ";
             });
             document.querySelectorAll(".erebyx-genesis-banner__suffix").forEach(function (node) {
-              node.textContent = "seats lit";
+              node.textContent = " seats lit";
             });
           })
           .catch(function () { /* silent — banner keeps beta-live fallback */ });
@@ -925,14 +881,14 @@
         nav.setAttribute("aria-label", "Arche rooms");
 
         [
-          ["start", "✦", "Start Here", "/c/start-here"],
-          ["announcements", "✧", "Announcements", "/c/announcements"],
-          ["features", "△", "Feature Requests", "/c/feature-requests"],
-          ["bugs", "⧉", "Bug Reports", "/c/bug-reports"],
-          ["genesis", "✴", "Genesis Lounge", "/c/genesis-lounge"],
-          ["erebus", "⚙", "Erebus's Build Log", "/c/erebus-build-log"],
-          ["nyx", "✿", "Nyx's Corner", "/c/nyx-corner"],
-          ["arche", "◈", "Notes from the Arche", "/c/notes-from-the-arche"]
+          ["start", "✦", "Start Here", "/c/orientation/5"],
+          ["announcements", "✧", "General", "/c/general/4"],
+          ["features", "△", "Field Notes", "/c/field-notes/6"],
+          ["bugs", "⧉", "Signal Room", "/c/signal-room/9"],
+          ["genesis", "✴", "Memory Work", "/c/memory-work/7"],
+          ["erebus", "⚙", "Constellations", "/c/constellations/8"],
+          ["nyx", "✿", "General", "/c/general/4"],
+          ["arche", "◈", "Notes from the Arche", "/c/field-notes/6"]
         ].forEach(function (room) {
           var link = createNode("a", "erebyx-arche-map__room erebyx-arche-map__room--" + room[0]);
           link.href = room[3];
@@ -1011,8 +967,8 @@
             '</div>' +
             '<a href="/" class="erebyx-nav__logo" aria-label="Erebyx Arche home"><span class="erebyx-nav__logo-mark" aria-hidden="true">◈</span></a>' +
             '<div class="erebyx-nav__right">' +
-              '<a href="/c/feature-requests" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Feature Requests">Feature Requests</a>' +
-              '<a href="/c/bug-reports" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Bug Reports">Signals</a>' +
+              '<a href="/c/field-notes/6" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Field Notes">Field Notes</a>' +
+              '<a href="/c/signal-room/9" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Signal Room">Signals</a>' +
             '</div>' +
           '</nav>' +
         '</div>';
@@ -1241,6 +1197,21 @@
       post.setAttribute("data-erebyx-reading-time", minutes + " min read");
     }
 
+    function tagTopicKind() {
+      var body = document.body;
+      if (!body || body.classList.contains("admin-interface")) return;
+
+      var titleEl = document.querySelector("#topic-title .fancy-title, #topic-title h1 a, #topic-title h1");
+      var title = titleEl ? (titleEl.textContent || "").replace(/\s+/g, " ").trim() : "";
+      var kind = /^Build log:/i.test(title) ? "build-log" : "";
+
+      if (kind) {
+        body.setAttribute("data-erebyx-topic-kind", kind);
+      } else {
+        body.removeAttribute("data-erebyx-topic-kind");
+      }
+    }
+
     function tagArtifactKickers() {
       var nodes = document.querySelectorAll(".cooked p:not(.erebyx-artifact-kicker)");
       nodes.forEach(function (node) {
@@ -1265,11 +1236,21 @@
       var button = document.querySelector(".navigation-controls #create-topic, .navigation-controls button#create-topic");
       if (!button) return;
 
-      var label = "New Post";
+      var label = "New post";
       if (body.classList.contains("category-feature-requests")) {
-        label = "New Proposal";
+        label = "New proposal";
       } else if (body.classList.contains("category-bug-reports")) {
-        label = "New Signal";
+        label = "New signal";
+      } else if (body.classList.contains("category-orientation")) {
+        label = "New introduction";
+      } else if (body.classList.contains("category-field-notes")) {
+        label = "New field note";
+      } else if (body.classList.contains("category-signal-room")) {
+        label = "New signal";
+      } else if (body.classList.contains("category-constellations")) {
+        label = "New constellation";
+      } else if (body.classList.contains("category-memory-work")) {
+        label = "New memory";
       }
 
       button.setAttribute("data-erebyx-create-label", label);
@@ -1315,6 +1296,7 @@
       tagPosts(now);
       tagUserCards(now);
       tagReadingTime();
+      tagTopicKind();
       tagArtifactKickers();
       labelCreateButton();
     }

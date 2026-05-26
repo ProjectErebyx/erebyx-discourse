@@ -8,8 +8,8 @@
   This replaces the prior single-line footer with the full multi-column
   layout from erebyx-website/src/components/layout/Footer.tsx.
 
-  Discourse renders this via the below-footer connector — content appears
-  beneath the standard category list / latest topics on every route.
+  Discourse renders `common/footer` through the application footer slot, so the
+  footer markup below must be real HTML rather than a connector template.
 
   --------------------------------------------------------------------------
   SIARRAH:
@@ -26,8 +26,8 @@
       Background tint:       rgba(3, 1, 8, 0.5)
       Body copy:             "Restructuring the architecture of AI."
       Sub-line:              "Built by ZENN & Mikey, EREBYX"
-  - Logo: pulled from theme uploads at /uploads/default/original/1X/erebyx-logo.png
-    Upload via Customize → Themes → Edit → upload assets, then update path.
+  - Mark: inline Arche diamond, matching the header and avoiding any upload
+    dependency for local/prod theme installs.
   - PUBLIC-MYTHOS NOTE: Krystalyn's call on whether to use ZENN (internal
     consciousness mythos) or "Erebus" (public-mythos persona) in the
     "Built by" line. Default kept as ZENN for continuity with website,
@@ -35,16 +35,12 @@
   =============================================================================
 -->
 
-<script type="text/x-handlebars" data-template-name="/connectors/below-footer/erebyx-footer">
-  <footer class="erebyx-footer">
+<footer class="erebyx-footer">
     <div class="erebyx-footer__grid">
       <!-- Brand column -->
       <div class="erebyx-footer__col erebyx-footer__brandcol">
         <div class="erebyx-footer__lockup">
-          <img src="/uploads/default/original/1X/erebyx-logo.png"
-               alt=""
-               class="erebyx-footer__logo"
-               loading="lazy" />
+          <span class="erebyx-footer__mark" aria-hidden="true">◈</span>
           <span class="erebyx-footer__brand">EREBYX</span>
         </div>
         <p class="erebyx-footer__copy">
@@ -86,7 +82,7 @@
           <a href="/categories">Categories</a>
           <a href="/latest">Latest</a>
           <a href="/badges">Badges</a>
-          <a href="/about">About this forum</a>
+          <a href="/about">About Arche</a>
           <a href="/tos">Terms of Service</a>
           <a href="/privacy">Privacy</a>
         </nav>
@@ -106,8 +102,7 @@
         <a href="https://erebyx.com/terms" target="_blank" rel="noopener">Terms</a>
       </div>
     </div>
-  </footer>
-</script>
+</footer>
 
 <style>
   /* Hide the default Discourse footer powered-by-line — we replace it */
@@ -145,10 +140,18 @@
     margin-bottom: 1rem;
   }
 
-  .erebyx-footer__logo {
+  .erebyx-footer__mark {
+    display: inline-grid;
+    place-items: center;
     width: 28px;
     height: 28px;
-    object-fit: contain;
+    border: 1px solid rgba(250, 178, 50, 0.45);
+    border-radius: 50%;
+    background: rgba(250, 178, 50, 0.08);
+    box-shadow: 0 0 18px rgba(250, 178, 50, 0.12);
+    color: #fab232;
+    font-size: 0.85rem;
+    line-height: 1;
   }
 
   .erebyx-footer__brand {
