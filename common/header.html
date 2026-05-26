@@ -6,35 +6,18 @@
   top strip — single, clean, mobile-responsive, officially maintained.
 -->
 <!--
-  =============================================================================
-  EREBYX ARCHE — DISCOURSE HOMEPAGE HERO
-  =============================================================================
-  Paste destination: Customize → Themes → Erebyx Arche → Edit CSS/HTML →
-                     `common/header` (append to bottom of file)
+  Erebyx Arche — Discourse homepage hero
 
-  This renders a constellation banner ABOVE the category list on the homepage
-  ONLY (path === "/" or "/categories" or "/latest"). On every other route the
-  banner self-removes so it never conflicts with topic threads.
+  Renders a constellation canvas banner above the category list on homepage
+  routes only (/, /categories, /latest). Self-removes elsewhere so it never
+  conflicts with topic threads. Brand colors flow from theme settings via
+  CSS custom properties (--erebyx-violet / --erebyx-blue / --erebyx-violet-
+  light / --erebyx-gold) — no JS edits required to retune the palette.
 
-  --------------------------------------------------------------------------
-  SIARRAH:
-  - Tune brand color values via Theme → Settings (brand_violet / brand_blue /
-    brand_violet_light / brand_gold). They feed directly into the canvas via
-    --erebyx-violet etc. — no JS edits needed.
-  - Mobile-first: hero auto-collapses to 240px height < 768px wide and
-    --reduced-motion users get a static SVG fallback. Verify on actual iOS
-    Safari + Android Chrome (NOT just devtools).
-  - Constellation density: STAR_COUNT = 90 desktop / 40 mobile. The website
-    uses 100/45 — slightly less here because Discourse has its own JS overhead
-    and we don't want to compete with Ember's render budget.
-  - Constants that MUST stay in sync with erebyx.com:
-      Font: "Fireside" / "Outfit" — already in common.scss
-      Violet:  #7503E0
-      Blue:    #4492FC
-      Amber:   #FAB232
-      Light:   #c4b5fd
-  - Tagline copy lives at line ~40 below; change once Krystalyn approves final.
-  =============================================================================
+  Constellation density tuned lower than the marketing site (90 desktop /
+  40 mobile vs site's 100 / 45) so the canvas loop doesn't compete with
+  Discourse's Ember render budget. Respects prefers-reduced-motion with a
+  static SVG fallback.
 -->
 
 <script type="text/x-handlebars" data-template-name="/connectors/discovery-above/erebyx-hero">

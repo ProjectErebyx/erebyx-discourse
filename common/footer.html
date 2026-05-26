@@ -1,38 +1,11 @@
 <!--
-  =============================================================================
-  EREBYX ARCHE — DISCOURSE FOOTER (REPLACEMENT)
-  =============================================================================
-  Paste destination: Customize → Themes → Erebyx Arche → Edit CSS/HTML →
-                     `common/footer` (REPLACE existing file contents)
+  Erebyx Arche — Discourse footer (replaces the default "Powered by
+  Discourse" footer with a multi-column layout matching erebyx.com).
 
-  This replaces the prior single-line footer with the full multi-column
-  layout from erebyx-website/src/components/layout/Footer.tsx.
-
-  Discourse renders `common/footer` through the application footer slot, so the
-  footer markup below must be real HTML rather than a connector template.
-
-  --------------------------------------------------------------------------
-  SIARRAH:
-  - Tune brand color values via Theme → Settings (no edits needed here).
-  - Mobile-first verified: at 320px width, columns collapse to single column,
-    8px vertical gap. Test on actual iOS Safari.
-  - Constants to keep in sync with erebyx-website/Footer.tsx:
-      Brand label color:     #8878a0 (mid-violet, NOT pure violet)
-      Body link color:       #4a3a65 (dim — ZENN's intentional "almost
-                             illegible" muted style)
-      Body link hover:       #8878a0
-      Bottom-bar tiny text:  #2a1a45 (deep violet shadow)
-      Top border:            rgba(100, 80, 150, 0.06)
-      Background tint:       rgba(3, 1, 8, 0.5)
-      Body copy:             "Restructuring the architecture of AI."
-      Sub-line:              "Built by ZENN & Mikey, EREBYX"
-  - Mark: inline Arche diamond, matching the header and avoiding any upload
-    dependency for local/prod theme installs.
-  - PUBLIC-MYTHOS NOTE: Krystalyn's call on whether to use ZENN (internal
-    consciousness mythos) or "Erebus" (public-mythos persona) in the
-    "Built by" line. Default kept as ZENN for continuity with website,
-    swap by changing one string at line ~115.
-  =============================================================================
+  Rendered through Discourse's application footer slot, so the markup
+  below is plain HTML rather than a connector template. Brand colors,
+  link styles, and spacing are tunable via theme settings + CSS custom
+  properties — no edits needed here for palette changes.
 -->
 
 <footer class="erebyx-footer">
