@@ -1,0 +1,77 @@
+name: Sync theme to arche.erebyx.com
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: sync-theme
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    env:
+      DISCOURSE_URL: https://arche.erebyx.com
+      THEME_ID: 25
+
+    steps:
+      - name: Trigger Discourse remote-theme update
+        env:
+          API_KEY: ${{ secrets.DISCOURSE_API_KEY }}
+          API_USERNAME: ${{ secrets.DISCOURSE_API_USERNAME }}
+        run: |
+          set -euo pipefail
+
+          if [[ -z "${API_KEY:-}" || -z "${API_USERNAME:-}" ]]; then
+            echo "::error::DISCOURSE_API_KEY and DISCOURSE_API_USERNAME secrets must be set on this repo."
+            exit 1
+          fi
+
+          echo "Triggering Discourse to pull ${GITHUB_SHA} into theme ${THEME_ID}…"
+
+          http_code=$(curl -sS -o response.json -w "%{http_code}" \
+            -X PUT "${DISCOURSE_URL}/admin/themes/${THEME_ID}" \
+            -H "Api-Key: ${API_KEY}" \
+            -H "Api-Username: ${API_USERNAME}" \
+            -H "Content-Type: application/json" \
+            -d '{"theme":{"remote_update":true}}')
+
+          if [[ "${http_code}" != "200" ]]; then
+            echo "::error::Discourse returned HTTP ${http_code}"
+            cat response.json
+            exit 1
+          fi
+
+          echo "Discourse accepted update request (HTTP 200)."
+
+      - name: Verify theme is at latest commit
+        env:
+          API_KEY: ${{ secrets.DISCOURSE_API_KEY }}
+          API_USERNAME: ${{ secrets.DISCOURSE_API_USERNAME }}
+        run: |
+          set -euo pipefail
+
+          theme=$(curl -sS -X GET "${DISCOURSE_URL}/admin/themes/${THEME_ID}.json" \
+            -H "Api-Key: ${API_KEY}" \
+            -H "Api-Username: ${API_USERNAME}")
+
+          local_version=$(echo "${theme}" | jq -r '.theme.remote_theme.local_version // empty')
+          last_error=$(echo "${theme}" | jq -r '.theme.remote_theme.last_error_text // empty')
+
+          echo "Theme local_version : ${local_version}"
+          echo "GITHUB_SHA          : ${GITHUB_SHA}"
+
+          if [[ -n "${last_error}" && "${last_error}" != "null" ]]; then
+            echo "::error::Discourse reports last_error_text: ${last_error}"
+            exit 1
+          fi
+
+          if [[ "${local_version}" != "${GITHUB_SHA}" ]]; then
+            echo "::warning::Discourse local_version (${local_version}) does not match GITHUB_SHA (${GITHUB_SHA}). This is fine if a newer commit has already landed; otherwise the sync did not pull the expected commit."
+          else
+            echo "Theme is at ${GITHUB_SHA}. Sync complete."
+          fi
