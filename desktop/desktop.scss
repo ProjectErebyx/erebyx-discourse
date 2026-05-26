@@ -15621,6 +15621,31 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
 
   html:not(.erebyx-admin-route)
     body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    #list-area#list-area {
+    grid-template-columns: minmax(0, 1fr) !important;
+    overflow: visible !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    #list-area#list-area
+    .container.list-container.--topic-list
+    .topic-list.topic-list,
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    #list-area#list-area
+    .container.list-container.--topic-list
+    .topic-list.topic-list
+    > tbody.topic-list-body {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
     .erebyx-genesis-banner {
     margin-top: clamp(0.85rem, 1.6vw, 1.2rem) !important;
     margin-bottom: clamp(1rem, 2vw, 1.45rem) !important;
