@@ -1,0 +1,112 @@
+// =============================================================================
+// TIER-2 — STRESS-TEST FIXES (real-browser observed)
+// =============================================================================
+// Extracted from common.scss for organizational clarity. @import position is
+// preserved so CSS cascade order matches the original inline placement.
+// =============================================================================
+
+// =============================================================================
+// EREBYX ARCHE — TIER-2 STRESS-TEST FIXES (real-browser observed)
+// Issues found via Playwright walkthrough at the live site:
+//   1. .admin-onboarding-banner ("Launch in 3 easy steps") shows to admins
+//      and pollutes the homepage — hide globally
+//   2. Sidebar still rendering despite earlier strip — stronger selectors
+//   3. Default categories (Staff/Site Feedback/General) leak into category
+//      grid — hide via CSS by category id
+//   4. About-the-X-category topics in topic lists pollute content — hide
+// =============================================================================
+
+// --- Kill the admin onboarding banner ("Launch in 3 easy steps") ---
+.admin-onboarding-banner,
+.admin-onboarding-banner__wrap,
+.admin-onboarding-banner__header {
+  display: none !important;
+}
+
+// --- Force-hide sidebar (stronger selectors than tier-1) ---
+.sidebar-wrapper,
+#d-sidebar,
+.sidebar-container,
+aside.sidebar-wrapper,
+.has-sidebar .sidebar-wrapper,
+.has-sidebar-page .sidebar-wrapper {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+// Reset main outlet to full width when sidebar is gone
+body.has-sidebar-page #main-outlet-wrapper,
+body.has-sidebar-page .full-width-page,
+#main-outlet-wrapper {
+  grid-template-columns: 1fr !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+// Hide hamburger / sidebar-toggle in header (it controls a sidebar that no longer exists)
+.btn-sidebar-toggle,
+.header-sidebar-toggle,
+.sidebar-toggle,
+button[title*="sidebar" i] {
+  display: none !important;
+}
+
+// --- Hide default Discourse categories (Staff/Site Feedback/General) from
+//     the category grid + category list. Members never need to see them.
+//     IDs: 2=Site Feedback, 3=Staff, 4=General.
+[data-category-id="2"],
+[data-category-id="3"],
+[data-category-id="4"],
+.category-list-item[data-category-id="2"],
+.category-list-item[data-category-id="3"],
+.category-list-item[data-category-id="4"],
+.categories-list .category[data-category-id="2"],
+.categories-list .category[data-category-id="3"],
+.categories-list .category[data-category-id="4"],
+// Also hide the categories-list section header/box for these
+section.category-box[data-category-id="2"],
+section.category-box[data-category-id="3"],
+section.category-box[data-category-id="4"] {
+  display: none !important;
+}
+
+// Hide them in the all-categories list h3 too (they're rendered as headings)
+.categories-and-latest .category-list-item[data-category-id="2"],
+.categories-and-latest .category-list-item[data-category-id="3"],
+.categories-and-latest .category-list-item[data-category-id="4"] {
+  display: none !important;
+}
+
+// --- Hide About-the-X-category topics in topic lists ---
+// These rows have "category-stat" or "about-the-x-category" data — but the
+// best identifier is the `pinned-globally` flag on these system topics. Be
+// surgical — only hide rows whose title starts with "About the".
+// Approach: target topic-list-item with a specific data attribute pattern.
+// Since Discourse doesn't expose this cleanly, use a CSS :has() selector
+// (modern browsers only — graceful degradation: row stays visible).
+.topic-list-item:has(a.title[href*="/about-the-"]),
+tr.topic-list-item:has(a[href*="/about-the-"]) {
+  display: none !important;
+}
+
+// --- Polish "Powered by Discourse" footer link to be very subtle ---
+.powered-by-discourse {
+  opacity: 0.25;
+  font-size: 0.7em;
+  margin-top: 1.5rem;
+
+  &:hover { opacity: 0.5; }
+}
+
+// --- Make the "Topics" / "My posts" / etc. mini-sidebar inside main outlet
+//     also hidden (Discourse keeps a secondary nav) ---
+.user-nav-stripped-down,
+.user-secondary-navigation,
+nav.alt-nav.--hidden-on-mobile {
+  display: none !important;
+}
+
+

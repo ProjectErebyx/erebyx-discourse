@@ -1,0 +1,78 @@
+// =============================================================================
+// TIER-3 — RESIDUAL LEAK FIXES
+// =============================================================================
+// Extracted from common.scss for organizational clarity. @import position is
+// preserved so CSS cascade order matches the original inline placement.
+// =============================================================================
+
+// =============================================================================
+// EREBYX ARCHE — TIER-3 RESIDUAL LEAK FIXES
+// Categories container still renders bare anchor tags with href to default
+// categories (Staff/Site Feedback/General) even after data-id hide.
+// Target by href pattern + hide the parent .category-list-item.
+// =============================================================================
+
+// Hide any link / heading / list-item pointing at default categories
+a[href="/c/staff/3"],
+a[href="/c/site-feedback/2"],
+a[href="/c/general/4"],
+a[href*="/c/staff/3/"],
+a[href*="/c/site-feedback/2/"],
+a[href*="/c/general/4/"] {
+  display: none !important;
+}
+
+// Also kill the parent generic container if it only wraps one of those links
+.categories-and-latest .category-list-item:has(a[href="/c/staff/3"]),
+.categories-and-latest .category-list-item:has(a[href="/c/site-feedback/2"]),
+.categories-and-latest .category-list-item:has(a[href="/c/general/4"]),
+.category-list-item:has(> a[href^="/c/staff/3"]),
+.category-list-item:has(> a[href^="/c/site-feedback/2"]),
+.category-list-item:has(> a[href^="/c/general/4"]),
+// In categories grid layout
+.categories-list .category:has(a[href="/c/staff/3"]),
+.categories-list .category:has(a[href="/c/site-feedback/2"]),
+.categories-list .category:has(a[href="/c/general/4"]) {
+  display: none !important;
+}
+
+// Kill the topic-list rows for Privacy Policy / Terms / Admin Guide topics
+// inside Staff (members shouldn't see Discourse-internal versions; we have
+// real /privacy and /terms on erebyx.com)
+.topic-list-item:has(a[href*="/t/privacy-policy/8"]),
+.topic-list-item:has(a[href*="/t/terms-of-service/7"]),
+.topic-list-item:has(a[href*="/t/admin-guide-getting-started/6"]),
+.featured-topic:has(a[href*="/t/privacy-policy/8"]),
+.featured-topic:has(a[href*="/t/terms-of-service/7"]),
+.featured-topic:has(a[href*="/t/admin-guide-getting-started/6"]) {
+  display: none !important;
+}
+
+// "Powered by Discourse" footer — make even more subtle (but keep for compliance)
+.powered-by-discourse,
+a[href*="/powered-by"] {
+  opacity: 0.18 !important;
+  font-size: 0.65em !important;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+
+  &:hover { opacity: 0.4 !important; }
+}
+
+// Hide the secondary "All categories" filter bar (Categories | Tags | Latest)
+// when on the homepage — it's redundant with our boxes-with-topics layout
+.list-controls + .category-list-controls,
+body.category-list .navigation-container .category-breadcrumb {
+  // keep only on /categories direct hit, hide on /
+}
+
+// Polish empty state for Bug Reports (and other empty cats)
+.no-topics-message {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: rgba(241, 245, 249, 0.4);
+  font-family: var(--erebyx-font-body, "Pathway Gothic One"), serif;
+  font-size: 1.1rem;
+}
+
+
