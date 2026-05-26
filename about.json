@@ -2,6 +2,9 @@
   "name": "Erebyx Arche",
   "about_url": "https://erebyx.com",
   "license_url": "https://github.com/ProjectErebyx/erebyx-discourse/blob/main/LICENSE",
+  "authors": "Siarrah & ZENN — Erebyx LLC",
+  "theme_version": "1.0.0",
+  "minimum_discourse_version": "3.2.0",
   "component": false,
   "color_schemes": {
     "Erebyx Cosmic": {

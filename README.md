@@ -24,6 +24,8 @@ Matches the visual language of `erebyx.com` (marketing) and `app.erebyx.com` (da
 
 ## Install
 
+### 1. Install the theme
+
 In your Discourse admin:
 
 1. **Admin → Customize → Themes → Install** → "From a git repository"
@@ -31,7 +33,19 @@ In your Discourse admin:
 3. Branch: `main`
 4. Save → **Set as default theme**
 
-The theme will pull from this repo on demand and on Discourse's periodic remote-theme refresh.
+### 2. Install required theme components
+
+Erebyx Arche composes three official Discourse-team theme components for full visual fidelity. Install each the same way (Admin → Customize → Themes → Install → From a git repository), then attach them as components of *Erebyx Arche*:
+
+| Component | Repo | Why we use it |
+|---|---|---|
+| Category Banners | `https://github.com/discourse/discourse-category-banners.git` | Sigil-driven category header art |
+| Showcased Categories | `https://github.com/discourse/discourse-showcased-categories.git` | Featured-categories layout on home |
+| Versatile Banner | `https://github.com/discourse/discourse-versatile-banner.git` | Genesis Arche announcement banner |
+
+These are MIT/Apache-licensed and Discourse-team-maintained — safe to add.
+
+The parent theme + component pulls from the public URL on demand and on Discourse's periodic remote-theme refresh.
 
 ## Live deployment on arche.erebyx.com
 
