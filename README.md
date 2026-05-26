@@ -29,7 +29,7 @@ Matches the visual language of `erebyx.com` (marketing) and `app.erebyx.com` (da
 In your Discourse admin:
 
 1. **Admin → Customize → Themes → Install** → "From a git repository"
-2. URL: `https://github.com/ProjectErebyx/erebyx-discourse`
+2. URL: `https://github.com/ProjectErebyx/erebyx-discourse-theme`
 3. Branch: `main`
 4. Save → **Set as default theme**
 
@@ -73,7 +73,7 @@ Under **Admin → Customize → Themes → Erebyx Arche → Settings**:
 ## File layout
 
 ```
-erebyx-discourse/
+erebyx-discourse-theme/
 ├── about.json          theme metadata + color schemes
 ├── settings.yml        admin-configurable settings
 ├── common/
