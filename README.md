@@ -35,10 +35,11 @@ In your Discourse admin:
 
 ### 2. Install required theme components
 
-Erebyx Arche composes three official Discourse-team theme components for full visual fidelity. Install each the same way (Admin → Customize → Themes → Install → From a git repository), then attach them as components of *Erebyx Arche*:
+Erebyx Arche composes **four** official Discourse-team theme components for full visual fidelity. Install each the same way (Admin → Customize → Themes → Install → From a git repository), then attach them as components of *Erebyx Arche*:
 
 | Component | Repo | Why we use it |
 |---|---|---|
+| **Brand Header** | `https://github.com/discourse/discourse-brand-header.git` | **REQUIRED** — top nav strip. Without this, `common/header.html` falls back to a bare/mobile-looking layout. |
 | Category Banners | `https://github.com/discourse/discourse-category-banners.git` | Sigil-driven category header art |
 | Showcased Categories | `https://github.com/discourse/discourse-showcased-categories.git` | Featured-categories layout on home |
 | Versatile Banner | `https://github.com/discourse/discourse-versatile-banner.git` | Genesis Arche announcement banner |
