@@ -18,29 +18,17 @@
 
 /* =============================================================================
  * FONTS — Google Fonts CDN, matches site exactly
+ * Consolidated single import for all brand fonts.
  * ============================================================================= */
 
-@import url("https://fonts.googleapis.com/css2?family=Zen+Dots&family=Pathway+Gothic+One&family=Space+Grotesk:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Architects+Daughter&family=JetBrains+Mono:wght@400;500;600&family=Fira+Code:wght@400;500&family=Zen+Dots&family=Pathway+Gothic+One&family=Space+Grotesk:wght@400;500;600&display=swap");
 
-:root {
-  /* Brand tokens — driven by theme settings, fallbacks here */
-  --erebyx-violet: var(--brand_violet, #7503E0);
-  --erebyx-blue: var(--brand_blue, #4492FC);
-  --erebyx-violet-light: var(--brand_violet_light, #c4b5fd);
-  --erebyx-gold: var(--brand_gold, #FAB232);
+/* =============================================================================
+ * DESIGN TOKENS — single source of truth for colors, type, spacing, motion, etc.
+ * Edit common/_tokens.scss to tune the look & feel without touching components.
+ * ============================================================================= */
 
-  /* Gradient (violet → blue) — used for primary CTAs, headlines, accents */
-  --erebyx-gradient: linear-gradient(135deg, var(--erebyx-violet), var(--erebyx-blue));
-  --erebyx-gradient-soft: linear-gradient(135deg, rgba(123, 47, 190, 0.15), rgba(77, 139, 245, 0.1));
-
-  /* Typography stack */
-  --erebyx-font-display: "Fireside", "Outfit", "Zen Dots", system-ui, sans-serif;
-  --erebyx-font-body: "Outfit", "Pathway Gothic One", "Inter", system-ui, sans-serif;
-  --erebyx-font-mono: "JetBrains Mono", "Fira Code", "Space Grotesk", ui-monospace, monospace;
-
-  /* Glow strength */
-  --erebyx-glow: var(--constellation_glow_strength, 12);
-}
+@import "tokens";
 
 /* =============================================================================
  * TYPOGRAPHY — apply Erebyx font stack across Discourse
@@ -3699,17 +3687,8 @@ body.topic-page #main-outlet::before {
   --erebyx-tech-tone: rgba(117, 3, 224, 0.04);      // subtle violet wash
 }
 
-// --- FONT LOADING — Outfit (Google Fonts) + Architects Daughter
-//     Fireside is custom-distributed; Mikey uploads via theme asset later.
-//     Until then, Outfit handles display + body. ---
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Architects+Daughter&display=swap');
-
-:root {
-  --erebyx-font-display: 'Fireside', 'Outfit', 'Zen Dots', sans-serif;
-  --erebyx-font-body: 'Outfit', 'Pathway Gothic One', system-ui, sans-serif;
-  --erebyx-font-accent: 'Architects Daughter', cursive;
-  --erebyx-font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
-}
+// (Duplicate font import + :root block removed — font loading + tokens now
+//  consolidated at top of common.scss and in common/_tokens.scss.)
 
 // Apply Outfit Light to body globally
 body,

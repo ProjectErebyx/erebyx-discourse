@@ -1,0 +1,289 @@
+// =============================================================================
+// EREBYX ARCHE — DESIGN TOKENS
+// =============================================================================
+// This file is the single source of truth for every visual decision in the
+// theme: colors, type scale, spacing, motion, glow, shadows, radii, z-index.
+//
+// HOW TO TWEAK THE LOOK & FEEL (Siarrah):
+//   1. Find the token below (each has a comment explaining what it controls)
+//   2. Change the value
+//   3. Commit + push to main → live on arche.erebyx.com in ~15 seconds
+//
+// Tokens are exposed as CSS custom properties (--erebyx-*) so they:
+//   - Inherit through the cascade (override in any selector)
+//   - React to admin settings (brand colors flow from Theme → Settings)
+//   - Stay accessible to runtime JS (the hero canvas reads brand colors here)
+//
+// SCSS variables ($erebyx-*) hold values that must be static at build time
+// (e.g. breakpoint widths used in @media queries).
+//
+// NAMING:
+//   --erebyx-{category}-{role}-{variant?}
+//   Examples: --erebyx-violet, --erebyx-text-muted, --erebyx-space-lg
+// =============================================================================
+
+:root {
+  // ===========================================================================
+  // BRAND COLORS — flow from Theme → Settings, with hard-coded fallbacks
+  // ===========================================================================
+  //
+  // These four feed into every accent, gradient, and glow in the theme.
+  // Tuning them here changes the entire palette in one move.
+
+  --erebyx-violet:           var(--brand_violet,        #7503E0);  // Nyx Violet — primary energy / links / CTAs
+  --erebyx-blue:             var(--brand_blue,          #4492FC);  // Architect Blue — secondary, used in gradients with violet
+  --erebyx-violet-light:     var(--brand_violet_light,  #c4b5fd);  // Hover, glow, highlights, group flair
+  --erebyx-gold:             var(--brand_gold,          #FAB232);  // Arche Amber — milestones, founding badges, pinned
+
+  // Derived tints (pale variants for backgrounds, subtle accents)
+  --erebyx-violet-pale:      rgba(117,   3, 224, 0.08); // 8% violet for bg tints
+  --erebyx-blue-pale:        rgba( 68, 146, 252, 0.08);
+  --erebyx-gold-pale:        rgba(250, 178,  50, 0.10);
+  --erebyx-violet-deeper:    #5b02b0; // Pressed/active state for violet CTAs
+
+  // ===========================================================================
+  // GRADIENTS — composition of brand colors
+  // ===========================================================================
+
+  --erebyx-gradient:         linear-gradient(135deg, var(--erebyx-violet), var(--erebyx-blue));
+  --erebyx-gradient-soft:    linear-gradient(135deg, rgba(123, 47, 190, 0.15), rgba(77, 139, 245, 0.10));
+  --erebyx-gradient-gold:    linear-gradient(135deg, var(--erebyx-gold), #f59e0b);
+  --erebyx-gradient-radial:  radial-gradient(circle at 30% 30%, rgba(117, 3, 224, 0.25), transparent 70%);
+
+  // ===========================================================================
+  // SEMANTIC COLORS — status / feedback
+  // ===========================================================================
+
+  --erebyx-success:          #22c55e;
+  --erebyx-success-pale:     rgba( 34, 197,  94, 0.10);
+  --erebyx-danger:           #ef4444;
+  --erebyx-danger-pale:      rgba(239,  68,  68, 0.10);
+  --erebyx-warning:          #f59e0b;
+  --erebyx-warning-pale:     rgba(245, 158,  11, 0.10);
+  --erebyx-info:             var(--erebyx-blue);
+  --erebyx-info-pale:        var(--erebyx-blue-pale);
+
+  // ===========================================================================
+  // TYPOGRAPHY — font stacks
+  // ===========================================================================
+  //
+  // Display: headings, hero titles, big visual moments
+  // Body:    paragraphs, posts, UI labels (default everywhere)
+  // Mono:    code, dates, version tags, technical metadata
+  // Accent:  handwritten / personal moments (sigil captions, easter eggs)
+
+  --erebyx-font-display:     "Fireside", "Outfit", "Zen Dots", system-ui, sans-serif;
+  --erebyx-font-body:        "Outfit", "Pathway Gothic One", "Inter", system-ui, sans-serif;
+  --erebyx-font-mono:        "JetBrains Mono", "Fira Code", "Space Grotesk", ui-monospace, monospace;
+  --erebyx-font-accent:      "Architects Daughter", "Caveat", cursive;
+
+  // ===========================================================================
+  // TYPE SCALE — sizes (modular scale, 1.250 ratio — "major third")
+  // ===========================================================================
+
+  --erebyx-font-size-xs:     0.75rem;   // 12px — captions, micro labels
+  --erebyx-font-size-sm:     0.875rem;  // 14px — secondary text, metadata
+  --erebyx-font-size-base:   1rem;      // 16px — body default
+  --erebyx-font-size-lg:     1.125rem;  // 18px — lead paragraph
+  --erebyx-font-size-xl:     1.25rem;   // 20px — h6
+  --erebyx-font-size-2xl:    1.5rem;    // 24px — h5
+  --erebyx-font-size-3xl:    1.875rem;  // 30px — h4
+  --erebyx-font-size-4xl:    2.25rem;   // 36px — h3
+  --erebyx-font-size-5xl:    3rem;      // 48px — h2
+  --erebyx-font-size-6xl:    3.75rem;   // 60px — h1 / hero
+
+  // ===========================================================================
+  // LINE HEIGHTS
+  // ===========================================================================
+
+  --erebyx-leading-tight:    1.15;  // Display headlines
+  --erebyx-leading-snug:     1.3;   // Sub-headings
+  --erebyx-leading-normal:   1.5;   // Body
+  --erebyx-leading-relaxed:  1.7;   // Long-form prose, posts
+
+  // ===========================================================================
+  // FONT WEIGHTS
+  // ===========================================================================
+
+  --erebyx-weight-light:     300;
+  --erebyx-weight-normal:    400;
+  --erebyx-weight-medium:    500;
+  --erebyx-weight-semibold:  600;
+  --erebyx-weight-bold:      700;
+  --erebyx-weight-black:     800;
+
+  // ===========================================================================
+  // SPACING SCALE — 4px base, doubled at each step from sm onward
+  // ===========================================================================
+  //
+  // Use spacing tokens for ALL padding/margin/gap values. Resist hard-coded
+  // pixel values — if you need something between two tokens, propose a new
+  // token rather than one-off.
+
+  --erebyx-space-2xs:        2px;
+  --erebyx-space-xs:         4px;
+  --erebyx-space-sm:         8px;
+  --erebyx-space-md:         12px;
+  --erebyx-space-lg:         16px;
+  --erebyx-space-xl:         24px;
+  --erebyx-space-2xl:        32px;
+  --erebyx-space-3xl:        48px;
+  --erebyx-space-4xl:        64px;
+  --erebyx-space-5xl:        96px;
+  --erebyx-space-6xl:        128px;
+
+  // ===========================================================================
+  // BORDER RADIUS
+  // ===========================================================================
+
+  --erebyx-radius-xs:        2px;    // Tight chips, badges
+  --erebyx-radius-sm:        4px;    // Small inputs, tags
+  --erebyx-radius-md:        8px;    // Default — cards, buttons, inputs
+  --erebyx-radius-lg:        12px;   // Larger cards, panels
+  --erebyx-radius-xl:        16px;   // Hero cards, modal corners
+  --erebyx-radius-2xl:       24px;   // Large feature panels
+  --erebyx-radius-pill:      999px;  // Pills, full-round buttons
+  --erebyx-radius-circle:    50%;
+
+  // ===========================================================================
+  // BORDERS
+  // ===========================================================================
+
+  --erebyx-border-width:     1px;
+  --erebyx-border-subtle:    1px solid rgba(255, 255, 255, 0.06);
+  --erebyx-border-default:   1px solid rgba(255, 255, 255, 0.10);
+  --erebyx-border-emphasis:  1px solid rgba(255, 255, 255, 0.18);
+  --erebyx-border-violet:    1px solid var(--erebyx-violet);
+
+  // ===========================================================================
+  // SHADOWS — neutral + brand-tinted
+  // ===========================================================================
+
+  --erebyx-shadow-xs:        0 1px 2px  rgba(0, 0, 0, 0.18);
+  --erebyx-shadow-sm:        0 2px 4px  rgba(0, 0, 0, 0.22);
+  --erebyx-shadow-md:        0 4px 12px rgba(0, 0, 0, 0.28);
+  --erebyx-shadow-lg:        0 8px 24px rgba(0, 0, 0, 0.34);
+  --erebyx-shadow-xl:        0 16px 48px rgba(0, 0, 0, 0.40);
+
+  // Brand-tinted glows — used for hover, focus, group flair
+  --erebyx-shadow-violet-glow: 0 0 calc(var(--erebyx-glow) * 1px) rgba(117,   3, 224, 0.42);
+  --erebyx-shadow-blue-glow:   0 0 calc(var(--erebyx-glow) * 1px) rgba( 68, 146, 252, 0.42);
+  --erebyx-shadow-gold-glow:   0 0 calc(var(--erebyx-glow) * 1px) rgba(250, 178,  50, 0.42);
+  --erebyx-shadow-light-glow:  0 0 calc(var(--erebyx-glow) * 1px) rgba(196, 181, 253, 0.55);
+
+  // ===========================================================================
+  // GLOW — admin-tunable strength
+  // ===========================================================================
+  //
+  // The numeric strength feeds the shadow tokens above via calc().
+  // Tune `constellation_glow_strength` in Theme Settings to amplify/dim the
+  // signature Erebyx glow without editing CSS.
+
+  --erebyx-glow:          var(--constellation_glow_strength, 12);
+
+  // ===========================================================================
+  // MOTION — durations + easings
+  // ===========================================================================
+  //
+  // All transitions/animations consume these tokens. Adjust once, propagate
+  // everywhere. For motion sensitivity, prefers-reduced-motion overrides
+  // these to near-zero in _motion.scss.
+
+  --erebyx-duration-instant: 0ms;
+  --erebyx-duration-fast:    120ms;   // Hover state changes
+  --erebyx-duration-medium:  240ms;   // Standard transitions (default)
+  --erebyx-duration-slow:    400ms;   // Page-level / large element entry
+  --erebyx-duration-cinema:  800ms;   // Hero / feature reveals
+  --erebyx-duration-twinkle: 6s;      // Ambient pulses (pinned topics, glow shimmer)
+
+  // Easings — feel matters. Tune deliberately.
+  --erebyx-ease:             cubic-bezier(0.20, 0.80, 0.20, 1);     // Default — smooth ease-out
+  --erebyx-ease-in:          cubic-bezier(0.40, 0.00, 1.00, 1.00);
+  --erebyx-ease-out:         cubic-bezier(0.00, 0.00, 0.20, 1.00);
+  --erebyx-ease-in-out:      cubic-bezier(0.40, 0.00, 0.20, 1.00);
+  --erebyx-ease-spring:      cubic-bezier(0.34, 1.56, 0.64, 1);     // Bouncy — use sparingly
+
+  // Compound transition shorthand for the common case
+  --erebyx-transition:       all var(--erebyx-duration-medium) var(--erebyx-ease);
+  --erebyx-transition-fast:  all var(--erebyx-duration-fast)   var(--erebyx-ease);
+  --erebyx-transition-slow:  all var(--erebyx-duration-slow)   var(--erebyx-ease);
+
+  // ===========================================================================
+  // Z-INDEX — stacking discipline
+  // ===========================================================================
+
+  --erebyx-z-below:          -1;     // Behind content (decorative backdrops)
+  --erebyx-z-base:           1;
+  --erebyx-z-overlay:        10;     // Glow overlays, hero canvas
+  --erebyx-z-dropdown:       50;
+  --erebyx-z-sticky:         100;    // Sticky headers, sub-nav
+  --erebyx-z-tooltip:        500;
+  --erebyx-z-modal-backdrop: 900;
+  --erebyx-z-modal:          950;
+  --erebyx-z-toast:          1000;
+
+  // ===========================================================================
+  // OPACITY — interaction states
+  // ===========================================================================
+
+  --erebyx-opacity-disabled: 0.5;
+  --erebyx-opacity-muted:    0.7;
+  --erebyx-opacity-overlay:  0.85;
+  --erebyx-opacity-hover-tint: 0.08;
+
+  // ===========================================================================
+  // GENESIS ARCHE — group-specific accents
+  // ===========================================================================
+  //
+  // The genesis_arche Discourse group gets a signature violet glow + light
+  // username color. Driven by theme setting `genesis_group_color` so admins
+  // can fine-tune without editing CSS.
+
+  --erebyx-genesis-color:    var(--genesis_group_color, #c4b5fd);
+  --erebyx-genesis-glow:     var(--erebyx-shadow-light-glow);
+}
+
+// =============================================================================
+// SCSS VARIABLES — static, used at build time (e.g. in @media queries)
+// =============================================================================
+// CSS custom properties can't be used inside @media query conditions — those
+// must be static values resolved at SCSS compile time. Hence these.
+
+$erebyx-breakpoint-mobile-sm:  480px;
+$erebyx-breakpoint-mobile:     640px;
+$erebyx-breakpoint-tablet:     768px;
+$erebyx-breakpoint-laptop:     1024px;
+$erebyx-breakpoint-desktop:    1280px;
+$erebyx-breakpoint-wide:       1440px;
+$erebyx-breakpoint-ultrawide:  1920px;
+
+// Convenience mixins for breakpoints
+@mixin mobile-only       { @media (max-width: #{$erebyx-breakpoint-tablet - 1}) { @content; } }
+@mixin tablet-up         { @media (min-width: #{$erebyx-breakpoint-tablet})     { @content; } }
+@mixin laptop-up         { @media (min-width: #{$erebyx-breakpoint-laptop})     { @content; } }
+@mixin desktop-up        { @media (min-width: #{$erebyx-breakpoint-desktop})    { @content; } }
+@mixin wide-up           { @media (min-width: #{$erebyx-breakpoint-wide})       { @content; } }
+@mixin reduced-motion    { @media (prefers-reduced-motion: reduce)              { @content; } }
+@mixin hover-supported   { @media (hover: hover) and (pointer: fine)            { @content; } }
+@mixin print             { @media print                                         { @content; } }
+
+// =============================================================================
+// LIGHT SCHEME OVERRIDES — Erebyx Dawn
+// =============================================================================
+// When the user picks "Erebyx Dawn" (light) instead of "Erebyx Cosmic" (dark),
+// borders and shadows need to flip from white-tints to black-tints. The brand
+// colors stay the same — they're calibrated to work on both.
+
+[data-color-scheme-id="60"], // Erebyx Dawn — adjust ID if it changes
+.color-scheme-erebyx-dawn,
+html[data-theme="light"] {
+  --erebyx-border-subtle:    1px solid rgba(0, 0, 0, 0.06);
+  --erebyx-border-default:   1px solid rgba(0, 0, 0, 0.10);
+  --erebyx-border-emphasis:  1px solid rgba(0, 0, 0, 0.18);
+
+  --erebyx-shadow-xs:        0 1px 2px  rgba(0, 0, 0, 0.06);
+  --erebyx-shadow-sm:        0 2px 4px  rgba(0, 0, 0, 0.08);
+  --erebyx-shadow-md:        0 4px 12px rgba(0, 0, 0, 0.10);
+  --erebyx-shadow-lg:        0 8px 24px rgba(0, 0, 0, 0.12);
+  --erebyx-shadow-xl:        0 16px 48px rgba(0, 0, 0, 0.16);
+}
