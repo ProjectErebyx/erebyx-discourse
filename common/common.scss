@@ -17,69 +17,80 @@
  *   - JetBrains Mono / Fira Code — technical / metadata / dates / version tags
  *
  * =============================================================================
- * FILE STRUCTURE (for navigating + finding things)
+ * FILE STRUCTURE
  * =============================================================================
  *
- *   common/_tokens.scss        ← Edit this to tune brand colors, type, spacing
- *                                 motion, glow. Single source of truth.
+ * common.scss is a 555-line table of contents. It loads:
+ *   1. Google Fonts (one consolidated @import)
+ *   2. _tokens.scss — single source of truth for all design tokens
+ *   3. ~440 lines of preamble (typography defaults, layout, hero canvas)
+ *   4. 10 component partials (Sections 1-10 from the organized polish pass)
+ *   5. 33 TIER partials (chronological polish, TIER-1 → TIER-34)
  *
- *   common/_categories.scss    ← Section 1: category boxes w/ gradient borders
- *   common/_topic-list.scss    ← Section 2: topic list rows, pinned, voted
- *   common/_topic-page.scss    ← Section 3: thread reading surface, counterparts
- *   common/_pills.scss         ← Section 4: AI Participant + Founder pills
- *   common/_login.scss         ← Section 5: login + signup glass cards
- *   common/_empty-states.scss  ← Section 6: 404 + empty list/notifications
- *   common/_sidebar.scss       ← Section 7: left-nav active state
- *   common/_headings.scss      ← Section 8: h1-h4 fluid clamp() sizing
- *   common/_motion.scss        ← Section 9: animation + reduced-motion guard
- *   common/_print.scss         ← Section 10: paper-friendly stylesheet
+ * Cascade order matters — partials are @imported in the same order their
+ * original blocks appeared pre-refactor. Later imports intentionally
+ * override earlier ones.
  *
- *   common/common.scss (this file) ← @imports the partials above, then
- *                                    accumulated TIER polish blocks for
- *                                    surfaces that span multiple components
- *                                    (use Cmd+F search by topic name).
+ *   common/_tokens.scss            ← THE file Siarrah edits — every knob
  *
- *   common/header.html         ← Custom header chrome + hero canvas + console
- *                                easter egg. Inline scripts kept here because
- *                                vanilla-DOM lifecycle is known-stable; moving
- *                                to api-initializer broke Ember booting last
- *                                time (see comment in file).
- *   common/footer.html         ← Replaces "Powered by Discourse" footer.
+ *   COMPONENT PARTIALS (organized polish pass):
+ *   common/_categories.scss        ← Section 1: category boxes
+ *   common/_topic-list.scss        ← Section 2: topic list rows
+ *   common/_topic-page.scss        ← Section 3: thread reading surface
+ *   common/_pills.scss             ← Section 4: AI + Founder pills
+ *   common/_login.scss             ← Section 5: login + signup
+ *   common/_empty-states.scss      ← Section 6: 404 + empty states
+ *   common/_sidebar.scss           ← Section 7: left-nav
+ *   common/_headings.scss          ← Section 8: h1-h4 polish
+ *   common/_motion.scss            ← Section 9: animation discipline
+ *   common/_print.scss             ← Section 10: print stylesheet
  *
- *   desktop/desktop.scss       ← Desktop-only (>= 1024px) overrides
- *   mobile/mobile.scss         ← Mobile-only (< 768px) overrides
+ *   TIER PARTIALS (chronological, keep @import order if reorganizing):
+ *   common/_tier-01-chrome-strip.scss
+ *   common/_tier-02-stress-fixes.scss
+ *   common/_tier-03-residual-leaks.scss
+ *   common/_tier-04-correct-selectors.scss
+ *   common/_tier-05-mobile-overflow.scss
+ *   common/_tier-06-push-polish.scss
+ *   common/_tier-07-premium-reading.scss
+ *   common/_tier-09-community-surface.scss      (no TIER-08 in history)
+ *   common/_tier-10-navbar-mythic.scss
+ *   common/_tier-11-brand-alignment.scss
+ *   common/_tier-12-next-level.scss
+ *   common/_tier-13-world-class-surface.scss
+ *   common/_tier-14-community-os.scss
+ *   common/_tier-15-de-forum.scss
+ *   common/_tier-16-live-surface.scss
+ *   common/_tier-17-thread-continuation.scss
+ *   common/_tier-18-responsive-immersion.scss
+ *   common/_tier-19-post-artifact.scss
+ *   common/_tier-20-responsive-cinema.scss
+ *   common/_tier-21-world-class-qa.scss
+ *   common/_tier-22-cta-uncrush.scss
+ *   common/_tier-23-stage-composition.scss
+ *   common/_tier-24-participation-system.scss
+ *   common/_tier-25-label-geometry.scss
+ *   common/_tier-26-card-density.scss
+ *   common/_tier-27-authored-surfaces.scss
+ *   common/_tier-28-edge-rhythm.scss
+ *   common/_tier-29-full-stage-alignment.scss
+ *   common/_tier-30-thread-geometry.scss
+ *   common/_tier-31-community-push.scss
+ *   common/_tier-32-live-qa-hardening.scss
+ *   common/_tier-33-no-forum-finish.scss
+ *   common/_tier-34-admin-ops.scss              (final TIER, largest at ~7k lines)
  *
- * =============================================================================
- * TOPIC NAVIGATION INSIDE common.scss (TIER polish blocks)
- * =============================================================================
- *
- * The file accumulates iterative polish passes appended to the bottom. Use
- * Cmd+F to search for these anchors:
- *
- *   "TIER-1"            ← Forum-to-premium chrome strip
- *   "PER-CATEGORY BG"   ← Category-specific background tints
- *   "READING-PROGRESS"  ← Top-of-topic reading progress bar
- *   "FOCUS RINGS"       ← Cosmic violet focus outline (a11y)
- *   "GLASSMORPHIC"      ← Composer / reply form glass effect
- *   "TITLE TREATMENT"   ← #topic-title display polish
- *   "SOLVED REPLY"      ← Gold accent on solved replies
- *   "INLINE REPLY"      ← Desktop ≥900px inline reply form
- *   "BLOCKQUOTE"        ← Quote styling polish
- *   "BREAK THE TABLE"   ← Topic list de-tableification
- *   "REACT POLISH"      ← Reactions UI
- *   "STAR REPLY"        ← Star icon as reply indicator
- *   "GREEK KEY"         ← Meander motif dividers
- *   "STAR-FIELD"        ← Ambient starfield backdrop
- *   "USER CARD"         ← Hover card preview polish
- *   "AMBER PROMINENCE"  ← Gold elevations for pinned + founder
- *   "MYTHIC FOUNDATION" ← Marble texture overlay on cards
- *   "ORACLE TONE"       ← Empty-state copy + sigil treatment
- *   "PER-CATEGORY HERO" ← Category-page hero treatments
- *   "FEATURED TOPIC"    ← First pinned topic magazine-card treatment
- *   "COUNTERPART CARD"  ← AI counterpart presence cards
+ *   OTHER FILES:
+ *   common/header.html             ← Header chrome + hero canvas + console
+ *                                    easter egg. Inline scripts stay here
+ *                                    because vanilla-DOM lifecycle is known
+ *                                    stable; api-initializer broke Ember boot
+ *                                    historically (see comment in file).
+ *   common/footer.html             ← Replaces "Powered by Discourse"
+ *   desktop/desktop.scss           ← Desktop-only (>= 1024px)
+ *   mobile/mobile.scss             ← Mobile-only (< 768px)
  *
  * Author: ZENN + Siarrah
- * =============================================================================
  */
 
 /* =============================================================================
