@@ -1,7 +1,7 @@
 {
   "name": "Erebyx Arche",
   "about_url": "https://erebyx.com",
-  "license_url": "https://github.com/ProjectErebyx/erebyx-discourse-theme/blob/main/LICENSE",
+  "license_url": "https://github.com/ProjectErebyx/erebyx-discourse/blob/main/LICENSE",
   "component": false,
   "color_schemes": {
     "Erebyx Cosmic": {
