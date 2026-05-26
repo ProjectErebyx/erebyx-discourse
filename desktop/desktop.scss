@@ -15506,3 +15506,116 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
     opacity: 1 !important;
   }
 }
+
+/* Tier 58 - Desktop live rhythm polish. */
+@media screen and (width >= 861px) {
+  html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav {
+    height: 3.25rem !important;
+    min-height: 3.25rem !important;
+  }
+
+  html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__inner {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+    align-items: center !important;
+    gap: clamp(0.85rem, 1.6vw, 1.35rem) !important;
+    width: min(calc(100vw - 2rem), 74rem) !important;
+    max-width: 74rem !important;
+    height: 3.25rem !important;
+    min-height: 3.25rem !important;
+    margin-inline: auto !important;
+    padding-inline: 0 !important;
+    overflow: visible !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav__left,
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav__right {
+    display: flex !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    height: 100% !important;
+    gap: clamp(0.62rem, 1.25vw, 0.98rem) !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav__left {
+    grid-column: 1 !important;
+    justify-content: flex-start !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav__right {
+    grid-column: 3 !important;
+    justify-content: flex-end !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav
+    > .erebyx-nav__inner
+    > .erebyx-nav__logo {
+    grid-column: 2 !important;
+    justify-self: center !important;
+    align-self: center !important;
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet {
+    padding-top: clamp(3.15rem, 6.2vw, 4.15rem) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    :is(
+      .erebyx-genesis-banner,
+      .erebyx-arche-map,
+      #list-area,
+      .container.list-container,
+      .container.list-container.--topic-list,
+      .loading-container
+    ) {
+    width: min(calc(100vw - clamp(2rem, 5vw, 4.5rem)), 74rem) !important;
+    max-width: 74rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    .erebyx-genesis-banner {
+    margin-top: clamp(0.85rem, 1.6vw, 1.2rem) !important;
+    margin-bottom: clamp(1rem, 2vw, 1.45rem) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    .erebyx-arche-map {
+    margin-bottom: clamp(1.55rem, 2.8vw, 2.4rem) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #list-area {
+    margin-top: 0 !important;
+    gap: clamp(0.55rem, 1.1vw, 0.85rem) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #list-area::before {
+    min-height: 1.6rem !important;
+    margin: 0 auto 0.1rem !important;
+  }
+}

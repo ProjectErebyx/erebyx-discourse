@@ -9316,3 +9316,144 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
     opacity: 1 !important;
   }
 }
+
+/* Tier 58 - Mobile live rhythm polish. */
+@media screen and (width <= 860px) {
+  html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav {
+    height: 3.1rem !important;
+    min-height: 3.1rem !important;
+  }
+
+  html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__inner {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: center !important;
+    gap: 0.65rem !important;
+    width: calc(100vw - 1rem) !important;
+    max-width: calc(100vw - 1rem) !important;
+    height: 3.1rem !important;
+    min-height: 3.1rem !important;
+    margin-inline: auto !important;
+    padding-inline: 0 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav__left {
+    grid-column: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    min-width: 0 !important;
+    height: 100% !important;
+    gap: 0.55rem !important;
+    overflow: hidden !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav__right,
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav__link--desktop-only,
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav__social {
+    display: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav__dashboard {
+    flex: 0 0 auto !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav__link--primary {
+    min-width: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav
+    > .erebyx-nav__inner
+    > .erebyx-nav__logo {
+    grid-column: 2 !important;
+    justify-self: center !important;
+    align-self: center !important;
+    position: static !important;
+    inset: auto !important;
+    width: 2rem !important;
+    height: 2rem !important;
+    min-width: 2rem !important;
+    min-height: 2rem !important;
+    max-width: 2rem !important;
+    max-height: 2rem !important;
+    transform: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet {
+    padding-top: 1rem !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    :is(
+      .erebyx-genesis-banner,
+      .erebyx-arche-map,
+      #list-area,
+      .container.list-container,
+      .container.list-container.--topic-list,
+      .loading-container
+    ) {
+    width: calc(100vw - 1.5rem) !important;
+    max-width: calc(100vw - 1.5rem) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    .erebyx-genesis-banner {
+    margin-top: 0.85rem !important;
+    margin-bottom: 0.85rem !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    .erebyx-genesis-banner__inner {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.38rem 0.5rem !important;
+    text-align: left !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    .erebyx-genesis-banner__cta {
+    width: 100% !important;
+    min-height: 2.2rem !important;
+    margin: 0.22rem 0 0 !important;
+    justify-content: center !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    .erebyx-arche-map {
+    height: clamp(17.4rem, 74vw, 19.2rem) !important;
+    min-height: clamp(17.4rem, 74vw, 19.2rem) !important;
+    margin-bottom: 1rem !important;
+    padding: 0.85rem !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #list-area::before {
+    min-height: 1.25rem !important;
+  }
+}
