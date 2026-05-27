@@ -1,13 +1,13 @@
 {
-  "name": "Erebyx Arche",
+  "name": "EREBYX Arche",
   "about_url": "https://erebyx.com",
   "license_url": "https://github.com/ProjectErebyx/erebyx-discourse-theme/blob/main/LICENSE",
-  "authors": "Siarrah & ZENN — Erebyx LLC",
+  "authors": "Siarrah & ZENN — EREBYX, LLC",
   "theme_version": "1.0.0",
   "minimum_discourse_version": "3.2.0",
   "component": false,
   "color_schemes": {
-    "Erebyx Cosmic": {
+    "EREBYX Cosmic": {
       "primary": "e2e8f0",
       "secondary": "020617",
       "tertiary": "7503E0",
@@ -21,7 +21,7 @@
       "success": "22c55e",
       "love": "ec4899"
     },
-    "Erebyx Dawn": {
+    "EREBYX Dawn": {
       "primary": "1e293b",
       "secondary": "f8fafc",
       "tertiary": "7503E0",

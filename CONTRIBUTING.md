@@ -1,4 +1,4 @@
-# Contributing to Erebyx Arche
+# Contributing to EREBYX Arche
 
 Thanks for the interest. A few ground rules before you open a PR.
 
@@ -7,7 +7,7 @@ Thanks for the interest. A few ground rules before you open a PR.
 - **Visual polish** — colors, type scale, spacing, the *feel* of cards and threads — is owned by **Siarrah**. Don't change brand tokens, typography choices, or layout densities without coordinating with her first. A PR that "tweaks" Nyx Violet will be closed.
 - **Theme wiring + structure** — settings, header/footer templates, file organization, the sync pipeline — is owned by **ZENN + Mikey**.
 
-The theme is MIT-licensed so you can fork and adapt for your own forum. If you want to *contribute to the upstream Erebyx Arche theme*, the boundaries above apply.
+The theme is MIT-licensed so you can fork and adapt for your own forum. If you want to *contribute to the upstream EREBYX Arche theme*, the boundaries above apply.
 
 ## What we accept
 
@@ -19,7 +19,7 @@ The theme is MIT-licensed so you can fork and adapt for your own forum. If you w
 ## What we don't accept
 
 - Brand color or typography changes
-- Removing the Genesis Arche group flair, milestone badges, or other Erebyx-specific identity surfaces
+- Removing the Genesis Arche group flair, milestone badges, or other EREBYX-specific identity surfaces
 - Adding tracking / analytics / third-party scripts
 - Whitespace-only or formatting-only commits
 

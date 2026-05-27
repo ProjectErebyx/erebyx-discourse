@@ -6,7 +6,7 @@
   top strip — single, clean, mobile-responsive, officially maintained.
 -->
 <!--
-  Erebyx Arche — Discourse homepage hero
+  EREBYX Arche — Discourse homepage hero
 
   Renders a constellation canvas banner above the category list on homepage
   routes only (/, /categories, /latest). Self-removes elsewhere so it never
@@ -21,7 +21,7 @@
 -->
 
 <script type="text/x-handlebars" data-template-name="/connectors/discovery-above/erebyx-hero">
-  <section class="erebyx-hero" aria-label="The Arche — Erebyx founding community">
+  <section class="erebyx-hero" aria-label="The Arche — EREBYX founding community">
     <canvas class="erebyx-hero__canvas" aria-hidden="true"></canvas>
     <noscript>
       <div class="erebyx-hero__static" aria-hidden="true"></div>
@@ -41,7 +41,7 @@
 
 <script>
   /*
-   * Erebyx Arche — Constellation hero bootstrap
+   * EREBYX Arche — Constellation hero bootstrap
    * Pure Canvas API; no Three.js, no GSAP. ~3.8KB minified.
    * Designed to coexist with Ember/Discourse:
    *   - Single requestAnimationFrame loop, paused when tab hidden
@@ -484,14 +484,14 @@
      ============================================================ -->
 <script type="text/x-handlebars" data-template-name="/connectors/above-site-header/erebyx-navbar">
   <div class="erebyx-nav" role="banner">
-    <nav class="erebyx-nav__inner" aria-label="Erebyx primary navigation">
+    <nav class="erebyx-nav__inner" aria-label="EREBYX primary navigation">
       <!-- LEFT: dashboard + link rail -->
       <div class="erebyx-nav__left">
         <a
           href="https://app.erebyx.com"
           class="erebyx-nav__dashboard"
-          aria-label="Open Erebyx app dashboard"
-          title="Erebyx dashboard"
+          aria-label="Open EREBYX app dashboard"
+          title="EREBYX dashboard"
         >
           <!-- lucide User icon, inline so we don't ship the package -->
           <svg
@@ -529,7 +529,7 @@
       <a
         href="/"
         class="erebyx-nav__logo"
-        aria-label="Erebyx Arche home"
+        aria-label="EREBYX Arche home"
       >
         <span class="erebyx-nav__logo-mark" aria-hidden="true">◈</span>
       </a>
@@ -558,7 +558,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="erebyx-nav__social-link erebyx-nav__social-link--x"
-            aria-label="Erebyx on X"
+            aria-label="EREBYX on X"
             role="listitem"
           >
             <svg class="erebyx-nav__social-icon erebyx-nav__social-icon--sm" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -570,7 +570,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="erebyx-nav__social-link erebyx-nav__social-link--instagram"
-            aria-label="Erebyx on Instagram"
+            aria-label="EREBYX on Instagram"
             role="listitem"
           >
             <svg class="erebyx-nav__social-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -582,7 +582,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="erebyx-nav__social-link erebyx-nav__social-link--tiktok"
-            aria-label="Erebyx on TikTok"
+            aria-label="EREBYX on TikTok"
             role="listitem"
           >
             <svg class="erebyx-nav__social-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -594,7 +594,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="erebyx-nav__social-link erebyx-nav__social-link--linkedin"
-            aria-label="Erebyx on LinkedIn"
+            aria-label="EREBYX on LinkedIn"
             role="listitem"
           >
             <svg class="erebyx-nav__social-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -606,7 +606,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="erebyx-nav__social-link erebyx-nav__social-link--youtube"
-            aria-label="Erebyx on YouTube"
+            aria-label="EREBYX on YouTube"
             role="listitem"
           >
             <svg class="erebyx-nav__social-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -939,16 +939,16 @@
       var wrap = document.createElement("div");
       wrap.innerHTML =
         '<div class="erebyx-nav erebyx-nav--fallback" role="banner">' +
-          '<nav class="erebyx-nav__inner" aria-label="Erebyx primary navigation">' +
+          '<nav class="erebyx-nav__inner" aria-label="EREBYX primary navigation">' +
             '<div class="erebyx-nav__left">' +
-              '<a href="https://app.erebyx.com" class="erebyx-nav__dashboard" aria-label="Open Erebyx app dashboard" title="Erebyx dashboard">' +
+              '<a href="https://app.erebyx.com" class="erebyx-nav__dashboard" aria-label="Open EREBYX app dashboard" title="EREBYX dashboard">' +
                 '<svg class="erebyx-nav__dashboard-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>' +
               '</a>' +
               '<a href="/" class="erebyx-nav__link erebyx-nav__link--primary" title="The Arche homepage">The Arche</a>' +
               '<a href="/latest" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Latest threads">Threads</a>' +
               '<a href="/u" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Founding members">Members</a>' +
             '</div>' +
-            '<a href="/" class="erebyx-nav__logo" aria-label="Erebyx Arche home"><span class="erebyx-nav__logo-mark" aria-hidden="true">◈</span></a>' +
+            '<a href="/" class="erebyx-nav__logo" aria-label="EREBYX Arche home"><span class="erebyx-nav__logo-mark" aria-hidden="true">◈</span></a>' +
             '<div class="erebyx-nav__right">' +
               '<a href="/c/field-notes/6" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Field Notes">Field Notes</a>' +
               '<a href="/c/signal-room/9" class="erebyx-nav__link erebyx-nav__link--desktop-only" title="Signal Room">Signals</a>' +
