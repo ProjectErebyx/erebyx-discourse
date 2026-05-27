@@ -2091,7 +2091,6 @@ h4,
   #d-sidebar,
   .footer-nav,
   #site-footer,
-  .erebyx-footer,
   .topic-footer-buttons,
   .topic-map,
   .post-controls,
@@ -3629,8 +3628,7 @@ button.create.btn-primary {
 }
 
 .d-header,
-.erebyx-nav,
-.erebyx-footer {
+.erebyx-nav {
   position: relative;
 
   &::after {
@@ -3647,13 +3645,6 @@ button.create.btn-primary {
     background-size: auto 10px;
     opacity: 0.18;
   }
-}
-
-.erebyx-footer::after {
-  top: 0;
-  bottom: auto;
-  background-image: var(--erebyx-meander-footer);
-  opacity: 0.16;
 }
 
 .more-topics::after,
