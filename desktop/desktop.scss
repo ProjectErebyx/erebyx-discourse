@@ -16335,3 +16335,298 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
     hyphens: none !important;
   }
 }
+
+/* Tier 62 - Fresh discovery rhythm polish. */
+@media screen and (width <= 860px) {
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet-wrapper#main-outlet-wrapper,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet-wrapper#main-outlet-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-right: 0 !important;
+    overflow-x: clip !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0.62rem 0.75rem 0 !important;
+    overflow: visible !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > #main-container#main-container,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > #main-container#main-container {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    :is(
+      .erebyx-genesis-banner,
+      .erebyx-genesis-banner--injected,
+      .erebyx-arche-map,
+      .erebyx-arche-map--injected,
+      .container.list-container.--topic-list,
+      #list-area#list-area,
+      .topic-list.topic-list
+    ),
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    :is(
+      .erebyx-genesis-banner,
+      .erebyx-genesis-banner--injected,
+      .erebyx-arche-map,
+      .erebyx-arche-map--injected,
+      .container.list-container.--topic-list,
+      #list-area#list-area,
+      .topic-list.topic-list
+    ) {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .erebyx-genesis-banner,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .erebyx-genesis-banner {
+    margin-top: 0.45rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .erebyx-arche-map,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .erebyx-arche-map {
+    margin-bottom: 0.82rem !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .container.list-container.--topic-list,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .container.list-container.--topic-list {
+    margin-top: 0.2rem !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    #list-area#list-area,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    #list-area#list-area {
+    gap: 0.6rem !important;
+    overflow: visible !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    #list-area#list-area::before,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    #list-area#list-area::before {
+    content: "Latest field notes" !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 1.45rem !important;
+    margin: 0 auto 0.25rem !important;
+    color: rgba(238, 244, 255, 0.92) !important;
+    font-size: 0.72rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+    text-shadow: 0 0 16px rgba(121, 168, 255, 0.32) !important;
+  }
+}
+
+@media screen and (width >= 861px) {
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .erebyx-genesis-banner,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .erebyx-genesis-banner {
+    margin-top: clamp(0.65rem, 1vw, 1rem) !important;
+    margin-bottom: clamp(1rem, 1.7vw, 1.35rem) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .erebyx-arche-map,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .erebyx-arche-map {
+    margin-bottom: clamp(1rem, 1.8vw, 1.55rem) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .container.list-container.--topic-list,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .container.list-container.--topic-list {
+    margin-top: clamp(0.35rem, 0.8vw, 0.75rem) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    #list-area#list-area,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    #list-area#list-area {
+    gap: clamp(0.42rem, 0.8vw, 0.68rem) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    #list-area#list-area::before,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    #list-area#list-area::before {
+    content: "Latest field notes" !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 1.35rem !important;
+    margin: 0 auto 0.45rem !important;
+    color: rgba(238, 244, 255, 0.94) !important;
+    font-size: clamp(0.74rem, 0.82vw, 0.84rem) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.16em !important;
+    text-transform: uppercase !important;
+    text-shadow: 0 0 18px rgba(121, 168, 255, 0.34) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .topic-list.topic-list
+    > tbody.topic-list-body.topic-list-body
+    > tr.topic-list-item.topic-list-item,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .topic-list.topic-list
+    > tbody.topic-list-body.topic-list-body
+    > tr.topic-list-item.topic-list-item {
+    min-height: clamp(9.7rem, 12.6vw, 10.95rem) !important;
+    padding: clamp(1.08rem, 1.45vw, 1.34rem)
+      clamp(1.12rem, 1.7vw, 1.58rem)
+      clamp(3.15rem, 4vw, 3.65rem) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .topic-list.topic-list
+    > tbody.topic-list-body.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    > td.num.posts-map,
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .topic-list.topic-list
+    > tbody.topic-list-body.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    > td.posts-map,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .topic-list.topic-list
+    > tbody.topic-list-body.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    > td.num.posts-map,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .topic-list.topic-list
+    > tbody.topic-list-body.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    > td.posts-map {
+    bottom: clamp(0.92rem, 1.25vw, 1.12rem) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .topic-list.topic-list
+    > tbody.topic-list-body.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    > td.activity.num,
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .topic-list.topic-list
+    > tbody.topic-list-body.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    > td.num.activity,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .topic-list.topic-list
+    > tbody.topic-list-body.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    > td.activity.num,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .topic-list.topic-list
+    > tbody.topic-list-body.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    > td.num.activity {
+    bottom: clamp(0.92rem, 1.25vw, 1.12rem) !important;
+  }
+}
