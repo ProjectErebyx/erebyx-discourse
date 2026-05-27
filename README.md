@@ -17,7 +17,7 @@ Matches the visual language of `erebyx.com` (marketing) and `app.erebyx.com` (da
 - **Genesis Arche group flair** — violet username color + subtle glow on every post by `genesis_arche` group members
 - **Milestone badges** with gold accent ("Crossed the Threshold", "Lit a Star", "First Memory", …)
 - **Greek meander dividers** (toggleable via theme setting)
-- **Custom header** linking to Dashboard / Continuum / Thesis
+- **Custom header** linking to the dashboard, Arche home, threads, members, Field Notes, Signal Room, and social profiles
 - **Custom footer** replacing the default "Powered by Discourse" chrome
 - **Two color schemes** — Erebyx Cosmic (dark, default) and Erebyx Dawn (light)
 - **Mobile + desktop optimized** — backdrop-filter perf hints, larger tap targets
@@ -33,20 +33,36 @@ In your Discourse admin:
 3. Branch: `main`
 4. Save → **Set as default theme**
 
-### 2. Install required theme components
+### 2. Optional companion components
 
-Erebyx Arche composes **four** official Discourse-team theme components for full visual fidelity. Install each the same way (Admin → Customize → Themes → Install → From a git repository), then attach them as components of *Erebyx Arche*:
+Erebyx Arche is self-contained: the navbar, Genesis banner, room map, footer,
+and key discovery-page polish live in this repo. If your forum uses the same
+content surfaces, these official Discourse-team components can be attached for
+additional fidelity:
 
 | Component | Repo | Why we use it |
 |---|---|---|
-| **Brand Header** | `https://github.com/discourse/discourse-brand-header.git` | **REQUIRED** — top nav strip. Without this, `common/header.html` falls back to a bare/mobile-looking layout. |
+| Brand Header | `https://github.com/discourse/discourse-brand-header.git` | Optional compatibility with forums already using Brand Header. The theme also ships its own connector navbar and native fallback. |
 | Category Banners | `https://github.com/discourse/discourse-category-banners.git` | Sigil-driven category header art |
 | Showcased Categories | `https://github.com/discourse/discourse-showcased-categories.git` | Featured-categories layout on home |
 | Versatile Banner | `https://github.com/discourse/discourse-versatile-banner.git` | Genesis Arche announcement banner |
 
 These are MIT/Apache-licensed and Discourse-team-maintained — safe to add.
 
-The parent theme + component pulls from the public URL on demand and on Discourse's periodic remote-theme refresh.
+Discourse pulls the parent theme and any attached components from their public
+URLs on demand and during periodic remote-theme refreshes.
+
+## Local validation
+
+The theme is intentionally buildless, but SCSS should compile before a push:
+
+```bash
+npx --yes sass common/common.scss:/tmp/erebyx-common.css desktop/desktop.scss:/tmp/erebyx-desktop.css mobile/mobile.scss:/tmp/erebyx-mobile.css --no-source-map
+git diff --check
+```
+
+For visual changes, check at least phone, tablet, medium desktop, and wide
+desktop widths on `/latest` before merging.
 
 ## Live deployment on arche.erebyx.com
 

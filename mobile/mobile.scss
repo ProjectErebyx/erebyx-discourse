@@ -9953,3 +9953,67 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
     margin-bottom: 0.85rem !important;
   }
 }
+
+/* Tier 62 - Tablet map layout uses the compact core-above-grid rhythm. */
+@media screen and (width >= 561px) and (width <= 860px) {
+  html:not(.erebyx-admin-route)
+    body:is(.navigation-topics, .category):not(.admin-interface):not(
+      .archetype-regular
+    )
+    #main-outlet#main-outlet
+    .erebyx-arche-map {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: clamp(0.92rem, 2vw, 1.15rem) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:is(.navigation-topics, .category):not(.admin-interface):not(
+      .archetype-regular
+    )
+    #main-outlet#main-outlet
+    .erebyx-arche-map__core {
+    position: relative !important;
+    inset: auto !important;
+    width: clamp(4.35rem, 10vw, 5.25rem) !important;
+    margin: 0 auto clamp(0.82rem, 1.8vw, 1.05rem) !important;
+    transform: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:is(.navigation-topics, .category):not(.admin-interface):not(
+      .archetype-regular
+    )
+    #main-outlet#main-outlet
+    .erebyx-arche-map__rooms {
+    position: relative !important;
+    inset: auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: clamp(0.58rem, 1.5vw, 0.82rem) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:is(.navigation-topics, .category):not(.admin-interface):not(
+      .archetype-regular
+    )
+    #main-outlet#main-outlet
+    .erebyx-arche-map__room {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    padding: clamp(0.72rem, 1.8vw, 0.9rem) clamp(0.78rem, 1.8vw, 0.95rem) !important;
+    transform: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:is(.navigation-topics, .category):not(.admin-interface):not(
+      .archetype-regular
+    )
+    #main-outlet#main-outlet
+    .erebyx-arche-map__room:is(:hover, :focus-visible) {
+    transform: translateY(-2px) !important;
+  }
+}

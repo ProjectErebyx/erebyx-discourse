@@ -40,6 +40,16 @@ For a local Discourse dev environment, follow [Discourse's dev setup guide](http
 - No JavaScript unless absolutely necessary; if added, it goes under `javascripts/discourse/` per Discourse's theme spec
 - Don't introduce npm / build tooling — the theme stays buildless
 
+Before opening a PR, compile the SCSS and check for whitespace errors:
+
+```bash
+npx --yes sass common/common.scss:/tmp/erebyx-common.css desktop/desktop.scss:/tmp/erebyx-desktop.css mobile/mobile.scss:/tmp/erebyx-mobile.css --no-source-map
+git diff --check
+```
+
+For layout work, include screenshots or notes from phone, tablet, medium
+desktop, and wide desktop checks.
+
 ## Licensing
 
 By contributing, you agree your contributions are licensed under the MIT license (same as the rest of the repo). See [`LICENSE`](LICENSE).
