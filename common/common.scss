@@ -36352,3 +36352,45 @@ html:not(.erebyx-admin-route)
   min-height: 1.6rem !important;
   margin: 0 auto 0.1rem !important;
 }
+
+/* Tier 59 - Center anonymous auth surfaces instead of inheriting Discourse's split login grid. */
+@media screen and (width >= 700px) {
+  html:not(.erebyx-admin-route) body.login-page:not(.admin-interface) {
+    #main-outlet-wrapper#main-outlet-wrapper {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: flex-start !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
+      padding-inline: clamp(0.75rem, 3vw, 2rem) !important;
+      overflow-x: clip !important;
+    }
+
+    #main-outlet#main-outlet {
+      box-sizing: border-box !important;
+      width: 100% !important;
+      max-width: 40rem !important;
+      min-width: 0 !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      inset: auto !important;
+    }
+
+    :is(#main-container, .container, #login-form) {
+      box-sizing: border-box !important;
+      max-width: 100% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    :is(
+      #login-account-name,
+      #login-account-password,
+      #login-button,
+      .passkey-login-button
+    ) {
+      max-width: 100% !important;
+    }
+  }
+}
