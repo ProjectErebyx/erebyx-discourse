@@ -621,23 +621,17 @@
 
 <!--
   Genesis seats banner — injects above the homepage category list.
-  Reads `data-genesis-count` from <body> (set by initializer below) so the
-  number stays in sync with the actual `genesis_arche` group size without
-  hard-coding. Hidden on non-discovery routes via .erebyx-banner-hidden class
-  set by the initializer's route gate.
+  Hidden on non-discovery routes via .erebyx-banner-hidden class set by the
+  initializer's route gate.
 -->
 <script type="text/x-handlebars" data-template-name="/connectors/above-main-container/erebyx-genesis-banner">
   <aside
     class="erebyx-genesis-banner"
-    aria-label="Genesis Arche founding cohort progress"
+    aria-label="Founding cohort seat availability"
   >
     <div class="erebyx-genesis-banner__inner">
       <span class="erebyx-genesis-banner__sigil" aria-hidden="true">✦</span>
-      <span class="erebyx-genesis-banner__label">Genesis Arche</span>
-      <span class="erebyx-genesis-banner__sep" aria-hidden="true">·</span>
       <span class="erebyx-genesis-banner__count">
-        <span class="erebyx-genesis-banner__filled" data-genesis-count>Beta live</span>
-        <span class="erebyx-genesis-banner__of">·</span>
         <span class="erebyx-genesis-banner__total">2,000</span>
         <span class="erebyx-genesis-banner__suffix">seats available</span>
       </span>
@@ -698,8 +692,6 @@
 
 <!--
   Lightweight initializer:
-    - tags <body> with data-genesis-count="N" (read from /groups/genesis_arche.json
-      via fetch — public endpoint on private instances when user is authed)
     - tags consecutive same-author posts with .erebyx-cluster-continued so
       the constellation rail (CSS-only) can connect reply chains
     - sets data-counterpart on each post for sigil-watermark theming
@@ -720,32 +712,7 @@
       "/hot"
     ];
 
-    // ---- 1. Genesis seat counter (graceful fallback to "—" on failure) ----
-    var fetchGenesisCount = function () {
-      if (!window.fetch) return;
-      try {
-        fetch("/groups/genesis_arche.json", { credentials: "same-origin", headers: { "Accept": "application/json" } })
-          .then(function (r) { return r.ok ? r.json() : null; })
-          .then(function (data) {
-            if (!data || !data.group) return;
-            var n = data.group.user_count || 0;
-            document.body.setAttribute("data-genesis-count", String(n));
-            var nodes = document.querySelectorAll("[data-genesis-count]");
-            for (var i = 0; i < nodes.length; i++) {
-              if (nodes[i].tagName !== "BODY") nodes[i].textContent = n.toLocaleString();
-            }
-            document.querySelectorAll(".erebyx-genesis-banner__of").forEach(function (node) {
-              node.textContent = " of ";
-            });
-            document.querySelectorAll(".erebyx-genesis-banner__suffix").forEach(function (node) {
-              node.textContent = " seats lit";
-            });
-          })
-          .catch(function () { /* silent — banner keeps beta-live fallback */ });
-      } catch (e) { /* old browsers */ }
-    };
-
-    // ---- 2. Reply-chain clustering for constellation rail ----
+    // ---- 1. Reply-chain clustering for constellation rail ----
     var clusterPosts = function () {
       var posts = document.querySelectorAll("article.topic-post");
       if (!posts.length) return;
@@ -773,7 +740,7 @@
       });
     };
 
-    // ---- 3. Discovery surfaces + route gate ----
+    // ---- 2. Discovery surfaces + route gate ----
     var isDiscoveryPath = function () {
       var path = window.location.pathname || "/";
       for (var i = 0; i < DISCOVERY_ROUTES.length; i++) {
@@ -827,18 +794,12 @@
 
       if (!document.querySelector(".erebyx-genesis-banner")) {
         var banner = createNode("aside", "erebyx-genesis-banner erebyx-genesis-banner--injected");
-        banner.setAttribute("aria-label", "Genesis Arche founding cohort progress");
+        banner.setAttribute("aria-label", "Founding cohort seat availability");
 
         var inner = createNode("div", "erebyx-genesis-banner__inner");
         inner.appendChild(createNode("span", "erebyx-genesis-banner__sigil", "✦")).setAttribute("aria-hidden", "true");
-        inner.appendChild(createNode("span", "erebyx-genesis-banner__label", "Genesis Arche"));
-        inner.appendChild(createNode("span", "erebyx-genesis-banner__sep", "·")).setAttribute("aria-hidden", "true");
 
         var count = createNode("span", "erebyx-genesis-banner__count");
-        var filled = createNode("span", "erebyx-genesis-banner__filled", "Beta live");
-        filled.setAttribute("data-genesis-count", "");
-        count.appendChild(filled);
-        count.appendChild(createNode("span", "erebyx-genesis-banner__of", "·"));
         count.appendChild(createNode("span", "erebyx-genesis-banner__total", "2,000"));
         count.appendChild(createNode("span", "erebyx-genesis-banner__suffix", "seats available"));
         inner.appendChild(count);
@@ -907,11 +868,9 @@
     };
 
     if (document.readyState !== "loading") {
-      fetchGenesisCount();
       run();
     } else {
       document.addEventListener("DOMContentLoaded", function () {
-        fetchGenesisCount();
         run();
       });
     }
