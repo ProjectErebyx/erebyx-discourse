@@ -16634,6 +16634,12 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
 /* Tier 63 - Tablet nav clearance wins at the final cascade edge. */
 @media screen and (width >= 700px) and (width <= 860px) {
   html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet,
+  html:not(.erebyx-admin-route)
     body.navigation-topics.navigation-topics:not(.admin-interface):not(.archetype-regular)
     #main-outlet#main-outlet,
   html:not(.erebyx-admin-route)
@@ -16642,6 +16648,14 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
     padding-top: clamp(3.75rem, 7.4vw, 4.35rem) !important;
   }
 
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .erebyx-genesis-banner,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .erebyx-genesis-banner,
   html:not(.erebyx-admin-route)
     body.navigation-topics.navigation-topics:not(.admin-interface):not(.archetype-regular)
     #main-outlet#main-outlet
