@@ -16692,3 +16692,28 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
     transform: translateX(-50%) !important;
   }
 }
+
+/* Tier 65 - Keep the right nav actions visible on medium desktop widths. */
+@media screen and (width >= 1040px) and (width <= 1240px) {
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    .erebyx-nav__right.erebyx-nav__right {
+    padding-right: clamp(1rem, 2.4vw, 1.8rem) !important;
+    gap: clamp(0.46rem, 0.9vw, 0.72rem) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    .erebyx-nav__right.erebyx-nav__right
+    .erebyx-nav__link--desktop-only.erebyx-nav__link--desktop-only {
+    display: inline-flex !important;
+    flex: 0 1 auto !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0 !important;
+    white-space: nowrap !important;
+  }
+}
