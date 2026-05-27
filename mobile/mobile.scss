@@ -9899,3 +9899,35 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
     text-shadow: 0 0 16px rgba(121, 168, 255, 0.32) !important;
   }
 }
+
+/* Tier 61 - Tablet discovery clearance for the mobile bundle. */
+@media screen and (width >= 700px) and (width <= 860px) {
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics:not(.admin-interface):not(
+      .archetype-regular
+    )
+    #main-outlet#main-outlet,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category:not(
+      .admin-interface
+    ):not(.archetype-regular)
+    #main-outlet#main-outlet {
+    padding-top: clamp(3.75rem, 7.4vw, 4.35rem) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.navigation-topics.navigation-topics:not(.admin-interface):not(
+      .archetype-regular
+    )
+    #main-outlet#main-outlet
+    .erebyx-genesis-banner,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category.navigation-category:not(
+      .admin-interface
+    ):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .erebyx-genesis-banner {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.85rem !important;
+  }
+}
