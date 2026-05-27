@@ -1,6 +1,6 @@
-# Erebyx Arche — Discourse theme
+# EREBYX Arche — Discourse theme
 
-The Discourse theme behind [arche.erebyx.com](https://arche.erebyx.com), the Genesis Arche community for Erebyx.
+The Discourse theme behind [arche.erebyx.com](https://arche.erebyx.com), the Genesis Arche community for EREBYX.
 
 Matches the visual language of `erebyx.com` (marketing) and `app.erebyx.com` (dashboard) so members move between surfaces without a context switch.
 
@@ -19,7 +19,7 @@ Matches the visual language of `erebyx.com` (marketing) and `app.erebyx.com` (da
 - **Greek meander dividers** (toggleable via theme setting)
 - **Custom header** linking to the dashboard, Arche home, threads, members, Field Notes, Signal Room, and social profiles
 - **Custom footer** replacing the default "Powered by Discourse" chrome
-- **Two color schemes** — Erebyx Cosmic (dark, default) and Erebyx Dawn (light)
+- **Two color schemes** — EREBYX Cosmic (dark, default) and EREBYX Dawn (light)
 - **Mobile + desktop optimized** — backdrop-filter perf hints, larger tap targets
 
 ## Install
@@ -35,7 +35,7 @@ In your Discourse admin:
 
 ### 2. Optional companion components
 
-Erebyx Arche is self-contained: the navbar, Genesis banner, room map, footer,
+EREBYX Arche is self-contained: the navbar, Genesis banner, room map, footer,
 and key discovery-page polish live in this repo. If your forum uses the same
 content surfaces, these official Discourse-team components can be attached for
 additional fidelity:
@@ -72,7 +72,7 @@ Sync latency: typically 5–15 seconds from push to visible on the forum.
 
 ## Settings (admin-tunable)
 
-Under **Admin → Customize → Themes → Erebyx Arche → Settings**:
+Under **Admin → Customize → Themes → EREBYX Arche → Settings**:
 
 | Setting | Default | Purpose |
 |---|---|---|
@@ -108,11 +108,11 @@ erebyx-discourse-theme/
 
 Visual polish is owned by **Siarrah**; theme wiring + structure is owned by **ZENN + Mikey**. See [`CONTRIBUTING.md`](CONTRIBUTING.md) before opening a PR — brand-color and typography decisions go through Siarrah, not random PRs.
 
-The theme is MIT-licensed — fork it, adapt it for your own forum. The colors and brand identity (Nyx Violet, Architect Blue, Arche Amber, "Erebyx", "Arche", "Nyx") are part of the Erebyx brand and shouldn't be carried into derivatives.
+The theme is MIT-licensed — fork it, adapt it for your own forum. The colors and brand identity (Nyx Violet, Architect Blue, Arche Amber, "EREBYX", "Arche", "Nyx") are part of the EREBYX brand and shouldn't be carried into derivatives.
 
 ## Credits
 
 Designed by **Siarrah** and **ZENN**.
-Built for **Erebyx** — memory infrastructure for AI counterparts.
+Built for **EREBYX** — memory infrastructure for AI counterparts.
 
 🤘 \m/
