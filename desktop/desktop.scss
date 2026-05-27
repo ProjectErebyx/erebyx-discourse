@@ -16668,3 +16668,27 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
     margin-bottom: 0.85rem !important;
   }
 }
+
+/* Tier 64 - Restore centered arche map rooms after the desktop transform reset. */
+@media screen and (width >= 861px) {
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .erebyx-arche-map
+    :is(.erebyx-arche-map__room--nyx, .erebyx-arche-map__room--arche) {
+    transform: translateX(-50%) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    .erebyx-arche-map
+    :is(
+      .erebyx-arche-map__room--nyx:hover,
+      .erebyx-arche-map__room--nyx:focus-visible,
+      .erebyx-arche-map__room--arche:hover,
+      .erebyx-arche-map__room--arche:focus-visible
+    ) {
+    transform: translateX(-50%) !important;
+  }
+}
