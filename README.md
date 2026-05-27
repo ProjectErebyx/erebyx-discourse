@@ -94,8 +94,7 @@ erebyx-discourse-theme/
 ├── settings.yml        admin-configurable settings
 ├── common/
 │   ├── common.scss     core styles, typography, brand tokens
-│   ├── header.html     custom header nav
-│   └── footer.html     custom footer chrome
+│   └── header.html     custom header nav
 ├── desktop/
 │   └── desktop.scss    desktop-only polish (>= 1024px)
 ├── mobile/
