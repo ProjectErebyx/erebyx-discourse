@@ -648,11 +648,6 @@
 -->
 <script type="text/x-handlebars" data-template-name="/connectors/above-main-container/erebyx-arche-map">
   <section class="erebyx-arche-map" aria-label="Arche category rooms">
-    <div class="erebyx-arche-map__core" aria-hidden="true">
-      <span class="erebyx-arche-map__core-sigil">◈</span>
-      <span class="erebyx-arche-map__core-ring"></span>
-    </div>
-
     <nav class="erebyx-arche-map__rooms" aria-label="Arche rooms">
       <a class="erebyx-arche-map__room erebyx-arche-map__room--start" href="/c/orientation/5">
         <span class="erebyx-arche-map__sigil" aria-hidden="true">✦</span>
@@ -814,12 +809,6 @@
       if (!document.querySelector(".erebyx-arche-map")) {
         var map = createNode("section", "erebyx-arche-map erebyx-arche-map--injected");
         map.setAttribute("aria-label", "Arche category rooms");
-
-        var core = createNode("div", "erebyx-arche-map__core");
-        core.setAttribute("aria-hidden", "true");
-        core.appendChild(createNode("span", "erebyx-arche-map__core-sigil", "◈"));
-        core.appendChild(createNode("span", "erebyx-arche-map__core-ring"));
-        map.appendChild(core);
 
         var nav = createNode("nav", "erebyx-arche-map__rooms");
         nav.setAttribute("aria-label", "Arche rooms");

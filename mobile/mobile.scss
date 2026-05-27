@@ -10068,3 +10068,21 @@ html:not(.erebyx-admin-route)
   opacity: 0.72 !important;
   mix-blend-mode: screen !important;
 }
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .erebyx-arche-map__core {
+  display: none !important;
+}
+
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-arche-map {
+  min-height: clamp(22rem, 88vw, 31rem) !important;
+  height: clamp(22rem, 88vw, 31rem) !important;
+}
+
+@media screen and (width >= 561px) and (width <= 860px) {
+  html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-arche-map {
+    min-height: clamp(26rem, 56vw, 32rem) !important;
+    height: clamp(26rem, 56vw, 32rem) !important;
+  }
+}
