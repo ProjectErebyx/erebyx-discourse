@@ -10017,3 +10017,38 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
     transform: translateY(-2px) !important;
   }
 }
+
+/* Tier 63 - Tablet banner keeps availability and constellation link split. */
+@media screen and (width >= 700px) and (width <= 860px) {
+  html:not(.erebyx-admin-route)
+    body:is(.navigation-topics, .category):not(.admin-interface):not(
+      .archetype-regular
+    )
+    #main-outlet#main-outlet
+    .erebyx-genesis-banner__inner {
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    gap: 0.58rem !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:is(.navigation-topics, .category):not(.admin-interface):not(
+      .archetype-regular
+    )
+    #main-outlet#main-outlet
+    .erebyx-genesis-banner__count {
+    margin-right: auto !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:is(.navigation-topics, .category):not(.admin-interface):not(
+      .archetype-regular
+    )
+    #main-outlet#main-outlet
+    .erebyx-genesis-banner__cta {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    margin: 0 0 0 auto !important;
+    padding-inline: 0.92rem !important;
+  }
+}
