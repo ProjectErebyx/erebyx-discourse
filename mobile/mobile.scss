@@ -1,5 +1,7 @@
 /* Mobile-specific overrides for EREBYX Arche theme */
 
+$arche_map_relief: "$arche_map_relief" !default;
+
 @media (width <= 767px) {
   .d-header .title {
     font-size: 1em;
@@ -10045,4 +10047,24 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
     margin: 0 0 0 auto !important;
     padding-inline: 0.92rem !important;
   }
+}
+
+/* Tier 64 - Arche room map relief image. */
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-arche-map {
+  background:
+    linear-gradient(90deg, rgb(3 7 18 / 0.48), rgb(3 7 18 / 0.26)),
+    linear-gradient(180deg, rgb(3 7 18 / 0.28), rgb(3 7 18 / 0.46)),
+    url($arche_map_relief) center / cover no-repeat,
+    rgb(3 7 18) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .erebyx-arche-map::before {
+  background:
+    radial-gradient(circle at 50% 48%, rgb(250 178 50 / 0.13), transparent 18rem),
+    radial-gradient(circle at 84% 72%, rgb(68 146 252 / 0.14), transparent 22rem),
+    radial-gradient(circle at 14% 24%, rgb(117 3 224 / 0.15), transparent 24rem) !important;
+  opacity: 0.72 !important;
+  mix-blend-mode: screen !important;
 }

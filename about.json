@@ -6,6 +6,9 @@
   "theme_version": "1.0.0",
   "minimum_discourse_version": "3.2.0",
   "component": false,
+  "assets": {
+    "arche_map_relief": "assets/arche-map-relief.jpg"
+  },
   "color_schemes": {
     "EREBYX Cosmic": {
       "primary": "e2e8f0",
