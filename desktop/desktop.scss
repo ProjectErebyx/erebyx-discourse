@@ -15671,3 +15671,69 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
     margin: 0 auto 0.1rem !important;
   }
 }
+
+/* Tier 59 - Final public list-card normalization for desktop. */
+@media screen and (width >= 861px) {
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet
+    :is(
+      .topic-list,
+      #suggested-topics .topic-list,
+      .more-topics__container .topic-list,
+      .more-topics .topic-list,
+      .loading-container .topic-list
+    ) {
+    display: grid !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    border-spacing: 0 !important;
+    table-layout: fixed !important;
+    overflow: visible !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet
+    :is(
+      .topic-list,
+      #suggested-topics .topic-list,
+      .more-topics__container .topic-list,
+      .more-topics .topic-list,
+      .loading-container .topic-list
+    )
+    > tbody.topic-list-body {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: clamp(1rem, 1.6vw, 1.35rem) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet
+    .topic-list
+    > tbody.topic-list-body
+    > tr.topic-list-item {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet
+    .topic-list
+    > tbody.topic-list-body
+    > tr.topic-list-item
+    :is(.main-link a.title, a.raw-topic-link) {
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+    hyphens: none !important;
+  }
+}
