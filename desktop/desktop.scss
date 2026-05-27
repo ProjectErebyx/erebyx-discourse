@@ -16800,13 +16800,19 @@ html:not(.erebyx-admin-route)
   display: none !important;
 }
 
-html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-arche-map {
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #main-outlet#main-outlet
+  > .erebyx-arche-map.erebyx-arche-map {
   min-height: clamp(30rem, 46vw, 41.5rem) !important;
   height: clamp(30rem, 46vw, 41.5rem) !important;
 }
 
 @media screen and (width >= 561px) and (width <= 860px) {
-  html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-arche-map {
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet#main-outlet
+    > .erebyx-arche-map.erebyx-arche-map {
     min-height: clamp(26rem, 56vw, 32rem) !important;
     height: clamp(26rem, 56vw, 32rem) !important;
   }
