@@ -10021,9 +10021,7 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
 /* Tier 63 - Tablet banner keeps availability and constellation link split. */
 @media screen and (width >= 700px) and (width <= 860px) {
   html:not(.erebyx-admin-route)
-    body:is(.navigation-topics, .category):not(.admin-interface):not(
-      .archetype-regular
-    )
+    body:not(.admin-interface):not(.archetype-regular)
     #main-outlet#main-outlet
     .erebyx-genesis-banner__inner {
     flex-wrap: nowrap !important;
@@ -10032,18 +10030,14 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
   }
 
   html:not(.erebyx-admin-route)
-    body:is(.navigation-topics, .category):not(.admin-interface):not(
-      .archetype-regular
-    )
+    body:not(.admin-interface):not(.archetype-regular)
     #main-outlet#main-outlet
     .erebyx-genesis-banner__count {
     margin-right: auto !important;
   }
 
   html:not(.erebyx-admin-route)
-    body:is(.navigation-topics, .category):not(.admin-interface):not(
-      .archetype-regular
-    )
+    body:not(.admin-interface):not(.archetype-regular)
     #main-outlet#main-outlet
     .erebyx-genesis-banner__cta {
     flex: 0 0 auto !important;
