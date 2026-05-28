@@ -36494,6 +36494,27 @@ html:not(.erebyx-admin-route)
   right: 12% !important;
 }
 
+/* Tier 62 - Keep the public theme footerless after Discourse route restores. */
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  :is(
+    #data-footer,
+    #site-footer,
+    .footer-nav,
+    .footer-nav-ipad,
+    .powered-by-discourse,
+    a[href*="discourse.org/powered-by"],
+    a[href*="/powered-by"]
+  ) {
+  display: none !important;
+  visibility: hidden !important;
+  min-height: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
 @media screen and (width >= 861px) {
   html:not(.erebyx-admin-route)
     body:not(.admin-interface)
