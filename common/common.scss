@@ -36343,8 +36343,12 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__wordmark {
   display: block !important;
+  width: 100% !important;
+  height: 100% !important;
   inline-size: 100% !important;
   block-size: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
   background: linear-gradient(110deg, #fff7d6 0%, #fab232 34%, #ff7a1a 68%, #ffe7a3 100%) !important;
   mask: url($genesis_arche_wordmark) center / contain no-repeat !important;
   -webkit-mask: url($genesis_arche_wordmark) center / contain no-repeat !important;
