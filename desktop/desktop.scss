@@ -16923,7 +16923,13 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__dashboard-
   height: 1.32rem !important;
 }
 
-/* Tier 72 - Preserve river relief homepage column headers in desktop bundle. */
+/* Tier 72 - Restore neutral social icon color. */
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__social-icon,
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__social-icon path {
+  fill: currentColor !important;
+}
+
+/* Tier 73 - Preserve river relief homepage column headers in desktop bundle. */
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   .custom-homepage-columns

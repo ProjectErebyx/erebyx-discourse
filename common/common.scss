@@ -19825,6 +19825,11 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__social-ico
   display: block !important;
   width: 1.32rem !important;
   height: 1.32rem !important;
+  fill: currentColor !important;
+}
+
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__social-icon path {
+  fill: currentColor !important;
 }
 
 html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__dashboard {
