@@ -3,6 +3,7 @@
 $arche_map_relief: "$arche_map_relief" !default;
 $genesis_river_banner: "$genesis_river_banner" !default;
 $genesis_arche_wordmark: "$genesis_arche_wordmark" !default;
+$genesis_lounge_banner: "$genesis_lounge_banner" !default;
 
 :root {
   --erebyx-violet: var(--brand_violet, #7503e0);
@@ -36499,6 +36500,17 @@ html:not(.erebyx-admin-route)
   box-shadow: none !important;
   opacity: 0 !important;
   pointer-events: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .category-title-header.category-banner-genesis-lounge {
+  background:
+    linear-gradient(90deg, rgb(3 7 18 / 0.46), rgb(3 7 18 / 0.1) 46%, rgb(3 7 18 / 0.5)),
+    linear-gradient(180deg, rgb(3 7 18 / 0.14), rgb(3 7 18 / 0.5)),
+    url($genesis_lounge_banner) center 50% / cover no-repeat,
+    rgb(8 18 46) !important;
+  background-size: auto, auto, cover, auto !important;
 }
 
 /* Tier 64 - River relief homepage column headers. */
