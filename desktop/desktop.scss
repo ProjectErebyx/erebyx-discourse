@@ -16929,7 +16929,34 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__social-ico
   fill: currentColor !important;
 }
 
-/* Tier 73 - Preserve river relief homepage column headers in desktop bundle. */
+/* Tier 73 - Clean category banner canvas in desktop bundle. */
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .category-title-header[class*="category-banner-"] {
+  background:
+    linear-gradient(135deg, rgb(8 18 46 / 0.96), rgb(8 34 66 / 0.82)),
+    rgb(8 18 46) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .category-title-header[class*="category-banner-"]::before,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .category-title-header[class*="category-banner-"]::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Tier 74 - Preserve river relief homepage column headers in desktop bundle. */
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   .custom-homepage-columns
