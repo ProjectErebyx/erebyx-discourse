@@ -16963,6 +16963,9 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
+  .category-title-header.category-banner-genesis-lounge,
+html:not(.erebyx-admin-route)
+  body[class*="category-"]:not(.archetype-regular):not(.admin-interface)
   .category-title-header.category-banner-genesis-lounge {
   background:
     linear-gradient(90deg, rgb(3 7 18 / 0.46), rgb(3 7 18 / 0.1) 46%, rgb(3 7 18 / 0.5)),
