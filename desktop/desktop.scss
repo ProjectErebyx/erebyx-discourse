@@ -16884,3 +16884,24 @@ html:not(.erebyx-admin-route)
     url($genesis_river_banner) center / cover no-repeat,
     rgb(10 6 16) !important;
 }
+
+/* Tier 70 - Keep desktop nav chrome plain black. */
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav {
+  border: 0 !important;
+  border-bottom: 0 !important;
+  background: #000 !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav::before,
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav::after,
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__inner::before,
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__inner::after {
+  content: none !important;
+  display: none !important;
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}

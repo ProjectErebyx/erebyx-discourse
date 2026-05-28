@@ -36423,6 +36423,27 @@ html:not(.erebyx-admin-route)
     0 28px 80px -62px rgb(250 178 50 / 0.58) !important;
 }
 
+/* Tier 62 - Plain black nav chrome. */
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav {
+  border: 0 !important;
+  border-bottom: 0 !important;
+  background: #000 !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav::before,
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav::after,
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__inner::before,
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__inner::after {
+  content: none !important;
+  display: none !important;
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
 html:not(.erebyx-admin-route)
   body[data-erebyx-route="discovery"]:not(.admin-interface)
   .erebyx-arche-map {
