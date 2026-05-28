@@ -10223,6 +10223,17 @@ html:not(.erebyx-admin-route)
   background-size: auto, auto, cover, auto !important;
 }
 
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .category-title-header.category-banner-genesis-lounge
+  .category-title-contents::after {
+  content: none !important;
+  display: none !important;
+  background: transparent !important;
+  background-image: none !important;
+  opacity: 0 !important;
+}
+
 /* Tier 71 - Preserve river relief homepage column headers in mobile bundle. */
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)

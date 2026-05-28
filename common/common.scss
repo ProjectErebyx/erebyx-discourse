@@ -36516,6 +36516,17 @@ html:not(.erebyx-admin-route)
   background-size: auto, auto, cover, auto !important;
 }
 
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .category-title-header.category-banner-genesis-lounge
+  .category-title-contents::after {
+  content: none !important;
+  display: none !important;
+  background: transparent !important;
+  background-image: none !important;
+  opacity: 0 !important;
+}
+
 /* Tier 64 - River relief homepage column headers. */
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
