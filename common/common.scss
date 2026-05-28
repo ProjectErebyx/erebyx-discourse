@@ -36527,6 +36527,28 @@ html:not(.erebyx-admin-route)
   opacity: 0 !important;
 }
 
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .category-title-header.category-banner-genesis-lounge
+  .category-title-contents {
+  justify-self: start !important;
+  place-items: center start !important;
+  justify-items: start !important;
+  margin-left: clamp(1.35rem, 7vw, 6.5rem) !important;
+  text-align: left !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .category-title-header.category-banner-genesis-lounge
+  :is(.category-title, .category-title-description) {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  text-align: left !important;
+  justify-items: start !important;
+  place-items: center start !important;
+}
+
 /* Tier 64 - River relief homepage column headers. */
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
