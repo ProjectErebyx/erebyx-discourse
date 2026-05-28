@@ -10170,3 +10170,38 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__dashboard-
   width: 1.32rem !important;
   height: 1.32rem !important;
 }
+
+/* Tier 69 - Preserve river relief homepage column headers in mobile bundle. */
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .custom-homepage-columns
+  > .col::before {
+  content: none !important;
+  display: none !important;
+  background: transparent !important;
+  background-image: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .custom-homepage-columns
+  > .col
+  > .header-wrapper {
+  border-bottom: 1px solid rgb(250 178 50 / 0.24) !important;
+  background:
+    linear-gradient(90deg, rgb(3 7 18 / 0.66), rgb(3 7 18 / 0.24) 48%, rgb(3 7 18 / 0.58)),
+    linear-gradient(180deg, rgb(3 7 18 / 0.1), rgb(3 7 18 / 0.42)),
+    url($genesis_river_banner) center / cover no-repeat,
+    rgb(10 6 16) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .custom-homepage-columns
+  > .col
+  > .header-wrapper
+  h2 {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
