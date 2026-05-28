@@ -831,10 +831,24 @@
       }
     };
 
+    var updateCategoryBannerCopy = function () {
+      var description = document.querySelector(
+        ".category-title-header.category-banner-genesis-lounge .category-title-description .cooked"
+      );
+      if (!description) return;
+
+      var copy = "The heart of the community where ideas, conversations, and collaborations come to life.";
+      if (description.textContent.trim() === copy) return;
+
+      description.textContent = "";
+      description.appendChild(createNode("strong", "", copy));
+    };
+
     // ---- 4. Run on initial load + on Discourse SPA route change ----
     var run = function () {
       clusterPosts();
       gateBanner();
+      updateCategoryBannerCopy();
     };
 
     if (document.readyState !== "loading") {
