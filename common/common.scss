@@ -36313,7 +36313,7 @@ html:not(.erebyx-admin-route)
   transform: none !important;
 }
 
-/* Tier 59 - Genesis Arche wordmark home button. */
+/* Tier 59 - Genesis Arche wordmark home link. */
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   .erebyx-nav
@@ -36321,24 +36321,20 @@ html:not(.erebyx-admin-route)
   > .erebyx-nav__logo {
   display: inline-grid !important;
   place-items: center !important;
-  inline-size: clamp(9rem, 16vw, 14.5rem) !important;
-  block-size: 2.65rem !important;
-  min-inline-size: clamp(9rem, 16vw, 14.5rem) !important;
-  max-inline-size: 14.5rem !important;
-  min-block-size: 2.65rem !important;
-  max-block-size: 2.65rem !important;
-  padding: 0.42rem 0.78rem !important;
-  border: 1px solid rgb(250 178 50 / 0.24) !important;
-  border-radius: 999px !important;
+  inline-size: clamp(14rem, 24vw, 21rem) !important;
+  block-size: 3.05rem !important;
+  min-inline-size: clamp(14rem, 24vw, 21rem) !important;
+  max-inline-size: 21rem !important;
+  min-block-size: 3.05rem !important;
+  max-block-size: 3.05rem !important;
+  padding: 0.06rem 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
   overflow: visible !important;
   contain: none !important;
   clip-path: none !important;
-  background:
-    radial-gradient(circle at 50% 0%, rgb(250 178 50 / 0.2), transparent 58%),
-    linear-gradient(135deg, rgb(12 8 20 / 0.96), rgb(3 7 18 / 0.84)) !important;
-  box-shadow:
-    0 0 0 1px rgb(250 178 50 / 0.12),
-    0 16px 46px -28px rgb(250 178 50 / 0.68) !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__wordmark {
@@ -36371,12 +36367,12 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__logo-mark 
     .erebyx-nav
     > .erebyx-nav__inner
     > .erebyx-nav__logo {
-    inline-size: clamp(7.2rem, 34vw, 8.8rem) !important;
-    min-inline-size: clamp(7.2rem, 34vw, 8.8rem) !important;
-    block-size: 2.2rem !important;
-    min-block-size: 2.2rem !important;
-    max-block-size: 2.2rem !important;
-    padding-inline: 0.52rem !important;
+    inline-size: clamp(10rem, 48vw, 12.8rem) !important;
+    min-inline-size: clamp(10rem, 48vw, 12.8rem) !important;
+    block-size: 2.72rem !important;
+    min-block-size: 2.72rem !important;
+    max-block-size: 2.72rem !important;
+    padding-inline: 0 !important;
   }
 }
 

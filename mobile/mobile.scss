@@ -10099,21 +10099,24 @@ html:not(.erebyx-admin-route)
   display: inline-flex !important;
 }
 
-/* Tier 65 - Keep Genesis Arche wordmark home button readable in mobile bundle. */
+/* Tier 65 - Keep Genesis Arche wordmark home link readable in mobile bundle. */
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   .erebyx-nav
   > .erebyx-nav__inner
   > .erebyx-nav__logo {
-  inline-size: clamp(7.2rem, 34vw, 9rem) !important;
-  block-size: 2.2rem !important;
-  min-inline-size: clamp(7.2rem, 34vw, 9rem) !important;
-  max-inline-size: 9rem !important;
-  min-block-size: 2.2rem !important;
-  max-block-size: 2.2rem !important;
-  padding: 0.34rem 0.52rem !important;
-  border-radius: 999px !important;
+  inline-size: clamp(10rem, 48vw, 12.8rem) !important;
+  block-size: 2.72rem !important;
+  min-inline-size: clamp(10rem, 48vw, 12.8rem) !important;
+  max-inline-size: 12.8rem !important;
+  min-block-size: 2.72rem !important;
+  max-block-size: 2.72rem !important;
+  padding: 0.04rem 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
   clip-path: none !important;
   contain: none !important;
   overflow: visible !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }

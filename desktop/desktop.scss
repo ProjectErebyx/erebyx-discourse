@@ -16851,21 +16851,24 @@ html:not(.erebyx-admin-route)
   }
 }
 
-/* Tier 68 - Keep Genesis Arche wordmark home button wide in desktop bundle. */
+/* Tier 68 - Keep Genesis Arche wordmark home link wide in desktop bundle. */
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   .erebyx-nav
   > .erebyx-nav__inner
   > .erebyx-nav__logo {
-  inline-size: clamp(9rem, 16vw, 14.5rem) !important;
-  block-size: 2.65rem !important;
-  min-inline-size: clamp(9rem, 16vw, 14.5rem) !important;
-  max-inline-size: 14.5rem !important;
-  min-block-size: 2.65rem !important;
-  max-block-size: 2.65rem !important;
-  padding: 0.42rem 0.78rem !important;
-  border-radius: 999px !important;
+  inline-size: clamp(14rem, 24vw, 21rem) !important;
+  block-size: 3.05rem !important;
+  min-inline-size: clamp(14rem, 24vw, 21rem) !important;
+  max-inline-size: 21rem !important;
+  min-block-size: 3.05rem !important;
+  max-block-size: 3.05rem !important;
+  padding: 0.06rem 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
   clip-path: none !important;
   contain: none !important;
   overflow: visible !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
