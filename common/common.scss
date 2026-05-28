@@ -19804,25 +19804,25 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__social {
   display: flex !important;
   align-items: center !important;
   justify-content: flex-end !important;
-  gap: clamp(0.34rem, 0.7vw, 0.58rem) !important;
+  gap: clamp(0.42rem, 0.82vw, 0.72rem) !important;
   margin-left: clamp(0.12rem, 0.55vw, 0.36rem) !important;
 }
 
 html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__social-link {
   display: inline-grid !important;
   place-items: center !important;
-  width: 2rem !important;
-  height: 2rem !important;
-  min-width: 2rem !important;
-  min-height: 2rem !important;
+  width: 2.65rem !important;
+  height: 2.65rem !important;
+  min-width: 2.65rem !important;
+  min-height: 2.65rem !important;
   padding: 0 !important;
   border-radius: 999px !important;
 }
 
 html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__social-icon {
   display: block !important;
-  width: 0.94rem !important;
-  height: 0.94rem !important;
+  width: 1.32rem !important;
+  height: 1.32rem !important;
 }
 
 html:not(.erebyx-admin-route)
