@@ -16989,6 +16989,10 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   .category-title-header.category-banner-genesis-lounge
+  .category-title-contents,
+html:not(.erebyx-admin-route)
+  body[class*="category-"]:not(.archetype-regular):not(.admin-interface)
+  .category-title-header.category-banner-genesis-lounge
   .category-title-contents {
   justify-self: start !important;
   place-items: center start !important;
@@ -16999,6 +17003,10 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
+  .category-title-header.category-banner-genesis-lounge
+  :is(.category-title, .category-title-description),
+html:not(.erebyx-admin-route)
+  body[class*="category-"]:not(.archetype-regular):not(.admin-interface)
   .category-title-header.category-banner-genesis-lounge
   :is(.category-title, .category-title-description) {
   margin-left: 0 !important;
