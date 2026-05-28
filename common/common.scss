@@ -36478,3 +36478,28 @@ html:not(.erebyx-admin-route)
   top: 12% !important;
   right: 12% !important;
 }
+
+@media screen and (width >= 861px) {
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet#main-outlet
+    > .erebyx-arche-map.erebyx-arche-map
+    .erebyx-arche-map__room--arche.erebyx-arche-map__room--arche {
+    left: 43% !important;
+    bottom: 8.5% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet#main-outlet
+    > .erebyx-arche-map.erebyx-arche-map
+    .erebyx-arche-map__room--arche.erebyx-arche-map__room--arche:hover,
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet#main-outlet
+    > .erebyx-arche-map.erebyx-arche-map
+    .erebyx-arche-map__room--arche.erebyx-arche-map__room--arche:focus-visible {
+    transform: translateX(-50%) translateY(-2px) !important;
+  }
+}
