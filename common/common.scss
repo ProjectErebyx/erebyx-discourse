@@ -36470,3 +36470,11 @@ html:not(.erebyx-admin-route)
     height: clamp(26rem, 56vw, 32rem) !important;
   }
 }
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .erebyx-arche-map__room--announcements {
+  display: inline-flex !important;
+  top: 12% !important;
+  right: 12% !important;
+}
