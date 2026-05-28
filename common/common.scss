@@ -19801,13 +19801,28 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__right {
 }
 
 html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__social {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: clamp(0.34rem, 0.7vw, 0.58rem) !important;
   margin-left: clamp(0.12rem, 0.55vw, 0.36rem) !important;
 }
 
-@media (max-width: 1500px) {
-  html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__social {
-    display: none !important;
-  }
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__social-link {
+  display: inline-grid !important;
+  place-items: center !important;
+  width: 2rem !important;
+  height: 2rem !important;
+  min-width: 2rem !important;
+  min-height: 2rem !important;
+  padding: 0 !important;
+  border-radius: 999px !important;
+}
+
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__social-icon {
+  display: block !important;
+  width: 0.94rem !important;
+  height: 0.94rem !important;
 }
 
 html:not(.erebyx-admin-route)

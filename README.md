@@ -17,7 +17,7 @@ Matches the visual language of `erebyx.com` (marketing) and `app.erebyx.com` (da
 - **Genesis Arche group flair** — violet username color + subtle glow on every post by `genesis_arche` group members
 - **Milestone badges** with gold accent ("Crossed the Threshold", "Lit a Star", "First Memory", …)
 - **Greek meander dividers** (toggleable via theme setting)
-- **Custom header** with a dashboard link and decorative Arche mark
+- **Custom header** with a dashboard link, social icons, and decorative Arche mark
 - **Custom footer** replacing the default "Powered by Discourse" chrome
 - **Two color schemes** — EREBYX Cosmic (dark, default) and EREBYX Dawn (light)
 - **Mobile + desktop optimized** — backdrop-filter perf hints, larger tap targets
