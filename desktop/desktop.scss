@@ -17021,6 +17021,83 @@ html:not(.erebyx-admin-route)
   place-items: center start !important;
 }
 
+html:not(.erebyx-admin-route) body.category-genesis-lounge:not(.admin-interface) #main-outlet > .list-controls {
+  background:
+    linear-gradient(90deg, rgb(250 178 50 / 0.12), transparent 44%),
+    rgb(12 8 5 / 0.76) !important;
+  border: 1px solid rgb(250 178 50 / 0.2) !important;
+  box-shadow: 0 30px 90px -72px rgb(250 178 50 / 0.6) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category-genesis-lounge:not(.admin-interface)
+  #main-outlet
+  > .list-controls
+  .navigation-container.category-navigation {
+  background:
+    radial-gradient(circle at 8% 50%, rgb(250 178 50 / 0.16), transparent 18rem),
+    linear-gradient(90deg, rgb(18 12 6 / 0.82), rgb(10 8 6 / 0.74)) !important;
+  border-color: rgb(250 178 50 / 0.18) !important;
+  box-shadow: inset 0 0 0 1px rgb(255 231 163 / 0.04) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category-genesis-lounge:not(.admin-interface)
+  #main-outlet
+  > .list-controls
+  :is(.category-drop-header, .tag-drop .select-kit-header, .nav-pills > li > a, .navigation-controls .btn) {
+  color: rgb(255 231 163 / 0.82) !important;
+  border-color: rgb(250 178 50 / 0.24) !important;
+  background:
+    linear-gradient(135deg, rgb(250 178 50 / 0.08), transparent 52%),
+    rgb(12 8 5 / 0.6) !important;
+  box-shadow: inset 0 0 0 1px rgb(255 231 163 / 0.04) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category-genesis-lounge:not(.admin-interface)
+  #main-outlet
+  > .list-controls
+  :is(.category-drop-header, .tag-drop .select-kit-header)
+  :is(.select-kit-selected-name, .name, .badge-category__wrapper, .badge-category) {
+  color: rgb(255 231 163 / 0.82) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category-genesis-lounge:not(.admin-interface)
+  #main-outlet
+  > .list-controls
+  :is(.nav-pills > li > a.active, .nav-pills > li > a:hover, .navigation-controls .btn:hover) {
+  color: rgb(255 247 214 / 0.96) !important;
+  border-color: rgb(250 178 50 / 0.42) !important;
+  background:
+    linear-gradient(135deg, rgb(250 178 50 / 0.16), rgb(120 53 15 / 0.12)),
+    rgb(18 12 6 / 0.78) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category-genesis-lounge:not(.admin-interface)
+  #main-outlet
+  > .list-controls
+  :is(.nav-pills > li > a.active, .nav-pills > li > a.active::after) {
+  border-bottom-color: rgb(250 178 50 / 0.7) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category-genesis-lounge:not(.admin-interface)
+  #main-outlet
+  > .list-controls
+  #create-topic {
+  color: rgb(255 247 214 / 0.98) !important;
+  border-color: rgb(250 178 50 / 0.48) !important;
+  background:
+    linear-gradient(135deg, rgb(250 178 50 / 0.2), rgb(120 53 15 / 0.14)),
+    rgb(18 12 6 / 0.82) !important;
+  box-shadow:
+    inset 0 0 0 1px rgb(255 231 163 / 0.08),
+    0 18px 42px -34px rgb(250 178 50 / 0.9) !important;
+}
+
 /* Tier 74 - Preserve river relief homepage column headers in desktop bundle. */
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
