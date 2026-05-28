@@ -10215,6 +10215,9 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body[class*="category-"]:not(.archetype-regular):not(.admin-interface)
   .category-title-header.category-banner-genesis-lounge {
+  place-items: center start !important;
+  justify-items: start !important;
+  text-align: left !important;
   background:
     linear-gradient(90deg, rgb(3 7 18 / 0.46), rgb(3 7 18 / 0.1) 46%, rgb(3 7 18 / 0.5)),
     linear-gradient(180deg, rgb(3 7 18 / 0.14), rgb(3 7 18 / 0.5)),
