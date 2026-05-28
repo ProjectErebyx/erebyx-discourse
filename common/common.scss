@@ -1,6 +1,7 @@
 @import "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap";
 
 $arche_map_relief: "$arche_map_relief" !default;
+$genesis_arche_wordmark: "$genesis_arche_wordmark" !default;
 
 :root {
   --erebyx-violet: var(--brand_violet, #7503e0);
@@ -36310,6 +36311,69 @@ html:not(.erebyx-admin-route)
   position: static !important;
   inset: auto !important;
   transform: none !important;
+}
+
+/* Tier 59 - Genesis Arche wordmark home button. */
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .erebyx-nav
+  > .erebyx-nav__inner
+  > .erebyx-nav__logo {
+  display: inline-grid !important;
+  place-items: center !important;
+  inline-size: clamp(9rem, 16vw, 14.5rem) !important;
+  block-size: 2.65rem !important;
+  min-inline-size: clamp(9rem, 16vw, 14.5rem) !important;
+  max-inline-size: 14.5rem !important;
+  min-block-size: 2.65rem !important;
+  max-block-size: 2.65rem !important;
+  padding: 0.42rem 0.78rem !important;
+  border: 1px solid rgb(250 178 50 / 0.24) !important;
+  border-radius: 999px !important;
+  overflow: visible !important;
+  contain: none !important;
+  clip-path: none !important;
+  background:
+    radial-gradient(circle at 50% 0%, rgb(250 178 50 / 0.2), transparent 58%),
+    linear-gradient(135deg, rgb(12 8 20 / 0.96), rgb(3 7 18 / 0.84)) !important;
+  box-shadow:
+    0 0 0 1px rgb(250 178 50 / 0.12),
+    0 16px 46px -28px rgb(250 178 50 / 0.68) !important;
+}
+
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__wordmark {
+  display: block !important;
+  inline-size: 100% !important;
+  block-size: 100% !important;
+  background: linear-gradient(110deg, #fff7d6 0%, #fab232 34%, #ff7a1a 68%, #ffe7a3 100%) !important;
+  mask: url($genesis_arche_wordmark) center / contain no-repeat !important;
+  -webkit-mask: url($genesis_arche_wordmark) center / contain no-repeat !important;
+  filter: drop-shadow(0 0 10px rgb(250 178 50 / 0.34)) !important;
+}
+
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__logo::before,
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__logo::after {
+  content: none !important;
+  display: none !important;
+}
+
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__logo-mark {
+  display: none !important;
+}
+
+@media (max-width: 520px) {
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav
+    > .erebyx-nav__inner
+    > .erebyx-nav__logo {
+    inline-size: clamp(7.2rem, 34vw, 8.8rem) !important;
+    min-inline-size: clamp(7.2rem, 34vw, 8.8rem) !important;
+    block-size: 2.2rem !important;
+    min-block-size: 2.2rem !important;
+    max-block-size: 2.2rem !important;
+    padding-inline: 0.52rem !important;
+  }
 }
 
 html:not(.erebyx-admin-route)

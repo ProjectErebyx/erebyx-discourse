@@ -7,7 +7,8 @@
   "minimum_discourse_version": "3.2.0",
   "component": false,
   "assets": {
-    "arche_map_relief": "assets/arche-map-relief.jpg"
+    "arche_map_relief": "assets/arche-map-relief.jpg",
+    "genesis_arche_wordmark": "assets/genesis-arche-hero-wordmark.svg"
   },
   "color_schemes": {
     "EREBYX Cosmic": {
