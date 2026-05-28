@@ -1,6 +1,7 @@
 /* Desktop-specific overrides for EREBYX Arche theme */
 
 $arche_map_relief: "$arche_map_relief" !default;
+$genesis_river_banner: "$genesis_river_banner" !default;
 
 @media (width >= 1024px) {
   .topic-list {
@@ -16871,4 +16872,15 @@ html:not(.erebyx-admin-route)
   overflow: visible !important;
   background: transparent !important;
   box-shadow: none !important;
+}
+
+/* Tier 69 - Preserve river relief banner in desktop bundle. */
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .erebyx-genesis-banner__inner {
+  background:
+    linear-gradient(90deg, rgb(3 7 18 / 0.62), rgb(3 7 18 / 0.28) 48%, rgb(3 7 18 / 0.58)),
+    linear-gradient(180deg, rgb(3 7 18 / 0.12), rgb(3 7 18 / 0.42)),
+    url($genesis_river_banner) center / cover no-repeat,
+    rgb(10 6 16) !important;
 }

@@ -8,6 +8,7 @@
   "component": false,
   "assets": {
     "arche_map_relief": "assets/arche-map-relief.jpg",
+    "genesis_river_banner": "assets/genesis-river-banner.png",
     "genesis_arche_wordmark": "assets/genesis-arche-hero-wordmark.svg"
   },
   "color_schemes": {
