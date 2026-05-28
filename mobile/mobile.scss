@@ -10180,10 +10180,14 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__social-ico
 /* Tier 70 - Clean category banner canvas in mobile bundle. */
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
+  .category-title-header[class*="category-banner-"],
+html:not(.erebyx-admin-route)
+  body[class*="category-"]:not(.archetype-regular):not(.admin-interface)
   .category-title-header[class*="category-banner-"] {
   background:
     linear-gradient(135deg, rgb(8 18 46 / 0.96), rgb(8 34 66 / 0.82)),
     rgb(8 18 46) !important;
+  background-size: auto, auto !important;
 }
 
 html:not(.erebyx-admin-route)
