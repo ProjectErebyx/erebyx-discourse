@@ -17327,7 +17327,9 @@ html:not(.erebyx-admin-route)
   .category-row.select-kit-row
   :is(.badge-category__wrapper, .badge-category) {
   background: transparent !important;
+  background-color: transparent !important;
   border: 0 !important;
+  border-color: transparent !important;
   box-shadow: none !important;
   padding-block: 0 !important;
 }
