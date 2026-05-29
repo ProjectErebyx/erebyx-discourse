@@ -10806,3 +10806,40 @@ html:not(.erebyx-admin-route)
   border: 0 !important;
   box-shadow: none !important;
 }
+
+@media (min-width: 861px) {
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    #list-area
+    .topic-list.topic-list {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    #list-area
+    .topic-list.topic-list
+    > tbody.topic-list-body {
+    width: 100% !important;
+    max-width: 100% !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    justify-content: stretch !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    #list-area
+    .topic-list.topic-list
+    > tbody.topic-list-body
+    > tr.topic-list-item.topic-list-item {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+}
