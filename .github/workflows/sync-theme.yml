@@ -31,6 +31,23 @@ jobs:
             exit 1
           fi
 
+          echo "Checking remote theme ${THEME_ID} for ${GITHUB_SHA}…"
+
+          http_code=$(curl -sS -o response.json -w "%{http_code}" \
+            -X PUT "${DISCOURSE_URL}/admin/themes/${THEME_ID}.json" \
+            -H "Api-Key: ${API_KEY}" \
+            -H "Api-Username: ${API_USERNAME}" \
+            -H "Accept: application/json" \
+            -H "Content-Type: application/json" \
+            -d '{"theme":{"remote_check":true}}')
+
+          if [[ "${http_code}" != "200" ]]; then
+            echo "::error::Discourse remote check returned HTTP ${http_code}"
+            cat response.json
+            exit 1
+          fi
+
+          echo "Discourse accepted remote check request (HTTP 200)."
           echo "Triggering Discourse to pull ${GITHUB_SHA} into theme ${THEME_ID}…"
 
           http_code=$(curl -sS -o response.json -w "%{http_code}" \
@@ -42,7 +59,7 @@ jobs:
             -d '{"theme":{"remote_update":true}}')
 
           if [[ "${http_code}" != "200" ]]; then
-            echo "::error::Discourse returned HTTP ${http_code}"
+            echo "::error::Discourse remote update returned HTTP ${http_code}"
             cat response.json
             exit 1
           fi
