@@ -17099,6 +17099,20 @@ html:not(.erebyx-admin-route)
   body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet#main-outlet
   > .list-controls.list-controls
+  .nav-pills
+  > li
+  > a.active::after {
+  content: none !important;
+  display: none !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  #main-outlet#main-outlet
+  > .list-controls.list-controls
   #create-topic {
   color: rgb(255 247 214 / 0.98) !important;
   border-color: rgb(250 178 50 / 0.48) !important;
