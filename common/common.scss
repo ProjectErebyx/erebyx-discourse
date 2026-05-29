@@ -37227,3 +37227,18 @@ html:not(.erebyx-admin-route)
     transform: translateX(-50%) translateY(-2px) !important;
   }
 }
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  #main-outlet#main-outlet
+  .list-controls.list-controls
+  .select-kit-body.select-kit-body
+  .category-row.select-kit-row
+  > .category-status
+  > .badge-category__wrapper.badge-category__wrapper {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
