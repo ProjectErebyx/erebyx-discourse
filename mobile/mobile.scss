@@ -10984,15 +10984,23 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #main-outlet#main-outlet
-  :is(
-    #suggested-topics#suggested-topics,
-    .more-topics__container.more-topics__container,
-    .more-topics.more-topics
-  ) {
+  :is(.more-topics__container.more-topics__container, .more-topics.more-topics) {
   box-sizing: border-box !important;
   width: min(100%, calc(100vw - clamp(1rem, 8vw, 2.5rem))) !important;
   max-width: min(100%, calc(100vw - clamp(1rem, 8vw, 2.5rem))) !important;
   margin-inline: auto !important;
+  overflow: hidden !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(.more-topics__container, .more-topics)
+  #suggested-topics#suggested-topics {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-inline: 0 !important;
   overflow: hidden !important;
 }
 
