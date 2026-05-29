@@ -17265,6 +17265,13 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  .notifications-tracking-btn:not(.-selected)
+  .notifications-tracking-btn__description {
+  color: rgb(255 255 255 / 0.94) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet
   .container.list-container.--topic-list
   .topic-list
