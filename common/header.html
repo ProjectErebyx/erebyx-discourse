@@ -1190,6 +1190,15 @@
       enhanceHomepageThreadColumn();
     };
 
+    var scheduleRun = function () {
+      if (scheduleRun._queued) return;
+      scheduleRun._queued = true;
+      window.requestAnimationFrame(function () {
+        scheduleRun._queued = false;
+        run();
+      });
+    };
+
     if (document.readyState !== "loading") {
       run();
     } else {
@@ -1199,10 +1208,23 @@
     }
 
     // Discourse fires `page:changed` on Ember route transitions
-    document.addEventListener("discourse:page-changed", run);
-    document.addEventListener("page:changed", run);
-    window.setTimeout(run, 250);
-    window.setTimeout(run, 1000);
+    document.addEventListener("discourse:page-changed", scheduleRun);
+    document.addEventListener("page:changed", scheduleRun);
+    window.setTimeout(scheduleRun, 250);
+    window.setTimeout(scheduleRun, 1000);
+
+    if (window.MutationObserver) {
+      var categoryHeaderObserver = new MutationObserver(scheduleRun);
+      var observeCategoryHeader = function () {
+        var outlet = document.querySelector("#main-outlet") || document.body;
+        if (outlet) categoryHeaderObserver.observe(outlet, { childList: true, subtree: true });
+      };
+      if (document.readyState !== "loading") {
+        observeCategoryHeader();
+      } else {
+        document.addEventListener("DOMContentLoaded", observeCategoryHeader);
+      }
+    }
   })();
 </script>
 
