@@ -37032,6 +37032,22 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   .custom-homepage-columns
+  > .col-2.erebyx-home-thread-feed {
+  display: block !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .custom-homepage-columns
+  > .col-2.erebyx-home-thread-feed
+  > * {
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .custom-homepage-columns
   > .col-2.erebyx-home-thread-feed
   > .header-wrapper.erebyx-home-thread-header {
   box-sizing: border-box !important;
