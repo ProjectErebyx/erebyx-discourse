@@ -845,13 +845,28 @@
     };
 
     var HOME_THREAD_FEEDS = {
-      latest: { label: "Latest", endpoint: "/latest.json" },
-      top: { label: "Top", endpoint: "/top.json?period=all" },
-      hot: { label: "Hot", endpoint: "/hot.json" }
+      latest: {
+        label: "Latest",
+        endpoint: "/latest.json",
+        tooltip: "Topics with recent posts"
+      },
+      top: {
+        label: "Top",
+        endpoint: "/top.json?period=all",
+        tooltip: "Most active topics"
+      },
+      hot: {
+        label: "Hot",
+        endpoint: "/hot.json",
+        tooltip: "Top recent post"
+      }
     };
     var homeThreadFeedRequest = 0;
     var homeThreadCategories = null;
     var homeThreadCategoriesPromise = null;
+    var homeThreadTooltip = null;
+    var homeThreadTooltipTarget = null;
+    var homeThreadTooltipListenersReady = false;
 
     var isHomePath = function () {
       var path = window.location.pathname || "/";
@@ -1090,6 +1105,63 @@
         });
     };
 
+    var ensureHomeThreadTooltip = function () {
+      if (homeThreadTooltip && document.body.contains(homeThreadTooltip)) {
+        return homeThreadTooltip;
+      }
+
+      homeThreadTooltip = createNode("div", "erebyx-home-thread-tooltip");
+      homeThreadTooltip.id = "erebyx-home-thread-tooltip";
+      homeThreadTooltip.setAttribute("role", "tooltip");
+      homeThreadTooltip.setAttribute("aria-hidden", "true");
+      document.body.appendChild(homeThreadTooltip);
+      if (!homeThreadTooltipListenersReady) {
+        homeThreadTooltipListenersReady = true;
+        window.addEventListener("resize", positionHomeThreadTooltip, { passive: true });
+        window.addEventListener("scroll", positionHomeThreadTooltip, { passive: true });
+      }
+      return homeThreadTooltip;
+    };
+
+    var positionHomeThreadTooltip = function () {
+      if (!homeThreadTooltip || !homeThreadTooltipTarget) return;
+
+      var targetRect = homeThreadTooltipTarget.getBoundingClientRect();
+      var tooltipRect = homeThreadTooltip.getBoundingClientRect();
+      var gutter = 8;
+      var left = targetRect.left + targetRect.width / 2 - tooltipRect.width / 2;
+      left = Math.max(gutter, Math.min(left, window.innerWidth - tooltipRect.width - gutter));
+
+      var top = targetRect.top - tooltipRect.height - gutter;
+      if (top < gutter) top = targetRect.bottom + gutter;
+
+      homeThreadTooltip.style.left = left + "px";
+      homeThreadTooltip.style.top = top + "px";
+    };
+
+    var showHomeThreadTooltip = function (button) {
+      var copy = button.getAttribute("data-erebyx-thread-tooltip");
+      if (!copy) return;
+
+      var tooltip = ensureHomeThreadTooltip();
+      homeThreadTooltipTarget = button;
+      tooltip.textContent = copy;
+      tooltip.setAttribute("aria-hidden", "false");
+      tooltip.classList.add("is-visible");
+      button.setAttribute("aria-describedby", tooltip.id);
+      positionHomeThreadTooltip();
+    };
+
+    var hideHomeThreadTooltip = function () {
+      if (homeThreadTooltipTarget) {
+        homeThreadTooltipTarget.removeAttribute("aria-describedby");
+      }
+      homeThreadTooltipTarget = null;
+      if (!homeThreadTooltip) return;
+      homeThreadTooltip.classList.remove("is-visible");
+      homeThreadTooltip.setAttribute("aria-hidden", "true");
+    };
+
     var enhanceHomepageThreadColumn = function () {
       if (!isHomePath() || isAdminPath()) return;
 
@@ -1116,11 +1188,21 @@
         filterWrap.setAttribute("aria-label", "Homepage thread filters");
 
         Object.keys(HOME_THREAD_FEEDS).forEach(function (name) {
-          var button = createNode("button", "erebyx-home-thread-tab", HOME_THREAD_FEEDS[name].label);
+          var feed = HOME_THREAD_FEEDS[name];
+          var button = createNode("button", "erebyx-home-thread-tab", feed.label);
           button.type = "button";
           button.setAttribute("data-erebyx-thread-feed", name);
+          button.setAttribute("data-erebyx-thread-tooltip", feed.tooltip);
           button.setAttribute("aria-pressed", name === "latest" ? "true" : "false");
           if (name === "latest") button.classList.add("is-active");
+          button.addEventListener("mouseenter", function () {
+            showHomeThreadTooltip(button);
+          });
+          button.addEventListener("focus", function () {
+            showHomeThreadTooltip(button);
+          });
+          button.addEventListener("mouseleave", hideHomeThreadTooltip);
+          button.addEventListener("blur", hideHomeThreadTooltip);
           button.addEventListener("click", function () {
             if (button.classList.contains("is-active")) return;
             filterWrap.querySelectorAll(".erebyx-home-thread-tab").forEach(function (tab) {
