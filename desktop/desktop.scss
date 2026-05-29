@@ -17722,3 +17722,12 @@ html:not(.erebyx-admin-route)
   :is(.link-bottom-line, .badge-category__name, td.num.posts-map, td.num.views, td.activity.num, .topic-item-stats) {
   color: rgb(255 231 163 / 0.72) !important;
 }
+
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .custom-homepage-columns.custom-homepage-columns
+  > .col
+  > .loading-container.loading-container {
+  margin-top: clamp(0.65rem, 1.2vw, 0.95rem) !important;
+}
