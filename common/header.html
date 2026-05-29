@@ -790,7 +790,8 @@
         var card = target.closest("tr.topic-list-item[data-topic-id]");
         if (!card || card.closest("#reply-control, .d-modal, .admin-interface")) return;
 
-        var topicLink = card.querySelector(".raw-topic-link[href], a.title[href], .link-top-line a[href]");
+        var topicLink = card.querySelector(".raw-topic-link[href], a.title[href]") ||
+          card.querySelector(".link-top-line a[href^='/t/'], .link-top-line a[href*='/t/']");
         if (!topicLink || !topicLink.href) return;
 
         var clickedTopicTitle = target.closest(".raw-topic-link[href], a.title[href]");
