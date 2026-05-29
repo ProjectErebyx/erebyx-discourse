@@ -17161,7 +17161,12 @@ html:not(.erebyx-admin-route)
   > .list-controls.list-controls
   .category-breadcrumb
   :is(li, .select-kit, .select-kit.combo-box, .select-kit.dropdown-select-box) {
+  align-self: center !important;
+  box-sizing: border-box !important;
+  height: 2.6rem !important;
+  min-height: 2.6rem !important;
   min-width: 0 !important;
+  padding-block: 0 !important;
 }
 
 html:not(.erebyx-admin-route)
@@ -17172,6 +17177,29 @@ html:not(.erebyx-admin-route)
   min-height: 2.6rem !important;
   height: 2.6rem !important;
   align-items: center !important;
+  margin-block: 0 !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  #main-outlet#main-outlet
+  > .list-controls.list-controls
+  .category-breadcrumb
+  :is(.badge-category__wrapper, .badge-category, .badge-category__name, .name) {
+  box-sizing: border-box !important;
+  min-height: 0 !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  align-items: center !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  #main-outlet#main-outlet
+  > .list-controls.list-controls
+  .category-breadcrumb
+  .badge-category__wrapper {
+  padding-block: 0 !important;
 }
 
 html:not(.erebyx-admin-route)
