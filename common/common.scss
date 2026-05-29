@@ -36563,11 +36563,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-genesis-lounge.category.navigation-category.category-header:not(.admin-interface)
-  #main-outlet#main-outlet
-  > .list-controls.list-controls,
-html:not(.erebyx-admin-route)
-  body.category-genesis-lounge:not(.admin-interface)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet#main-outlet
   > .list-controls.list-controls {
   background:
@@ -36580,7 +36576,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-genesis-lounge.category.navigation-category.category-header:not(.admin-interface)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet#main-outlet
   > .list-controls.list-controls
   :is(.container, .navigation-container, .navigation-container.category-navigation) {
@@ -36592,7 +36588,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-genesis-lounge.category.navigation-category.category-header:not(.admin-interface)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet#main-outlet
   > .list-controls.list-controls
   :is(
@@ -36612,7 +36608,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-genesis-lounge.category.navigation-category.category-header:not(.admin-interface)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet#main-outlet
   > .list-controls.list-controls
   :is(.category-drop-header, .tag-drop-header, .tag-drop .select-kit-header, .category-breadcrumb .select-kit-header)
@@ -36621,7 +36617,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-genesis-lounge.category.navigation-category.category-header:not(.admin-interface)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet#main-outlet
   > .list-controls.list-controls
   :is(.nav-pills > li > a.active, .nav-pills > li > a:hover, .navigation-controls .btn:hover) {
@@ -36633,7 +36629,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-genesis-lounge.category.navigation-category.category-header:not(.admin-interface)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet#main-outlet
   > .list-controls.list-controls
   :is(.nav-pills > li > a.active, .nav-pills > li > a.active::after) {
@@ -36641,7 +36637,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-genesis-lounge.category.navigation-category.category-header:not(.admin-interface)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet#main-outlet
   > .list-controls.list-controls
   #create-topic {
@@ -36656,16 +36652,13 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-genesis-lounge.category.navigation-category.category-header:not(.admin-interface)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet
   .container.list-container.--topic-list
   .topic-list
   > tbody.topic-list-body
-  > tr.topic-list-item.category-genesis-lounge {
-  background:
-    radial-gradient(circle at 13% 16%, rgb(250 178 50 / 0.18), transparent 11rem),
-    radial-gradient(circle at 82% 24%, rgb(180 83 9 / 0.14), transparent 13rem),
-    linear-gradient(135deg, rgb(24 15 7 / 0.94), rgb(12 8 5 / 0.96) 58%, rgb(8 6 4 / 0.98)) !important;
+  > tr.topic-list-item {
+  background: linear-gradient(135deg, rgb(24 15 7 / 0.94), rgb(12 8 5 / 0.96) 58%, rgb(8 6 4 / 0.98)) !important;
   border-color: rgb(250 178 50 / 0.3) !important;
   box-shadow:
     inset 1px 0 0 rgb(255 231 163 / 0.18),
@@ -36674,12 +36667,12 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-genesis-lounge.category.navigation-category.category-header:not(.admin-interface)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet
   .container.list-container.--topic-list
   .topic-list
   > tbody.topic-list-body
-  > tr.topic-list-item.category-genesis-lounge:hover {
+  > tr.topic-list-item:hover {
   border-color: rgb(250 178 50 / 0.46) !important;
   box-shadow:
     inset 1px 0 0 rgb(255 231 163 / 0.24),
@@ -36688,47 +36681,44 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-genesis-lounge.category.navigation-category.category-header:not(.admin-interface)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet
   .container.list-container.--topic-list
   .topic-list
-  tr.topic-list-item.category-genesis-lounge
+  tr.topic-list-item
   :is(.main-link a.title, .raw-topic-link) {
   color: rgb(255 247 214 / 0.96) !important;
   text-shadow: 0 1px 18px rgb(250 178 50 / 0.12) !important;
 }
 
 html:not(.erebyx-admin-route)
-  body.category-genesis-lounge.category.navigation-category.category-header:not(.admin-interface)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet
   .container.list-container.--topic-list
   .topic-list
-  tr.topic-list-item.category-genesis-lounge
+  tr.topic-list-item
   :is(td.num.posts-map, td.activity.num, .link-bottom-line, .topic-item-stats) {
   color: rgb(255 231 163 / 0.72) !important;
 }
 
 html:not(.erebyx-admin-route)
-  body.category-genesis-lounge.category.navigation-category.category-header:not(.admin-interface)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet
   .container.list-container.--topic-list
   .topic-list
-  tr.topic-list-item.category-genesis-lounge
+  tr.topic-list-item
   :is(td.num.posts-map a, td.num.posts-map .badge-posts, td.activity.num a, td.activity.num span) {
   color: rgb(255 231 163 / 0.74) !important;
 }
 
 html:not(.erebyx-admin-route)
-  body.category-genesis-lounge.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet#main-outlet
   .container.list-container.--topic-list
   table.topic-list.topic-list
   > tbody.topic-list-body
-  > tr.topic-list-item.topic-list-item.category-genesis-lounge {
-  background:
-    radial-gradient(circle at 13% 16%, rgb(250 178 50 / 0.18), transparent 11rem),
-    radial-gradient(circle at 82% 24%, rgb(180 83 9 / 0.14), transparent 13rem),
-    linear-gradient(135deg, rgb(24 15 7 / 0.94), rgb(12 8 5 / 0.96) 58%, rgb(8 6 4 / 0.98)) !important;
+  > tr.topic-list-item.topic-list-item {
+  background: linear-gradient(135deg, rgb(24 15 7 / 0.94), rgb(12 8 5 / 0.96) 58%, rgb(8 6 4 / 0.98)) !important;
   border-color: rgb(250 178 50 / 0.3) !important;
   box-shadow:
     inset 1px 0 0 rgb(255 231 163 / 0.18),
@@ -36737,12 +36727,12 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-genesis-lounge.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet#main-outlet
   .container.list-container.--topic-list
   table.topic-list.topic-list
   > tbody.topic-list-body
-  > tr.topic-list-item.topic-list-item.category-genesis-lounge:hover {
+  > tr.topic-list-item.topic-list-item:hover {
   border-color: rgb(250 178 50 / 0.46) !important;
   box-shadow:
     inset 1px 0 0 rgb(255 231 163 / 0.24),
