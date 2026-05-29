@@ -861,6 +861,75 @@
       description.appendChild(createNode("strong", "", copy));
     };
 
+    var topicExcerptCache = {};
+
+    var textFromHTML = function (html) {
+      var node = document.createElement("div");
+      node.innerHTML = html || "";
+      return (node.textContent || "").replace(/\s+/g, " ").trim();
+    };
+
+    var trimExcerpt = function (text) {
+      var clean = (text || "").replace(/\s+/g, " ").trim();
+      if (clean.length <= 220) return clean;
+      return clean.slice(0, 218).replace(/\s+\S*$/, "") + "…";
+    };
+
+    var fetchTopicExcerpt = function (topicId) {
+      if (!topicId) return Promise.resolve("");
+      if (topicExcerptCache[topicId]) return topicExcerptCache[topicId];
+
+      topicExcerptCache[topicId] = fetch("/t/" + topicId + ".json", {
+        credentials: "same-origin"
+      })
+        .then(function (response) {
+          if (!response.ok) return "";
+          return response.json();
+        })
+        .then(function (topic) {
+          var posts = topic && topic.post_stream && topic.post_stream.posts
+            ? topic.post_stream.posts
+            : [];
+          var firstPost = posts.find(function (post) {
+            return post && post.post_number === 1;
+          }) || posts[0];
+          return trimExcerpt(textFromHTML(firstPost && firstPost.cooked));
+        })
+        .catch(function () {
+          return "";
+        });
+
+      return topicExcerptCache[topicId];
+    };
+
+    var enhanceCategoryTopicExcerpts = function () {
+      var body = document.body;
+      if (!body || body.classList.contains("admin-interface")) return;
+      if (!body.classList.contains("navigation-category") || body.classList.contains("archetype-regular")) return;
+
+      document.querySelectorAll("tr.topic-list-item[data-topic-id]").forEach(function (card) {
+        if (card.querySelector(".topic-excerpt, .excerpt") || card.getAttribute("data-erebyx-excerpt-state")) return;
+
+        var topicId = card.getAttribute("data-topic-id");
+        var title = card.querySelector(".link-top-line");
+        var mainLink = card.querySelector("td.main-link");
+        if (!topicId || !title || !mainLink) return;
+
+        card.setAttribute("data-erebyx-excerpt-state", "loading");
+        fetchTopicExcerpt(topicId).then(function (excerpt) {
+          if (!excerpt || !card.isConnected || card.querySelector(".topic-excerpt, .excerpt")) {
+            card.setAttribute("data-erebyx-excerpt-state", excerpt ? "ready" : "empty");
+            return;
+          }
+
+          var excerptNode = createNode("div", "topic-excerpt erebyx-topic-excerpt", excerpt);
+          title.insertAdjacentElement("afterend", excerptNode);
+          card.classList.add("has-excerpt", "excerpt-expanded");
+          card.setAttribute("data-erebyx-excerpt-state", "ready");
+        });
+      });
+    };
+
     var HOME_THREAD_FEEDS = {
       latest: {
         label: "Latest",
@@ -1205,6 +1274,7 @@
       gateBanner();
       bindArcheMapNavigation();
       updateCategoryBannerCopy();
+      enhanceCategoryTopicExcerpts();
       enhanceHomepageThreadColumn();
     };
 
