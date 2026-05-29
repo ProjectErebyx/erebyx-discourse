@@ -34,9 +34,10 @@ jobs:
           echo "Triggering Discourse to pull ${GITHUB_SHA} into theme ${THEME_ID}…"
 
           http_code=$(curl -sS -o response.json -w "%{http_code}" \
-            -X PUT "${DISCOURSE_URL}/admin/themes/${THEME_ID}" \
+            -X PUT "${DISCOURSE_URL}/admin/themes/${THEME_ID}.json" \
             -H "Api-Key: ${API_KEY}" \
             -H "Api-Username: ${API_USERNAME}" \
+            -H "Accept: application/json" \
             -H "Content-Type: application/json" \
             -d '{"theme":{"remote_update":true}}')
 
@@ -55,23 +56,35 @@ jobs:
         run: |
           set -euo pipefail
 
-          theme=$(curl -sS -X GET "${DISCOURSE_URL}/admin/themes/${THEME_ID}.json" \
-            -H "Api-Key: ${API_KEY}" \
-            -H "Api-Username: ${API_USERNAME}")
+          for attempt in {1..18}; do
+            theme=$(curl -sS -X GET "${DISCOURSE_URL}/admin/themes/${THEME_ID}.json" \
+              -H "Api-Key: ${API_KEY}" \
+              -H "Api-Username: ${API_USERNAME}" \
+              -H "Accept: application/json")
 
-          local_version=$(echo "${theme}" | jq -r '.theme.remote_theme.local_version // empty')
-          last_error=$(echo "${theme}" | jq -r '.theme.remote_theme.last_error_text // empty')
+            local_version=$(echo "${theme}" | jq -r '.theme.remote_theme.local_version // empty')
+            remote_version=$(echo "${theme}" | jq -r '.theme.remote_theme.remote_version // empty')
+            commits_behind=$(echo "${theme}" | jq -r '.theme.remote_theme.commits_behind // empty')
+            last_error=$(echo "${theme}" | jq -r '.theme.remote_theme.last_error_text // empty')
 
-          echo "Theme local_version : ${local_version}"
-          echo "GITHUB_SHA          : ${GITHUB_SHA}"
+            echo "Attempt ${attempt}:"
+            echo "  Theme local_version  : ${local_version}"
+            echo "  Theme remote_version : ${remote_version}"
+            echo "  Commits behind       : ${commits_behind}"
+            echo "  GITHUB_SHA           : ${GITHUB_SHA}"
 
-          if [[ -n "${last_error}" && "${last_error}" != "null" ]]; then
-            echo "::error::Discourse reports last_error_text: ${last_error}"
-            exit 1
-          fi
+            if [[ -n "${last_error}" && "${last_error}" != "null" ]]; then
+              echo "::error::Discourse reports last_error_text: ${last_error}"
+              exit 1
+            fi
 
-          if [[ "${local_version}" != "${GITHUB_SHA}" ]]; then
-            echo "::warning::Discourse local_version (${local_version}) does not match GITHUB_SHA (${GITHUB_SHA}). This is fine if a newer commit has already landed; otherwise the sync did not pull the expected commit."
-          else
-            echo "Theme is at ${GITHUB_SHA}. Sync complete."
-          fi
+            if [[ "${local_version}" == "${GITHUB_SHA}" ]]; then
+              echo "Theme is at ${GITHUB_SHA}. Sync complete."
+              exit 0
+            fi
+
+            sleep 5
+          done
+
+          echo "::error::Discourse did not advance theme ${THEME_ID} to ${GITHUB_SHA}."
+          exit 1
