@@ -10584,6 +10584,19 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  .select-kit-body
+  .category-row.select-kit-row
+  > .category-status
+  > .badge-category__wrapper.badge-category__wrapper {
+  background: none !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   .fk-d-menu.notifications-tracking-content.-expanded {
   z-index: 3400 !important;
   overflow: visible !important;
