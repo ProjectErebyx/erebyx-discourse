@@ -17775,3 +17775,77 @@ html:not(.erebyx-admin-route)
   max-height: 100% !important;
   overflow-y: auto !important;
 }
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control#reply-control.open:not(.fullscreen, .minimized)
+  .d-editor-container,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control#reply-control.open.draft:not(.fullscreen, .minimized)
+  .d-editor-container,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control.open:not(.fullscreen, .minimized)
+  .d-editor-container,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control.open.draft:not(.fullscreen, .minimized)
+  .d-editor-container,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control#reply-control.open:not(.fullscreen, .minimized)
+  .d-editor,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control#reply-control.open.draft:not(.fullscreen, .minimized)
+  .d-editor,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control.open:not(.fullscreen, .minimized)
+  .d-editor,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control.open.draft:not(.fullscreen, .minimized)
+  .d-editor {
+  overflow: visible !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control#reply-control.open:not(.fullscreen, .minimized)
+  .composer-fields,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control#reply-control.open.draft:not(.fullscreen, .minimized)
+  .composer-fields,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control.open:not(.fullscreen, .minimized)
+  .composer-fields,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control.open.draft:not(.fullscreen, .minimized)
+  .composer-fields {
+  box-sizing: border-box !important;
+  padding-top: clamp(0.5rem, 0.75vw, 0.7rem) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control#reply-control.open:not(.fullscreen, .minimized)
+  .d-editor-button-bar,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control#reply-control.open.draft:not(.fullscreen, .minimized)
+  .d-editor-button-bar,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control.open:not(.fullscreen, .minimized)
+  .d-editor-button-bar,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control.open.draft:not(.fullscreen, .minimized)
+  .d-editor-button-bar {
+  margin-top: clamp(0.35rem, 0.55vw, 0.55rem) !important;
+}
