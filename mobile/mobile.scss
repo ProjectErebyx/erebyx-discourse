@@ -10428,6 +10428,91 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  :is(.select-kit-body, .fk-d-menu.notifications-tracking-content.-expanded) {
+  z-index: 3400 !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  .select-kit-body,
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  .fk-d-menu.notifications-tracking-content.-expanded
+  .fk-d-menu__inner-content {
+  background:
+    linear-gradient(135deg, rgb(250 178 50 / 0.1), transparent 42%),
+    rgb(10 7 4 / 0.96) !important;
+  border: 1px solid rgb(250 178 50 / 0.3) !important;
+  border-radius: 8px !important;
+  box-shadow:
+    inset 0 0 0 1px rgb(255 231 163 / 0.05),
+    0 28px 92px -58px rgb(250 178 50 / 0.76) !important;
+  padding: 0.35rem !important;
+  overflow: hidden !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  :is(.select-kit-filter, .select-kit-collection, .dropdown-menu) {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  .select-kit-collection {
+  padding: 0 !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  :is(.select-kit-row, .category-row.select-kit-row, .notifications-tracking-btn) {
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: 7px !important;
+  box-shadow: none !important;
+  color: rgb(255 231 163 / 0.78) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  :is(.select-kit-row.is-highlighted:not(.is-selected), .select-kit-row:hover:not(.is-selected), .notifications-tracking-btn:hover:not(.-selected)) {
+  background: transparent !important;
+  border-color: rgb(250 178 50 / 0.42) !important;
+  box-shadow: inset 0 0 0 1px rgb(255 231 163 / 0.08) !important;
+  color: rgb(255 247 214 / 0.94) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  :is(.select-kit-row.is-selected, .select-kit-row.is-selected.is-highlighted, .notifications-tracking-btn.-selected) {
+  background:
+    linear-gradient(135deg, rgb(250 178 50 / 0.24), rgb(120 53 15 / 0.18)),
+    rgb(18 12 6 / 0.9) !important;
+  border-color: rgb(250 178 50 / 0.56) !important;
+  box-shadow:
+    inset 0 0 0 1px rgb(255 231 163 / 0.12),
+    0 14px 36px -28px rgb(250 178 50 / 0.9) !important;
+  color: rgb(255 247 214 / 0.98) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  .fk-d-menu.notifications-tracking-content.-expanded {
+  z-index: 3400 !important;
+  overflow: visible !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  .notifications-tracking-btn
+  :is(.notifications-tracking-btn__label, .notifications-tracking-btn__description) {
+  color: inherit !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet
   .container.list-container.--topic-list
   .topic-list
