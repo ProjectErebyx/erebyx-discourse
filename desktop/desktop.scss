@@ -17112,6 +17112,74 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  #main-outlet#main-outlet
+  > .list-controls.list-controls {
+  position: relative !important;
+  z-index: 1200 !important;
+  overflow: visible !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  #main-outlet#main-outlet
+  > .list-controls.list-controls
+  :is(.container, .navigation-container, .navigation-container.category-navigation) {
+  overflow: visible !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  #main-outlet#main-outlet
+  > .list-controls.list-controls
+  :is(.category-breadcrumb, ol.category-breadcrumb) {
+  width: auto !important;
+  max-width: min(100%, 22rem) !important;
+  min-width: 0 !important;
+  min-height: 2.9rem !important;
+  height: auto !important;
+  align-items: center !important;
+  overflow: visible !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  #main-outlet#main-outlet
+  > .list-controls.list-controls
+  .category-breadcrumb
+  :is(li, .select-kit, .select-kit.combo-box, .select-kit.dropdown-select-box) {
+  min-width: 0 !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  #main-outlet#main-outlet
+  > .list-controls.list-controls
+  :is(.category-drop-header, .tag-drop-header, .tag-drop .select-kit-header, .category-breadcrumb .select-kit-header) {
+  min-height: 2.6rem !important;
+  height: 2.6rem !important;
+  align-items: center !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  #main-outlet#main-outlet
+  > .list-controls.list-controls
+  :is(.select-kit-header-wrapper, .select-kit-selected-name, .selected-name) {
+  min-height: 0 !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  align-items: center !important;
+  overflow: hidden !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  .select-kit-body {
+  z-index: 3200 !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet
   .container.list-container.--topic-list
   .topic-list
