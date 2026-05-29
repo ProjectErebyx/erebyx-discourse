@@ -37812,3 +37812,60 @@ html:not(.erebyx-admin-route)
     grid-template-columns: minmax(0, 1fr) !important;
   }
 }
+
+/* Tier 67 - Hard containment for topic-page related-topic stages. */
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(
+    #suggested-topics#suggested-topics,
+    .more-topics__container.more-topics__container,
+    .more-topics.more-topics
+  ) {
+  box-sizing: border-box !important;
+  width: min(100%, calc(100vw - clamp(2rem, 8vw, 7rem))) !important;
+  max-width: min(100%, calc(100vw - clamp(2rem, 8vw, 7rem))) !important;
+  margin-inline: auto !important;
+  overflow: hidden !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  table.topic-list.topic-list,
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  .topic-list.topic-list {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  .topic-list.topic-list
+  > tbody.topic-list-body {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: clamp(1rem, 1.7vw, 1.35rem) !important;
+}
+
+@media (max-width: 860px) {
+  html:not(.erebyx-admin-route)
+    body.archetype-regular:not(.admin-interface)
+    #main-outlet#main-outlet
+    :is(#suggested-topics, .more-topics__container, .more-topics)
+    .topic-list.topic-list
+    > tbody.topic-list-body {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
