@@ -813,6 +813,19 @@
       }, true);
     };
 
+    var normalizeTopicCardTitleLinks = function () {
+      document.querySelectorAll("tr.topic-list-item[data-topic-id] .raw-topic-link[href], tr.topic-list-item[data-topic-id] a.title[href]").forEach(function (link) {
+        var destination = (function (href) {
+          var match = (href || "").match(/^(https?:\/\/[^/]+)?\/t\/([^/?#]+)\/(\d+)(?:\/\d+)?([?#].*)?$/);
+          if (!match) return "";
+          return "/t/" + match[2] + "/" + match[3] + "/1" + (match[4] || "");
+        })(link.getAttribute("href"));
+        if (!destination || link.getAttribute("href") === destination) return;
+        link.setAttribute("data-erebyx-original-href", link.getAttribute("href"));
+        link.setAttribute("href", destination);
+      });
+    };
+
     var ensureDiscoverySurfaces = function () {
       if (isAdminPath()) {
         removeDiscoverySurfaces();
@@ -1315,6 +1328,7 @@
       gateBanner();
       bindArcheMapNavigation();
       bindTopicCardNavigation();
+      normalizeTopicCardTitleLinks();
       updateCategoryBannerCopy();
       enhanceCategoryTopicExcerpts();
       enhanceHomepageThreadColumn();
