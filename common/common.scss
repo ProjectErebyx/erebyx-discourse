@@ -36812,6 +36812,36 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  .category-row.select-kit-row {
+  min-height: 2.85rem !important;
+  padding: 0.6rem 0.75rem !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  .category-row.select-kit-row
+  :is(.badge-category__wrapper, .badge-category, .badge-category__name, .topic-count) {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: rgb(255 231 163 / 0.86) !important;
+  font-size: 1rem !important;
+  line-height: 1.35 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  .category-row.select-kit-row
+  .badge-category__wrapper {
+  gap: 0.4rem !important;
+  padding: 0 !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   :is(.select-kit-row.is-highlighted:not(.is-selected), .select-kit-row:hover:not(.is-selected), .notifications-tracking-btn:hover:not(.-selected)) {
   background: transparent !important;
   border-color: rgb(250 178 50 / 0.42) !important;
@@ -36830,6 +36860,17 @@ html:not(.erebyx-admin-route)
     inset 0 0 0 1px rgb(255 231 163 / 0.12),
     0 14px 36px -28px rgb(250 178 50 / 0.9) !important;
   color: rgb(255 247 214 / 0.98) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  .select-kit-body
+  .category-row.select-kit-row
+  :is(.badge-category__wrapper, .badge-category) {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding-block: 0 !important;
 }
 
 html:not(.erebyx-admin-route)
