@@ -37776,3 +37776,39 @@ html:not(.erebyx-admin-route)
   margin: 0 !important;
   transform: none !important;
 }
+
+/* Tier 66 - Topic page related-card grids must stay inside their frame. */
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  table.topic-list.topic-list,
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  .topic-list.topic-list {
+  box-sizing: border-box !important;
+  width: calc(100% - clamp(2rem, 4.6vw, 4rem)) !important;
+  max-width: calc(100% - clamp(2rem, 4.6vw, 4rem)) !important;
+  margin-inline: auto !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  .topic-list.topic-list
+  > tbody.topic-list-body {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+@media (max-width: 860px) {
+  html:not(.erebyx-admin-route)
+    body.archetype-regular:not(.admin-interface)
+    :is(#suggested-topics, .more-topics__container, .more-topics)
+    .topic-list.topic-list
+    > tbody.topic-list-body {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
