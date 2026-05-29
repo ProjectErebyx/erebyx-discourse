@@ -37650,3 +37650,33 @@ html:not(.erebyx-admin-route)
   border-color: transparent !important;
   box-shadow: none !important;
 }
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #main-outlet#main-outlet
+  table.topic-list.topic-list
+  > tbody.topic-list-body
+  > tr.topic-list-item.topic-list-item[data-topic-id] {
+  cursor: pointer !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #main-outlet#main-outlet
+  table.topic-list.topic-list
+  > tbody.topic-list-body
+  > tr.topic-list-item.topic-list-item[data-topic-id]
+  :is(
+    a,
+    button,
+    input,
+    textarea,
+    select,
+    summary,
+    details,
+    label,
+    [role="button"],
+    .select-kit
+  ) {
+  cursor: auto;
+}
