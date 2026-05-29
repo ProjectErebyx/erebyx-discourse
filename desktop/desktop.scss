@@ -17731,3 +17731,47 @@ html:not(.erebyx-admin-route)
   > .loading-container.loading-container {
   margin-top: clamp(0.65rem, 1.2vw, 0.95rem) !important;
 }
+
+/* Keep the composer fully inside the desktop viewport. */
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control#reply-control.open:not(.fullscreen, .minimized),
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control#reply-control.open.draft:not(.fullscreen, .minimized),
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control.open:not(.fullscreen, .minimized),
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control.open.draft:not(.fullscreen, .minimized) {
+  top: clamp(1rem, 3vh, 2rem) !important;
+  bottom: auto !important;
+  left: 50vw !important;
+  right: auto !important;
+  height: min(48rem, calc(100dvh - clamp(2rem, 6vh, 4rem))) !important;
+  min-height: min(35rem, calc(100dvh - clamp(2rem, 6vh, 4rem))) !important;
+  max-height: calc(100dvh - clamp(2rem, 6vh, 4rem)) !important;
+  transform: translateX(-50%) !important;
+  overflow: hidden !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control#reply-control.open:not(.fullscreen, .minimized)
+  .reply-area,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control#reply-control.open.draft:not(.fullscreen, .minimized)
+  .reply-area,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control.open:not(.fullscreen, .minimized)
+  .reply-area,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control.open.draft:not(.fullscreen, .minimized)
+  .reply-area {
+  max-height: 100% !important;
+  overflow-y: auto !important;
+}
