@@ -776,26 +776,38 @@
       if (bindTopicCardNavigation._bound) return;
       bindTopicCardNavigation._bound = true;
 
+      var topicStartURL = function (href) {
+        var match = (href || "").match(/^(https?:\/\/[^/]+)?\/t\/([^/?#]+)\/(\d+)(?:\/\d+)?([?#].*)?$/);
+        if (!match) return href;
+        return (match[1] || window.location.origin) + "/t/" + match[2] + "/" + match[3] + "/1" + (match[4] || "");
+      };
+
       document.addEventListener("click", function (event) {
         if (event.defaultPrevented || event.button && event.button !== 0) return;
 
         var target = event.target;
         if (!target || !target.closest) return;
-        if (target.closest("a, button, input, textarea, select, summary, details, label, [role='button'], .select-kit")) return;
-
         var card = target.closest("tr.topic-list-item[data-topic-id]");
         if (!card || card.closest("#reply-control, .d-modal, .admin-interface")) return;
 
         var topicLink = card.querySelector(".raw-topic-link[href], a.title[href], .link-top-line a[href]");
         if (!topicLink || !topicLink.href) return;
 
+        var clickedTopicTitle = target.closest(".raw-topic-link[href], a.title[href]");
+        if (!clickedTopicTitle && target.closest("a, button, input, textarea, select, summary, details, label, [role='button'], .select-kit")) return;
+
+        var destination = topicStartURL(topicLink.href);
+        if (!destination) return;
+
         if (event.metaKey || event.ctrlKey) {
-          window.open(topicLink.href, "_blank", "noopener");
+          event.preventDefault();
+          window.open(destination, "_blank", "noopener");
           return;
         }
 
         if (event.shiftKey || event.altKey) return;
-        window.location.assign(topicLink.href);
+        event.preventDefault();
+        window.location.assign(destination);
       });
     };
 
