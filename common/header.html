@@ -844,11 +844,275 @@
       description.appendChild(createNode("strong", "", copy));
     };
 
+    var HOME_THREAD_FEEDS = {
+      latest: { label: "Latest", endpoint: "/latest.json" },
+      top: { label: "Top", endpoint: "/top.json" },
+      hot: { label: "Hot", endpoint: "/hot.json" }
+    };
+    var homeThreadFeedRequest = 0;
+
+    var isHomePath = function () {
+      var path = window.location.pathname || "/";
+      return path === "/" || path === "";
+    };
+
+    var requestJson = function (url) {
+      if (window.fetch) {
+        return window.fetch(url, {
+          credentials: "same-origin",
+          headers: { Accept: "application/json" }
+        }).then(function (response) {
+          if (!response.ok) throw new Error("Feed request failed");
+          return response.json();
+        });
+      }
+
+      return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+        xhr.withCredentials = true;
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.onload = function () {
+          if (xhr.status < 200 || xhr.status >= 300) {
+            reject(new Error("Feed request failed"));
+            return;
+          }
+          try {
+            resolve(JSON.parse(xhr.responseText));
+          } catch (error) {
+            reject(error);
+          }
+        };
+        xhr.onerror = function () {
+          reject(new Error("Feed request failed"));
+        };
+        xhr.send();
+      });
+    };
+
+    var categorySlug = function (name) {
+      return (name || "thread")
+        .toString()
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+    };
+
+    var formatShortDate = function (dateValue) {
+      var date = dateValue ? new Date(dateValue) : null;
+      if (!date || isNaN(date.getTime())) return "";
+      try {
+        return new Intl.DateTimeFormat(undefined, {
+          month: "short",
+          day: "numeric"
+        }).format(date);
+      } catch (error) {
+        return date.toLocaleDateString();
+      }
+    };
+
+    var compactNumber = function (value) {
+      var number = Number(value || 0);
+      if (number >= 1000) return Math.round(number / 100) / 10 + "k";
+      return String(number);
+    };
+
+    var avatarUrl = function (template, size) {
+      if (!template) return "";
+      return template.replace("{size}", String(size || 48));
+    };
+
+    var topicUrl = function (topic) {
+      if (!topic || !topic.id) return "/latest";
+      return "/t/" + (topic.slug || "topic") + "/" + topic.id + "/" + (topic.highest_post_number || 1);
+    };
+
+    var buildHomepageTopicRow = function (topic, usersById, categoriesById) {
+      var category = categoriesById[topic.category_id] || {};
+      var categoryName = category.name || "Threads";
+      var categoryColor = category.color ? "#" + category.color : "#fab232";
+      var row = createNode(
+        "tr",
+        "topic-list-item erebyx-home-thread-card category-" + categorySlug(categoryName)
+      );
+      row.setAttribute("data-topic-id", topic.id);
+
+      var main = createNode("td", "main-link topic-list-data");
+      main.setAttribute("colspan", "1");
+
+      var topLine = createNode("span", "link-top-line");
+      topLine.setAttribute("role", "heading");
+      topLine.setAttribute("aria-level", "2");
+      topLine.appendChild(createNode("span", "topic-statuses"));
+      var title = createNode("a", "title raw-link raw-topic-link", topic.title || "Untitled thread");
+      title.href = topicUrl(topic);
+      title.setAttribute("data-topic-id", topic.id);
+      topLine.appendChild(title);
+      topLine.appendChild(createNode("span", "topic-post-badges"));
+      main.appendChild(topLine);
+
+      var bottomLine = createNode("div", "link-bottom-line");
+      var categoryLink = createNode("a", "badge-category__wrapper");
+      categoryLink.href = category.slug ? "/c/" + category.slug + "/" + category.id : "/categories";
+      categoryLink.setAttribute(
+        "style",
+        "--category-badge-color: " + categoryColor + "; --category-badge-text-color: #FFFFFF;"
+      );
+      var badge = createNode("span", "badge-category --style-square");
+      badge.setAttribute("data-category-id", category.id || "");
+      badge.setAttribute("data-drop-close", "true");
+      var badgeName = createNode("span", "badge-category__name", categoryName);
+      badge.appendChild(badgeName);
+      categoryLink.appendChild(badge);
+      bottomLine.appendChild(categoryLink);
+      main.appendChild(bottomLine);
+      row.appendChild(main);
+
+      var posters = createNode("td", "posters topic-list-data");
+      (topic.posters || []).slice(0, 3).forEach(function (poster) {
+        var user = usersById[poster.user_id] || {};
+        var username = user.username || user.name || "";
+        var posterLink = createNode("a", "latest single");
+        posterLink.href = username ? "/u/" + encodeURIComponent(username) : topicUrl(topic);
+        posterLink.setAttribute("aria-label", username || "Topic participant");
+        var template = user.avatar_template || poster.avatar_template;
+        if (template) {
+          var avatar = createNode("img", "avatar");
+          avatar.src = avatarUrl(template, 48);
+          avatar.alt = "";
+          avatar.width = 48;
+          avatar.height = 48;
+          posterLink.appendChild(avatar);
+        } else {
+          posterLink.appendChild(createNode("span", "avatar", (username || "?").charAt(0).toUpperCase()));
+        }
+        posters.appendChild(posterLink);
+      });
+      row.appendChild(posters);
+
+      var replies = createNode("td", "num posts-map posts topic-list-data", compactNumber(topic.reply_count));
+      replies.setAttribute("title", "Replies");
+      row.appendChild(replies);
+
+      var views = createNode("td", "num views topic-list-data", compactNumber(topic.views));
+      views.setAttribute("title", "Views");
+      row.appendChild(views);
+
+      var activity = createNode(
+        "td",
+        "num activity topic-list-data",
+        formatShortDate(topic.bumped_at || topic.last_posted_at || topic.created_at)
+      );
+      activity.setAttribute("title", "Activity");
+      row.appendChild(activity);
+
+      return row;
+    };
+
+    var renderHomepageThreadFeed = function (column, feedName, data) {
+      var table = column.querySelector("table.topic-list");
+      if (!table) return;
+      var body = table.querySelector("tbody.topic-list-body");
+      if (!body) {
+        body = createNode("tbody", "topic-list-body");
+        table.appendChild(body);
+      }
+
+      var topics = data && data.topic_list && data.topic_list.topics ? data.topic_list.topics : [];
+      var usersById = {};
+      (data.users || []).forEach(function (user) {
+        usersById[user.id] = user;
+      });
+      var categoriesById = {};
+      var categories = data.category_list && data.category_list.categories ? data.category_list.categories : [];
+      categories.forEach(function (category) {
+        categoriesById[category.id] = category;
+      });
+
+      body.textContent = "";
+      topics.slice(0, 6).forEach(function (topic) {
+        body.appendChild(buildHomepageTopicRow(topic, usersById, categoriesById));
+      });
+      column.setAttribute("data-erebyx-thread-feed", feedName);
+      column.classList.remove("erebyx-home-thread-feed--loading");
+      column.classList.toggle("erebyx-home-thread-feed--empty", !topics.length);
+    };
+
+    var loadHomepageThreadFeed = function (column, feedName) {
+      var feed = HOME_THREAD_FEEDS[feedName] || HOME_THREAD_FEEDS.latest;
+      var requestId = ++homeThreadFeedRequest;
+      column.classList.add("erebyx-home-thread-feed--loading");
+
+      requestJson(feed.endpoint)
+        .then(function (data) {
+          if (requestId !== homeThreadFeedRequest) return;
+          renderHomepageThreadFeed(column, feedName, data);
+        })
+        .catch(function () {
+          if (requestId !== homeThreadFeedRequest) return;
+          column.classList.remove("erebyx-home-thread-feed--loading");
+        });
+    };
+
+    var enhanceHomepageThreadColumn = function () {
+      if (!isHomePath() || isAdminPath()) return;
+
+      var column = document.querySelector("#main-outlet .custom-homepage-columns .col.col-2");
+      if (!column) return;
+      var header = column.querySelector(".header-wrapper");
+      if (!header) return;
+
+      if (column.getAttribute("data-erebyx-thread-filter-ready") !== "true") {
+        column.setAttribute("data-erebyx-thread-filter-ready", "true");
+        column.classList.add("erebyx-home-thread-feed");
+
+        var postButton = header.querySelector("button");
+        header.textContent = "";
+        header.classList.add("erebyx-home-thread-header");
+
+        var titleWrap = createNode("div", "erebyx-home-thread-heading");
+        titleWrap.appendChild(createNode("span", "erebyx-home-thread-heading__sigil", "✦")).setAttribute("aria-hidden", "true");
+        titleWrap.appendChild(createNode("span", "erebyx-home-thread-heading__label", "Threads"));
+        header.appendChild(titleWrap);
+
+        var filterWrap = createNode("div", "erebyx-home-thread-tabs");
+        filterWrap.setAttribute("role", "tablist");
+        filterWrap.setAttribute("aria-label", "Homepage thread filters");
+
+        Object.keys(HOME_THREAD_FEEDS).forEach(function (name) {
+          var button = createNode("button", "erebyx-home-thread-tab", HOME_THREAD_FEEDS[name].label);
+          button.type = "button";
+          button.setAttribute("data-erebyx-thread-feed", name);
+          button.setAttribute("aria-pressed", name === "latest" ? "true" : "false");
+          if (name === "latest") button.classList.add("is-active");
+          button.addEventListener("click", function () {
+            if (button.classList.contains("is-active")) return;
+            filterWrap.querySelectorAll(".erebyx-home-thread-tab").forEach(function (tab) {
+              var active = tab === button;
+              tab.classList.toggle("is-active", active);
+              tab.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+            loadHomepageThreadFeed(column, name);
+          });
+          filterWrap.appendChild(button);
+        });
+
+        header.appendChild(filterWrap);
+        if (postButton) header.appendChild(postButton);
+      }
+
+      if (!column.getAttribute("data-erebyx-thread-feed")) {
+        loadHomepageThreadFeed(column, "latest");
+      }
+    };
+
     // ---- 4. Run on initial load + on Discourse SPA route change ----
     var run = function () {
       clusterPosts();
       gateBanner();
       updateCategoryBannerCopy();
+      enhanceHomepageThreadColumn();
     };
 
     if (document.readyState !== "loading") {
