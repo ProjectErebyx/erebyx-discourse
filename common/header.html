@@ -755,6 +755,23 @@
       });
     };
 
+    var bindArcheMapNavigation = function () {
+      if (bindArcheMapNavigation._bound) return;
+      bindArcheMapNavigation._bound = true;
+
+      document.addEventListener("click", function (event) {
+        var link = event.target && event.target.closest
+          ? event.target.closest(".erebyx-arche-map__room[href^='/c/']")
+          : null;
+        if (!link || event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        if (event.button && event.button !== 0) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+        window.location.assign(link.href);
+      }, true);
+    };
+
     var ensureDiscoverySurfaces = function () {
       if (isAdminPath()) {
         removeDiscoverySurfaces();
@@ -1186,6 +1203,7 @@
     var run = function () {
       clusterPosts();
       gateBanner();
+      bindArcheMapNavigation();
       updateCategoryBannerCopy();
       enhanceHomepageThreadColumn();
     };
