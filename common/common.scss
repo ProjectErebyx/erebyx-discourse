@@ -37034,9 +37034,13 @@ html:not(.erebyx-admin-route)
   .custom-homepage-columns
   > .col-2.erebyx-home-thread-feed
   > .header-wrapper.erebyx-home-thread-header {
+  box-sizing: border-box !important;
   display: flex !important;
   align-items: center !important;
   gap: clamp(0.5rem, 1.2vw, 0.85rem) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
   min-height: 3.9rem !important;
   padding: 0.72rem 0.9rem !important;
 }
@@ -37082,8 +37086,11 @@ html:not(.erebyx-admin-route)
   .erebyx-home-thread-tabs {
   display: inline-flex !important;
   align-items: center !important;
+  justify-content: flex-end !important;
   gap: 0.38rem !important;
-  flex: 1 1 auto !important;
+  flex: 0 1 auto !important;
+  flex-wrap: wrap !important;
+  margin-left: auto !important;
   min-width: 0 !important;
 }
 
