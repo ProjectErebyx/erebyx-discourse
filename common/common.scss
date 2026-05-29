@@ -3747,7 +3747,7 @@ button.create.btn-primary {
   }
 }
 
-.topic-list tr.topic-list-item:has(a[href*="/c/orientation"]) {
+.topic-list tr.topic-list-item:has(a[href*="/c/start-here"]) {
   border-left: 3px solid rgba(250, 178, 50, 0.6) !important;
   .main-link::after {
     content: "*";
@@ -5134,7 +5134,7 @@ body[data-erebyx-route="discovery"] .category-list {
 
 body[data-erebyx-route="discovery"]
   .category-list
-  tr:has(a[href*="/c/orientation"])::before {
+  tr:has(a[href*="/c/start-here"])::before {
   content: "*";
 }
 body[data-erebyx-route="discovery"]
@@ -26490,7 +26490,7 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   .topic-list
-  tr.topic-list-item:has(a[href*="/c/orientation"]) {
+  tr.topic-list-item:has(a[href*="/c/start-here"]) {
   border-left-color: rgb(250 178 50 / 0.58) !important;
 }
 
@@ -26508,7 +26508,7 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   .topic-list
-  tr.topic-list-item:has(a[href*="/c/signal-room"]) {
+  tr.topic-list-item:has(a[href*="/c/genesis-lounge"]) {
   border-left-color: rgb(68 146 252 / 0.58) !important;
 }
 
@@ -30922,7 +30922,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-orientation.navigation-category:not(.archetype-regular):not(
+  body.category-start-here.navigation-category:not(.archetype-regular):not(
     .admin-interface
   )
   .list-container
@@ -30933,7 +30933,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-orientation.navigation-category:not(.archetype-regular):not(
+  body.category-start-here.navigation-category:not(.archetype-regular):not(
     .admin-interface
   )
   .list-container
@@ -31229,7 +31229,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-orientation.navigation-category:not(.archetype-regular):not(
+  body.category-start-here.navigation-category:not(.archetype-regular):not(
     .admin-interface
   )
   #main-outlet
@@ -31242,7 +31242,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-orientation.navigation-category:not(.archetype-regular):not(
+  body.category-start-here.navigation-category:not(.archetype-regular):not(
     .admin-interface
   )
   .navigation-container.category-navigation
@@ -31251,7 +31251,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-orientation.navigation-category:not(.archetype-regular):not(
+  body.category-start-here.navigation-category:not(.archetype-regular):not(
     .admin-interface
   )
   .navigation-container.category-navigation
@@ -31262,7 +31262,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-orientation.navigation-category:not(.archetype-regular):not(
+  body.category-start-here.navigation-category:not(.archetype-regular):not(
     .admin-interface
   )
   .navigation-container.category-navigation
@@ -31284,7 +31284,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-orientation.navigation-category:not(.archetype-regular):not(
+  body.category-start-here.navigation-category:not(.archetype-regular):not(
     .admin-interface
   )
   .navigation-container.category-navigation
@@ -31293,7 +31293,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-orientation.navigation-category:not(.archetype-regular):not(
+  body.category-start-here.navigation-category:not(.archetype-regular):not(
     .admin-interface
   )
   .topic-list
@@ -31304,7 +31304,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-orientation.navigation-category:not(.archetype-regular):not(
+  body.category-start-here.navigation-category:not(.archetype-regular):not(
     .admin-interface
   )
   .topic-list
@@ -31312,14 +31312,14 @@ html:not(.erebyx-admin-route)
   td.main-link
   .link-top-line,
 html:not(.erebyx-admin-route)
-  body.category-orientation.navigation-category:not(.archetype-regular):not(
+  body.category-start-here.navigation-category:not(.archetype-regular):not(
     .admin-interface
   )
   .topic-list
   tr.topic-list-item
   .topic-excerpt,
 html:not(.erebyx-admin-route)
-  body.category-orientation.navigation-category:not(.archetype-regular):not(
+  body.category-start-here.navigation-category:not(.archetype-regular):not(
     .admin-interface
   )
   .topic-list
@@ -31853,7 +31853,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-orientation.navigation-category:not(.admin-interface):not(
+  body.category-start-here.navigation-category:not(.admin-interface):not(
     .archetype-regular
   )
   #main-outlet
@@ -31864,7 +31864,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-orientation.navigation-category:not(.admin-interface):not(
+  body.category-start-here.navigation-category:not(.admin-interface):not(
     .archetype-regular
   )
   #main-outlet
@@ -31873,7 +31873,7 @@ html:not(.erebyx-admin-route)
   > tbody.topic-list-body
   > tr.topic-list-item,
 html:not(.erebyx-admin-route)
-  body.category-orientation.navigation-category:not(.admin-interface):not(
+  body.category-start-here.navigation-category:not(.admin-interface):not(
     .archetype-regular
   )
   #main-outlet
@@ -31882,7 +31882,7 @@ html:not(.erebyx-admin-route)
   > tbody.topic-list-body
   > tr.topic-list-item:first-child,
 html:not(.erebyx-admin-route)
-  body.category-orientation.navigation-category:not(.admin-interface):not(
+  body.category-start-here.navigation-category:not(.admin-interface):not(
     .archetype-regular
   )
   #main-outlet
@@ -32640,19 +32640,19 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-memory-work.navigation-category:not(.admin-interface):not(
+  body.category-feature-requests.navigation-category:not(.admin-interface):not(
     .archetype-regular
   )
   #main-outlet
   .list-container:not(.--categories),
 html:not(.erebyx-admin-route)
-  body.category-memory-work.navigation-category:not(.admin-interface):not(
+  body.category-feature-requests.navigation-category:not(.admin-interface):not(
     .archetype-regular
   )
   #main-outlet
   #list-area,
 html:not(.erebyx-admin-route)
-  body.category-memory-work.navigation-category:not(.admin-interface):not(
+  body.category-feature-requests.navigation-category:not(.admin-interface):not(
     .archetype-regular
   )
   #main-outlet
@@ -32664,7 +32664,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-memory-work.navigation-category:not(.admin-interface):not(
+  body.category-feature-requests.navigation-category:not(.admin-interface):not(
     .archetype-regular
   )
   #main-outlet
@@ -32680,7 +32680,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-memory-work.navigation-category:not(.admin-interface):not(
+  body.category-feature-requests.navigation-category:not(.admin-interface):not(
     .archetype-regular
   )
   #main-outlet
@@ -33432,7 +33432,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-memory-work.navigation-category:not(.admin-interface):not(
+  body.category-feature-requests.navigation-category:not(.admin-interface):not(
     .archetype-regular
   )
   #main-outlet

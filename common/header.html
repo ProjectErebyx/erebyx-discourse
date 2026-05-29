@@ -649,19 +649,19 @@
         <span class="erebyx-arche-map__sigil" aria-hidden="true">⧉</span>
         <span class="erebyx-arche-map__name">Genesis Lounge</span>
       </a>
-      <a class="erebyx-arche-map__room erebyx-arche-map__room--announcements" href="/c/field-notes/6">
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--announcements" href="/c/announcements/6">
         <span class="erebyx-arche-map__sigil" aria-hidden="true">◈</span>
-        <span class="erebyx-arche-map__name">Signal Room</span>
+        <span class="erebyx-arche-map__name">Announcements</span>
       </a>
-      <a class="erebyx-arche-map__room erebyx-arche-map__room--features" href="/c/constellations/8">
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--features" href="/c/feature-requests/7">
         <span class="erebyx-arche-map__sigil" aria-hidden="true">⚙</span>
-        <span class="erebyx-arche-map__name">Report Bugs</span>
-      </a>
-      <a class="erebyx-arche-map__room erebyx-arche-map__room--bugs" href="/c/memory-work/7">
-        <span class="erebyx-arche-map__sigil" aria-hidden="true">✴</span>
         <span class="erebyx-arche-map__name">Feature Requests</span>
       </a>
-      <a class="erebyx-arche-map__room erebyx-arche-map__room--arche" href="/c/orientation/5">
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--bugs" href="/c/bug-reports/8">
+        <span class="erebyx-arche-map__sigil" aria-hidden="true">✴</span>
+        <span class="erebyx-arche-map__name">Bug Reports</span>
+      </a>
+      <a class="erebyx-arche-map__room erebyx-arche-map__room--arche" href="/c/start-here/5">
         <span class="erebyx-arche-map__sigil" aria-hidden="true">✦</span>
         <span class="erebyx-arche-map__name">Start Here</span>
       </a>
@@ -799,10 +799,10 @@
 
         [
           ["start", "⧉", "Genesis Lounge", "/c/genesis-lounge/9"],
-          ["announcements", "◈", "Signal Room", "/c/field-notes/6"],
-          ["features", "⚙", "Report Bugs", "/c/constellations/8"],
-          ["bugs", "✴", "Feature Requests", "/c/memory-work/7"],
-          ["arche", "✦", "Start Here", "/c/orientation/5"]
+          ["announcements", "◈", "Announcements", "/c/announcements/6"],
+          ["features", "⚙", "Feature Requests", "/c/feature-requests/7"],
+          ["bugs", "✴", "Bug Reports", "/c/bug-reports/8"],
+          ["arche", "✦", "Start Here", "/c/start-here/5"]
         ].forEach(function (room) {
           var link = createNode("a", "erebyx-arche-map__room erebyx-arche-map__room--" + room[0]);
           link.href = room[3];
@@ -1564,16 +1564,12 @@
         label = "New proposal";
       } else if (body.classList.contains("category-bug-reports")) {
         label = "New signal";
-      } else if (body.classList.contains("category-orientation")) {
+      } else if (body.classList.contains("category-start-here")) {
         label = "New introduction";
-      } else if (body.classList.contains("category-field-notes")) {
-        label = "New field note";
-      } else if (body.classList.contains("category-signal-room")) {
-        label = "New signal";
-      } else if (body.classList.contains("category-constellations")) {
-        label = "New constellation";
-      } else if (body.classList.contains("category-memory-work")) {
-        label = "New memory";
+      } else if (body.classList.contains("category-announcements")) {
+        label = "New announcement";
+      } else if (body.classList.contains("category-genesis-lounge")) {
+        label = "New post";
       }
 
       button.setAttribute("data-erebyx-create-label", label);
