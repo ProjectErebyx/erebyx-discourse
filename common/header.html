@@ -846,10 +846,12 @@
 
     var HOME_THREAD_FEEDS = {
       latest: { label: "Latest", endpoint: "/latest.json" },
-      top: { label: "Top", endpoint: "/top.json" },
+      top: { label: "Top", endpoint: "/top.json?period=all" },
       hot: { label: "Hot", endpoint: "/hot.json" }
     };
     var homeThreadFeedRequest = 0;
+    var homeThreadCategories = null;
+    var homeThreadCategoriesPromise = null;
 
     var isHomePath = function () {
       var path = window.location.pathname || "/";
@@ -926,6 +928,43 @@
     var topicUrl = function (topic) {
       if (!topic || !topic.id) return "/latest";
       return "/t/" + (topic.slug || "topic") + "/" + topic.id + "/" + (topic.highest_post_number || 1);
+    };
+
+    var addCategoryToMap = function (map, category) {
+      if (!category || !category.id) return;
+      map[category.id] = category;
+      (category.subcategory_list || []).forEach(function (subcategory) {
+        addCategoryToMap(map, subcategory);
+      });
+    };
+
+    var categoriesFromData = function (data) {
+      var map = {};
+      var categoryList = data && data.category_list && data.category_list.categories
+        ? data.category_list.categories
+        : [];
+      var flatCategories = data && data.categories ? data.categories : [];
+      categoryList.concat(flatCategories).forEach(function (category) {
+        addCategoryToMap(map, category);
+      });
+      return map;
+    };
+
+    var getHomepageCategories = function () {
+      if (homeThreadCategories) return Promise.resolve(homeThreadCategories);
+      if (homeThreadCategoriesPromise) return homeThreadCategoriesPromise;
+
+      homeThreadCategoriesPromise = requestJson("/categories.json")
+        .then(function (data) {
+          homeThreadCategories = categoriesFromData(data);
+          return homeThreadCategories;
+        })
+        .catch(function () {
+          homeThreadCategories = {};
+          return homeThreadCategories;
+        });
+
+      return homeThreadCategoriesPromise;
     };
 
     var buildHomepageTopicRow = function (topic, usersById, categoriesById) {
@@ -1010,7 +1049,7 @@
       return row;
     };
 
-    var renderHomepageThreadFeed = function (column, feedName, data) {
+    var renderHomepageThreadFeed = function (column, feedName, data, categoryMap) {
       var table = column.querySelector("table.topic-list");
       if (!table) return;
       var body = table.querySelector("tbody.topic-list-body");
@@ -1024,11 +1063,7 @@
       (data.users || []).forEach(function (user) {
         usersById[user.id] = user;
       });
-      var categoriesById = {};
-      var categories = data.category_list && data.category_list.categories ? data.category_list.categories : [];
-      categories.forEach(function (category) {
-        categoriesById[category.id] = category;
-      });
+      var categoriesById = Object.assign({}, categoryMap || {}, categoriesFromData(data));
 
       body.textContent = "";
       topics.slice(0, 6).forEach(function (topic) {
@@ -1044,10 +1079,10 @@
       var requestId = ++homeThreadFeedRequest;
       column.classList.add("erebyx-home-thread-feed--loading");
 
-      requestJson(feed.endpoint)
-        .then(function (data) {
+      Promise.all([requestJson(feed.endpoint), getHomepageCategories()])
+        .then(function (results) {
           if (requestId !== homeThreadFeedRequest) return;
-          renderHomepageThreadFeed(column, feedName, data);
+          renderHomepageThreadFeed(column, feedName, results[0], results[1]);
         })
         .catch(function () {
           if (requestId !== homeThreadFeedRequest) return;
