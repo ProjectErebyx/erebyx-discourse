@@ -17565,10 +17565,10 @@ html:not(.erebyx-admin-route)
     #main-outlet#main-outlet
     #list-area
     .topic-list.topic-list {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-right: 0 !important;
-    margin-left: 0 !important;
+    width: calc(100% - 1rem) !important;
+    max-width: calc(100% - 1rem) !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
   }
 
   html:not(.erebyx-admin-route)
