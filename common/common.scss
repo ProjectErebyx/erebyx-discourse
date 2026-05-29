@@ -37204,7 +37204,10 @@ html:not(.erebyx-admin-route)
   .erebyx-home-thread-tab:focus::after,
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
-  .erebyx-home-thread-tab:focus-visible::after {
+  .erebyx-home-thread-tab:focus-visible::after,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .erebyx-home-thread-tab.is-tooltip-visible::after {
   opacity: 1 !important;
   transform: translate(50%, 0) !important;
   visibility: visible !important;
