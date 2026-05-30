@@ -10,7 +10,8 @@
     "arche_map_relief": "assets/arche-map-relief.jpg",
     "genesis_river_banner": "assets/genesis-river-banner.png",
     "genesis_arche_wordmark": "assets/genesis-arche-hero-wordmark.svg",
-    "genesis_lounge_banner": "assets/genesis-lounge-banner.png"
+    "genesis_lounge_banner": "assets/genesis-lounge-banner.png",
+    "topic_columns_banner": "assets/topic-columns-banner.jpeg"
   },
   "color_schemes": {
     "EREBYX Cosmic": {
