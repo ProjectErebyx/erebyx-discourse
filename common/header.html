@@ -9,7 +9,7 @@
   EREBYX Arche — Discourse homepage hero
 
   Renders a constellation canvas banner above the category list on homepage
-  routes only (/, /categories, /latest). Self-removes elsewhere so it never
+  routes only (/, /categories). Self-removes elsewhere so it never
   conflicts with topic threads. Brand colors flow from theme settings via
   CSS custom properties (--erebyx-violet / --erebyx-blue / --erebyx-violet-
   light / --erebyx-gold) — no JS edits required to retune the palette.
@@ -683,13 +683,23 @@
 
     var DISCOVERY_ROUTES = [
       "/",
-      "/categories",
-      "/latest",
-      "/top",
-      "/new",
-      "/unread",
-      "/hot"
+      "/categories"
     ];
+    var THREAD_HOME_ROUTES = {
+      "/latest": "latest",
+      "/top": "top",
+      "/hot": "hot"
+    };
+
+    var normalizeThreadHomeRoute = function () {
+      var path = window.location.pathname || "/";
+      var feed = THREAD_HOME_ROUTES[path.replace(/\/$/, "")];
+      if (!feed) return false;
+      window.location.replace("/?thread=" + encodeURIComponent(feed));
+      return true;
+    };
+
+    if (normalizeThreadHomeRoute()) return;
 
     // ---- 1. Reply-chain clustering for constellation rail ----
     var clusterPosts = function () {
@@ -1570,13 +1580,13 @@
     var CLUSTER_WINDOW_MS = 30 * 60 * 1000;
     var DISCOVERY_ROUTES = [
       "/",
-      "/categories",
-      "/latest",
-      "/top",
-      "/new",
-      "/unread",
-      "/hot"
+      "/categories"
     ];
+    var THREAD_HOME_ROUTES = {
+      "/latest": "latest",
+      "/top": "top",
+      "/hot": "hot"
+    };
 
     function currentSubstrateState(now) {
       var hour = now.getUTCHours();
@@ -1777,8 +1787,17 @@
       body.setAttribute("data-erebyx-route", isDiscovery ? "discovery" : "inner");
     }
 
+    function normalizeThreadHomeRoute() {
+      var path = (window.location.pathname || "/").replace(/\/$/, "");
+      var feed = THREAD_HOME_ROUTES[path];
+      if (!feed) return false;
+      window.location.replace("/?thread=" + encodeURIComponent(feed));
+      return true;
+    }
+
     function run() {
       if (!document.body) return;
+      if (normalizeThreadHomeRoute()) return;
       var now = new Date();
       tagRoute();
       document.body.setAttribute("data-erebyx-substrate-state", currentSubstrateState(now));
