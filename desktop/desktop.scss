@@ -17858,7 +17858,9 @@ html:not(.erebyx-admin-route)
   box-sizing: border-box !important;
   width: min(100%, calc(100vw - clamp(2rem, 8vw, 7rem))) !important;
   max-width: min(100%, calc(100vw - clamp(2rem, 8vw, 7rem))) !important;
+  min-width: 0 !important;
   margin-inline: auto !important;
+  grid-template-columns: minmax(0, 1fr) !important;
   overflow: hidden !important;
 }
 
@@ -17870,6 +17872,7 @@ html:not(.erebyx-admin-route)
   box-sizing: border-box !important;
   width: 100% !important;
   max-width: 100% !important;
+  min-width: 0 !important;
   margin-inline: 0 !important;
   overflow: hidden !important;
 }
@@ -17887,6 +17890,7 @@ html:not(.erebyx-admin-route)
   box-sizing: border-box !important;
   width: 100% !important;
   max-width: 100% !important;
+  min-width: 0 !important;
   margin-right: 0 !important;
   margin-left: 0 !important;
 }
@@ -17900,6 +17904,7 @@ html:not(.erebyx-admin-route)
   box-sizing: border-box !important;
   width: 100% !important;
   max-width: 100% !important;
+  min-width: 0 !important;
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   gap: clamp(1rem, 1.7vw, 1.35rem) !important;
 }
