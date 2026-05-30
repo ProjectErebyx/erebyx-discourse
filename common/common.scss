@@ -1,4 +1,4 @@
-@import "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap";
 
 $arche_map_relief: "$arche_map_relief" !default;
 $genesis_river_banner: "$genesis_river_banner" !default;
@@ -108,7 +108,6 @@ pre,
   }
 }
 
-/* Final production alignment pass: shared guardrails for every public route. */
 html:not(.erebyx-admin-route) body:not(.admin-interface) #main-outlet::before,
 html:not(.erebyx-admin-route) body:not(.admin-interface) #main-outlet::after,
 html:not(.erebyx-admin-route)
@@ -2173,7 +2172,7 @@ body {
 }
 @media (min-width: 925px) {
   .has-sidebar-page #d-header {
-    grid-template-columns: var(--d-sidebar-width) 1fr !important; // keep header layout
+    grid-template-columns: var(--d-sidebar-width) 1fr !important;
   }
 
   .has-sidebar-page .sidebar-wrapper,
@@ -2597,24 +2596,23 @@ article.boxed[data-user-id="5"] {
 }
 
 article.boxed[data-user-id="3"] {
-  border-left-color: rgba(123, 47, 190, 0.6) !important; // Erebus violet
+  border-left-color: rgba(123, 47, 190, 0.6) !important;
 }
 
 article.boxed[data-user-id="4"] {
-  border-left-color: rgba(236, 72, 153, 0.55) !important; // Nyx pink
+  border-left-color: rgba(236, 72, 153, 0.55) !important;
   background:
     linear-gradient(90deg, rgba(236, 72, 153, 0.04) 0%, transparent 80px),
     inherit !important;
 }
 
 article.boxed[data-user-id="5"] {
-  border-left-color: rgba(139, 92, 246, 0.55) !important; // Arche purple
+  border-left-color: rgba(139, 92, 246, 0.55) !important;
   background:
     linear-gradient(90deg, rgba(139, 92, 246, 0.04) 0%, transparent 80px),
     inherit !important;
 }
 article.boxed[data-user-id="1"] {
-  // mikey is admin user_id=1
   border-left: 3px solid rgba(212, 164, 55, 0.55) !important;
   background:
     linear-gradient(90deg, rgba(212, 164, 55, 0.04) 0%, transparent 80px),
@@ -3011,7 +3009,7 @@ textarea:focus-visible {
   text-shadow: 0 0 24px rgba(196, 181, 253, 0.35);
 }
 #post_1.topic-post[data-user-id="1"] .cooked > p:first-of-type::first-letter {
-  color: #fde68a; // mikey gold
+  color: #fde68a;
   text-shadow: 0 0 24px rgba(252, 211, 77, 0.35);
 }
 
@@ -3092,7 +3090,7 @@ textarea:focus-visible {
   .cooked {
     font-size: 1rem !important;
     line-height: 1.55 !important;
-    max-width: 100% !important; // replies use full container, not measure-locked
+    max-width: 100% !important;
   }
 }
 .topic-post.accepted-answer,
@@ -3184,7 +3182,7 @@ article.accepted-answer {
 }
 #post_1.topic-post[data-user-id="1"] {
   .cooked {
-    font-weight: 450; // slightly heavier than 400
+    font-weight: 450;
   }
 
   .cooked blockquote {
@@ -3343,12 +3341,9 @@ table.topic-list > thead {
   display: none;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Architects+Daughter&display=swap");
-
 :root {
   --erebyx-font-display: "Fireside", "Outfit", "Zen Dots", sans-serif;
   --erebyx-font-body: "Outfit", "Pathway Gothic One", system-ui, sans-serif;
-  --erebyx-font-accent: "Architects Daughter", cursive;
   --erebyx-font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
 }
 body,
@@ -3534,8 +3529,6 @@ h1.topic-title,
   --erebyx-ink-muted: rgba(196, 181, 253, 0.58);
   --erebyx-panel-dark: rgba(3, 7, 18, 0.76);
   --erebyx-panel-darker: rgba(3, 7, 18, 0.9);
-  --erebyx-marble-veins-dark: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='520' height='520' viewBox='0 0 520 520'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.018 0.032' numOctaves='4' seed='13'/><feDisplacementMap in='SourceGraphic' scale='18'/></filter><g filter='url(%23n)' fill='none' stroke-linecap='round'><path d='M-80 86 C80 4 164 164 326 78 S548 126 612 10' stroke='%23ffffff' stroke-opacity='0.42' stroke-width='1.15'/><path d='M-50 284 C76 214 154 334 272 262 S420 236 590 312' stroke='%23FAB232' stroke-opacity='0.24' stroke-width='0.72'/><path d='M64 570 C96 418 220 414 256 306 S394 154 554 118' stroke='%234492FC' stroke-opacity='0.24' stroke-width='0.82'/><path d='M-26 436 C110 370 178 472 318 392 S456 346 552 402' stroke='%23ffffff' stroke-opacity='0.22' stroke-width='0.62'/></g></svg>");
-  --erebyx-marble-veins-light: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='520' height='520' viewBox='0 0 520 520'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.016 0.026' numOctaves='4' seed='21'/><feDisplacementMap in='SourceGraphic' scale='16'/></filter><rect width='520' height='520' fill='%23ffffff'/><g filter='url(%23n)' fill='none' stroke-linecap='round'><path d='M-90 92 C78 28 154 166 314 94 S534 132 622 24' stroke='%23030712' stroke-opacity='0.28' stroke-width='1.2'/><path d='M-48 292 C78 220 166 338 282 266 S430 238 596 316' stroke='%237503E0' stroke-opacity='0.18' stroke-width='0.72'/><path d='M70 570 C104 416 214 416 256 308 S396 156 558 116' stroke='%234492FC' stroke-opacity='0.16' stroke-width='0.82'/></g></svg>");
   --erebyx-meander-header: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='10' viewBox='0 0 56 10'><path d='M0 8 H6 V2 H14 V8 H22 V2 H30 V8 H38 V2 H46 V8 H56' stroke='%23FAB232' stroke-width='1' fill='none' opacity='0.5'/></svg>");
   --erebyx-meander-divider: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='44' height='14' viewBox='0 0 44 14'><path d='M1 12 V2 H9 V9 H15 V2 H23 V9 H29 V2 H37 V12 H43' stroke='%234492FC' stroke-width='1' fill='none' opacity='0.44'/></svg>");
   --erebyx-meander-footer: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='72' height='12' viewBox='0 0 72 12'><path d='M0 6 H8 V2 H16 V10 H24 V2 H32 V10 H40 V2 H48 V10 H56 V2 H64 V6 H72' stroke='%23c4b5fd' stroke-width='0.9' fill='none' opacity='0.42'/></svg>");
@@ -13706,7 +13699,6 @@ html:not(.erebyx-admin-route)
   }
 }
 
-/* Final production pass: keep the authoring mode control quiet and consistent. */
 html:not(.erebyx-admin-route) body:not(.admin-interface) {
   :is(
     #reply-control.open:not(.fullscreen, .minimized),
@@ -35634,7 +35626,6 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
   }
 }
 
-/* Shared release guard: keep decorative geometry and authoring chrome contained. */
 html:not(.erebyx-admin-route) body:not(.admin-interface) {
   #main-outlet::before,
   #main-outlet::after {
@@ -35730,7 +35721,6 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
     pointer-events: auto !important;
   }
 }
-/* Tier 57 - Local QA polish: canonical route containment. */
 @media (min-width: 861px) {
   html:not(.erebyx-admin-route)
     body.categories-list.categories-list:not(.admin-interface)
@@ -36287,7 +36277,6 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
   }
 }
 
-/* Tier 58 - Live rhythm polish: restore nav layout and align discovery stages. */
 html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav {
   height: 3.25rem !important;
   min-height: 3.25rem !important;
@@ -36341,7 +36330,6 @@ html:not(.erebyx-admin-route)
   transform: none !important;
 }
 
-/* Tier 59 - Genesis Arche wordmark home link. */
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   .erebyx-nav
@@ -36433,7 +36421,6 @@ html:not(.erebyx-admin-route)
   margin-bottom: clamp(1rem, 2vw, 1.45rem) !important;
 }
 
-/* Tier 61 - Genesis availability banner river relief background. */
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   .erebyx-genesis-banner__inner {
@@ -36450,7 +36437,6 @@ html:not(.erebyx-admin-route)
     0 28px 80px -62px rgb(250 178 50 / 0.58) !important;
 }
 
-/* Tier 62 - Plain black nav chrome. */
 html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav {
   border: 0 !important;
   border-bottom: 0 !important;
@@ -36471,7 +36457,6 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__inner::aft
   box-shadow: none !important;
 }
 
-/* Tier 63 - Clean category banner canvas for image-backed headers. */
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   .category-title-header[class*="category-banner-"],
@@ -36994,7 +36979,6 @@ html:not(.erebyx-admin-route)
     inset 0 1px 0 rgb(255 247 214 / 0.08) !important;
 }
 
-/* Tier 64 - River relief homepage column headers. */
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   .custom-homepage-columns
@@ -37364,7 +37348,6 @@ html:not(.erebyx-admin-route)
   margin: 0 auto 0.1rem !important;
 }
 
-/* Tier 59 - Center anonymous auth surfaces instead of inheriting Discourse's split login grid. */
 @media screen and (width >= 700px) {
   html:not(.erebyx-admin-route) body.login-page:not(.admin-interface) {
     #main-outlet-wrapper#main-outlet-wrapper {
@@ -37406,7 +37389,6 @@ html:not(.erebyx-admin-route)
   }
 }
 
-/* Tier 60 - Tablet banner split applies regardless of Discourse bundle choice. */
 @media screen and (width >= 700px) and (width <= 860px) {
   html:not(.erebyx-admin-route)
     body:not(.admin-interface):not(.archetype-regular)
@@ -37435,7 +37417,6 @@ html:not(.erebyx-admin-route)
   }
 }
 
-/* Tier 61 - Arche room map relief image. */
 html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-arche-map {
   background:
     linear-gradient(90deg, rgb(3 7 18 / 0.48), rgb(3 7 18 / 0.26)),
@@ -37497,7 +37478,6 @@ html:not(.erebyx-admin-route)
   right: 12% !important;
 }
 
-/* Tier 62 - Keep the public theme footerless after Discourse route restores. */
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   :is(
