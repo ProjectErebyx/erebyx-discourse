@@ -11038,3 +11038,28 @@ html:not(.erebyx-admin-route)
   grid-template-columns: minmax(0, 1fr) !important;
   gap: 1rem !important;
 }
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  .topic-list.topic-list
+  > tbody.topic-list-body
+  > tr.topic-list-item.topic-list-item {
+  width: auto !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  justify-self: stretch !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  .topic-list.topic-list
+  > tbody.topic-list-body
+  > tr.topic-list-item.topic-list-item
+  > td.topic-list-data.topic-list-data {
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
