@@ -17856,8 +17856,8 @@ html:not(.erebyx-admin-route)
   #main-outlet#main-outlet
   :is(.more-topics__container.more-topics__container, .more-topics.more-topics) {
   box-sizing: border-box !important;
-  width: min(100%, calc(100vw - clamp(2rem, 8vw, 7rem))) !important;
-  max-width: min(100%, calc(100vw - clamp(2rem, 8vw, 7rem))) !important;
+  width: min(calc(100vw - clamp(1rem, 3vw, 2rem)), 84rem) !important;
+  max-width: min(calc(100vw - clamp(1rem, 3vw, 2rem)), 84rem) !important;
   min-width: 0 !important;
   margin-inline: auto !important;
   grid-template-columns: minmax(0, 1fr) !important;
