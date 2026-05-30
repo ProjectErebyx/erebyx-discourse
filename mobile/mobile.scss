@@ -11191,3 +11191,36 @@ html:not(.erebyx-admin-route)
   content: none !important;
   display: none !important;
 }
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  article.topic-post
+  .post__row.row {
+  border-color: rgb(250 178 50 / 0.18) !important;
+  background:
+    linear-gradient(90deg, rgb(250 178 50 / 0.1), transparent 6rem),
+    linear-gradient(135deg, rgb(24 18 10 / 0.72), rgb(7 9 18 / 0.9)) !important;
+  box-shadow:
+    inset 1px 0 0 rgb(255 231 163 / 0.16),
+    inset 0 1px 0 rgb(255 247 214 / 0.05),
+    0 22px 78px -74px rgb(0 0 0 / 0.98) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  article.topic-post
+  .topic-avatar {
+  background: linear-gradient(180deg, rgb(250 178 50 / 0.12), transparent 62%) !important;
+  border-right-color: rgb(250 178 50 / 0.12) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  article.topic-post
+  .topic-meta-data {
+  border-color: rgb(250 178 50 / 0.16) !important;
+  background: rgb(12 10 6 / 0.38) !important;
+}
