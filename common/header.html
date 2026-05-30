@@ -982,25 +982,10 @@
       if (!body.classList.contains("navigation-category") || body.classList.contains("archetype-regular")) return;
 
       document.querySelectorAll("tr.topic-list-item[data-topic-id]").forEach(function (card) {
-        if (card.querySelector(".topic-excerpt, .excerpt") || card.getAttribute("data-erebyx-excerpt-state")) return;
-
-        var topicId = card.getAttribute("data-topic-id");
-        var title = card.querySelector(".link-top-line");
-        var mainLink = card.querySelector("td.main-link");
-        if (!topicId || !title || !mainLink) return;
-
-        card.setAttribute("data-erebyx-excerpt-state", "loading");
-        fetchTopicExcerpt(topicId).then(function (excerpt) {
-          if (!excerpt || !card.isConnected || card.querySelector(".topic-excerpt, .excerpt")) {
-            card.setAttribute("data-erebyx-excerpt-state", excerpt ? "ready" : "empty");
-            return;
-          }
-
-          var excerptNode = createNode("div", "topic-excerpt erebyx-topic-excerpt", excerpt);
-          title.insertAdjacentElement("afterend", excerptNode);
+        if (card.querySelector(".topic-excerpt, .excerpt")) {
           card.classList.add("has-excerpt", "excerpt-expanded");
           card.setAttribute("data-erebyx-excerpt-state", "ready");
-        });
+        }
       });
     };
 
