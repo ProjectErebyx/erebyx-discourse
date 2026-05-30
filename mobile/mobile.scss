@@ -10980,6 +10980,28 @@ html:not(.erebyx-admin-route)
   margin-top: clamp(0.65rem, 1.2vw, 0.95rem) !important;
 }
 
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#topic-title#topic-title, .posts-wrapper.posts-wrapper, .post-stream.post-stream) {
+  box-sizing: border-box !important;
+  width: min(100%, calc(100vw - clamp(1rem, 8vw, 2.5rem))) !important;
+  max-width: min(100%, calc(100vw - clamp(1rem, 8vw, 2.5rem))) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(article.topic-post, article.boxed[data-user-id], .topic-post.clearfix) {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 /* Topic-page related-topic cards must stay inside their framed stage. */
 html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
