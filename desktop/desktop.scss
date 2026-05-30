@@ -17872,6 +17872,44 @@ html:not(.erebyx-admin-route)
   margin-right: 0 !important;
 }
 
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #topic-title#topic-title
+  h1
+  .topic-statuses.topic-statuses {
+  position: absolute !important;
+  top: 50% !important;
+  left: clamp(1rem, 2vw, 1.55rem) !important;
+  width: 2.82rem !important;
+  height: 2.82rem !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transform: translateY(-50%) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #topic-title#topic-title
+  h1
+  .topic-statuses.topic-statuses
+  .topic-status.topic-status,
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #topic-title#topic-title
+  h1
+  .topic-statuses.topic-statuses
+  svg.svg-icon {
+  width: 1rem !important;
+  height: 1rem !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+}
+
 /* Topic-page related-topic cards must stay inside their framed stage. */
 html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
