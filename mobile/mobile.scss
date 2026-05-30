@@ -11005,6 +11005,13 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #topic-title#topic-title
+  h1 {
+  position: static !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #topic-title#topic-title
   h1
   .topic-statuses.topic-statuses {
   position: absolute !important;
