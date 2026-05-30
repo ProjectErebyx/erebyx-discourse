@@ -968,6 +968,48 @@
       });
     };
 
+    var topicCategoryBackHref = function () {
+      var categoryLink = document.querySelector("#topic-title .topic-category a[href], #topic-title .badge-category__wrapper[href]");
+      if (categoryLink) return categoryLink.getAttribute("href") || "/latest";
+
+      var bodyClasses = Array.prototype.slice.call(document.body.classList || []);
+      for (var i = 0; i < bodyClasses.length; i++) {
+        var match = bodyClasses[i].match(/^category-(.+)$/);
+        if (match && match[1] && match[1] !== "category") return "/c/" + match[1];
+      }
+
+      return "/latest";
+    };
+
+    var ensureTopicBackButton = function () {
+      var body = document.body;
+      var title = document.querySelector("#topic-title");
+      var existing = document.querySelector(".erebyx-topic-back");
+
+      if (!body || !title || !body.classList.contains("archetype-regular") || body.classList.contains("admin-interface")) {
+        if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+        return;
+      }
+
+      var href = topicCategoryBackHref();
+      var button = existing || createNode("a", "erebyx-topic-back");
+      button.href = href;
+      button.setAttribute("aria-label", "Back to topics");
+      button.setAttribute("title", "Back to topics");
+      button.innerHTML = '<span aria-hidden="true">←</span><span>Back</span>';
+
+      if (!existing) {
+        button.addEventListener("click", function (event) {
+          if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+          if (!document.referrer || document.referrer.indexOf(window.location.origin) !== 0 || window.history.length < 2) return;
+          event.preventDefault();
+          window.history.back();
+        });
+      }
+
+      if (button.parentNode !== title) title.insertBefore(button, title.firstChild);
+    };
+
     var HOME_THREAD_FEEDS = {
       latest: {
         label: "Latest",
@@ -1314,6 +1356,7 @@
       normalizeTopicCardTitleLinks();
       updateCategoryBannerCopy();
       enhanceCategoryTopicExcerpts();
+      ensureTopicBackButton();
       enhanceHomepageThreadColumn();
     };
 

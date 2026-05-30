@@ -17882,6 +17882,50 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #topic-title#topic-title
+  .erebyx-topic-back.erebyx-topic-back {
+  position: absolute !important;
+  top: clamp(0.95rem, 1.8vw, 1.35rem) !important;
+  left: clamp(1rem, 2vw, 1.55rem) !important;
+  z-index: 4 !important;
+  min-height: 2.3rem !important;
+  padding: 0.48rem 0.78rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.42rem !important;
+  border: 1px solid rgb(250 178 50 / 0.24) !important;
+  border-radius: 999px !important;
+  background: rgb(3 7 18 / 0.58) !important;
+  color: rgb(255 231 163 / 0.92) !important;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.05),
+    0 18px 42px -34px rgb(250 178 50 / 0.72) !important;
+  font-family: var(--erebyx-font-mono, monospace) !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #topic-title#topic-title
+  .erebyx-topic-back.erebyx-topic-back:hover,
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #topic-title#topic-title
+  .erebyx-topic-back.erebyx-topic-back:focus-visible {
+  border-color: rgb(250 178 50 / 0.42) !important;
+  color: rgb(255 247 214 / 0.98) !important;
+  transform: translateY(-1px) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #topic-title#topic-title
   h1
   .topic-statuses.topic-statuses {
   position: absolute !important;
