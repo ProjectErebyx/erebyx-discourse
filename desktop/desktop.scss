@@ -18060,8 +18060,6 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #topic-title#topic-title::before {
-  background:
-    linear-gradient(180deg, rgb(255 255 255 / 0.04), transparent 42%),
-    linear-gradient(90deg, rgb(250 178 50 / 0.14), transparent 18%, transparent 82%, rgb(68 146 252 / 0.12)) !important;
-  mask-image: none !important;
+  content: none !important;
+  display: none !important;
 }
