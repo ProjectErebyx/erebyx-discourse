@@ -10983,10 +10983,10 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #main-outlet#main-outlet
-  :is(#topic-title#topic-title, .posts-wrapper.posts-wrapper, .post-stream.post-stream) {
+  :is(.posts-wrapper.posts-wrapper, .post-stream.post-stream) {
   box-sizing: border-box !important;
-  width: min(100%, calc(100vw - clamp(1rem, 8vw, 2.5rem))) !important;
-  max-width: min(100%, calc(100vw - clamp(1rem, 8vw, 2.5rem))) !important;
+  width: 100% !important;
+  max-width: 100% !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
