@@ -842,6 +842,11 @@
         var nativeSidebar = document.querySelector(".btn-sidebar-toggle");
         if (nativeSidebar) {
           nativeSidebar.click();
+          window.requestAnimationFrame(function () {
+            if (document.body && document.body.classList.contains("has-sidebar-page")) {
+              document.body.classList.remove("has-sidebar-page");
+            }
+          });
           return;
         }
 
