@@ -18149,3 +18149,49 @@ html:not(.erebyx-admin-route)
   :is(.reason, p, .topic-notifications-options) {
   color: rgb(255 231 163 / 0.62) !important;
 }
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  :is(.topics, .ember-view, .loading-container),
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  table.topic-list.topic-list,
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  .topic-list.topic-list {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  .topic-list.topic-list
+  > tbody.topic-list-body {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  .topic-list.topic-list
+  > tbody.topic-list-body
+  > tr.topic-list-item.topic-list-item {
+  width: auto !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
