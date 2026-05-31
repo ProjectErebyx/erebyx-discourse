@@ -765,6 +765,41 @@
       });
     };
 
+    var bindPublicNavigationGuard = function () {
+      if (bindPublicNavigationGuard._bound) return;
+      bindPublicNavigationGuard._bound = true;
+
+      document.addEventListener("click", function (event) {
+        if (event.defaultPrevented || event.button && event.button !== 0) return;
+        if (event.shiftKey || event.altKey || event.metaKey || event.ctrlKey) return;
+
+        var target = event.target;
+        if (!target || !target.closest) return;
+
+        var link = target.closest("a[href]");
+        if (!link || !link.href || link.closest("#reply-control, .d-modal, .admin-interface")) return;
+
+        var url;
+        try {
+          url = new URL(link.href, window.location.origin);
+        } catch (error) {
+          return;
+        }
+
+        if (url.origin !== window.location.origin) return;
+        if (!/^\/(c|t|latest|new|unread|top|hot)(\/|$|\?)/.test(url.pathname)) return;
+
+        var now = Date.now();
+        if (now - (bindPublicNavigationGuard._lastAt || 0) < 850) {
+          event.preventDefault();
+          event.stopPropagation();
+          return;
+        }
+
+        bindPublicNavigationGuard._lastAt = now;
+      }, true);
+    };
+
     var bindTopicCardNavigation = function () {
       if (bindTopicCardNavigation._bound) return;
       bindTopicCardNavigation._bound = true;
@@ -795,6 +830,14 @@
 
         if (event.shiftKey || event.altKey || event.metaKey || event.ctrlKey) return;
         if (clickedTopicTitle) return;
+
+        var now = Date.now();
+        if (now - (bindTopicCardNavigation._lastAt || 0) < 850) {
+          event.preventDefault();
+          event.stopPropagation();
+          return;
+        }
+        bindTopicCardNavigation._lastAt = now;
 
         event.preventDefault();
         event.stopPropagation();
@@ -981,6 +1024,8 @@
     var homeThreadFeedRequest = 0;
     var homeThreadCategories = null;
     var homeThreadCategoriesPromise = null;
+    var homeThreadJsonCache = {};
+    var HOME_THREAD_JSON_CACHE_MS = 30000;
 
     var isHomePath = function () {
       var path = window.location.pathname || "/";
@@ -988,17 +1033,37 @@
     };
 
     var requestJson = function (url) {
+      var cached = homeThreadJsonCache[url];
+      var now = Date.now();
+      if (cached && cached.data && now - cached.time < HOME_THREAD_JSON_CACHE_MS) {
+        return Promise.resolve(cached.data);
+      }
+      if (cached && cached.promise) return cached.promise;
+
+      var remember = function (promise) {
+        homeThreadJsonCache[url] = { promise: promise, time: now };
+        return promise
+          .then(function (data) {
+            homeThreadJsonCache[url] = { data: data, time: Date.now() };
+            return data;
+          })
+          .catch(function (error) {
+            delete homeThreadJsonCache[url];
+            throw error;
+          });
+      };
+
       if (window.fetch) {
-        return window.fetch(url, {
+        return remember(window.fetch(url, {
           credentials: "same-origin",
           headers: { Accept: "application/json" }
         }).then(function (response) {
           if (!response.ok) throw new Error("Feed request failed");
           return response.json();
-        });
+        }));
       }
 
-      return new Promise(function (resolve, reject) {
+      return remember(new Promise(function (resolve, reject) {
         var xhr = new XMLHttpRequest();
         xhr.open("GET", url, true);
         xhr.withCredentials = true;
@@ -1018,7 +1083,7 @@
           reject(new Error("Feed request failed"));
         };
         xhr.send();
-      });
+      }));
     };
 
     var categorySlug = function (name) {
@@ -1280,6 +1345,7 @@
           button.addEventListener("click", function () {
             showHomeThreadTooltip(filterWrap, button);
             if (button.classList.contains("is-active")) return;
+            if (column.classList.contains("erebyx-home-thread-feed--loading")) return;
             filterWrap.querySelectorAll(".erebyx-home-thread-tab").forEach(function (tab) {
               var active = tab === button;
               tab.classList.toggle("is-active", active);
@@ -1295,6 +1361,10 @@
       }
 
       if (!column.getAttribute("data-erebyx-thread-feed")) {
+        if (column.querySelector("tbody.topic-list-body tr.topic-list-item")) {
+          column.setAttribute("data-erebyx-thread-feed", "latest");
+          return;
+        }
         loadHomepageThreadFeed(column, "latest");
       }
     };
@@ -1303,6 +1373,7 @@
     var run = function () {
       clusterPosts();
       gateBanner();
+      bindPublicNavigationGuard();
       bindTopicCardNavigation();
       normalizeTopicCardTitleLinks();
       updateCategoryBannerCopy();
