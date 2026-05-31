@@ -11224,3 +11224,56 @@ html:not(.erebyx-admin-route)
   border-color: rgb(250 178 50 / 0.16) !important;
   background: rgb(12 10 6 / 0.38) !important;
 }
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #topic-footer-buttons#topic-footer-buttons {
+  border-color: rgb(250 178 50 / 0.2) !important;
+  background:
+    radial-gradient(circle at 18% 24%, rgb(250 178 50 / 0.12), transparent 10rem),
+    linear-gradient(135deg, rgb(24 18 10 / 0.72), rgb(7 9 18 / 0.9)) !important;
+  box-shadow:
+    inset 1px 0 0 rgb(255 231 163 / 0.14),
+    inset 0 1px 0 rgb(255 247 214 / 0.05),
+    0 24px 78px -70px rgb(0 0 0 / 0.98) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #topic-footer-buttons#topic-footer-buttons
+  .topic-footer-main-buttons {
+  border-color: rgb(250 178 50 / 0.18) !important;
+  background:
+    linear-gradient(90deg, rgb(250 178 50 / 0.08), transparent 6rem),
+    rgb(9 8 6 / 0.58) !important;
+  box-shadow:
+    inset 0 1px 0 rgb(255 247 214 / 0.05),
+    0 20px 64px -58px rgb(0 0 0 / 0.96) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #topic-footer-buttons#topic-footer-buttons
+  :is(.btn, button, .select-kit-header) {
+  border-color: rgb(250 178 50 / 0.18) !important;
+  background: rgb(8 7 5 / 0.72) !important;
+  color: rgb(255 231 163 / 0.82) !important;
+  box-shadow: inset 0 1px 0 rgb(255 247 214 / 0.05) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #topic-footer-buttons#topic-footer-buttons
+  :is(.btn:hover, button:hover, .select-kit-header:hover, .btn:focus-visible, button:focus-visible, .select-kit-header:focus-visible) {
+  border-color: rgb(250 178 50 / 0.34) !important;
+  background:
+    linear-gradient(135deg, rgb(250 178 50 / 0.16), rgb(8 7 5 / 0.76)) !important;
+  color: rgb(255 247 214 / 0.96) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #topic-footer-buttons#topic-footer-buttons
+  :is(.reason, p, .topic-notifications-options) {
+  color: rgb(255 231 163 / 0.62) !important;
+}
