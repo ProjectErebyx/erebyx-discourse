@@ -910,6 +910,9 @@
         if (destination && link.getAttribute("href") !== destination) {
           link.setAttribute("href", destination);
         }
+        if (destination) {
+          link.setAttribute("target", "_top");
+        }
       });
     };
 
