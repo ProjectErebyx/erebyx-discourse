@@ -12169,6 +12169,15 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
+  body.badges-page:not(.admin-interface)
+  #main-outlet#main-outlet
+  .badges {
+  border: 0 !important;
+  background: rgb(0 0 0 / 0.94) !important;
+  box-shadow: none !important;
+}
+
+html:not(.erebyx-admin-route)
   body:is(.about-page, .static-guidelines, .groups-page, .badges-page):not(.admin-interface)
   #main-outlet#main-outlet
   :is(code, pre, .groups-header-new, .btn) {
