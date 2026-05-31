@@ -10180,7 +10180,16 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__social-ico
   fill: currentColor !important;
 }
 
-/* Tier 70 - Clean category banner canvas in mobile bundle. */
+/* Tier 70 - Keep Discourse account controls above the fallback nav layer. */
+html:not(.erebyx-admin-route) body:not(.admin-interface) .d-header {
+  z-index: 1340 !important;
+}
+
+html:not(.erebyx-admin-route) body:not(.admin-interface) .d-header .panel {
+  z-index: 1350 !important;
+}
+
+/* Tier 71 - Clean category banner canvas in mobile bundle. */
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   .category-title-header[class*="category-banner-"],
