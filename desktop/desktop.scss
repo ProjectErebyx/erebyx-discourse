@@ -19094,6 +19094,37 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
+  body.groups-page:not(.admin-interface)
+  #main-outlet#main-outlet
+  .groups-boxes {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.groups-page:not(.admin-interface)
+  #main-outlet#main-outlet
+  .groups-boxes
+  .group-box {
+  border: 1px solid rgb(250 178 50 / 0.34) !important;
+  border-radius: 8px !important;
+  background: rgb(5 8 18 / 0.88) !important;
+  box-shadow:
+    inset 1px 0 0 rgb(255 231 163 / 0.16),
+    inset 0 1px 0 rgb(255 247 214 / 0.05),
+    0 24px 72px -58px rgb(0 0 0 / 0.9) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.groups-page:not(.admin-interface)
+  #main-outlet#main-outlet
+  .groups-boxes
+  .group-info-name {
+  color: rgb(248 250 252 / 0.98) !important;
+}
+
+html:not(.erebyx-admin-route)
   body:is(.about-page, .static-guidelines, .groups-page, .badges-page):not(.admin-interface)
   #main-outlet#main-outlet
   :is(code, pre, .groups-header-new, .btn) {
