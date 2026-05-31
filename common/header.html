@@ -906,6 +906,7 @@
     };
 
     var topicExcerptCache = {};
+    var categoryExcerptCache = {};
 
     var textFromHTML = function (html) {
       var node = document.createElement("div");
@@ -946,6 +947,62 @@
       return topicExcerptCache[topicId];
     };
 
+    var categoryTopicListEndpoint = function () {
+      var path = (window.location.pathname || "").replace(/\/$/, "");
+      if (!/^\/c\/.+\/\d+$/.test(path)) return "";
+      return path + "/l/latest.json";
+    };
+
+    var fetchCategoryExcerpts = function () {
+      var endpoint = categoryTopicListEndpoint();
+      if (!endpoint) return Promise.resolve({});
+      if (categoryExcerptCache[endpoint]) return categoryExcerptCache[endpoint];
+
+      categoryExcerptCache[endpoint] = requestJson(endpoint)
+        .then(function (data) {
+          var map = {};
+          var topics = data && data.topic_list && data.topic_list.topics
+            ? data.topic_list.topics
+            : [];
+          topics.forEach(function (topic) {
+            var excerpt = trimExcerpt(textFromHTML(topic && (topic.excerpt || topic.blurb || topic.fancy_excerpt)));
+            if (topic && topic.id && excerpt) map[topic.id] = excerpt;
+          });
+          return map;
+        })
+        .catch(function () {
+          return {};
+        });
+
+      return categoryExcerptCache[endpoint];
+    };
+
+    var applyCategoryExcerpts = function (excerptMap) {
+      if (!excerptMap) return;
+      document.querySelectorAll("tr.topic-list-item[data-topic-id]").forEach(function (card) {
+        var topicId = card.getAttribute("data-topic-id");
+        var excerpt = excerptMap[topicId];
+        if (!excerpt) return;
+
+        var existing = card.querySelector(".topic-excerpt, .excerpt");
+        if (!existing) {
+          var main = card.querySelector(".main-link.topic-list-data, .main-link");
+          if (!main) return;
+          existing = createNode("div", "topic-excerpt");
+          var bottomLine = main.querySelector(".link-bottom-line");
+          if (bottomLine && bottomLine.parentNode === main) {
+            main.insertBefore(existing, bottomLine);
+          } else {
+            main.appendChild(existing);
+          }
+        }
+
+        if (existing.textContent.trim() !== excerpt) existing.textContent = excerpt;
+        card.classList.add("has-excerpt", "excerpt-expanded");
+        card.setAttribute("data-erebyx-excerpt-state", "ready");
+      });
+    };
+
     var enhanceCategoryTopicExcerpts = function () {
       var body = document.body;
       if (!body || body.classList.contains("admin-interface")) return;
@@ -957,6 +1014,8 @@
           card.setAttribute("data-erebyx-excerpt-state", "ready");
         }
       });
+
+      fetchCategoryExcerpts().then(applyCategoryExcerpts);
     };
 
     var topicCategoryBackHref = function () {
