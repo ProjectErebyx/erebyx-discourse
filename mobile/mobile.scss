@@ -10159,12 +10159,13 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__inner::aft
 
 /* Tier 68 - Match dashboard and account nav controls. */
 html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__dashboard {
+  box-sizing: border-box !important;
   display: inline-grid !important;
   place-items: center !important;
-  width: 2.35rem !important;
-  height: 2.35rem !important;
-  min-width: 2.35rem !important;
-  min-height: 2.35rem !important;
+  width: 2.65rem !important;
+  height: 2.65rem !important;
+  min-width: 2.65rem !important;
+  min-height: 2.65rem !important;
   padding: 0 !important;
   border: 1px solid rgb(255 231 163 / 0.72) !important;
   border-radius: 8px !important;
@@ -10180,8 +10181,8 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__dashboard 
 
 html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__dashboard-icon {
   display: block !important;
-  width: 1.12rem !important;
-  height: 1.12rem !important;
+  width: 1.22rem !important;
+  height: 1.22rem !important;
   color: currentColor !important;
 }
 
