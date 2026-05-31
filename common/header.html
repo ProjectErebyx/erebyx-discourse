@@ -977,30 +977,60 @@
       return categoryExcerptCache[endpoint];
     };
 
+    var applyExcerptToCard = function (card, excerpt) {
+      if (!card || !excerpt) return false;
+
+      var existing = card.querySelector(".topic-excerpt, .excerpt");
+      if (!existing) {
+        var main = card.querySelector(".main-link.topic-list-data, .main-link");
+        if (!main) return false;
+        existing = createNode("div", "topic-excerpt");
+        var bottomLine = main.querySelector(".link-bottom-line");
+        if (bottomLine && bottomLine.parentNode === main) {
+          main.insertBefore(existing, bottomLine);
+        } else {
+          main.appendChild(existing);
+        }
+      }
+
+      if (existing.textContent.trim() !== excerpt) existing.textContent = excerpt;
+      card.classList.add("has-excerpt", "excerpt-expanded");
+      card.setAttribute("data-erebyx-excerpt-state", "ready");
+      return true;
+    };
+
     var applyCategoryExcerpts = function (excerptMap) {
       if (!excerptMap) return;
       document.querySelectorAll("tr.topic-list-item[data-topic-id]").forEach(function (card) {
         var topicId = card.getAttribute("data-topic-id");
-        var excerpt = excerptMap[topicId];
-        if (!excerpt) return;
-
-        var existing = card.querySelector(".topic-excerpt, .excerpt");
-        if (!existing) {
-          var main = card.querySelector(".main-link.topic-list-data, .main-link");
-          if (!main) return;
-          existing = createNode("div", "topic-excerpt");
-          var bottomLine = main.querySelector(".link-bottom-line");
-          if (bottomLine && bottomLine.parentNode === main) {
-            main.insertBefore(existing, bottomLine);
-          } else {
-            main.appendChild(existing);
-          }
-        }
-
-        if (existing.textContent.trim() !== excerpt) existing.textContent = excerpt;
-        card.classList.add("has-excerpt", "excerpt-expanded");
-        card.setAttribute("data-erebyx-excerpt-state", "ready");
+        applyExcerptToCard(card, excerptMap[topicId]);
       });
+    };
+
+    var hydrateMissingCategoryExcerpts = function () {
+      var cards = Array.prototype.slice.call(
+        document.querySelectorAll("tr.topic-list-item[data-topic-id]")
+      ).filter(function (card) {
+        var state = card.getAttribute("data-erebyx-excerpt-state");
+        return !card.querySelector(".topic-excerpt, .excerpt") && state !== "loading" && state !== "empty";
+      }).slice(0, 8);
+
+      cards.reduce(function (chain, card) {
+        return chain.then(function () {
+          var topicId = card.getAttribute("data-topic-id");
+          if (!topicId || card.querySelector(".topic-excerpt, .excerpt")) return null;
+          card.setAttribute("data-erebyx-excerpt-state", "loading");
+          return fetchTopicExcerpt(topicId).then(function (excerpt) {
+            if (!applyExcerptToCard(card, excerpt)) {
+              card.setAttribute("data-erebyx-excerpt-state", "empty");
+            }
+          });
+        }).then(function () {
+          return new Promise(function (resolve) {
+            window.setTimeout(resolve, 900);
+          });
+        });
+      }, Promise.resolve());
     };
 
     var enhanceCategoryTopicExcerpts = function () {
@@ -1015,7 +1045,10 @@
         }
       });
 
-      fetchCategoryExcerpts().then(applyCategoryExcerpts);
+      fetchCategoryExcerpts().then(function (excerptMap) {
+        applyCategoryExcerpts(excerptMap);
+        hydrateMissingCategoryExcerpts();
+      });
     };
 
     var topicCategoryBackHref = function () {
