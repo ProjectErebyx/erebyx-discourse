@@ -10157,21 +10157,32 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__inner::aft
   box-shadow: none !important;
 }
 
-/* Tier 68 - Match dashboard icon to social icon sizing. */
+/* Tier 68 - Match dashboard and account nav controls. */
 html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__dashboard {
   display: inline-grid !important;
   place-items: center !important;
-  width: 2.65rem !important;
-  height: 2.65rem !important;
-  min-width: 2.65rem !important;
-  min-height: 2.65rem !important;
+  width: 2.35rem !important;
+  height: 2.35rem !important;
+  min-width: 2.35rem !important;
+  min-height: 2.35rem !important;
   padding: 0 !important;
+  border: 1px solid rgb(255 231 163 / 0.72) !important;
+  border-radius: 8px !important;
+  color: rgb(248 250 252 / 0.98) !important;
+  background:
+    linear-gradient(135deg, rgb(250 178 50 / 0.34), rgb(68 146 252 / 0.16)),
+    rgb(3 7 18 / 0.98) !important;
+  box-shadow:
+    0 0 0 1px rgb(255 231 163 / 0.2),
+    0 0 18px rgb(250 178 50 / 0.26),
+    inset 0 1px 0 rgb(255 255 255 / 0.16) !important;
 }
 
 html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__dashboard-icon {
   display: block !important;
-  width: 1.32rem !important;
-  height: 1.32rem !important;
+  width: 1.12rem !important;
+  height: 1.12rem !important;
+  color: currentColor !important;
 }
 
 /* Tier 69 - Restore neutral social icon color. */
@@ -10188,7 +10199,7 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__account {
   height: 2.35rem !important;
   min-width: 2.35rem !important;
   min-height: 2.35rem !important;
-  margin-left: clamp(0.24rem, 0.6vw, 0.42rem) !important;
+  margin-left: clamp(0.72rem, 1.25vw, 1rem) !important;
   padding: 0 !important;
   border: 1px solid rgb(255 231 163 / 0.72) !important;
   border-radius: 8px !important;
@@ -10221,22 +10232,24 @@ html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   .erebyx-nav__account-icon::before {
   top: 0.58rem !important;
-  width: 0.5rem !important;
-  height: 0.5rem !important;
+  width: 1.12rem !important;
+  height: 0.72rem !important;
   border: 2px solid currentColor !important;
-  border-radius: 999px !important;
+  border-radius: 0.16rem !important;
   transform: translateX(-50%) !important;
 }
 
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   .erebyx-nav__account-icon::after {
-  top: 1.38rem !important;
-  width: 1.06rem !important;
-  height: 0.52rem !important;
-  border: 2px solid currentColor !important;
-  border-bottom: 0 !important;
-  border-radius: 999px 999px 0 0 !important;
+  top: 1.42rem !important;
+  width: 0.88rem !important;
+  height: 0.38rem !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background:
+    linear-gradient(currentColor, currentColor) 50% 0 / 2px 0.28rem no-repeat,
+    linear-gradient(currentColor, currentColor) 50% 100% / 0.88rem 2px no-repeat !important;
   transform: translateX(-50%) !important;
 }
 
