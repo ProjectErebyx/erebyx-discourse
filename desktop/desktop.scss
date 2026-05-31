@@ -16932,6 +16932,66 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__social-ico
   fill: currentColor !important;
 }
 
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__account {
+  position: relative !important;
+  display: inline-grid !important;
+  place-items: center !important;
+  width: 2.35rem !important;
+  height: 2.35rem !important;
+  min-width: 2.35rem !important;
+  min-height: 2.35rem !important;
+  margin-left: clamp(0.24rem, 0.6vw, 0.42rem) !important;
+  padding: 0 !important;
+  border: 1px solid rgb(255 231 163 / 0.72) !important;
+  border-radius: 8px !important;
+  color: rgb(248 250 252 / 0.98) !important;
+  background:
+    linear-gradient(135deg, rgb(250 178 50 / 0.34), rgb(68 146 252 / 0.16)),
+    rgb(3 7 18 / 0.98) !important;
+  box-shadow:
+    0 0 0 1px rgb(255 231 163 / 0.2),
+    0 0 18px rgb(250 178 50 / 0.26),
+    inset 0 1px 0 rgb(255 255 255 / 0.16) !important;
+  cursor: pointer !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .erebyx-nav__account-icon::before,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .erebyx-nav__account-icon::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  display: block !important;
+  pointer-events: none !important;
+  color: currentColor !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .erebyx-nav__account-icon::before {
+  top: 0.58rem !important;
+  width: 0.5rem !important;
+  height: 0.5rem !important;
+  border: 2px solid currentColor !important;
+  border-radius: 999px !important;
+  transform: translateX(-50%) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .erebyx-nav__account-icon::after {
+  top: 1.38rem !important;
+  width: 1.06rem !important;
+  height: 0.52rem !important;
+  border: 2px solid currentColor !important;
+  border-bottom: 0 !important;
+  border-radius: 999px 999px 0 0 !important;
+  transform: translateX(-50%) !important;
+}
+
 /* Tier 73 - Keep Discourse account controls above the fallback nav layer. */
 html:not(.erebyx-admin-route) body:not(.admin-interface) .d-header {
   pointer-events: auto !important;
