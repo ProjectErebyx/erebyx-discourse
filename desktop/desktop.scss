@@ -16934,6 +16934,7 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__social-ico
 
 /* Tier 73 - Keep Discourse account controls above the fallback nav layer. */
 html:not(.erebyx-admin-route) body:not(.admin-interface) .d-header {
+  pointer-events: auto !important;
   z-index: 1340 !important;
 }
 
