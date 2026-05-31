@@ -17075,6 +17075,102 @@ html:not(.erebyx-admin-route)
   max-width: 100% !important;
 }
 
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet {
+  width: min(1560px, calc(100vw - clamp(1.5rem, 6vw, 8rem))) !important;
+  max-width: min(1560px, calc(100vw - clamp(1.5rem, 6vw, 8rem))) !important;
+  margin-inline: auto !important;
+  overflow-x: clip !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .user-main {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-inline: auto !important;
+  overflow-x: clip !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(.user-main .about, .user-content, .user-stream) {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .user-main
+  .about {
+  border: 1px solid rgb(68 146 252 / 0.24) !important;
+  border-radius: 8px 8px 0 0 !important;
+  background:
+    radial-gradient(circle at 12% 0%, rgb(250 178 50 / 0.12), transparent 18rem),
+    linear-gradient(135deg, rgb(5 14 28 / 0.95), rgb(4 8 18 / 0.98)) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .user-content {
+  border: 1px solid rgb(250 178 50 / 0.18) !important;
+  border-top: 0 !important;
+  border-radius: 0 0 8px 8px !important;
+  background:
+    linear-gradient(180deg, rgb(3 7 18 / 0.94), rgb(0 0 0 / 0.96)) !important;
+  color: rgb(226 232 240 / 0.9) !important;
+  overflow: hidden !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .user-stream
+  .user-stream-item {
+  border-color: rgb(250 178 50 / 0.16) !important;
+  background:
+    radial-gradient(circle at 8% 16%, rgb(68 146 252 / 0.08), transparent 12rem),
+    linear-gradient(135deg, rgb(8 13 28 / 0.94), rgb(5 7 14 / 0.98)) !important;
+  color: rgb(226 232 240 / 0.88) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(.user-stream .title, .user-stream .excerpt, .user-stream .relative-date, .user-stream .item-title, .user-stream .delete-info) {
+  color: rgb(226 232 240 / 0.82) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(.user-stream a, .user-content a) {
+  color: rgb(147 197 253 / 0.94) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(.user-navigation, .user-primary-navigation, .user-secondary-navigation, .user-main .nav-pills) {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(.user-admin, .user-profile-toggle-btn, .user-navigation .nav-pills > li > a) {
+  border-color: rgb(250 178 50 / 0.26) !important;
+  background:
+    linear-gradient(135deg, rgb(24 15 7 / 0.82), rgb(5 8 18 / 0.9)) !important;
+  color: rgb(248 250 252 / 0.92) !important;
+}
+
 html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__dashboard-icon {
   display: block !important;
   width: 1.22rem !important;
