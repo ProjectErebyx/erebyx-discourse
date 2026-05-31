@@ -16999,7 +16999,7 @@ html:not(.erebyx-admin-route)
   height: calc(100vh - var(--erebyx-nav-height, 3.25rem)) !important;
   min-height: calc(100vh - var(--erebyx-nav-height, 3.25rem)) !important;
   max-height: calc(100vh - var(--erebyx-nav-height, 3.25rem)) !important;
-  overflow-y: auto !important;
+  overflow: hidden !important;
   background:
     linear-gradient(180deg, rgb(8 7 5 / 0.98), rgb(0 0 0 / 0.98)),
     rgb(0 0 0) !important;
@@ -17029,6 +17029,7 @@ html:not(.erebyx-admin-route)
   .sidebar-sections {
   flex: 1 1 auto !important;
   min-height: 100% !important;
+  overflow: hidden !important;
   background:
     linear-gradient(180deg, rgb(0 0 0 / 0.62), rgb(0 0 0 / 0.92)),
     rgb(0 0 0) !important;
@@ -17048,6 +17049,15 @@ html:not(.erebyx-admin-route)
   :is(.sidebar-footer-wrapper, .sidebar-footer-container) {
   margin-top: auto !important;
   background: rgb(0 0 0) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.has-sidebar-page:not(.admin-interface)
+  #d-sidebar
+  .sidebar-footer-container::before {
+  content: none !important;
+  display: none !important;
+  background: transparent !important;
 }
 
 html:not(.erebyx-admin-route)
