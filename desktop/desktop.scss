@@ -19125,6 +19125,15 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
+  body.users-page:not(.admin-interface)
+  #main-outlet#main-outlet
+  .users-directory.directory {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html:not(.erebyx-admin-route)
   body:is(.about-page, .static-guidelines, .groups-page, .badges-page):not(.admin-interface)
   #main-outlet#main-outlet
   :is(code, pre, .groups-header-new, .btn) {
