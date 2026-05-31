@@ -12147,6 +12147,26 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
+  body.groups-page:not(.admin-interface)
+  #main-outlet#main-outlet
+  > section.container.groups-index,
+html:not(.erebyx-admin-route)
+  body.groups-page:not(.admin-interface)
+  #main-outlet#main-outlet
+  > section.container.groups-index
+  > .container,
+html:not(.erebyx-admin-route)
+  body.groups-page:not(.admin-interface)
+  #main-outlet#main-outlet
+  > section.container.groups-index
+  > div
+  > .container {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-inline: 0 !important;
+}
+
+html:not(.erebyx-admin-route)
   body:is(.about-page, .static-guidelines, .groups-page, .badges-page):not(.admin-interface)
   #main-outlet#main-outlet
   :is(.about, .body-page, .static-page, .container.posts, .groups-boxes, .groups-header, .badges, .badge-grouping, .badge-groupings, .badges-heading) {
