@@ -18368,42 +18368,35 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body[data-erebyx-route="discovery"]:not(.admin-interface)
-  #main-outlet-wrapper#main-outlet-wrapper {
-  box-sizing: border-box !important;
-  width: 100% !important;
+  #main-outlet#main-outlet {
   max-width: 100% !important;
-  margin-inline: 0 !important;
-  padding-inline: 0 !important;
   overflow-x: clip !important;
 }
 
 html:not(.erebyx-admin-route)
   body[data-erebyx-route="discovery"]:not(.admin-interface)
-  #main-outlet#main-outlet {
+  #main-outlet#main-outlet
+  .custom-homepage-columns.custom-homepage-columns {
   box-sizing: border-box !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  margin-inline: auto !important;
-  padding-inline: clamp(1rem, 2.5vw, 2.25rem) !important;
-  left: auto !important;
-  right: auto !important;
-  transform: none !important;
+  width: min(calc(100vw - clamp(2rem, 5vw, 4.5rem)), 116rem) !important;
+  max-width: min(calc(100vw - clamp(2rem, 5vw, 4.5rem)), 116rem) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  overflow: hidden !important;
 }
 
 html:not(.erebyx-admin-route)
   body[data-erebyx-route="discovery"]:not(.admin-interface)
   #main-outlet#main-outlet
-  > :is(
-    .erebyx-genesis-banner,
-    .erebyx-arche-map,
-    .custom-homepage-columns,
-    #list-area,
-    .container.list-container,
-    .container.list-container.--topic-list
-  ) {
+  .custom-homepage-columns.custom-homepage-columns
+  > .col,
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .custom-homepage-columns.custom-homepage-columns
+  :is(.loading-container, .topic-list, .topic-list-body) {
   box-sizing: border-box !important;
-  width: min(100%, 74rem) !important;
-  max-width: 74rem !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow-x: clip !important;
 }
