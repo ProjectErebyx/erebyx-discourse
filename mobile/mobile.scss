@@ -10186,6 +10186,10 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .d-header {
 }
 
 html:not(.erebyx-admin-route) body:not(.admin-interface) .d-header .panel {
+  right: max(
+    clamp(0.58rem, 1.45vw, 1.18rem),
+    calc((100vw - min(calc(100vw - 2rem), 74rem)) / 2 + 0.2rem)
+  ) !important;
   z-index: 1350 !important;
 }
 
