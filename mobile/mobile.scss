@@ -11580,13 +11580,11 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.category-feature-requests.navigation-category:not(.admin-interface):not(.archetype-regular)
-  #main-outlet#main-outlet
-  .category-title-header.category-banner-feature-requests,
+  body.category-feature-requests.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+  .category-title-header.category-title-header.category-banner-feature-requests[class*="category-banner-"],
 html:not(.erebyx-admin-route)
-  body.category-feature-requests.navigation-category:not(.admin-interface):not(.archetype-regular)
-  #main-outlet#main-outlet
-  .category-title-header {
+  body.category-feature-requests.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+  .category-title-header.category-title-header[class*="category-banner-"] {
   background:
     linear-gradient(90deg, rgb(3 7 18 / 0.58), rgb(3 7 18 / 0.14) 46%, rgb(3 7 18 / 0.52)),
     linear-gradient(180deg, rgb(3 7 18 / 0.14), rgb(3 7 18 / 0.5)),
