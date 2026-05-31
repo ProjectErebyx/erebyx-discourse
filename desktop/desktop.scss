@@ -16971,6 +16971,7 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   .d-header-icons
+  #toggle-current-user
   img.avatar {
   width: calc(var(--erebyx-control-size) - 0.68rem) !important;
   height: calc(var(--erebyx-control-size) - 0.68rem) !important;
