@@ -17041,6 +17041,21 @@ html:not(.erebyx-admin-route)
   margin-top: auto !important;
 }
 
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #main-outlet-wrapper#main-outlet-wrapper {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #main-outlet-wrapper#main-outlet-wrapper
+  #main-outlet#main-outlet {
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
 html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__dashboard-icon {
   display: block !important;
   width: 1.22rem !important;
