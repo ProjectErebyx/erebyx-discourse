@@ -17087,6 +17087,15 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body[class*="user-"]:not(.admin-interface)
   #main-outlet#main-outlet
+  > .container {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-inline: 0 !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
   .user-main {
   width: min(1560px, calc(100vw - clamp(1.5rem, 6vw, 8rem))) !important;
   max-width: min(1560px, calc(100vw - clamp(1.5rem, 6vw, 8rem))) !important;

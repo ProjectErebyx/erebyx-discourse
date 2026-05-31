@@ -10335,6 +10335,15 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body[class*="user-"]:not(.admin-interface)
   #main-outlet#main-outlet
+  > .container {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-inline: 0 !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
   .user-main {
   width: 100% !important;
   max-width: 100% !important;
