@@ -12143,6 +12143,11 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body:is(.about-page, .static-guidelines, .groups-page, .badges-page):not(.admin-interface)
   #main-outlet#main-outlet
+  > section
+  > .container,
+html:not(.erebyx-admin-route)
+  body:is(.about-page, .static-guidelines, .groups-page, .badges-page):not(.admin-interface)
+  #main-outlet#main-outlet
   #main-container {
   width: 100% !important;
   max-width: 100% !important;
