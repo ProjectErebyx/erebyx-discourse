@@ -10189,6 +10189,40 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .d-header .panel {
   z-index: 1350 !important;
 }
 
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .d-header-icons
+  :is(.header-dropdown-toggle, .btn) {
+  border-color: rgb(250 178 50 / 0.42) !important;
+  background:
+    linear-gradient(135deg, rgb(250 178 50 / 0.16), rgb(68 146 252 / 0.1)),
+    rgb(3 7 18 / 0.92) !important;
+  box-shadow:
+    0 14px 34px rgb(3 7 18 / 0.44),
+    0 0 0 1px rgb(255 231 163 / 0.08),
+    inset 0 1px 0 rgb(255 255 255 / 0.12) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .d-header-icons
+  .btn
+  .d-icon {
+  color: rgb(255 231 163 / 0.98) !important;
+  fill: currentColor !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .d-header-icons
+  img.avatar {
+  border-color: rgb(250 178 50 / 0.46) !important;
+  box-shadow:
+    0 0 0 1px rgb(255 231 163 / 0.2),
+    0 0 0 4px rgb(250 178 50 / 0.12),
+    0 14px 34px rgb(3 7 18 / 0.44) !important;
+}
+
 /* Tier 71 - Clean category banner canvas in mobile bundle. */
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
