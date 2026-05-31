@@ -16971,6 +16971,20 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   .d-header-icons
+  #toggle-current-user {
+  border-color: rgb(255 231 163 / 0.72) !important;
+  background:
+    linear-gradient(135deg, rgb(250 178 50 / 0.34), rgb(68 146 252 / 0.16)),
+    rgb(3 7 18 / 0.98) !important;
+  box-shadow:
+    0 0 0 1px rgb(255 231 163 / 0.2),
+    0 0 18px rgb(250 178 50 / 0.26),
+    inset 0 1px 0 rgb(255 255 255 / 0.16) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .d-header-icons
   #toggle-current-user
   img.avatar {
   width: calc(var(--erebyx-control-size) - 0.68rem) !important;
@@ -16997,7 +17011,7 @@ html:not(.erebyx-admin-route)
   left: 50% !important;
   display: block !important;
   pointer-events: none !important;
-  color: rgb(191 219 254 / 0.98) !important;
+  color: rgb(248 250 252 / 0.98) !important;
   opacity: 1 !important;
 }
 
@@ -17008,7 +17022,7 @@ html:not(.erebyx-admin-route)
   top: 0.47rem !important;
   width: 0.48rem !important;
   height: 0.48rem !important;
-  border: 1.7px solid currentColor !important;
+  border: 2px solid currentColor !important;
   border-radius: 999px !important;
   transform: translateX(-50%) !important;
 }
@@ -17020,7 +17034,7 @@ html:not(.erebyx-admin-route)
   top: 1.25rem !important;
   width: 1rem !important;
   height: 0.5rem !important;
-  border: 1.7px solid currentColor !important;
+  border: 2px solid currentColor !important;
   border-bottom: 0 !important;
   border-radius: 999px 999px 0 0 !important;
   transform: translateX(-50%) !important;
