@@ -26926,6 +26926,63 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .composer-popup {
   color: rgb(226 232 240 / 0.94) !important;
 }
 
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #quick-access-all-notifications.quick-access-panel {
+  background:
+    var(--erebyx-particle-stars),
+    linear-gradient(135deg, rgb(68 146 252 / 0.08), rgb(117 3 224 / 0.06)),
+    rgb(4 8 22 / 0.96) !important;
+  background-size:
+    24rem 18rem,
+    auto,
+    auto !important;
+  color: rgb(226 232 240 / 0.94) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #quick-access-all-notifications
+  :is(li.notification, .notification) {
+  border-bottom: 1px solid rgb(68 146 252 / 0.12) !important;
+  background: rgb(5 8 18 / 0.86) !important;
+  color: rgb(226 232 240 / 0.92) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #quick-access-all-notifications
+  :is(li.notification.unread, .notification.unread) {
+  background:
+    linear-gradient(90deg, rgb(68 146 252 / 0.14), transparent 45%),
+    rgb(7 12 28 / 0.92) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #quick-access-all-notifications
+  :is(li.notification, .notification)
+  :is(a, .item-description, div, span) {
+  color: rgb(226 232 240 / 0.92) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #quick-access-all-notifications
+  :is(li.notification, .notification)
+  .d-icon {
+  color: rgb(147 197 253 / 0.92) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #quick-access-all-notifications
+  :is(.panel-body-bottom, .quick-access-panel-bottom) {
+  border-top: 1px solid rgb(68 146 252 / 0.14) !important;
+  background: rgb(3 7 18 / 0.9) !important;
+  color: rgb(226 232 240 / 0.9) !important;
+}
+
 html:not(.erebyx-admin-route) body:not(.admin-interface) input[type="text"],
 html:not(.erebyx-admin-route) body:not(.admin-interface) input[type="search"],
 html:not(.erebyx-admin-route) body:not(.admin-interface) textarea,
