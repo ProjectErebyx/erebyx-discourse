@@ -11578,3 +11578,19 @@ html:not(.erebyx-admin-route)
   max-width: 100% !important;
   overflow-x: clip !important;
 }
+
+html:not(.erebyx-admin-route)
+  body.category-feature-requests.navigation-category:not(.admin-interface):not(.archetype-regular)
+  #main-outlet#main-outlet
+  .category-title-header.category-banner-feature-requests,
+html:not(.erebyx-admin-route)
+  body.category-feature-requests.navigation-category:not(.admin-interface):not(.archetype-regular)
+  #main-outlet#main-outlet
+  .category-title-header {
+  background:
+    linear-gradient(90deg, rgb(3 7 18 / 0.58), rgb(3 7 18 / 0.14) 46%, rgb(3 7 18 / 0.52)),
+    linear-gradient(180deg, rgb(3 7 18 / 0.14), rgb(3 7 18 / 0.5)),
+    url($feature_requests_banner) center 50% / cover no-repeat,
+    rgb(8 18 46) !important;
+  background-size: auto, auto, cover, auto !important;
+}
