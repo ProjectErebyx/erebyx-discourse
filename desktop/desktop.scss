@@ -18225,8 +18225,9 @@ html:not(.erebyx-admin-route)
   border: 1px solid rgb(250 178 50 / 0.2) !important;
   border-radius: 8px !important;
   background:
-    linear-gradient(90deg, rgb(3 7 18 / 0.76), rgb(3 7 18 / 0.24) 48%, rgb(3 7 18 / 0.68)),
-    linear-gradient(180deg, rgb(3 7 18 / 0.18), rgb(3 7 18 / 0.54)),
+    radial-gradient(ellipse at 50% 50%, rgb(0 0 0 / 0.84) 0, rgb(0 0 0 / 0.58) 13rem, transparent 24rem),
+    linear-gradient(90deg, rgb(3 7 18 / 0.46), rgb(3 7 18 / 0.2) 28%, rgb(3 7 18 / 0.2) 72%, rgb(3 7 18 / 0.46)),
+    linear-gradient(180deg, rgb(3 7 18 / 0.12), rgb(3 7 18 / 0.42)),
     url($genesis_river_banner) center / cover no-repeat,
     rgb(10 6 16) !important;
   color: #fff !important;
