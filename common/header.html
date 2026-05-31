@@ -487,6 +487,9 @@
     <nav class="erebyx-nav__inner" aria-label="EREBYX primary navigation">
       <!-- LEFT: dashboard only -->
       <div class="erebyx-nav__left">
+        <button class="erebyx-nav__sidebar" type="button" aria-label="Toggle sidebar" title="Sidebar">
+          <span class="erebyx-nav__sidebar-icon" aria-hidden="true"></span>
+        </button>
         <a
           href="https://app.erebyx.com"
           class="erebyx-nav__dashboard"
@@ -1452,6 +1455,7 @@
         '<div class="erebyx-nav erebyx-nav--fallback" role="banner">' +
           '<nav class="erebyx-nav__inner" aria-label="EREBYX primary navigation">' +
             '<div class="erebyx-nav__left">' +
+              '<button class="erebyx-nav__sidebar" type="button" aria-label="Toggle sidebar" title="Sidebar"><span class="erebyx-nav__sidebar-icon" aria-hidden="true"></span></button>' +
               '<a href="https://app.erebyx.com" class="erebyx-nav__dashboard" aria-label="Open EREBYX app dashboard" title="EREBYX dashboard">' +
                 '<svg class="erebyx-nav__dashboard-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>' +
               '</a>' +
@@ -1519,6 +1523,30 @@
       });
     }
 
+    function syncSidebarButtons() {
+      var nativeSidebar = document.querySelector(".btn-sidebar-toggle");
+      document.querySelectorAll(".erebyx-nav").forEach(function (nav) {
+        var left = nav.querySelector(".erebyx-nav__left");
+        if (!left) return;
+
+        var sidebar = left.querySelector(".erebyx-nav__sidebar");
+        if (!nativeSidebar) {
+          if (sidebar && sidebar.parentNode) sidebar.parentNode.removeChild(sidebar);
+          return;
+        }
+
+        if (!sidebar) {
+          sidebar = document.createElement("button");
+          sidebar.className = "erebyx-nav__sidebar";
+          sidebar.type = "button";
+          sidebar.setAttribute("aria-label", "Toggle sidebar");
+          sidebar.title = "Sidebar";
+          sidebar.innerHTML = '<span class="erebyx-nav__sidebar-icon" aria-hidden="true"></span>';
+          left.insertBefore(sidebar, left.firstChild);
+        }
+      });
+    }
+
     function dedupeNav() {
       var navs = Array.prototype.slice.call(document.querySelectorAll(".erebyx-nav"));
       if (navs.length < 2) return;
@@ -1563,9 +1591,11 @@
         return;
       }
       dedupeNav();
+      syncSidebarButtons();
       syncAccountButtons();
       if (hasVisibleNav()) return;
       document.body.insertBefore(createNavFallback(), document.body.firstChild);
+      syncSidebarButtons();
       syncAccountButtons();
     }
 
@@ -1610,6 +1640,17 @@
       if (!nativeAccount) return;
       event.preventDefault();
       nativeAccount.click();
+    });
+    document.addEventListener("click", function (event) {
+      var sidebar = event.target && event.target.closest
+        ? event.target.closest(".erebyx-nav__sidebar")
+        : null;
+      if (!sidebar) return;
+
+      var nativeSidebar = document.querySelector(".btn-sidebar-toggle");
+      if (!nativeSidebar) return;
+      event.preventDefault();
+      nativeSidebar.click();
     });
     if (window.MutationObserver) {
       var observer = new MutationObserver(queueNavCheck);
