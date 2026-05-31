@@ -11390,6 +11390,46 @@ html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #main-outlet#main-outlet
   :is(#suggested-topics, .more-topics__container, .more-topics)
+  .more-topics__browse-more
+  a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 1.42rem !important;
+  padding: 0.22rem 0.5rem !important;
+  border: 1px solid rgb(255 255 255 / 0.24) !important;
+  border-radius: 999px !important;
+  background:
+    linear-gradient(180deg, rgb(0 0 0 / 0.74), rgb(3 7 18 / 0.84)),
+    rgb(0 0 0 / 0.82) !important;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    0 10px 22px -16px rgb(0 0 0 / 0.96) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  .more-topics__browse-more
+  a:hover,
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  .more-topics__browse-more
+  a:focus-visible {
+  border-color: rgb(255 255 255 / 0.42) !important;
+  background:
+    linear-gradient(180deg, rgb(0 0 0 / 0.86), rgb(3 7 18 / 0.92)),
+    rgb(0 0 0 / 0.88) !important;
+  outline: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
   .topic-list.topic-list
   > tbody.topic-list-body {
   gap: 0.78rem !important;
