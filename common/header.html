@@ -936,12 +936,24 @@
     };
 
     var updateCategoryBannerCopy = function () {
-      var description = document.querySelector(
-        ".category-title-header.category-banner-genesis-lounge .category-title-description .cooked"
-      );
-      if (!description) return;
+      var bannerCopy = {
+        "category-banner-genesis-lounge": "The heart of the community where ideas, conversations, and collaborations come to life.",
+        "category-banner-feature-requests": "Share ideas, suggest improvements, and help shape the future of our intelligent systems."
+      };
 
-      var copy = "The heart of the community where ideas, conversations, and collaborations come to life.";
+      var banner = document.querySelector(".category-title-header[class*='category-banner-']");
+      if (!banner) return;
+
+      var copy = "";
+      Object.keys(bannerCopy).some(function (className) {
+        if (!banner.classList.contains(className)) return false;
+        copy = bannerCopy[className];
+        return true;
+      });
+      if (!copy) return;
+
+      var description = banner.querySelector(".category-title-description .cooked");
+      if (!description) return;
       if (description.textContent.trim() === copy) return;
 
       description.textContent = "";

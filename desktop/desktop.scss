@@ -3,6 +3,7 @@
 $arche_map_relief: "$arche_map_relief" !default;
 $genesis_river_banner: "$genesis_river_banner" !default;
 $genesis_lounge_banner: "$genesis_lounge_banner" !default;
+$feature_requests_banner: "$feature_requests_banner" !default;
 $topic_columns_banner: "$topic_columns_banner" !default;
 
 @media (width >= 1024px) {
@@ -16964,6 +16965,31 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
+  :is(
+    .category-title-header.category-banner-genesis-lounge,
+    .category-title-header.category-banner-feature-requests,
+    .category-title-header.category-banner-announcements,
+    .category-title-header.category-banner-bug-reports,
+    .category-title-header.category-banner-start-here
+  ),
+html:not(.erebyx-admin-route)
+  body:is(
+    .category-genesis-lounge,
+    .category-feature-requests,
+    .category-announcements,
+    .category-bug-reports,
+    .category-start-here
+  ):not(.archetype-regular):not(.admin-interface)
+  .category-title-header {
+  place-items: center start !important;
+  justify-items: start !important;
+  justify-content: start !important;
+  align-content: center !important;
+  text-align: left !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
   .category-title-header.category-banner-genesis-lounge,
 html:not(.erebyx-admin-route)
   body[class*="category-"]:not(.archetype-regular):not(.admin-interface)
@@ -16983,7 +17009,27 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
-  .category-title-header.category-banner-genesis-lounge
+  .category-title-header.category-banner-feature-requests,
+html:not(.erebyx-admin-route)
+  body.category-feature-requests:not(.archetype-regular):not(.admin-interface)
+  .category-title-header {
+  background:
+    linear-gradient(90deg, rgb(3 7 18 / 0.58), rgb(3 7 18 / 0.14) 46%, rgb(3 7 18 / 0.52)),
+    linear-gradient(180deg, rgb(3 7 18 / 0.14), rgb(3 7 18 / 0.5)),
+    url($feature_requests_banner) center 50% / cover no-repeat,
+    rgb(8 18 46) !important;
+  background-size: auto, auto, cover, auto !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  :is(
+    .category-title-header.category-banner-genesis-lounge,
+    .category-title-header.category-banner-feature-requests,
+    .category-title-header.category-banner-announcements,
+    .category-title-header.category-banner-bug-reports,
+    .category-title-header.category-banner-start-here
+  )
   .category-title-contents::after {
   content: none !important;
   display: none !important;
@@ -16994,11 +17040,23 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
-  .category-title-header.category-banner-genesis-lounge
+  :is(
+    .category-title-header.category-banner-genesis-lounge,
+    .category-title-header.category-banner-feature-requests,
+    .category-title-header.category-banner-announcements,
+    .category-title-header.category-banner-bug-reports,
+    .category-title-header.category-banner-start-here
+  )
   .category-title-contents,
 html:not(.erebyx-admin-route)
-  body[class*="category-"]:not(.archetype-regular):not(.admin-interface)
-  .category-title-header.category-banner-genesis-lounge
+  body:is(
+    .category-genesis-lounge,
+    .category-feature-requests,
+    .category-announcements,
+    .category-bug-reports,
+    .category-start-here
+  ):not(.archetype-regular):not(.admin-interface)
+  .category-title-header
   .category-title-contents {
   justify-self: start !important;
   place-items: center start !important;
@@ -17009,11 +17067,23 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
-  .category-title-header.category-banner-genesis-lounge
+  :is(
+    .category-title-header.category-banner-genesis-lounge,
+    .category-title-header.category-banner-feature-requests,
+    .category-title-header.category-banner-announcements,
+    .category-title-header.category-banner-bug-reports,
+    .category-title-header.category-banner-start-here
+  )
   :is(.category-title, .category-title-description),
 html:not(.erebyx-admin-route)
-  body[class*="category-"]:not(.archetype-regular):not(.admin-interface)
-  .category-title-header.category-banner-genesis-lounge
+  body:is(
+    .category-genesis-lounge,
+    .category-feature-requests,
+    .category-announcements,
+    .category-bug-reports,
+    .category-start-here
+  ):not(.archetype-regular):not(.admin-interface)
+  .category-title-header
   :is(.category-title, .category-title-description) {
   margin-left: 0 !important;
   margin-right: auto !important;
