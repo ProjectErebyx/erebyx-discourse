@@ -16981,6 +16981,49 @@ html:not(.erebyx-admin-route)
     0 0 0 1px rgb(255 231 163 / 0.2),
     0 0 0 4px rgb(250 178 50 / 0.12),
     0 14px 34px rgb(3 7 18 / 0.44) !important;
+  opacity: 0 !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .d-header-icons
+  #toggle-current-user::before,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .d-header-icons
+  #toggle-current-user::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  display: block !important;
+  pointer-events: none !important;
+  color: rgb(191 219 254 / 0.98) !important;
+  opacity: 1 !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .d-header-icons
+  #toggle-current-user::before {
+  top: 0.47rem !important;
+  width: 0.48rem !important;
+  height: 0.48rem !important;
+  border: 1.7px solid currentColor !important;
+  border-radius: 999px !important;
+  transform: translateX(-50%) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .d-header-icons
+  #toggle-current-user::after {
+  top: 1.25rem !important;
+  width: 1rem !important;
+  height: 0.5rem !important;
+  border: 1.7px solid currentColor !important;
+  border-bottom: 0 !important;
+  border-radius: 999px 999px 0 0 !important;
+  transform: translateX(-50%) !important;
 }
 
 /* Tier 74 - Clean category banner canvas in desktop bundle. */
