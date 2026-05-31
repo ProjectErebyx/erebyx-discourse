@@ -11195,7 +11195,7 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #main-outlet#main-outlet
-  article.topic-post
+  :is(article.topic-post, article.boxed[data-user-id])
   .post__row.row {
   border-color: rgb(250 178 50 / 0.18) !important;
   background:
@@ -11210,7 +11210,7 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #main-outlet#main-outlet
-  article.topic-post
+  :is(article.topic-post, article.boxed[data-user-id])
   .topic-avatar {
   background: linear-gradient(180deg, rgb(250 178 50 / 0.12), transparent 62%) !important;
   border-right-color: rgb(250 178 50 / 0.12) !important;
@@ -11219,7 +11219,7 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #main-outlet#main-outlet
-  article.topic-post
+  :is(article.topic-post, article.boxed[data-user-id])
   .topic-meta-data {
   border-color: rgb(250 178 50 / 0.16) !important;
   background: rgb(12 10 6 / 0.38) !important;
