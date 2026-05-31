@@ -18229,7 +18229,7 @@ html:not(.erebyx-admin-route)
     linear-gradient(180deg, rgb(3 7 18 / 0.18), rgb(3 7 18 / 0.54)),
     url($genesis_river_banner) center / cover no-repeat,
     rgb(10 6 16) !important;
-  color: rgb(255 247 214 / 0.9) !important;
+  color: #fff !important;
   box-shadow:
     inset 0 1px 0 rgb(255 247 214 / 0.08),
     0 22px 70px -62px rgb(0 0 0 / 0.94) !important;
@@ -18239,7 +18239,23 @@ html:not(.erebyx-admin-route)
   line-height: 1.15 !important;
   letter-spacing: 0.14em !important;
   text-align: center !important;
+  text-shadow: 0 1px 8px rgb(0 0 0 / 0.72) !important;
   text-transform: uppercase !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  .more-topics__browse-more,
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  .more-topics__browse-more
+  :is(a, .badge-category__name, span, p) {
+  color: #fff !important;
+  text-shadow: 0 1px 8px rgb(0 0 0 / 0.72) !important;
 }
 
 html:not(.erebyx-admin-route)
