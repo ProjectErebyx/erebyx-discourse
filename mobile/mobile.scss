@@ -12122,6 +12122,13 @@ body.admin-interface #main-outlet :is(table, thead, tbody, tr, .admin-report, .d
   color: rgb(226 232 240 / 0.9) !important;
 }
 
+html.admin-area #main-outlet :is(.table-cell, .user-regular, .user-staff, .user-admin),
+body.admin-interface #main-outlet :is(.table-cell, .user-regular, .user-staff, .user-admin) {
+  border-color: rgb(68 146 252 / 0.14) !important;
+  background: rgb(3 7 18 / 0.72) !important;
+  color: rgb(226 232 240 / 0.9) !important;
+}
+
 html.admin-area #main-outlet :is(input, textarea, select, .select-kit-header),
 body.admin-interface #main-outlet :is(input, textarea, select, .select-kit-header) {
   border-color: rgb(68 146 252 / 0.32) !important;
