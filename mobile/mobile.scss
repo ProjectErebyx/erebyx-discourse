@@ -11416,3 +11416,45 @@ html:not(.erebyx-admin-route)
   :is(.link-bottom-line, .badge-category__name, td.num.posts-map, td.num.views, td.activity.num) {
   color: rgb(255 231 163 / 0.7) !important;
 }
+
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet-wrapper#main-outlet-wrapper {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-inline: 0 !important;
+  padding-inline: 0 !important;
+  overflow-x: clip !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-inline: auto !important;
+  padding-inline: clamp(0.75rem, 3vw, 1.25rem) !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  > :is(
+    .erebyx-genesis-banner,
+    .erebyx-arche-map,
+    .custom-homepage-columns,
+    #list-area,
+    .container.list-container,
+    .container.list-container.--topic-list
+  ) {
+  box-sizing: border-box !important;
+  width: min(100%, 74rem) !important;
+  max-width: 74rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
