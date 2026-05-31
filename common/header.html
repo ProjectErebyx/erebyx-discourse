@@ -806,6 +806,108 @@
       }, true);
     };
 
+    var bindSidebarThreadNavigation = function () {
+      if (bindSidebarThreadNavigation._bound) return;
+      bindSidebarThreadNavigation._bound = true;
+
+      var sidebarFeedByPath = {
+        "/latest": "latest",
+        "/top": "top",
+        "/hot": "hot"
+      };
+
+      var sidebarThreadTarget = function (href) {
+        var url;
+        try {
+          url = new URL(href, window.location.origin);
+        } catch (error) {
+          return null;
+        }
+
+        if (url.origin !== window.location.origin) return null;
+        var path = url.pathname.replace(/\/$/, "");
+        var feed = path === "" || path === "/" ? url.searchParams.get("thread") : sidebarFeedByPath[path];
+        if (["latest", "top", "hot"].indexOf(feed) < 0) feed = null;
+        if (!feed) return null;
+
+        return {
+          feed: feed,
+          href: "/?thread=" + encodeURIComponent(feed)
+        };
+      };
+
+      var closeSidebar = function () {
+        if (!document.body || !document.body.classList.contains("has-sidebar-page")) return;
+
+        var nativeSidebar = document.querySelector(".btn-sidebar-toggle");
+        if (nativeSidebar) {
+          nativeSidebar.click();
+          return;
+        }
+
+        document.body.classList.remove("has-sidebar-page");
+      };
+
+      var scrollToThreadColumn = function () {
+        window.requestAnimationFrame(function () {
+          var target = document.querySelector(".erebyx-home-thread-feed, .custom-homepage-columns .col-2, .custom-homepage-columns");
+          if (target && target.scrollIntoView) {
+            target.scrollIntoView({ block: "start", behavior: "smooth" });
+          }
+        });
+      };
+
+      document.addEventListener("click", function (event) {
+        if (event.defaultPrevented || event.button && event.button !== 0) return;
+        if (event.shiftKey || event.altKey || event.metaKey || event.ctrlKey) return;
+
+        var target = event.target;
+        if (!target || !target.closest) return;
+
+        var link = target.closest("a[href]");
+        if (!link || !link.closest("#d-sidebar, .sidebar-wrapper")) return;
+
+        var destination = sidebarThreadTarget(link.getAttribute("href"));
+        if (!destination) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+        closeSidebar();
+
+        var current = new URL(window.location.href);
+        if (current.pathname === "/" && current.searchParams.get("thread") === destination.feed) {
+          scrollToThreadColumn();
+          return;
+        }
+
+        window.location.assign(destination.href);
+      }, true);
+    };
+
+    var normalizeSidebarThreadLinks = function () {
+      document.querySelectorAll("#d-sidebar a[href], .sidebar-wrapper a[href]").forEach(function (link) {
+        var destination = (function () {
+          var url;
+          try {
+            url = new URL(link.getAttribute("href"), window.location.origin);
+          } catch (error) {
+            return null;
+          }
+
+          if (url.origin !== window.location.origin) return null;
+          var path = url.pathname.replace(/\/$/, "");
+          if (path === "/latest") return "/?thread=latest";
+          if (path === "/top") return "/?thread=top";
+          if (path === "/hot") return "/?thread=hot";
+          return null;
+        })();
+
+        if (destination && link.getAttribute("href") !== destination) {
+          link.setAttribute("href", destination);
+        }
+      });
+    };
+
     var bindTopicCardNavigation = function () {
       if (bindTopicCardNavigation._bound) return;
       bindTopicCardNavigation._bound = true;
@@ -1392,6 +1494,8 @@
       clusterPosts();
       gateBanner();
       bindPublicNavigationGuard();
+      bindSidebarThreadNavigation();
+      normalizeSidebarThreadLinks();
       bindTopicCardNavigation();
       normalizeTopicCardTitleLinks();
       updateCategoryBannerCopy();
