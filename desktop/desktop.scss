@@ -16972,6 +16972,9 @@ html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   .d-header-icons
   img.avatar {
+  width: calc(var(--erebyx-control-size) - 0.68rem) !important;
+  height: calc(var(--erebyx-control-size) - 0.68rem) !important;
+  margin: 0 !important;
   border-color: rgb(250 178 50 / 0.46) !important;
   box-shadow:
     0 0 0 1px rgb(255 231 163 / 0.2),
