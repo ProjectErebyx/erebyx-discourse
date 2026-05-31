@@ -17001,8 +17001,8 @@ html:not(.erebyx-admin-route)
   max-height: calc(100vh - var(--erebyx-nav-height, 3.25rem)) !important;
   overflow-y: auto !important;
   background:
-    linear-gradient(180deg, rgb(3 7 18 / 0.98), rgb(2 6 23 / 0.98)),
-    rgb(3 7 18) !important;
+    linear-gradient(180deg, rgb(8 7 5 / 0.98), rgb(0 0 0 / 0.98)),
+    rgb(0 0 0) !important;
   border-right: 1px solid rgb(250 178 50 / 0.22) !important;
   box-shadow: 24px 0 60px -40px rgb(0 0 0 / 0.92) !important;
 }
@@ -17030,8 +17030,8 @@ html:not(.erebyx-admin-route)
   flex: 1 1 auto !important;
   min-height: 100% !important;
   background:
-    linear-gradient(180deg, rgb(8 34 66 / 0.5), rgb(3 7 18 / 0.2)),
-    transparent !important;
+    linear-gradient(180deg, rgb(0 0 0 / 0.62), rgb(0 0 0 / 0.92)),
+    rgb(0 0 0) !important;
 }
 
 html:not(.erebyx-admin-route)
@@ -17047,6 +17047,7 @@ html:not(.erebyx-admin-route)
   #d-sidebar
   :is(.sidebar-footer-wrapper, .sidebar-footer-container) {
   margin-top: auto !important;
+  background: rgb(0 0 0) !important;
 }
 
 html:not(.erebyx-admin-route)
