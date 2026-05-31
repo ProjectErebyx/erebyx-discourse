@@ -10274,12 +10274,20 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.has-sidebar-page:not(.admin-interface)
   #d-sidebar
-  :is(.sidebar-sections, .sidebar-custom-sections) {
+  .sidebar-sections {
   flex: 1 1 auto !important;
   min-height: 100% !important;
   background:
     linear-gradient(180deg, rgb(8 34 66 / 0.5), rgb(3 7 18 / 0.2)),
     transparent !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.has-sidebar-page:not(.admin-interface)
+  #d-sidebar
+  .sidebar-custom-sections {
+  flex: 0 0 auto !important;
+  min-height: 0 !important;
 }
 
 html:not(.erebyx-admin-route)
