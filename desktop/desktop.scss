@@ -18195,3 +18195,117 @@ html:not(.erebyx-admin-route)
   max-width: 100% !important;
   min-width: 0 !important;
 }
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics) {
+  border-color: rgb(250 178 50 / 0.22) !important;
+  background:
+    radial-gradient(circle at 15% 10%, rgb(250 178 50 / 0.11), transparent 15rem),
+    linear-gradient(135deg, rgb(24 15 7 / 0.74), rgb(7 9 18 / 0.92) 58%, rgb(4 6 12 / 0.96)) !important;
+  box-shadow:
+    inset 1px 0 0 rgb(255 231 163 / 0.13),
+    inset 0 1px 0 rgb(255 247 214 / 0.05),
+    0 30px 92px -76px rgb(0 0 0 / 0.98) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  :is(.more-topics__list-title, h3) {
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: clamp(4.1rem, 6vw, 5.2rem) !important;
+  margin: 0 0 clamp(0.95rem, 1.6vw, 1.25rem) !important;
+  padding: 0.85rem 1rem !important;
+  border: 1px solid rgb(250 178 50 / 0.2) !important;
+  border-radius: 8px !important;
+  background:
+    linear-gradient(90deg, rgb(3 7 18 / 0.76), rgb(3 7 18 / 0.24) 48%, rgb(3 7 18 / 0.68)),
+    linear-gradient(180deg, rgb(3 7 18 / 0.18), rgb(3 7 18 / 0.54)),
+    url($genesis_river_banner) center / cover no-repeat,
+    rgb(10 6 16) !important;
+  color: rgb(255 247 214 / 0.9) !important;
+  box-shadow:
+    inset 0 1px 0 rgb(255 247 214 / 0.08),
+    0 22px 70px -62px rgb(0 0 0 / 0.94) !important;
+  font-family: var(--erebyx-font-mono) !important;
+  font-size: clamp(0.72rem, 0.82vw, 0.88rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  letter-spacing: 0.14em !important;
+  text-align: center !important;
+  text-transform: uppercase !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  .topic-list.topic-list
+  > tbody.topic-list-body {
+  gap: clamp(0.9rem, 1.45vw, 1.15rem) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  .topic-list.topic-list
+  > tbody.topic-list-body
+  > tr.topic-list-item.topic-list-item {
+  border-color: rgb(250 178 50 / 0.3) !important;
+  background:
+    radial-gradient(circle at 16% 18%, rgb(250 178 50 / 0.12), transparent 10rem),
+    linear-gradient(135deg, rgb(24 15 7 / 0.94), rgb(12 8 5 / 0.96) 58%, rgb(8 6 4 / 0.98)) !important;
+  box-shadow:
+    inset 1px 0 0 rgb(255 231 163 / 0.18),
+    inset 0 1px 0 rgb(255 247 214 / 0.06),
+    0 24px 74px -58px rgb(0 0 0 / 0.9) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  .topic-list.topic-list
+  > tbody.topic-list-body
+  > tr.topic-list-item.topic-list-item:hover,
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  .topic-list.topic-list
+  > tbody.topic-list-body
+  > tr.topic-list-item.topic-list-item:focus-within {
+  border-color: rgb(250 178 50 / 0.48) !important;
+  box-shadow:
+    inset 1px 0 0 rgb(255 231 163 / 0.24),
+    inset 0 1px 0 rgb(255 247 214 / 0.08),
+    0 26px 78px -56px rgb(0 0 0 / 0.94) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  .topic-list.topic-list
+  > tbody.topic-list-body
+  > tr.topic-list-item.topic-list-item::before {
+  background: linear-gradient(to bottom, rgb(250 178 50 / 0.82), rgb(250 178 50 / 0.34), transparent) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  .topic-list.topic-list
+  > tbody.topic-list-body
+  > tr.topic-list-item.topic-list-item
+  :is(.link-bottom-line, .badge-category__name, td.num.posts-map, td.num.views, td.activity.num) {
+  color: rgb(255 231 163 / 0.72) !important;
+}
