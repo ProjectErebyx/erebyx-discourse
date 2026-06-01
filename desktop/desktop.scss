@@ -19611,6 +19611,16 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.category-feature-requests.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
   .category-title-header.category-banner-feature-requests
+  .category-title-contents {
+  grid-template-areas:
+    "title"
+    "description" !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category-feature-requests.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+  .category-title-header.category-banner-feature-requests
   .category-title {
   display: block !important;
   width: auto !important;
