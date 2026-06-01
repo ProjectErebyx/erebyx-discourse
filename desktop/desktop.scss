@@ -17010,6 +17010,10 @@ html:not(.erebyx-admin-route)
   box-shadow: 24px 0 60px -40px rgb(0 0 0 / 0.92) !important;
 }
 
+html:not(.erebyx-admin-route) body.has-sidebar-page:not(.admin-interface) {
+  --erebyx-sidebar-width: min(18rem, calc(100vw - 3rem));
+}
+
 html:not(.erebyx-admin-route)
   body.has-sidebar-page:not(.admin-interface)
   #d-sidebar {
@@ -17067,6 +17071,17 @@ html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   #main-outlet-wrapper#main-outlet-wrapper {
   grid-template-columns: minmax(0, 1fr) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.has-sidebar-page:not(.admin-interface)
+  #main-outlet-wrapper#main-outlet-wrapper {
+  box-sizing: border-box !important;
+  width: calc(100% - var(--erebyx-sidebar-width)) !important;
+  max-width: calc(100vw - var(--erebyx-sidebar-width)) !important;
+  margin-left: var(--erebyx-sidebar-width) !important;
+  padding-left: clamp(0.75rem, 1.4vw, 1.25rem) !important;
+  padding-right: clamp(0.75rem, 1.4vw, 1.25rem) !important;
 }
 
 html:not(.erebyx-admin-route)
