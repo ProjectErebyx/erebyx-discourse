@@ -19744,3 +19744,18 @@ html:not(.erebyx-admin-route)
   place-items: center start !important;
   text-align: left !important;
 }
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  #main-outlet#main-outlet
+  :is(#user-card.user-card.show-badges.no-bg, #group-card.group-card.show-badges.no-bg) {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
