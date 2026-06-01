@@ -14,6 +14,7 @@
     "feature_requests_banner": "assets/feature-requests-banner.png",
     "start_here_banner": "assets/start-here-banner.png",
     "signal_room_banner": "assets/signal-room-banner.png",
+    "bug_reports_banner": "assets/bug-reports-banner.png",
     "topic_columns_banner": "assets/topic-columns-banner.jpeg"
   },
   "color_schemes": {
