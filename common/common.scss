@@ -26928,7 +26928,7 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .composer-popup {
 
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
-  #quick-access-all-notifications.quick-access-panel {
+  :is(#quick-access-all-notifications, #quick-access-other-notifications).quick-access-panel {
   background:
     var(--erebyx-particle-stars),
     linear-gradient(135deg, rgb(68 146 252 / 0.08), rgb(117 3 224 / 0.06)),
@@ -26942,7 +26942,7 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
-  #quick-access-all-notifications
+  :is(#quick-access-all-notifications, #quick-access-other-notifications)
   :is(li.notification, .notification) {
   border-bottom: 1px solid rgb(68 146 252 / 0.12) !important;
   background: rgb(5 8 18 / 0.86) !important;
@@ -26951,7 +26951,7 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
-  #quick-access-all-notifications
+  :is(#quick-access-all-notifications, #quick-access-other-notifications)
   :is(li.notification.unread, .notification.unread) {
   background:
     linear-gradient(90deg, rgb(68 146 252 / 0.14), transparent 45%),
@@ -26960,7 +26960,7 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
-  #quick-access-all-notifications
+  :is(#quick-access-all-notifications, #quick-access-other-notifications)
   :is(li.notification, .notification)
   :is(a, .item-description, div, span) {
   color: rgb(226 232 240 / 0.92) !important;
@@ -26968,7 +26968,7 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
-  #quick-access-all-notifications
+  :is(#quick-access-all-notifications, #quick-access-other-notifications)
   :is(li.notification, .notification)
   .d-icon {
   color: rgb(147 197 253 / 0.92) !important;
@@ -26976,7 +26976,7 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
-  #quick-access-all-notifications
+  :is(#quick-access-all-notifications, #quick-access-other-notifications)
   :is(.panel-body-bottom, .quick-access-panel-bottom) {
   border-top: 1px solid rgb(68 146 252 / 0.14) !important;
   background: rgb(3 7 18 / 0.9) !important;
