@@ -19191,6 +19191,7 @@ html:not(.erebyx-admin-route)
   .user-menu.menu-panel
   .user-menu-tab
   .d-icon {
+  background: transparent !important;
   color: rgb(203 213 225 / 0.92) !important;
 }
 
@@ -19199,6 +19200,7 @@ html:not(.erebyx-admin-route)
   .user-menu.menu-panel
   .user-menu-tab.active
   .d-icon {
+  background: transparent !important;
   color: rgb(248 250 252 / 0.98) !important;
 }
 
@@ -19274,14 +19276,18 @@ html:not(.erebyx-admin-route)
   #quick-access-profile
   .user-menu-button-profile
   .profile-tab-btn {
-  flex: 0 0 2.75rem !important;
-  width: 2.75rem !important;
-  min-width: 2.75rem !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  min-width: 0 !important;
   height: 2.75rem !important;
   border: 0 !important;
-  border-radius: 8px 0 0 8px !important;
+  border-radius: 8px !important;
   background: transparent !important;
   box-shadow: none !important;
+  justify-content: flex-start !important;
+  justify-items: start !important;
+  padding-inline: 0.9rem !important;
+  text-align: left !important;
 }
 
 html:not(.erebyx-admin-route)
@@ -19297,6 +19303,7 @@ html:not(.erebyx-admin-route)
   #quick-access-profile
   .user-menu-button-profile
   .d-icon {
+  background: transparent !important;
   color: rgb(203 213 225 / 0.94) !important;
 }
 
