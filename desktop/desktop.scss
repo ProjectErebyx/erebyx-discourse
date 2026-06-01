@@ -19623,8 +19623,8 @@ html:not(.erebyx-admin-route)
   .category-title-header.category-banner-feature-requests
   .category-title {
   display: block !important;
-  width: auto !important;
-  max-width: min(100%, 64rem) !important;
+  width: 100% !important;
+  max-width: 100% !important;
   justify-self: start !important;
   justify-items: start !important;
   place-items: center start !important;
