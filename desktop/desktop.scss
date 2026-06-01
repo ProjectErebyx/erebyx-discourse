@@ -18904,6 +18904,7 @@ html:not(.erebyx-admin-route)
   #main-outlet#main-outlet
   .custom-homepage-columns.custom-homepage-columns {
   box-sizing: border-box !important;
+  align-items: stretch !important;
   width: min(calc(100vw - clamp(2rem, 5vw, 4.5rem)), 116rem) !important;
   max-width: min(calc(100vw - clamp(2rem, 5vw, 4.5rem)), 116rem) !important;
   margin-left: auto !important;
@@ -18925,6 +18926,15 @@ html:not(.erebyx-admin-route)
   min-width: 0 !important;
   max-width: 100% !important;
   overflow-x: clip !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .custom-homepage-columns.custom-homepage-columns
+  > .col {
+  align-self: stretch !important;
+  height: 100% !important;
 }
 
 html:not(.erebyx-admin-route)
