@@ -7243,6 +7243,19 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
       padding-inline: 0.92rem !important;
     }
 
+    &.users-page #main-outlet#main-outlet {
+      padding-top: 0 !important;
+    }
+
+    &.users-page #main-outlet#main-outlet > .container {
+      height: 0 !important;
+      min-height: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      margin: 0 !important;
+      overflow: hidden !important;
+    }
+
     &.users-page #main-outlet .users-directory.directory {
       width: calc(100vw - 1rem) !important;
       max-width: calc(100vw - 1rem) !important;
