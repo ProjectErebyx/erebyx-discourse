@@ -12084,6 +12084,22 @@ html:not(.erebyx-admin-route)
   #main-outlet#main-outlet
   .custom-homepage-columns.custom-homepage-columns
   > .col
+  .loading-container
+  > .ember-view {
+  box-sizing: border-box !important;
+  inline-size: 100% !important;
+  width: 100% !important;
+  max-inline-size: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  justify-self: stretch !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .custom-homepage-columns.custom-homepage-columns
+  > .col
   table.topic-list.topic-list {
   display: block !important;
   inline-size: 100% !important;
@@ -12126,6 +12142,17 @@ html:not(.erebyx-admin-route)
   tr.topic-list-item {
   width: 100% !important;
   max-width: 100% !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .custom-homepage-columns.custom-homepage-columns
+  > .col
+  > .btn-more {
+  align-self: flex-start !important;
+  width: auto !important;
+  max-width: max-content !important;
 }
 
 html:not(.erebyx-admin-route)
