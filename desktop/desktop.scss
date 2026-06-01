@@ -18909,6 +18909,12 @@ html:not(.erebyx-admin-route)
   max-width: min(calc(100vw - clamp(2rem, 5vw, 4.5rem)), 116rem) !important;
   margin-left: auto !important;
   margin-right: auto !important;
+  border: 1px solid rgb(250 178 50 / 0.14) !important;
+  border-radius: 8px !important;
+  background:
+    var(--erebyx-particle-stars),
+    radial-gradient(circle at 50% 0%, rgb(68 146 252 / 0.11), transparent 28rem),
+    linear-gradient(180deg, rgb(3 7 18 / 0.96), rgb(5 24 48 / 0.9)) !important;
   overflow: hidden !important;
 }
 
@@ -18934,7 +18940,67 @@ html:not(.erebyx-admin-route)
   .custom-homepage-columns.custom-homepage-columns
   > .col {
   align-self: stretch !important;
+  display: flex !important;
+  flex-direction: column !important;
   height: 100% !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .custom-homepage-columns.custom-homepage-columns
+  > .col
+  > * {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .custom-homepage-columns.custom-homepage-columns
+  > .col
+  .loading-container {
+  flex: 1 1 auto !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .custom-homepage-columns.custom-homepage-columns
+  > .col
+  .topic-list {
+  width: 100% !important;
+  max-width: 100% !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .custom-homepage-columns.custom-homepage-columns
+  > .col
+  .topic-list-body {
+  width: 100% !important;
+  max-width: 100% !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .custom-homepage-columns.custom-homepage-columns
+  > .col
+  tr.topic-list-item {
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 html:not(.erebyx-admin-route)
