@@ -9951,6 +9951,8 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
     #main-outlet#main-outlet,
   html:not(.erebyx-admin-route)
     body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(
+      .category-header
+    ):not(
       .admin-interface
     ):not(.archetype-regular)
     #main-outlet#main-outlet,
@@ -9961,6 +9963,8 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
     #main-outlet#main-outlet,
   html:not(.erebyx-admin-route)
     body.category.navigation-category.navigation-category:not(
+      .category-header
+    ):not(
       .admin-interface
     ):not(.archetype-regular)
     #main-outlet#main-outlet {

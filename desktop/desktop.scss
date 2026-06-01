@@ -16646,13 +16646,13 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
     body.navigation-topics.navigation-topics[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
     #main-outlet#main-outlet,
   html:not(.erebyx-admin-route)
-    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.admin-interface):not(.archetype-regular)
+    body.category.navigation-category.navigation-category[data-erebyx-route="discovery"]:not(.category-header):not(.admin-interface):not(.archetype-regular)
     #main-outlet#main-outlet,
   html:not(.erebyx-admin-route)
     body.navigation-topics.navigation-topics:not(.admin-interface):not(.archetype-regular)
     #main-outlet#main-outlet,
   html:not(.erebyx-admin-route)
-    body.category.navigation-category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    body.category.navigation-category.navigation-category:not(.category-header):not(.admin-interface):not(.archetype-regular)
     #main-outlet#main-outlet {
     padding-top: clamp(3.75rem, 7.4vw, 4.35rem) !important;
   }
