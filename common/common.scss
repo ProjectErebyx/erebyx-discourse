@@ -36623,9 +36623,31 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
+  body.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+  #main-outlet-wrapper#main-outlet-wrapper {
+  padding-top: clamp(0.75rem, 1.4vw, 1.05rem) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+  #main-outlet#main-outlet {
+  padding-top: 0 !important;
+}
+
+html:not(.erebyx-admin-route)
   body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet#main-outlet
   > .list-controls.list-controls {
+  box-sizing: border-box !important;
+  width: calc(100% - clamp(1rem, 2.4vw, 1.75rem)) !important;
+  max-width: 72rem !important;
+  min-height: 0 !important;
+  height: auto !important;
+  margin: clamp(0.7rem, 1.2vw, 1rem) auto clamp(0.75rem, 1.25vw, 1.05rem) !important;
+  padding: clamp(0.5rem, 0.95vw, 0.75rem) !important;
+  position: relative !important;
+  z-index: 1200 !important;
+  overflow: visible !important;
   background:
     linear-gradient(90deg, rgb(250 178 50 / 0.13), transparent 44%),
     rgb(86 55 7 / 0.78) !important;
@@ -36639,7 +36661,42 @@ html:not(.erebyx-admin-route)
   body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet#main-outlet
   > .list-controls.list-controls
-  :is(.container, .navigation-container, .navigation-container.category-navigation) {
+  > .container {
+  box-sizing: border-box !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  #main-outlet#main-outlet
+  > .list-controls.list-controls
+  .navigation-container.category-navigation {
+  box-sizing: border-box !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  grid-template-areas:
+    "crumbs crumbs"
+    "mode actions" !important;
+  align-items: center !important;
+  justify-content: stretch !important;
+  gap: clamp(0.5rem, 1vw, 0.75rem) clamp(0.65rem, 1.2vw, 1rem) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: clamp(0.55rem, 1vw, 0.75rem) !important;
+  overflow: visible !important;
   background:
     radial-gradient(circle at 8% 50%, rgb(250 178 50 / 0.16), transparent 18rem),
     linear-gradient(90deg, rgb(48 30 5 / 0.84), rgb(28 20 6 / 0.76)) !important;
@@ -36728,32 +36785,69 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet#main-outlet
-  > .list-controls.list-controls {
-  position: relative !important;
-  z-index: 1200 !important;
-  overflow: visible !important;
-}
-
-html:not(.erebyx-admin-route)
-  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
-  #main-outlet#main-outlet
-  > .list-controls.list-controls
-  :is(.container, .navigation-container, .navigation-container.category-navigation) {
-  overflow: visible !important;
-}
-
-html:not(.erebyx-admin-route)
-  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
-  #main-outlet#main-outlet
   > .list-controls.list-controls
   :is(.category-breadcrumb, ol.category-breadcrumb) {
-  width: auto !important;
-  max-width: min(100%, 22rem) !important;
+  grid-area: crumbs !important;
+  width: 100% !important;
+  max-width: 100% !important;
   min-width: 0 !important;
-  min-height: 2.9rem !important;
+  min-height: 2.6rem !important;
   height: auto !important;
   align-items: center !important;
+  justify-content: flex-start !important;
+  justify-self: stretch !important;
+  flex-wrap: wrap !important;
   overflow: visible !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  #main-outlet#main-outlet
+  > .list-controls.list-controls
+  .nav-pills {
+  grid-area: mode !important;
+  justify-content: flex-start !important;
+  justify-self: start !important;
+  width: auto !important;
+  max-width: 100% !important;
+  flex-wrap: wrap !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  #main-outlet#main-outlet
+  > .list-controls.list-controls
+  .navigation-controls {
+  grid-area: actions !important;
+  justify-content: flex-end !important;
+  justify-self: end !important;
+  width: auto !important;
+  max-width: 100% !important;
+  flex-wrap: wrap !important;
+}
+
+@media screen and (max-width: 560px) {
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
+    .navigation-container.category-navigation {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-areas:
+      "crumbs"
+      "mode"
+      "actions" !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
+    :is(.nav-pills, .navigation-controls) {
+    justify-self: stretch !important;
+    width: 100% !important;
+    justify-content: flex-start !important;
+  }
 }
 
 html:not(.erebyx-admin-route)
