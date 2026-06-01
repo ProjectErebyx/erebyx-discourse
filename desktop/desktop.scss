@@ -5,6 +5,7 @@ $genesis_river_banner: "$genesis_river_banner" !default;
 $genesis_lounge_banner: "$genesis_lounge_banner" !default;
 $feature_requests_banner: "$feature_requests_banner" !default;
 $start_here_banner: "$start_here_banner" !default;
+$signal_room_banner: "$signal_room_banner" !default;
 $topic_columns_banner: "$topic_columns_banner" !default;
 
 @media (width >= 1024px) {
@@ -19659,6 +19660,43 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.category-start-here.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
   .category-title-header.category-banner-start-here
+  .category-title {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  justify-self: start !important;
+  justify-items: start !important;
+  place-items: center start !important;
+  text-align: left !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category-announcements.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+  .category-title-header.category-title-header.category-banner-announcements[class*="category-banner-"],
+html:not(.erebyx-admin-route)
+  body.category-announcements.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+  .category-title-header.category-title-header[class*="category-banner-"] {
+  background:
+    linear-gradient(90deg, rgb(3 7 18 / 0.58), rgb(3 7 18 / 0.08) 48%, rgb(3 7 18 / 0.5)),
+    linear-gradient(180deg, rgb(3 7 18 / 0.08), rgb(3 7 18 / 0.44)),
+    url($signal_room_banner) center 50% / cover no-repeat,
+    rgb(8 18 46) !important;
+  background-size: auto, auto, cover, auto !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category-announcements.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+  .category-title-header.category-banner-announcements
+  .category-title-contents {
+  grid-template-areas:
+    "title"
+    "description" !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.category-announcements.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+  .category-title-header.category-banner-announcements
   .category-title {
   display: block !important;
   width: 100% !important;
