@@ -12726,3 +12726,16 @@ html:not(.erebyx-admin-route)
     inset 0 0 0 1px rgb(250 178 50 / 0.18),
     0 24px 74px -58px rgb(0 0 0 / 0.9) !important;
 }
+
+html:not(.erebyx-admin-route)
+  body.category-feature-requests.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+  .category-title-header.category-banner-feature-requests
+  .category-title {
+  display: block !important;
+  width: auto !important;
+  max-width: min(100%, 64rem) !important;
+  justify-self: start !important;
+  justify-items: start !important;
+  place-items: center start !important;
+  text-align: left !important;
+}
