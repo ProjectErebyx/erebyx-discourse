@@ -18969,6 +18969,7 @@ html:not(.erebyx-admin-route)
   > .col
   .loading-container {
   flex: 1 1 auto !important;
+  grid-template-columns: minmax(0, 1fr) !important;
 }
 
 html:not(.erebyx-admin-route)
@@ -18976,8 +18977,11 @@ html:not(.erebyx-admin-route)
   #main-outlet#main-outlet
   .custom-homepage-columns.custom-homepage-columns
   > .col
-  .topic-list {
+  table.topic-list.topic-list {
+  display: block !important;
+  inline-size: 100% !important;
   width: 100% !important;
+  max-inline-size: 100% !important;
   max-width: 100% !important;
   grid-template-columns: minmax(0, 1fr) !important;
 }
@@ -18987,8 +18991,22 @@ html:not(.erebyx-admin-route)
   #main-outlet#main-outlet
   .custom-homepage-columns.custom-homepage-columns
   > .col
-  .topic-list-body {
+  table.topic-list.topic-list
+  > thead.topic-list-header {
+  display: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .custom-homepage-columns.custom-homepage-columns
+  > .col
+  table.topic-list.topic-list
+  > tbody.topic-list-body {
+  display: grid !important;
+  inline-size: 100% !important;
   width: 100% !important;
+  max-inline-size: 100% !important;
   max-width: 100% !important;
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
 }
