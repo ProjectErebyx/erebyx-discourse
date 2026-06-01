@@ -12156,6 +12156,82 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
+  body.navigation-categories.categories-list:not(.admin-interface)
+  #main-outlet#main-outlet
+  .custom-homepage-columns.custom-homepage-columns {
+  align-items: stretch !important;
+  overflow: hidden !important;
+
+  > .col {
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 0 !important;
+    height: 100% !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+  }
+
+  > .col > .loading-container {
+    flex: 1 1 auto !important;
+    padding: clamp(0.85rem, 3vw, 1.1rem) !important;
+    background: transparent !important;
+    overflow: hidden !important;
+  }
+
+  > .col > .loading-container > .ember-view,
+  > .col table.topic-list.topic-list,
+  > .col table.topic-list.topic-list > tbody.topic-list-body {
+    box-sizing: border-box !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    transform: none !important;
+    justify-self: stretch !important;
+    overflow-x: clip !important;
+  }
+
+  > .col table.topic-list.topic-list {
+    display: block !important;
+    background: transparent !important;
+  }
+
+  > .col table.topic-list.topic-list > tbody.topic-list-body {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: clamp(0.85rem, 2.5vw, 1rem) !important;
+  }
+
+  > .col tr.topic-list-item {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  > .col > .btn-more {
+    align-self: flex-start !important;
+    width: auto !important;
+    max-width: max-content !important;
+    margin: 0 clamp(0.85rem, 3vw, 1.1rem) clamp(0.85rem, 3vw, 1.1rem) !important;
+  }
+}
+
+@media (width <= 760px) {
+  html:not(.erebyx-admin-route)
+    body.navigation-categories.categories-list:not(.admin-interface)
+    #main-outlet#main-outlet
+    .custom-homepage-columns.custom-homepage-columns
+    > .col
+    table.topic-list.topic-list
+    > tbody.topic-list-body {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+html:not(.erebyx-admin-route)
   body.category-feature-requests.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
   .category-title-header.category-title-header.category-banner-feature-requests[class*="category-banner-"],
 html:not(.erebyx-admin-route)
