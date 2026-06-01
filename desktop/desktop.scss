@@ -19173,6 +19173,51 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
+  #main-outlet#main-outlet
+  > .container.show-badge {
+  box-sizing: border-box !important;
+  width: min(1560px, calc(100vw - clamp(1.5rem, 6vw, 8rem))) !important;
+  max-width: min(1560px, calc(100vw - clamp(1.5rem, 6vw, 8rem))) !important;
+  margin-inline: auto !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: rgb(248 250 252 / 0.94) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #main-outlet#main-outlet
+  > .container.show-badge
+  :is(h1, h2, h3, p, span, div, a) {
+  color: rgb(248 250 252 / 0.94) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #main-outlet#main-outlet
+  > .container.show-badge
+  .badge-card {
+  border: 1px solid rgb(250 178 50 / 0.32) !important;
+  border-radius: 8px !important;
+  background: rgb(5 8 18 / 0.92) !important;
+  box-shadow:
+    inset 1px 0 0 rgb(255 231 163 / 0.18),
+    inset 0 1px 0 rgb(255 247 214 / 0.06),
+    0 24px 72px -58px rgb(0 0 0 / 0.9) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #main-outlet#main-outlet
+  > .container.show-badge
+  .badge-card
+  :is(.badge-icon, .d-icon, .fa) {
+  color: rgb(248 250 252 / 0.96) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
   .user-menu.menu-panel
   :is(.quick-access-panel, [id^="quick-access-"]) {
   background:
