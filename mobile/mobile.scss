@@ -12277,3 +12277,141 @@ html:not(.erebyx-admin-route)
   :is(.badge-icon, .d-icon, .fa) {
   color: rgb(248 250 252 / 0.96) !important;
 }
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .user-menu.menu-panel
+  :is(.quick-access-panel, [id^="quick-access-"]) {
+  background:
+    var(--erebyx-particle-stars),
+    linear-gradient(135deg, rgb(68 146 252 / 0.08), rgb(117 3 224 / 0.06)),
+    rgb(4 8 22 / 0.96) !important;
+  background-size:
+    24rem 18rem,
+    auto,
+    auto !important;
+  color: rgb(248 250 252 / 0.94) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .user-menu.menu-panel
+  .user-menu-tab
+  .d-icon {
+  color: rgb(203 213 225 / 0.92) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .user-menu.menu-panel
+  .user-menu-tab.active
+  .d-icon {
+  color: rgb(248 250 252 / 0.98) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .user-menu.menu-panel
+  :is(.show-all, .notifications-dismiss, .panel-body-bottom .btn) {
+  border-color: rgb(250 178 50 / 0.18) !important;
+  background:
+    radial-gradient(circle at 50% 35%, rgb(250 178 50 / 0.12), transparent 60%),
+    rgb(3 7 18 / 0.82) !important;
+  color: rgb(248 250 252 / 0.94) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .user-menu.menu-panel
+  :is(.show-all, .notifications-dismiss, .panel-body-bottom .btn)
+  .d-icon {
+  color: rgb(248 250 252 / 0.9) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #quick-access-profile
+  .user-menu-button-profile {
+  display: grid !important;
+  gap: 0.25rem !important;
+  margin: 0 !important;
+  padding: 0.35rem !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #quick-access-profile
+  .user-menu-button-profile
+  > li {
+  display: flex !important;
+  align-items: center !important;
+  min-height: 2.75rem !important;
+  margin: 0 !important;
+  border-radius: 8px !important;
+  border: 1px solid transparent !important;
+  background: rgb(5 8 18 / 0.62) !important;
+  color: rgb(248 250 252 / 0.94) !important;
+  overflow: hidden !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #quick-access-profile
+  .user-menu-button-profile
+  > li:hover,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #quick-access-profile
+  .user-menu-button-profile
+  > li:focus-within {
+  border-color: rgb(68 146 252 / 0.24) !important;
+  background: rgb(7 12 28 / 0.86) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #quick-access-profile
+  .user-menu-button-profile
+  :is(a, button, .profile-tab-btn) {
+  color: rgb(248 250 252 / 0.94) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #quick-access-profile
+  .user-menu-button-profile
+  .profile-tab-btn {
+  flex: 0 0 2.75rem !important;
+  width: 2.75rem !important;
+  min-width: 2.75rem !important;
+  height: 2.75rem !important;
+  border: 0 !important;
+  border-radius: 8px 0 0 8px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #quick-access-profile
+  .user-menu-button-profile
+  :is(a, button) {
+  min-height: 2.75rem !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #quick-access-profile
+  .user-menu-button-profile
+  .d-icon {
+  color: rgb(203 213 225 / 0.94) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #quick-access-profile
+  .user-menu-button-profile
+  hr {
+  margin: 0.25rem 0 !important;
+  border-color: rgb(68 146 252 / 0.16) !important;
+}
