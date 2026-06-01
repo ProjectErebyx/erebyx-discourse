@@ -657,7 +657,7 @@
       </a>
       <a class="erebyx-arche-map__room erebyx-arche-map__room--announcements" href="/c/announcements/6">
         <span class="erebyx-arche-map__sigil" aria-hidden="true">◈</span>
-        <span class="erebyx-arche-map__name">Announcements</span>
+        <span class="erebyx-arche-map__name">Signal Room</span>
       </a>
       <a class="erebyx-arche-map__room erebyx-arche-map__room--features" href="/c/feature-requests/7">
         <span class="erebyx-arche-map__sigil" aria-hidden="true">⚙</span>
@@ -1018,7 +1018,7 @@
 
         [
           ["start", "⧉", "Genesis Lounge", "/c/genesis-lounge/9"],
-          ["announcements", "◈", "Announcements", "/c/announcements/6"],
+          ["announcements", "◈", "Signal Room", "/c/announcements/6"],
           ["features", "⚙", "Feature Requests", "/c/feature-requests/7"],
           ["bugs", "✴", "Bug Reports", "/c/bug-reports/8"],
           ["arche", "✦", "Start Here", "/c/start-here/5"]
@@ -1223,6 +1223,15 @@
         .replace(/^-+|-+$/g, "");
     };
 
+    var displayCategoryName = function (category) {
+      var slug = category && category.slug ? category.slug : "";
+      var name = category && category.name ? category.name : "";
+      if (slug === "announcements" || /^announcements$/i.test(name)) {
+        return "Signal Room";
+      }
+      return name || "Threads";
+    };
+
     var formatShortDate = function (dateValue) {
       var date = dateValue ? new Date(dateValue) : null;
       if (!date || isNaN(date.getTime())) return "";
@@ -1291,7 +1300,7 @@
 
     var buildHomepageTopicRow = function (topic, usersById, categoriesById) {
       var category = categoriesById[topic.category_id] || {};
-      var categoryName = category.name || "Threads";
+      var categoryName = displayCategoryName(category);
       var categoryColor = category.color ? "#" + category.color : "#fab232";
       var row = createNode(
         "tr",
@@ -1950,6 +1959,36 @@
       });
     }
 
+    function aliasSignalRoomLabels() {
+      var body = document.body;
+      if (!body || body.classList.contains("admin-interface")) return;
+
+      document.querySelectorAll([
+        ".category-name",
+        ".badge-category__name",
+        ".category-title-link",
+        ".category-title-name",
+        ".category-title-header .category-title",
+        ".sidebar-section-link-content-text",
+        ".erebyx-arche-map__room--announcements .erebyx-arche-map__name"
+      ].join(", ")).forEach(function (node) {
+        var text = (node.textContent || "").replace(/\s+/g, " ").trim();
+        if (/^Announcements$/i.test(text)) {
+          node.textContent = "Signal Room";
+          node.setAttribute("data-erebyx-label-alias", "announcements");
+        }
+      });
+
+      document.querySelectorAll('a[href*="/c/announcements/6"], a[href*="/c/announcements"]').forEach(function (link) {
+        var label = (link.getAttribute("aria-label") || link.getAttribute("title") || "").replace(/\s+/g, " ").trim();
+        if (/Announcements/i.test(label)) {
+          var nextLabel = label.replace(/Announcements/gi, "Signal Room");
+          link.setAttribute("aria-label", nextLabel);
+          link.setAttribute("title", nextLabel);
+        }
+      });
+    }
+
     function labelCreateButton() {
       var body = document.body;
       if (!body || body.classList.contains("admin-interface")) return;
@@ -1965,7 +2004,7 @@
       } else if (body.classList.contains("category-start-here")) {
         label = "New introduction";
       } else if (body.classList.contains("category-announcements")) {
-        label = "New announcement";
+        label = "New signal";
       } else if (body.classList.contains("category-genesis-lounge")) {
         label = "New post";
       }
@@ -2024,6 +2063,7 @@
       tagReadingTime();
       tagTopicKind();
       tagArtifactKickers();
+      aliasSignalRoomLabels();
       labelCreateButton();
     }
 
