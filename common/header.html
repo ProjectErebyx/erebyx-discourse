@@ -1969,12 +1969,13 @@
         ".category-title-link",
         ".category-title-name",
         ".category-title-header .category-title",
+        ".badge-category__wrapper",
         ".sidebar-section-link-content-text",
         ".erebyx-arche-map__room--announcements .erebyx-arche-map__name"
       ].join(", ")).forEach(function (node) {
         var text = (node.textContent || "").replace(/\s+/g, " ").trim();
-        if (/^Announcements$/i.test(text)) {
-          node.textContent = "Signal Room";
+        if (/Announcements/i.test(text)) {
+          node.textContent = text.replace(/Announcements/gi, "Signal Room");
           node.setAttribute("data-erebyx-label-alias", "announcements");
         }
       });
