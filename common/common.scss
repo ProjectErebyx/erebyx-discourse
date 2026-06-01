@@ -37346,6 +37346,16 @@ html:not(.erebyx-admin-route) body[data-erebyx-route="discovery"]:not(.admin-int
       .loading-container {
         flex: 1 1 auto !important;
         grid-template-columns: minmax(0, 1fr) !important;
+
+        > .ember-view {
+          box-sizing: border-box !important;
+          inline-size: 100% !important;
+          width: 100% !important;
+          max-inline-size: 100% !important;
+          max-width: 100% !important;
+          min-width: 0 !important;
+          justify-self: stretch !important;
+        }
       }
 
       table.topic-list.topic-list {
@@ -37360,6 +37370,12 @@ html:not(.erebyx-admin-route) body[data-erebyx-route="discovery"]:not(.admin-int
           display: grid !important;
           grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
         }
+      }
+
+      > .btn-more {
+        align-self: flex-start !important;
+        width: auto !important;
+        max-width: max-content !important;
       }
     }
   }
