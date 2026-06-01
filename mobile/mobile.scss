@@ -12325,6 +12325,31 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
+  #main-outlet#main-outlet
+  > .container.show-badge
+  ~ :is(.user-card.show-badges.no-bg, .group-card.show-badges.no-bg) {
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control.closed.hide-preview {
+  height: 0 !important;
+  min-height: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
   .user-menu.menu-panel
   :is(.quick-access-panel, [id^="quick-access-"]) {
   background:
