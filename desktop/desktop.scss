@@ -17085,6 +17085,15 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
+  body.has-sidebar-page.category:not(.archetype-regular):not(.admin-interface)
+  .category-title-header {
+  box-sizing: border-box !important;
+  width: calc(100vw - var(--erebyx-sidebar-width)) !important;
+  max-width: calc(100vw - var(--erebyx-sidebar-width)) !important;
+  margin-left: var(--erebyx-sidebar-width) !important;
+}
+
+html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   #main-outlet-wrapper#main-outlet-wrapper
   #main-outlet#main-outlet {
