@@ -19275,6 +19275,15 @@ html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   #quick-access-profile
   .user-menu-button-profile
+  :is(a, button, span, div, .item-label, .item-description, .d-button-label) {
+  color: rgb(248 250 252 / 0.96) !important;
+  opacity: 1 !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #quick-access-profile
+  .user-menu-button-profile
   .profile-tab-btn {
   flex: 1 1 auto !important;
   width: 100% !important;
