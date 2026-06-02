@@ -12955,3 +12955,52 @@ html:not(.erebyx-admin-route)
   max-width: 100% !important;
   min-width: 0 !important;
 }
+
+html:not(.erebyx-admin-route)
+  body.navigation-topics:not(.admin-interface)
+  #main-outlet#main-outlet
+  > .list-controls.list-controls
+  > .container.container {
+  overflow: hidden !important;
+  border-color: rgb(250 178 50 / 0.28) !important;
+  background:
+    linear-gradient(90deg, rgb(3 7 18 / 0.54), rgb(3 7 18 / 0.18) 50%, rgb(3 7 18 / 0.5)),
+    linear-gradient(180deg, rgb(3 7 18 / 0.12), rgb(3 7 18 / 0.42)),
+    url($genesis_river_banner) center / cover no-repeat,
+    rgb(10 6 16) !important;
+  box-shadow:
+    inset 0 1px 0 rgb(255 231 163 / 0.16),
+    inset 0 -1px 0 rgb(0 0 0 / 0.5),
+    0 28px 80px -62px rgb(250 178 50 / 0.58) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.navigation-topics:not(.admin-interface)
+  #main-outlet#main-outlet
+  > .list-controls.list-controls
+  .navigation-container.navigation-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: nowrap !important;
+  gap: clamp(0.45rem, 1.6vw, 0.75rem) !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.navigation-topics:not(.admin-interface)
+  #main-outlet#main-outlet
+  > .list-controls.list-controls
+  .navigation-container.navigation-container::before,
+html:not(.erebyx-admin-route)
+  body.navigation-topics:not(.admin-interface)
+  #main-outlet#main-outlet
+  > .list-controls.list-controls
+  .navigation-container.navigation-container::after {
+  content: none !important;
+  display: none !important;
+}
