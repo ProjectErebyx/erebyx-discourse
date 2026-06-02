@@ -12141,9 +12141,14 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
+  :is(#user-card.user-card.show-badges.no-bg, #group-card.group-card.show-badges.no-bg),
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
   #main-outlet#main-outlet
   > .container.show-badge
   ~ :is(.user-card.show-badges.no-bg, .group-card.show-badges.no-bg) {
+  display: none !important;
+  width: 0 !important;
   height: 0 !important;
   min-height: 0 !important;
   margin: 0 !important;
