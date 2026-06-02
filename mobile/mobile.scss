@@ -12652,6 +12652,9 @@ html:not(.erebyx-admin-route)
     .nav-pills > li > a,
     .nav-pills > li button,
     .navigation-controls .btn,
+    .navigation-controls .btn-primary,
+    .navigation-controls .d-combo-button-button,
+    .navigation-controls #create-topic,
     .navigation-controls button
   ) {
   border-color: rgb(250 178 50 / 0.28) !important;
