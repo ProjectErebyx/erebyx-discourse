@@ -19711,3 +19711,76 @@ html:not(.erebyx-admin-route)
     inset 0 1px 0 rgb(255 247 214 / 0.06),
     0 24px 74px -58px rgb(0 0 0 / 0.9) !important;
 }
+
+html:not(.erebyx-admin-route)
+  body.navigation-topics:not(.admin-interface)
+  #main-outlet#main-outlet
+  .container.list-container.--topic-list {
+  width: min(100%, 91rem) !important;
+  max-width: 91rem !important;
+  margin: clamp(0.95rem, 1.6vw, 1.35rem) auto 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.navigation-topics:not(.admin-interface)
+  #main-outlet#main-outlet
+  .container.list-container.--topic-list::before,
+html:not(.erebyx-admin-route)
+  body.navigation-topics:not(.admin-interface)
+  #main-outlet#main-outlet
+  .container.list-container.--topic-list::after {
+  content: none !important;
+  display: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.navigation-topics:not(.admin-interface)
+  #main-outlet#main-outlet
+  .container.list-container.--topic-list
+  :is(#list-area, .row.full-width, .contents) {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  overflow: visible !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.navigation-topics:not(.admin-interface)
+  #main-outlet#main-outlet
+  .container.list-container.--topic-list
+  table.topic-list.topic-list {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.navigation-topics:not(.admin-interface)
+  #main-outlet#main-outlet
+  .container.list-container.--topic-list
+  table.topic-list.topic-list
+  > tbody.topic-list-body {
+  width: 100% !important;
+  max-width: 100% !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  justify-content: stretch !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.navigation-topics:not(.admin-interface)
+  #main-outlet#main-outlet
+  .container.list-container.--topic-list
+  table.topic-list.topic-list
+  > tbody.topic-list-body
+  > tr.topic-list-item.topic-list-item {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
