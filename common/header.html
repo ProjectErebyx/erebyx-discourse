@@ -833,6 +833,16 @@
         };
       };
 
+      var isSidebarAllTopicsLink = function (link) {
+        if (!link) return false;
+
+        var name = (link.getAttribute("data-link-name") || "").toLowerCase();
+        var title = (link.getAttribute("title") || "").toLowerCase();
+        var text = (link.textContent || "").replace(/\s+/g, " ").trim().toLowerCase();
+
+        return name === "everything" || title === "all topics" || text === "topics";
+      };
+
       var closeSidebar = function () {
         if (!document.body || !document.body.classList.contains("has-sidebar-page")) return;
 
@@ -868,6 +878,7 @@
 
         var link = target.closest("a[href]");
         if (!link || !link.closest("#d-sidebar, .sidebar-wrapper")) return;
+        if (isSidebarAllTopicsLink(link)) return;
 
         var destination = sidebarThreadTarget(link.getAttribute("href"));
         if (!destination) return;
@@ -888,6 +899,21 @@
 
     var normalizeSidebarThreadLinks = function () {
       document.querySelectorAll("#d-sidebar a[href], .sidebar-wrapper a[href]").forEach(function (link) {
+        var isAllTopicsLink = (function () {
+          var name = (link.getAttribute("data-link-name") || "").toLowerCase();
+          var title = (link.getAttribute("title") || "").toLowerCase();
+          var text = (link.textContent || "").replace(/\s+/g, " ").trim().toLowerCase();
+          return name === "everything" || title === "all topics" || text === "topics";
+        })();
+
+        if (isAllTopicsLink) {
+          if (link.getAttribute("href") !== "/latest") {
+            link.setAttribute("href", "/latest");
+          }
+          link.removeAttribute("target");
+          return;
+        }
+
         var destination = (function () {
           var url;
           try {
