@@ -13056,6 +13056,33 @@ html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #main-outlet#main-outlet
   .discourse-reactions-reaction-button
+  :is(button, .btn, .reaction-button).btn-toggle-reaction-like
+  svg.d-icon-purple_heart {
+  display: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  .discourse-reactions-reaction-button
+  :is(button, .btn, .reaction-button).btn-toggle-reaction-like::before {
+  content: "\2665" !important;
+  position: relative !important;
+  z-index: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 1.15rem !important;
+  height: 1.15rem !important;
+  color: rgb(250 108 141) !important;
+  font: 700 1.08rem/1 Arial, sans-serif !important;
+  text-shadow: 0 0 0.42rem rgb(250 108 141 / 0.42) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  .discourse-reactions-reaction-button
   :is(button, .btn, .reaction-button)
   span[aria-hidden="true"] {
   display: none !important;
