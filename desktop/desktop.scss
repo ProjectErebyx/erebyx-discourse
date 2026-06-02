@@ -18014,7 +18014,21 @@ html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #topic-title#topic-title
   h1 {
+  box-sizing: border-box !important;
   position: static !important;
+  width: min(100%, 58rem) !important;
+  max-width: calc(100% - clamp(6rem, 14vw, 14rem)) !important;
+  margin-inline: auto !important;
+  text-align: center !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #topic-title#topic-title
+  h1
+  .fancy-title.fancy-title {
+  width: 100% !important;
+  text-align: center !important;
 }
 
 html:not(.erebyx-admin-route)
