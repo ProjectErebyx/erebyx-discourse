@@ -11778,6 +11778,7 @@ html:not(.erebyx-admin-route)
   > .header-wrapper
   > :is(button, .btn, #create-topic, .create-topic) {
   align-self: center !important;
+  margin-right: clamp(0.35rem, 1.6vw, 0.65rem) !important;
 }
 
 html:not(.erebyx-admin-route)
