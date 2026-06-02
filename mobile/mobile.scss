@@ -13201,3 +13201,31 @@ html:not(.erebyx-admin-route)
   grid-column: auto !important;
   min-width: min(100%, 13rem) !important;
 }
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(article.topic-post, article.boxed[data-user-id])
+  .topic-meta-data.topic-meta-data {
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(article.topic-post, article.boxed[data-user-id])
+  .topic-meta-data.topic-meta-data::before,
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(article.topic-post, article.boxed[data-user-id])
+  .topic-meta-data.topic-meta-data::after {
+  content: none !important;
+  display: none !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
