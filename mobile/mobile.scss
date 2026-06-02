@@ -11190,8 +11190,10 @@ html:not(.erebyx-admin-route)
   #topic-title#topic-title
   .topic-category.topic-category {
   position: absolute !important;
-  right: clamp(0.7rem, 3vw, 1rem) !important;
-  bottom: 0.75rem !important;
+  top: calc(50% + 1.75rem) !important;
+  left: clamp(0.7rem, 3vw, 1rem) !important;
+  right: auto !important;
+  bottom: auto !important;
   transform: none !important;
 }
 

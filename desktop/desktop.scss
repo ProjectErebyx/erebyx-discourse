@@ -18047,9 +18047,10 @@ html:not(.erebyx-admin-route)
   #topic-title#topic-title
   .topic-category.topic-category {
   position: absolute !important;
-  top: 50% !important;
-  right: clamp(1rem, 2vw, 1.55rem) !important;
-  transform: translateY(-50%) !important;
+  top: calc(50% + 2rem) !important;
+  left: clamp(1rem, 2vw, 1.55rem) !important;
+  right: auto !important;
+  transform: none !important;
 }
 
 html:not(.erebyx-admin-route)
