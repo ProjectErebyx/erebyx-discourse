@@ -12154,6 +12154,20 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  :is(#user-card.user-card.show-badges.no-bg, #group-card.group-card.show-badges.no-bg) {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+
+html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   #reply-control.closed.hide-preview {
   height: 0 !important;
