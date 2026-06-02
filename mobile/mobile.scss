@@ -12629,6 +12629,8 @@ html:not(.erebyx-admin-route)
   max-width: min(38vw, 20rem) !important;
   min-width: 0 !important;
   flex-wrap: nowrap !important;
+  opacity: 1 !important;
+  transition: none !important;
 }
 
 html:not(.erebyx-admin-route)
