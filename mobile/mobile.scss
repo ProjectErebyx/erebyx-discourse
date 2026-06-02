@@ -11418,7 +11418,13 @@ html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #main-outlet#main-outlet
   :is(#suggested-topics, .more-topics__container, .more-topics)
-  :is(.topics, .ember-view, .loading-container),
+  :is(.topics, .loading-container),
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(#suggested-topics, .more-topics__container, .more-topics)
+  :is(.topics, .loading-container)
+  > *,
 html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #main-outlet#main-outlet
@@ -11694,7 +11700,7 @@ html:not(.erebyx-admin-route)
   .custom-homepage-columns.custom-homepage-columns
   > .col
   .loading-container
-  > .ember-view {
+  > * {
   box-sizing: border-box !important;
   inline-size: 100% !important;
   width: 100% !important;
@@ -11793,7 +11799,7 @@ html:not(.erebyx-admin-route)
     overflow: hidden !important;
   }
 
-  > .col > .loading-container > .ember-view,
+  > .col > .loading-container > *,
   > .col table.topic-list.topic-list,
   > .col table.topic-list.topic-list > tbody.topic-list-body {
     box-sizing: border-box !important;
