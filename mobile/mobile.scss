@@ -12602,6 +12602,11 @@ html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #main-outlet#main-outlet
   .more-topics__container.more-topics__container
+  > .more-topics__browse-more,
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  .more-topics__container.more-topics__container
   #suggested-topics.more-topics__list
   .more-topics__browse-more {
   margin: 0 !important;
