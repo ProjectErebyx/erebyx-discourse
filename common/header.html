@@ -1178,6 +1178,7 @@
     var homeThreadCategories = null;
     var homeThreadCategoriesPromise = null;
     var homeThreadJsonCache = {};
+    var relatedTopicPosterCache = {};
     var HOME_THREAD_JSON_CACHE_MS = 30000;
 
     var isHomePath = function () {
@@ -1286,6 +1287,30 @@
       return "/t/" + (topic.slug || "topic") + "/" + topic.id + "/" + (topic.highest_post_number || 1);
     };
 
+    var buildPosterCell = function (topic, usersById) {
+      var posters = createNode("td", "posters topic-list-data");
+      (topic.posters || []).slice(0, 3).forEach(function (poster) {
+        var user = usersById[poster.user_id] || {};
+        var username = user.username || user.name || "";
+        var posterLink = createNode("a", "latest single");
+        posterLink.href = username ? "/u/" + encodeURIComponent(username) : topicUrl(topic);
+        posterLink.setAttribute("aria-label", username || "Topic participant");
+        var template = user.avatar_template || poster.avatar_template;
+        if (template) {
+          var avatar = createNode("img", "avatar");
+          avatar.src = avatarUrl(template, 48);
+          avatar.alt = "";
+          avatar.width = 48;
+          avatar.height = 48;
+          posterLink.appendChild(avatar);
+        } else {
+          posterLink.appendChild(createNode("span", "avatar", (username || "?").charAt(0).toUpperCase()));
+        }
+        posters.appendChild(posterLink);
+      });
+      return posters;
+    };
+
     var addCategoryToMap = function (map, category) {
       if (!category || !category.id) return;
       map[category.id] = category;
@@ -1364,27 +1389,7 @@
       main.appendChild(bottomLine);
       row.appendChild(main);
 
-      var posters = createNode("td", "posters topic-list-data");
-      (topic.posters || []).slice(0, 3).forEach(function (poster) {
-        var user = usersById[poster.user_id] || {};
-        var username = user.username || user.name || "";
-        var posterLink = createNode("a", "latest single");
-        posterLink.href = username ? "/u/" + encodeURIComponent(username) : topicUrl(topic);
-        posterLink.setAttribute("aria-label", username || "Topic participant");
-        var template = user.avatar_template || poster.avatar_template;
-        if (template) {
-          var avatar = createNode("img", "avatar");
-          avatar.src = avatarUrl(template, 48);
-          avatar.alt = "";
-          avatar.width = 48;
-          avatar.height = 48;
-          posterLink.appendChild(avatar);
-        } else {
-          posterLink.appendChild(createNode("span", "avatar", (username || "?").charAt(0).toUpperCase()));
-        }
-        posters.appendChild(posterLink);
-      });
-      row.appendChild(posters);
+      row.appendChild(buildPosterCell(topic, usersById));
 
       var replies = createNode("td", "num posts-map posts topic-list-data", compactNumber(topic.reply_count));
       replies.setAttribute("title", "Replies");
@@ -1531,6 +1536,63 @@
       }
     };
 
+    var enhanceRelatedTopicPosters = function () {
+      if (!document.body || !document.body.classList.contains("archetype-regular")) return;
+
+      document.querySelectorAll(
+        ".more-topics__container tr.topic-list-item[data-topic-id], .more-topics tr.topic-list-item[data-topic-id], #suggested-topics tr.topic-list-item[data-topic-id]"
+      ).forEach(function (row) {
+        if (row.querySelector("td.posters")) return;
+        if (row.getAttribute("data-erebyx-posters-loading") === "true") return;
+
+        var topicId = row.getAttribute("data-topic-id");
+        var topicLink = row.querySelector(".raw-topic-link[href], a.title[href]");
+        if (!topicId || !topicLink) return;
+
+        row.setAttribute("data-erebyx-posters-loading", "true");
+        var href = topicLink.getAttribute("href") || "";
+        var jsonUrl = href.replace(/\/\d+([?#].*)?$/, ".json$1");
+        if (!/\.json(?:[?#]|$)/.test(jsonUrl)) jsonUrl = "/t/" + encodeURIComponent(topicId) + ".json";
+
+        var cached = relatedTopicPosterCache[topicId];
+        var promise = cached ? Promise.resolve(cached) : requestJson(jsonUrl).then(function (data) {
+          relatedTopicPosterCache[topicId] = data;
+          return data;
+        });
+
+        promise
+          .then(function (data) {
+            if (!row.parentNode || row.querySelector("td.posters")) return;
+            var firstPost = data && data.post_stream && data.post_stream.posts ? data.post_stream.posts[0] : null;
+            if (!firstPost) return;
+
+            var topic = {
+              id: data.id || topicId,
+              slug: data.slug || "",
+              highest_post_number: data.highest_post_number || 1,
+              posters: [{
+                user_id: firstPost.user_id,
+                avatar_template: firstPost.avatar_template
+              }]
+            };
+            var usersById = {};
+            usersById[firstPost.user_id] = {
+              username: firstPost.username,
+              name: firstPost.name,
+              avatar_template: firstPost.avatar_template
+            };
+
+            var cell = buildPosterCell(topic, usersById);
+            var statsCell = row.querySelector("td.num, td.posts-map, td.activity");
+            row.insertBefore(cell, statsCell || row.children[1] || null);
+            row.removeAttribute("data-erebyx-posters-loading");
+          })
+          .catch(function () {
+            row.removeAttribute("data-erebyx-posters-loading");
+          });
+      });
+    };
+
     // ---- 4. Run on initial load + on Discourse SPA route change ----
     var run = function () {
       clusterPosts();
@@ -1544,6 +1606,7 @@
       enhanceCategoryTopicExcerpts();
       ensureTopicBackButton();
       enhanceHomepageThreadColumn();
+      enhanceRelatedTopicPosters();
     };
 
     var scheduleRun = function () {
