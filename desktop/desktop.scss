@@ -18664,6 +18664,15 @@ html:not(.erebyx-admin-route)
   body[data-erebyx-route="discovery"]:not(.admin-interface)
   #main-outlet#main-outlet
   .custom-homepage-columns.custom-homepage-columns
+  > .col-2.erebyx-home-thread-feed
+  > .header-wrapper.erebyx-home-thread-header {
+  min-height: 4.1875rem !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .custom-homepage-columns.custom-homepage-columns
   > .col
   > .header-wrapper
   > :is(button, .btn, #create-topic, .create-topic) {
