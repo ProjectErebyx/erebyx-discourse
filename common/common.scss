@@ -36452,6 +36452,21 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__logo-mark 
   display: none !important;
 }
 
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .d-header
+  :is(.home-logo-wrapper-outlet, .title, .site-text-logo, #site-logo, .logo-big) {
+  display: none !important;
+  visibility: hidden !important;
+  inline-size: 0 !important;
+  block-size: 0 !important;
+  min-inline-size: 0 !important;
+  min-block-size: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
 @media (max-width: 520px) {
   html:not(.erebyx-admin-route)
     body:not(.admin-interface)
