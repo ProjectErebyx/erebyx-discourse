@@ -1950,7 +1950,6 @@
         ".category-title-link",
         ".category-title-name",
         ".category-title-header .category-title",
-        ".badge-category__wrapper",
         ".sidebar-section-link-content-text",
         ".erebyx-arche-map__room--announcements .erebyx-arche-map__name"
       ].join(", ")).forEach(function (node) {
@@ -1959,6 +1958,40 @@
           node.textContent = text.replace(/Announcements/gi, "Signal Room");
           node.setAttribute("data-erebyx-label-alias", "announcements");
         }
+      });
+
+      document.querySelectorAll(".badge-category__wrapper").forEach(function (wrapper) {
+        var wrapperText = (wrapper.textContent || "").replace(/\s+/g, " ").trim();
+        if (!/(Announcements|Signal Room)/i.test(wrapperText)) return;
+
+        var nameNode = wrapper.querySelector(".badge-category__name");
+        if (nameNode) {
+          nameNode.textContent = (nameNode.textContent || "").replace(/Announcements/gi, "Signal Room");
+          wrapper.setAttribute("data-erebyx-label-alias", "announcements");
+          return;
+        }
+
+        var countMatch = wrapperText.match(/×\s*\d+/);
+        var countText = countMatch ? countMatch[0] : "";
+        var badge = document.createElement("span");
+        badge.className = "badge-category --style-square";
+        badge.setAttribute("data-category-id", "6");
+        badge.setAttribute("data-drop-close", "true");
+
+        var badgeName = document.createElement("span");
+        badgeName.className = "badge-category__name";
+        badgeName.textContent = "✧ Signal Room";
+        badge.appendChild(badgeName);
+
+        wrapper.textContent = "";
+        wrapper.appendChild(badge);
+        if (countText) {
+          var count = document.createElement("span");
+          count.className = "topic-count";
+          count.textContent = countText;
+          wrapper.appendChild(count);
+        }
+        wrapper.setAttribute("data-erebyx-label-alias", "announcements");
       });
 
       document.querySelectorAll('a[href*="/c/announcements/6"], a[href*="/c/announcements"]').forEach(function (link) {
