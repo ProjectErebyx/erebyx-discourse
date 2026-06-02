@@ -18013,6 +18013,17 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #topic-title#topic-title
+  .title-wrapper.title-wrapper {
+  display: block !important;
+  width: 100% !important;
+  max-width: min(80rem, calc(100vw - 8rem)) !important;
+  margin-inline: auto !important;
+  text-align: center !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #topic-title#topic-title
   h1 {
   box-sizing: border-box !important;
   position: static !important;
@@ -18029,6 +18040,16 @@ html:not(.erebyx-admin-route)
   .fancy-title.fancy-title {
   width: 100% !important;
   text-align: center !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #topic-title#topic-title
+  .topic-category.topic-category {
+  position: absolute !important;
+  top: 50% !important;
+  right: clamp(1rem, 2vw, 1.55rem) !important;
+  transform: translateY(-50%) !important;
 }
 
 html:not(.erebyx-admin-route)
