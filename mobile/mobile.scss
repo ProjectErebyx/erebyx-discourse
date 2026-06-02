@@ -11327,12 +11327,9 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #topic-title#topic-title {
-  background:
-    linear-gradient(90deg, rgb(0 0 0 / 0.48), rgb(0 0 0 / 0.08) 18%, rgb(0 0 0 / 0.08) 82%, rgb(0 0 0 / 0.52)),
-    radial-gradient(ellipse at center, rgb(3 7 18 / 0.08), rgb(3 7 18 / 0.48) 74%),
-    url($topic_columns_banner) center / cover no-repeat,
-    rgb(8 10 16) !important;
-  background-size: auto, auto, cover, auto !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 html:not(.erebyx-admin-route)
