@@ -19906,12 +19906,23 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   #reply-control#reply-control.open:not(.fullscreen, .minimized)
+  .d-editor-textarea-wrapper,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control#reply-control.open.draft:not(.fullscreen, .minimized)
+  .d-editor-textarea-wrapper {
+  overflow: hidden !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #reply-control#reply-control.open:not(.fullscreen, .minimized)
   :is(.d-editor-input, textarea.d-editor-input, .ProseMirror),
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
   #reply-control#reply-control.open.draft:not(.fullscreen, .minimized)
   :is(.d-editor-input, textarea.d-editor-input, .ProseMirror) {
-  min-height: clamp(14rem, 34dvh, 27rem) !important;
+  min-height: clamp(12rem, 30dvh, 24rem) !important;
   max-height: 100% !important;
 }
 
