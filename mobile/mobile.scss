@@ -12499,39 +12499,3 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) .d-header .panel {
   top: 0.3rem !important;
   right: 0.75rem !important;
 }
-
-html:not(.erebyx-admin-route)
-  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
-  #main-outlet
-  > .list-controls
-  .navigation-container.category-navigation {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  flex-wrap: nowrap !important;
-  gap: clamp(0.45rem, 1.6vw, 0.75rem) !important;
-  min-height: 0 !important;
-}
-
-html:not(.erebyx-admin-route)
-  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
-  #main-outlet
-  > .list-controls
-  .category-breadcrumb {
-  flex: 0 1 auto !important;
-  width: auto !important;
-  max-width: min(38vw, 20rem) !important;
-  min-width: 0 !important;
-  flex-wrap: nowrap !important;
-}
-
-html:not(.erebyx-admin-route)
-  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
-  #main-outlet
-  > .list-controls
-  :is(.nav-pills, .navigation-controls) {
-  flex: 0 0 auto !important;
-  flex-wrap: nowrap !important;
-  width: auto !important;
-  min-width: 0 !important;
-}
