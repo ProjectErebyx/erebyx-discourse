@@ -16809,6 +16809,13 @@ html:not(.erebyx-admin-route)
 
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
+  .erebyx-arche-map__room {
+  --room-accent: rgb(196 181 253) !important;
+  --room-glow: rgb(196 181 253 / 0.66) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
   #main-outlet#main-outlet
   > .erebyx-arche-map.erebyx-arche-map {
   min-height: clamp(30rem, 46vw, 41.5rem) !important;
