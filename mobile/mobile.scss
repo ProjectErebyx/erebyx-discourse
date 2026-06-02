@@ -12561,6 +12561,7 @@ html:not(.erebyx-admin-route)
   .more-topics__container.more-topics__container {
   border: 1px solid rgb(250 178 50 / 0.34) !important;
   border-radius: 8px !important;
+  padding: 0 !important;
   background:
     var(--erebyx-particle-stars, none),
     radial-gradient(circle at 50% 0%, rgb(68 146 252 / 0.11), transparent 28rem),
@@ -12595,6 +12596,16 @@ html:not(.erebyx-admin-route)
   border-bottom: 1px solid rgb(250 178 50 / 0.24) !important;
   border-radius: 0 !important;
   box-shadow: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  .more-topics__container.more-topics__container
+  #suggested-topics.more-topics__list
+  .more-topics__browse-more {
+  margin: 0 !important;
+  border-radius: 0 !important;
 }
 
 html:not(.erebyx-admin-route)
