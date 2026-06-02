@@ -10868,6 +10868,7 @@ html:not(.erebyx-admin-route)
   > .col
   > .header-wrapper {
   border-bottom: 1px solid rgb(250 178 50 / 0.24) !important;
+  min-height: 4.1875rem !important;
   background:
     linear-gradient(90deg, rgb(3 7 18 / 0.66), rgb(3 7 18 / 0.24) 48%, rgb(3 7 18 / 0.58)),
     linear-gradient(180deg, rgb(3 7 18 / 0.1), rgb(3 7 18 / 0.42)),
