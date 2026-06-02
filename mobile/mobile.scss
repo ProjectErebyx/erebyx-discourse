@@ -12490,3 +12490,14 @@ html:not(.erebyx-admin-route)
   box-shadow: none !important;
   overflow: hidden !important;
 }
+
+html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__account {
+  display: none !important;
+}
+
+html:not(.erebyx-admin-route) body:not(.admin-interface) .d-header .panel {
+  right: max(
+    0.75rem,
+    calc((100vw - min(calc(100vw - 2rem), 74rem)) / 2 - clamp(2.75rem, 5vw, 5rem))
+  ) !important;
+}
