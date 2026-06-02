@@ -11421,13 +11421,9 @@ html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #topic-footer-buttons#topic-footer-buttons
   .topic-footer-main-buttons {
-  border-color: rgb(250 178 50 / 0.18) !important;
-  background:
-    linear-gradient(90deg, rgb(250 178 50 / 0.08), transparent 6rem),
-    rgb(9 8 6 / 0.58) !important;
-  box-shadow:
-    inset 0 1px 0 rgb(255 247 214 / 0.05),
-    0 20px 64px -58px rgb(0 0 0 / 0.96) !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 html:not(.erebyx-admin-route)
