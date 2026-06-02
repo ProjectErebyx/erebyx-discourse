@@ -11771,6 +11771,16 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .custom-homepage-columns.custom-homepage-columns
+  > .col
+  > .header-wrapper
+  > :is(button, .btn, #create-topic, .create-topic) {
+  align-self: center !important;
+}
+
+html:not(.erebyx-admin-route)
   body.navigation-categories.categories-list:not(.admin-interface)
   #main-outlet#main-outlet
   .custom-homepage-columns.custom-homepage-columns {
