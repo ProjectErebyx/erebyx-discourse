@@ -18008,6 +18008,21 @@ html:not(.erebyx-admin-route)
   max-width: 100% !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(article.topic-post, article.boxed[data-user-id], .topic-post.clearfix)::before,
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  :is(article.topic-post, article.boxed[data-user-id], .topic-post.clearfix)::after {
+  content: none !important;
+  display: none !important;
 }
 
 html:not(.erebyx-admin-route)
