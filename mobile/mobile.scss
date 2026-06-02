@@ -12639,6 +12639,17 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
+  body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+  #main-outlet#main-outlet
+  table.topic-list.topic-list
+  > tbody.topic-list-body
+  > tr.topic-list-item.topic-list-item {
+  background:
+    radial-gradient(circle at 16% 0%, rgb(250 178 50 / 0.16), transparent 16rem),
+    linear-gradient(135deg, rgb(38 24 7 / 0.9), rgb(8 7 12 / 0.96) 58%, rgb(5 8 18 / 0.94)) !important;
+}
+
+html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #main-outlet#main-outlet
   .more-topics__container.more-topics__container
