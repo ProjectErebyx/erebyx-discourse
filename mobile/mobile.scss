@@ -11789,6 +11789,54 @@ html:not(.erebyx-admin-route)
   min-height: 4.1875rem !important;
 }
 
+@media (width <= 760px) {
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    .custom-homepage-columns.custom-homepage-columns
+    > .col-2.erebyx-home-thread-feed
+    > .header-wrapper.erebyx-home-thread-header {
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: clamp(0.35rem, 1.6vw, 0.5rem) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    .erebyx-home-thread-heading {
+    width: auto !important;
+    flex: 0 0 auto !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    .erebyx-home-thread-tabs {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    .erebyx-home-thread-tabs::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    .custom-homepage-columns.custom-homepage-columns
+    > .col-2.erebyx-home-thread-feed
+    > .header-wrapper.erebyx-home-thread-header
+    > .btn {
+    margin-left: auto !important;
+  }
+}
+
 html:not(.erebyx-admin-route)
   body[data-erebyx-route="discovery"]:not(.admin-interface)
   #main-outlet#main-outlet
