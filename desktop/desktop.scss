@@ -19429,6 +19429,64 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
+  body:is(
+    .category-erebus-build-log,
+    .category-nyx-corner,
+    .category-notes-from-the-arche,
+    .category-site-feedback,
+    .category-staff
+  ).category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+  .category-title-header[class*="category-banner-"] {
+  place-items: center start !important;
+  justify-items: start !important;
+  justify-content: start !important;
+  align-content: center !important;
+  text-align: left !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:is(
+    .category-erebus-build-log,
+    .category-nyx-corner,
+    .category-notes-from-the-arche,
+    .category-site-feedback,
+    .category-staff
+  ).category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+  .category-title-header[class*="category-banner-"]
+  .category-title-contents {
+  grid-template-areas:
+    "title"
+    "description" !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  justify-self: start !important;
+  place-items: center start !important;
+  justify-items: start !important;
+  margin-left: clamp(1.35rem, 7vw, 6.5rem) !important;
+  text-align: left !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:is(
+    .category-erebus-build-log,
+    .category-nyx-corner,
+    .category-notes-from-the-arche,
+    .category-site-feedback,
+    .category-staff
+  ).category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+  .category-title-header[class*="category-banner-"]
+  :is(.category-title, .category-title-description) {
+  display: block !important;
+  width: 100% !important;
+  max-width: min(42rem, 100%) !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  justify-self: start !important;
+  justify-items: start !important;
+  place-items: center start !important;
+  text-align: left !important;
+}
+
+html:not(.erebyx-admin-route)
   body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
   #main-outlet#main-outlet
   :is(#user-card.user-card.show-badges.no-bg, #group-card.group-card.show-badges.no-bg) {
