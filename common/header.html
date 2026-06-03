@@ -1452,6 +1452,22 @@
           }
         }
         launcher.setAttribute("aria-haspopup", "menu");
+        if (launcher.getAttribute("data-erebyx-category-launcher-bound") !== "true") {
+          launcher.setAttribute("data-erebyx-category-launcher-bound", "true");
+          launcher.addEventListener("click", function (event) {
+            var panel = launcher.closest(".hamburger-panel") || launcher.closest(".menu-panel");
+            var menu = panel ? panel.querySelector(".erebyx-hamburger-categories") : document.querySelector(".erebyx-hamburger-categories");
+            if (!menu) return;
+
+            event.preventDefault();
+            event.stopPropagation();
+            if (event.stopImmediatePropagation) event.stopImmediatePropagation();
+            var opening = menu.hasAttribute("hidden");
+            closeHamburgerCategoryMenus(opening ? menu : null);
+            menu.toggleAttribute("hidden", !opening);
+            launcher.setAttribute("aria-expanded", opening ? "true" : "false");
+          }, true);
+        }
 
         var trigger = panel.querySelector('a[href="/categories"], a[href^="/categories"]');
         if (trigger) {
