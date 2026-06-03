@@ -1441,6 +1441,7 @@
             return /categories/i.test(node.textContent || "");
           })[0];
         var headerRow = categoryHeader ? (categoryHeader.closest(".sidebar-section-header-wrapper") || categoryHeader.closest(".sidebar-section-header") || categoryHeader) : null;
+        if (headerRow) headerRow.classList.add("erebyx-hamburger-native-category-header");
         var categoryDetails = panel.querySelector(".erebyx-hamburger-categories-details");
         if (!categoryDetails) {
           categoryDetails = createNode("details", "erebyx-hamburger-categories-details");
@@ -1451,6 +1452,10 @@
           } else {
             (panel.querySelector(".panel-body-contents") || panel.querySelector(".panel-body") || panel).appendChild(categoryDetails);
           }
+        }
+        var socialFooter = panel.querySelector(".erebyx-hamburger-social");
+        if (socialFooter && socialFooter.parentNode && categoryDetails.parentNode === socialFooter.parentNode) {
+          socialFooter.parentNode.insertBefore(categoryDetails, socialFooter);
         }
 
         var trigger = panel.querySelector('a[href="/categories"], a[href^="/categories"]');

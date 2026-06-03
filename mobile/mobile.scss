@@ -14121,6 +14121,10 @@ html:not(.erebyx-admin-route)
   html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     .hamburger-panel
+    .erebyx-hamburger-native-category-header,
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
     :is(
       .sidebar-section-link-wrapper.erebyx-hamburger-staff-row,
       .sidebar-section-link-wrapper.erebyx-hamburger-native-category-row
