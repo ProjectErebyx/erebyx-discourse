@@ -20662,9 +20662,21 @@ html:not(.erebyx-admin-route)
     #toggle-current-user
     img.avatar {
     border-color: rgb(96 165 250 / 0.34) !important;
+    background:
+      linear-gradient(135deg, rgb(68 146 252 / 0.16), rgb(30 41 59 / 0.18)),
+      rgb(3 7 18 / 0.92) !important;
     box-shadow:
       0 14px 34px rgb(3 7 18 / 0.44),
       inset 0 1px 0 rgb(255 255 255 / 0.12) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .d-header-icons
+    .btn
+    .d-icon {
+    color: rgb(191 219 254 / 0.92) !important;
+    fill: currentColor !important;
   }
 
   html:not(.erebyx-admin-route)
