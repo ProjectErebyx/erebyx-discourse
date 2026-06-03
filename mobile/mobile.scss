@@ -13890,7 +13890,12 @@ html:not(.erebyx-admin-route)
 
   html:not(.erebyx-admin-route)
     body:not(.admin-interface)
-    .hamburger-panel {
+    :is(.hamburger-panel, .hamburger-panel .revamped.menu-panel, .menu-panel.hamburger-panel.revamped),
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-dropdown-wrapper
+    .hamburger-panel
+    .revamped.menu-panel {
     border-color: rgb(148 163 184 / 0.12) !important;
     background:
       linear-gradient(180deg, rgb(2 6 23 / 0.98), rgb(0 0 0 / 0.98)),
@@ -13914,6 +13919,12 @@ html:not(.erebyx-admin-route)
   html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     .hamburger-panel
+    :is(.sidebar-section-header-wrapper, .sidebar-section-header, .sidebar-section-header-text, .erebyx-hamburger-social__label),
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-dropdown-wrapper
+    .hamburger-panel
+    .revamped.menu-panel
     :is(.sidebar-section-header-wrapper, .sidebar-section-header, .sidebar-section-header-text, .erebyx-hamburger-social__label) {
     color: rgb(147 197 253 / 0.62) !important;
   }
@@ -13921,6 +13932,12 @@ html:not(.erebyx-admin-route)
   html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     .hamburger-panel
+    :is(.sidebar-section-link-prefix, .sidebar-section-link-prefix .d-icon, .d-icon),
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-dropdown-wrapper
+    .hamburger-panel
+    .revamped.menu-panel
     :is(.sidebar-section-link-prefix, .sidebar-section-link-prefix .d-icon, .d-icon) {
     color: rgb(147 197 253 / 0.72) !important;
     fill: currentColor !important;
