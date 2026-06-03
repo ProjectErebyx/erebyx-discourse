@@ -1388,11 +1388,11 @@
         trigger.classList.add("erebyx-hamburger-categories-trigger");
         trigger.setAttribute("role", "button");
         trigger.setAttribute("aria-haspopup", "menu");
-        trigger.setAttribute("aria-expanded", "false");
 
         var popover = buildHamburgerCategoryMenu(panel, trigger);
         if (!popover.id) popover.id = "erebyx-hamburger-categories-" + index;
         trigger.setAttribute("aria-controls", popover.id);
+        trigger.setAttribute("aria-expanded", popover.hasAttribute("hidden") ? "false" : "true");
       });
     };
 
