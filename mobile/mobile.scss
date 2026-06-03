@@ -14089,9 +14089,16 @@ html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     .hamburger-panel
     .erebyx-hamburger-categories {
+    position: fixed !important;
+    top: 17.5rem !important;
+    left: 0.8rem !important;
+    z-index: 10020 !important;
     display: grid !important;
     gap: 0.45rem !important;
-    margin: 0.35rem 0.45rem 0.9rem !important;
+    width: min(16.4rem, calc(100vw - 4.6rem)) !important;
+    max-width: min(16.4rem, calc(100vw - 4.6rem)) !important;
+    max-height: calc(100vh - 19.5rem) !important;
+    margin: 0 !important;
     padding: 0.65rem !important;
     border: 1px solid rgb(96 165 250 / 0.28) !important;
     border-radius: 8px !important;
@@ -14102,6 +14109,7 @@ html:not(.erebyx-admin-route)
       0 18px 50px -36px rgb(0 0 0 / 0.95),
       inset 0 1px 0 rgb(255 255 255 / 0.06) !important;
     color: rgb(226 232 240 / 0.9) !important;
+    overflow: hidden !important;
   }
 
   html:not(.erebyx-admin-route)
@@ -14130,7 +14138,7 @@ html:not(.erebyx-admin-route)
     .erebyx-hamburger-categories__list {
     display: grid !important;
     gap: 0.18rem !important;
-    max-height: min(24rem, calc(100vh - 24rem)) !important;
+    max-height: calc(100vh - 23rem) !important;
     overflow: hidden auto !important;
     padding-right: 0.15rem !important;
     scrollbar-color: rgb(96 165 250 / 0.34) transparent !important;
