@@ -14093,10 +14093,23 @@ html:not(.erebyx-admin-route)
 
 /* Mobile nav trim: real menu control, text dashboard, and matched icon scale. */
 @media screen and (width <= 900px) {
+  html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav {
+    --erebyx-mobile-nav-top: max(0.38rem, env(safe-area-inset-top));
+    --erebyx-mobile-nav-control-size: 2.25rem;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav__inner {
+    align-items: center !important;
+  }
+
   html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__left {
     width: auto !important;
     min-width: 0 !important;
     max-width: none !important;
+    height: var(--erebyx-mobile-nav-control-size) !important;
+    align-items: center !important;
     gap: 0 !important;
   }
 
@@ -14111,8 +14124,8 @@ html:not(.erebyx-admin-route)
     max-width: none !important;
     flex: 0 0 auto !important;
     inline-size: max-content !important;
-    height: 2.25rem !important;
-    min-height: 2.25rem !important;
+    height: var(--erebyx-mobile-nav-control-size) !important;
+    min-height: var(--erebyx-mobile-nav-control-size) !important;
     margin-left: 2.68rem !important;
     padding: 0 0.18rem !important;
     gap: 0 !important;
@@ -14123,7 +14136,7 @@ html:not(.erebyx-admin-route)
     color: rgb(248 250 252 / 0.96) !important;
     font-size: 0.9rem !important;
     font-weight: 800 !important;
-    line-height: 1 !important;
+    line-height: var(--erebyx-mobile-nav-control-size) !important;
     letter-spacing: 0 !important;
     text-decoration: none !important;
     text-transform: none !important;
@@ -14165,10 +14178,10 @@ html:not(.erebyx-admin-route)
   html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     :is(.erebyx-nav__sidebar, .d-header-icons .header-dropdown-toggle, .d-header-icons .btn, .d-header-icons button) {
-    width: 2.25rem !important;
-    height: 2.25rem !important;
-    min-width: 2.25rem !important;
-    min-height: 2.25rem !important;
+    width: var(--erebyx-mobile-nav-control-size) !important;
+    height: var(--erebyx-mobile-nav-control-size) !important;
+    min-width: var(--erebyx-mobile-nav-control-size) !important;
+    min-height: var(--erebyx-mobile-nav-control-size) !important;
     padding: 0 !important;
     border: 0 !important;
     border-radius: 0 !important;
@@ -14176,6 +14189,13 @@ html:not(.erebyx-admin-route)
     box-shadow: none !important;
     outline: none !important;
     color: rgb(248 250 252 / 0.94) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .d-header-icons {
+    align-items: center !important;
+    min-height: var(--erebyx-mobile-nav-control-size) !important;
   }
 
   html:not(.erebyx-admin-route)
@@ -14192,7 +14212,7 @@ html:not(.erebyx-admin-route)
     .d-header-icons
     #toggle-hamburger-menu {
     position: fixed !important;
-    top: max(0.31rem, env(safe-area-inset-top)) !important;
+    top: var(--erebyx-mobile-nav-top) !important;
     left: max(0.72rem, env(safe-area-inset-left)) !important;
     z-index: 1001 !important;
   }
@@ -14222,7 +14242,7 @@ html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     .d-header-icons
     #toggle-current-user::before {
-    top: 0.4rem !important;
+    top: 0.38rem !important;
     width: 0.48rem !important;
     height: 0.48rem !important;
   }
@@ -14231,7 +14251,7 @@ html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     .d-header-icons
     #toggle-current-user::after {
-    top: 1.17rem !important;
+    top: 1.13rem !important;
     width: 1rem !important;
     height: 0.5rem !important;
   }
