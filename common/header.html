@@ -1347,7 +1347,7 @@
         })[0];
       var headerRow = categoryHeader ? (categoryHeader.closest(".sidebar-section-header-wrapper") || categoryHeader.closest(".sidebar-section-header") || categoryHeader) : null;
       var triggerRow = trigger ? (trigger.closest(".sidebar-section-link-wrapper") || trigger.closest(".sidebar-row") || trigger.parentNode) : null;
-      var insertAfter = headerRow || triggerRow;
+      var insertAfter = triggerRow || headerRow;
       var target = insertAfter && insertAfter.parentNode ? insertAfter.parentNode : (panel.querySelector(".panel-body-contents") || panel.querySelector(".panel-body") || panel);
       if (insertAfter && insertAfter.parentNode) {
         insertAfter.parentNode.insertBefore(popover, insertAfter.nextSibling);
@@ -1440,13 +1440,18 @@
           .filter(function (node) {
             return /categories/i.test(node.textContent || "");
           })[0];
-        var headerTrigger = categoryHeader ? (categoryHeader.closest(".sidebar-section-header-wrapper") || categoryHeader.closest(".sidebar-section-header") || categoryHeader) : null;
-        if (headerTrigger) {
-          headerTrigger.classList.add("erebyx-hamburger-categories-trigger");
-          headerTrigger.setAttribute("role", "button");
-          headerTrigger.setAttribute("tabindex", "0");
-          headerTrigger.setAttribute("aria-haspopup", "menu");
+        var headerRow = categoryHeader ? (categoryHeader.closest(".sidebar-section-header-wrapper") || categoryHeader.closest(".sidebar-section-header") || categoryHeader) : null;
+        var launcher = panel.querySelector(".erebyx-hamburger-categories-launcher");
+        if (!launcher) {
+          launcher = createNode("button", "erebyx-hamburger-categories-launcher erebyx-hamburger-categories-trigger", "Categories");
+          launcher.type = "button";
+          if (headerRow && headerRow.parentNode) {
+            headerRow.parentNode.insertBefore(launcher, headerRow.nextSibling);
+          } else {
+            (panel.querySelector(".panel-body-contents") || panel.querySelector(".panel-body") || panel).appendChild(launcher);
+          }
         }
+        launcher.setAttribute("aria-haspopup", "menu");
 
         var trigger = panel.querySelector('a[href="/categories"], a[href^="/categories"]');
         if (trigger) {
@@ -1455,13 +1460,11 @@
           trigger.setAttribute("aria-haspopup", "menu");
         }
 
-        var popover = buildHamburgerCategoryMenu(panel, headerTrigger || trigger);
+        var popover = buildHamburgerCategoryMenu(panel, launcher || trigger);
         if (!popover.id) popover.id = "erebyx-hamburger-categories-" + index;
         popover.setAttribute("hidden", "");
-        if (headerTrigger) {
-          headerTrigger.setAttribute("aria-controls", popover.id);
-          headerTrigger.setAttribute("aria-expanded", "false");
-        }
+        launcher.setAttribute("aria-controls", popover.id);
+        launcher.setAttribute("aria-expanded", "false");
         if (trigger) {
           trigger.setAttribute("aria-controls", popover.id);
           trigger.setAttribute("aria-expanded", "false");
