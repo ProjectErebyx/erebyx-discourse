@@ -13428,13 +13428,16 @@ html:not(.erebyx-admin-route)
     .erebyx-nav.erebyx-nav
     > .erebyx-nav__inner
     > .erebyx-nav__logo {
-    position: relative !important;
+    position: absolute !important;
+    left: 50% !important;
+    right: auto !important;
     z-index: 2 !important;
     flex: 0 1 auto !important;
     inline-size: clamp(9rem, 34vw, 12rem) !important;
     min-inline-size: 0 !important;
     max-inline-size: min(12rem, calc(100vw - 8.5rem)) !important;
     margin-inline: auto !important;
+    transform: translateX(-50%) !important;
   }
 }
 
