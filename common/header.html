@@ -1442,39 +1442,9 @@
           })[0];
         var headerRow = categoryHeader ? (categoryHeader.closest(".sidebar-section-header-wrapper") || categoryHeader.closest(".sidebar-section-header") || categoryHeader) : null;
         if (headerRow) headerRow.classList.add("erebyx-hamburger-native-category-header");
-        var categoryDetails = panel.querySelector(".erebyx-hamburger-categories-details");
-        if (!categoryDetails) {
-          categoryDetails = createNode("details", "erebyx-hamburger-categories-details");
-          var categorySummary = createNode("summary", "erebyx-hamburger-categories-launcher", "Categories");
-          categoryDetails.appendChild(categorySummary);
-          if (headerRow && headerRow.parentNode) {
-            headerRow.parentNode.insertBefore(categoryDetails, headerRow.nextSibling);
-          } else {
-            (panel.querySelector(".panel-body-contents") || panel.querySelector(".panel-body") || panel).appendChild(categoryDetails);
-          }
-        }
-        var socialFooter = panel.querySelector(".erebyx-hamburger-social");
-        if (socialFooter && socialFooter.parentNode && categoryDetails.parentNode === socialFooter.parentNode) {
-          socialFooter.parentNode.insertBefore(categoryDetails, socialFooter);
-        }
-
-        var trigger = panel.querySelector('a[href="/categories"], a[href^="/categories"]');
-        if (trigger) {
-          trigger.classList.add("erebyx-hamburger-categories-trigger");
-          trigger.setAttribute("role", "button");
-          trigger.setAttribute("aria-haspopup", "menu");
-        }
-
-        var popover = buildHamburgerCategoryMenu(panel, categoryDetails || trigger);
-        if (!popover.id) popover.id = "erebyx-hamburger-categories-" + index;
-        popover.removeAttribute("hidden");
-        if (popover.parentNode !== categoryDetails) {
-          categoryDetails.appendChild(popover);
-        }
-        if (trigger) {
-          trigger.setAttribute("aria-controls", popover.id);
-          trigger.setAttribute("aria-expanded", "false");
-        }
+        panel.querySelectorAll(".erebyx-hamburger-categories-details, .erebyx-hamburger-categories").forEach(function (node) {
+          node.remove();
+        });
       });
     };
 
