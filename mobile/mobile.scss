@@ -13365,3 +13365,100 @@ html:not(.erebyx-admin-route)
   :is(p, ul, ol, blockquote):last-child {
   margin-bottom: 0 !important;
 }
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  .erebyx-nav.erebyx-nav {
+  --erebyx-mobile-nav-control: 2.45rem;
+  --erebyx-mobile-nav-gap: 0.42rem;
+}
+
+@media screen and (width <= 900px) {
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    > .erebyx-nav__inner {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 0 !important;
+    padding-inline: max(0.5rem, env(safe-area-inset-left)) max(0.5rem, env(safe-area-inset-right)) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    .erebyx-nav__left {
+    position: absolute !important;
+    inset-inline-start: max(0.5rem, env(safe-area-inset-left)) !important;
+    top: 50% !important;
+    z-index: 3 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: var(--erebyx-mobile-nav-gap) !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: calc(50vw - 6rem) !important;
+    height: auto !important;
+    padding: 0 !important;
+    transform: translateY(-50%) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    .erebyx-nav__right {
+    display: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    :is(.erebyx-nav__sidebar, .erebyx-nav__dashboard) {
+    width: var(--erebyx-mobile-nav-control) !important;
+    height: var(--erebyx-mobile-nav-control) !important;
+    min-width: var(--erebyx-mobile-nav-control) !important;
+    min-height: var(--erebyx-mobile-nav-control) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    > .erebyx-nav__inner
+    > .erebyx-nav__logo {
+    position: relative !important;
+    z-index: 2 !important;
+    flex: 0 1 auto !important;
+    inline-size: clamp(9rem, 34vw, 12rem) !important;
+    min-inline-size: 0 !important;
+    max-inline-size: min(12rem, calc(100vw - 8.5rem)) !important;
+    margin-inline: auto !important;
+  }
+}
+
+@media screen and (width <= 520px) {
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav {
+    --erebyx-mobile-nav-control: 2.35rem;
+    --erebyx-mobile-nav-gap: 0.34rem;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    .erebyx-nav__left {
+    max-width: calc(50vw - 4.7rem) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    > .erebyx-nav__inner
+    > .erebyx-nav__logo {
+    inline-size: clamp(8.25rem, 44vw, 10.5rem) !important;
+    max-inline-size: calc(100vw - 7.25rem) !important;
+  }
+}
