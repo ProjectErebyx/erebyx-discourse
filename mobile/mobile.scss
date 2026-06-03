@@ -13262,6 +13262,8 @@ html:not(.erebyx-admin-route)
   #main-outlet#main-outlet
   .custom-homepage-columns.erebyx-home-topics-only {
   display: block !important;
+  width: min(calc(100vw - clamp(1rem, 4vw, 2rem)), 74rem) !important;
+  max-width: min(calc(100vw - clamp(1rem, 4vw, 2rem)), 74rem) !important;
 }
 
 html:not(.erebyx-admin-route)
