@@ -13486,3 +13486,82 @@ html:not(.erebyx-admin-route)
     display: none !important;
   }
 }
+
+@media screen and (width <= 900px) {
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel.menu-panel.revamped,
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .menu-panel.hamburger-panel.revamped {
+    width: min(18rem, calc(100vw - 3rem)) !important;
+    min-width: min(18rem, calc(100vw - 3rem)) !important;
+    max-width: min(18rem, calc(100vw - 3rem)) !important;
+    min-height: calc(100vh - var(--erebyx-nav-height, 3.25rem)) !important;
+    border: 0 !important;
+    border-right: 1px solid rgb(250 178 50 / 0.22) !important;
+    border-radius: 0 !important;
+    background:
+      linear-gradient(180deg, rgb(58 42 8 / 0.98), rgb(0 0 0 / 0.98)),
+      rgb(0 0 0) !important;
+    box-shadow: 24px 0 60px -40px rgb(0 0 0 / 0.92) !important;
+    color: rgb(226 232 240 / 0.82) !important;
+    overflow: hidden auto !important;
+    scrollbar-color: rgb(250 178 50 / 0.38) transparent !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel.menu-panel.revamped
+    :is(.sidebar-sections, .sidebar-section-wrapper, .sidebar-section-content, .panel-body) {
+    background:
+      linear-gradient(180deg, rgb(0 0 0 / 0.62), rgb(0 0 0 / 0.92)),
+      rgb(0 0 0) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel.menu-panel.revamped
+    :is(.sidebar-section-header-wrapper, .sidebar-section-header, .sidebar-section-header-text) {
+    color: rgb(255 231 163 / 0.52) !important;
+    font-family: var(--erebyx-font-mono) !important;
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel.menu-panel.revamped
+    :is(.sidebar-section-link-wrapper, .sidebar-section-link, .sidebar-row, a) {
+    border-radius: 7px !important;
+    color: rgb(226 232 240 / 0.82) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel.menu-panel.revamped
+    :is(.sidebar-section-link-wrapper:hover, .sidebar-section-link-wrapper:focus-within, .sidebar-section-link.active, .sidebar-section-link[aria-current="page"]) {
+    background: rgb(30 27 75 / 0.72) !important;
+    box-shadow:
+      inset 2px 0 0 rgb(250 178 50 / 0.78),
+      inset 0 1px 0 rgb(255 247 214 / 0.06) !important;
+    color: rgb(255 255 255 / 0.96) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel.menu-panel.revamped
+    :is(.sidebar-section-link-prefix, .d-icon) {
+    color: rgb(255 231 163 / 0.68) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel.menu-panel.revamped
+    :is(.panel-body-bottom, .sidebar-footer-wrapper, .sidebar-footer-container) {
+    background: rgb(0 0 0) !important;
+    border-top: 1px solid rgb(250 178 50 / 0.14) !important;
+  }
+}
