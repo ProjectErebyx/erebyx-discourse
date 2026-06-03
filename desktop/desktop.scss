@@ -20751,6 +20751,22 @@ html:not(.erebyx-admin-route)
   html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     .hamburger-panel
+    :is(.sidebar-section-link-wrapper:hover, .sidebar-section-link-wrapper:focus-within, .sidebar-section-link:focus, .sidebar-section-link:focus-visible, .sidebar-section-link.active, .sidebar-section-link[aria-current="page"]),
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-dropdown-wrapper
+    .hamburger-panel
+    .revamped.menu-panel
+    :is(.sidebar-section-link-wrapper:hover, .sidebar-section-link-wrapper:focus-within, .sidebar-section-link:focus, .sidebar-section-link:focus-visible, .sidebar-section-link.active, .sidebar-section-link[aria-current="page"]) {
+    background: rgb(30 27 75 / 0.72) !important;
+    color: rgb(255 255 255 / 0.96) !important;
+    outline: none !important;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
     .erebyx-hamburger-social__link {
     border-color: rgb(96 165 250 / 0.3) !important;
     color: rgb(191 219 254 / 0.92) !important;
