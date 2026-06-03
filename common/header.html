@@ -1469,6 +1469,15 @@
       if (!column) return;
       var header = column.querySelector(".header-wrapper");
       if (!header) return;
+      var columns = column.closest(".custom-homepage-columns");
+      if (columns) {
+        columns.classList.add("erebyx-home-topics-only");
+        Array.prototype.slice.call(columns.children).forEach(function (sibling) {
+          if (sibling !== column && sibling.classList && sibling.classList.contains("col")) {
+            columns.removeChild(sibling);
+          }
+        });
+      }
 
       if (column.getAttribute("data-erebyx-thread-filter-ready") !== "true") {
         column.setAttribute("data-erebyx-thread-filter-ready", "true");
@@ -1480,12 +1489,12 @@
 
         var titleWrap = createNode("div", "erebyx-home-thread-heading");
         titleWrap.appendChild(createNode("span", "erebyx-home-thread-heading__sigil", "✦")).setAttribute("aria-hidden", "true");
-        titleWrap.appendChild(createNode("span", "erebyx-home-thread-heading__label", "Threads"));
+        titleWrap.appendChild(createNode("span", "erebyx-home-thread-heading__label", "Topics"));
         header.appendChild(titleWrap);
 
         var filterWrap = createNode("div", "erebyx-home-thread-tabs");
         filterWrap.setAttribute("role", "tablist");
-        filterWrap.setAttribute("aria-label", "Homepage thread filters");
+        filterWrap.setAttribute("aria-label", "Homepage topic filters");
         filterWrap.addEventListener("mouseover", function (event) {
           var button = event.target.closest(".erebyx-home-thread-tab");
           if (button && filterWrap.contains(button)) showHomeThreadTooltip(filterWrap, button);
