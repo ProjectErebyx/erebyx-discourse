@@ -13309,7 +13309,7 @@ html:not(.erebyx-admin-route)
   .erebyx-welcome-topic__link {
   display: grid !important;
   gap: 0.55rem !important;
-  padding: 1rem !important;
+  padding: 1rem 1rem 0 !important;
   color: rgb(255 247 214 / 0.94) !important;
   text-decoration: none !important;
 }
@@ -13342,6 +13342,8 @@ html:not(.erebyx-admin-route)
   body[data-erebyx-route="discovery"]:not(.admin-interface)
   #main-outlet#main-outlet
   .erebyx-welcome-topic__body {
+  margin: 0 !important;
+  padding: 0.8rem 1rem 1rem !important;
   color: rgb(226 232 240 / 0.78) !important;
   font-size: 0.92rem !important;
   line-height: 1.48 !important;
@@ -13350,19 +13352,16 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body[data-erebyx-route="discovery"]:not(.admin-interface)
   #main-outlet#main-outlet
-  .erebyx-welcome-topic__cta {
-  justify-self: start !important;
-  max-width: 100% !important;
-  padding: 0.58rem 0.72rem !important;
-  border: 1px solid rgb(250 178 50 / 0.36) !important;
-  border-radius: 7px !important;
-  background: rgb(3 7 18 / 0.58) !important;
-  color: rgb(255 231 163 / 0.9) !important;
-  font-family: var(--erebyx-font-mono) !important;
-  font-size: 0.72rem !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.08em !important;
-  line-height: 1 !important;
-  text-transform: uppercase !important;
-  white-space: nowrap !important;
+  .erebyx-welcome-topic__body
+  :is(p, ul, ol, blockquote) {
+  margin-top: 0 !important;
+  margin-bottom: 0.8rem !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .erebyx-welcome-topic__body
+  :is(p, ul, ol, blockquote):last-child {
+  margin-bottom: 0 !important;
 }

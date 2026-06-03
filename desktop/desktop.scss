@@ -20137,9 +20137,8 @@ html:not(.erebyx-admin-route)
   #main-outlet#main-outlet
   .erebyx-welcome-topic__link {
   display: grid !important;
-  grid-template-columns: minmax(0, 1fr) auto !important;
-  gap: 0.55rem clamp(1rem, 2vw, 1.8rem) !important;
-  padding: clamp(1rem, 1.7vw, 1.35rem) clamp(1.1rem, 2.3vw, 1.8rem) !important;
+  gap: 0.55rem !important;
+  padding: clamp(1rem, 1.7vw, 1.35rem) clamp(1.1rem, 2.3vw, 1.8rem) 0 !important;
   color: rgb(255 247 214 / 0.94) !important;
   text-decoration: none !important;
 }
@@ -20161,7 +20160,6 @@ html:not(.erebyx-admin-route)
   body[data-erebyx-route="discovery"]:not(.admin-interface)
   #main-outlet#main-outlet
   .erebyx-welcome-topic__title {
-  grid-column: 1 !important;
   margin: 0 !important;
   color: rgb(255 255 255 / 0.96) !important;
   font-size: clamp(1.35rem, 2.4vw, 2.15rem) !important;
@@ -20173,8 +20171,9 @@ html:not(.erebyx-admin-route)
   body[data-erebyx-route="discovery"]:not(.admin-interface)
   #main-outlet#main-outlet
   .erebyx-welcome-topic__body {
-  grid-column: 1 !important;
   max-width: 64rem !important;
+  margin: 0 !important;
+  padding: clamp(0.8rem, 1.2vw, 1rem) clamp(1.1rem, 2.3vw, 1.8rem) clamp(1rem, 1.7vw, 1.35rem) !important;
   color: rgb(226 232 240 / 0.78) !important;
   font-size: clamp(0.92rem, 1.15vw, 1.05rem) !important;
   line-height: 1.55 !important;
@@ -20183,21 +20182,16 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body[data-erebyx-route="discovery"]:not(.admin-interface)
   #main-outlet#main-outlet
-  .erebyx-welcome-topic__cta {
-  grid-column: 2 !important;
-  grid-row: 1 / span 3 !important;
-  align-self: center !important;
-  justify-self: end !important;
-  padding: 0.62rem 0.8rem !important;
-  border: 1px solid rgb(250 178 50 / 0.36) !important;
-  border-radius: 7px !important;
-  background: rgb(3 7 18 / 0.58) !important;
-  color: rgb(255 231 163 / 0.9) !important;
-  font-family: var(--erebyx-font-mono) !important;
-  font-size: 0.76rem !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.08em !important;
-  line-height: 1 !important;
-  text-transform: uppercase !important;
-  white-space: nowrap !important;
+  .erebyx-welcome-topic__body
+  :is(p, ul, ol, blockquote) {
+  margin-top: 0 !important;
+  margin-bottom: 0.85rem !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .erebyx-welcome-topic__body
+  :is(p, ul, ol, blockquote):last-child {
+  margin-bottom: 0 !important;
 }

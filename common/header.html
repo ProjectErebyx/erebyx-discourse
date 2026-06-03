@@ -1040,9 +1040,8 @@
         welcomeLink.href = "/c/start-here/5";
         welcomeLink.appendChild(createNode("span", "erebyx-welcome-topic__eyebrow", "Start Here"));
         welcomeLink.appendChild(createNode("h2", "erebyx-welcome-topic__title", "Welcome to the Arche"));
-        welcomeLink.appendChild(createNode("div", "erebyx-welcome-topic__body", "Open the welcome topic for orientation, first steps, and the founding community signal."));
-        welcomeLink.appendChild(createNode("span", "erebyx-welcome-topic__cta", "Open topic"));
         welcome.appendChild(welcomeLink);
+        welcome.appendChild(createNode("div", "erebyx-welcome-topic__body cooked", "Loading the welcome topic..."));
         outlet.insertBefore(welcome, anchor || outlet.firstChild);
       }
 
@@ -1255,12 +1254,6 @@
       }));
     };
 
-    var textFromHtml = function (html) {
-      var wrapper = document.createElement("div");
-      wrapper.innerHTML = html || "";
-      return (wrapper.textContent || "").replace(/\s+/g, " ").trim();
-    };
-
     var hydrateHomepageWelcomeTopic = function () {
       if (!isDiscoveryPath() || isAdminPath()) return;
       var card = document.querySelector(".erebyx-welcome-topic");
@@ -1285,15 +1278,15 @@
             result.topicData.post_stream.posts &&
             result.topicData.post_stream.posts[0];
           var cooked = post && post.cooked ? post.cooked : "";
-          var bodyText = textFromHtml(cooked);
           var body = card.querySelector(".erebyx-welcome-topic__body");
           var title = card.querySelector(".erebyx-welcome-topic__title");
           var link = card.querySelector(".erebyx-welcome-topic__link");
           var href = "/t/" + topic.slug + "/" + topic.id + "/1";
 
           if (title) title.textContent = topic.title || "Welcome to the Arche";
-          if (body && bodyText) body.textContent = bodyText.length > 420 ? bodyText.slice(0, 417).replace(/\s+\S*$/, "") + "..." : bodyText;
+          if (body && cooked) body.innerHTML = cooked;
           if (link) link.href = href;
+          card.classList.add("erebyx-welcome-topic--open");
           card.classList.remove("erebyx-welcome-topic--loading");
           card.setAttribute("data-erebyx-welcome-topic-ready", "true");
         })
