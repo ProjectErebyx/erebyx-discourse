@@ -13653,11 +13653,17 @@ html:not(.erebyx-admin-route)
     :is(
       .select-kit-body,
       .select-kit-collection,
+      .select-kit-header,
+      .dropdown-select-box,
+      .dropdown-select-box-header,
+      .sidebar-section-header-dropdown,
       .sidebar-section-form,
       .sidebar-section-header-caret,
       .sidebar-section-header-button,
       .sidebar-section-link-button,
       .sidebar-section-link-wrapper:empty,
+      .sidebar-footer-wrapper,
+      .sidebar-footer-container,
       button[title*="Add"],
       .btn[title*="Add"]
     ) {
@@ -13667,9 +13673,79 @@ html:not(.erebyx-admin-route)
   html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     .hamburger-panel
-    :is(.sidebar-section-header-wrapper, .sidebar-section-header) {
+    .sidebar-more-section-trigger {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 0.7rem !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 2.35rem !important;
+    min-height: 2.35rem !important;
+    padding: 0.45rem 0.65rem !important;
+    border: 0 !important;
+    border-radius: 7px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: rgb(226 232 240 / 0.82) !important;
+    text-align: left !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    .sidebar-more-section-trigger
+    :is(.sidebar-section-link-prefix, .sidebar-section-link-content-text) {
+    position: static !important;
+    inset: auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    .sidebar-section-header-wrapper {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0.65rem 0 0.2rem !important;
+    padding: 0 0.7rem !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    .sidebar-section-header {
+    display: block !important;
+    width: auto !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
     cursor: default !important;
     pointer-events: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    .sidebar-section-content {
+    margin: 0 !important;
+    padding: 0 0.45rem !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
   }
 
   html:not(.erebyx-admin-route)
