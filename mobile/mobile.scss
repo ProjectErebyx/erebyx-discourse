@@ -14096,6 +14096,7 @@ html:not(.erebyx-admin-route)
   html:not(.erebyx-admin-route) body:not(.admin-interface) .erebyx-nav__left {
     width: auto !important;
     min-width: 0 !important;
+    max-width: none !important;
     gap: 0.42rem !important;
   }
 
@@ -14107,6 +14108,9 @@ html:not(.erebyx-admin-route)
     justify-content: flex-start !important;
     width: auto !important;
     min-width: 0 !important;
+    max-width: none !important;
+    flex: 0 0 auto !important;
+    inline-size: max-content !important;
     height: 2.25rem !important;
     min-height: 2.25rem !important;
     padding: 0 0.18rem !important;
@@ -14148,6 +14152,20 @@ html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     .erebyx-nav__dashboard-icon {
     display: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    .erebyx-nav__left,
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    .erebyx-nav__dashboard {
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    inline-size: max-content !important;
   }
 
   html:not(.erebyx-admin-route)
@@ -14212,5 +14230,20 @@ html:not(.erebyx-admin-route)
     top: 1.17rem !important;
     width: 1rem !important;
     height: 0.5rem !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .d-header-icons
+    #toggle-current-user,
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .d-header-icons
+    #toggle-current-user
+    img.avatar {
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
   }
 }
