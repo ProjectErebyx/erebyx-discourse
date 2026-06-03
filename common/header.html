@@ -1194,6 +1194,12 @@
     var homeThreadJsonCache = {};
     var relatedTopicPosterCache = {};
     var HOME_THREAD_JSON_CACHE_MS = 30000;
+    var HAMBURGER_SOCIAL_LINKS = [
+      ["x", "X", "https://x.com/EREBYXofficial", "EREBYX on Twitter / X"],
+      ["instagram", "IG", "https://www.instagram.com/erebyx_official/", "EREBYX on Instagram"],
+      ["linkedin", "in", "https://www.linkedin.com/company/erebyx", "EREBYX on LinkedIn"],
+      ["facebook", "f", "https://www.facebook.com/EREBYX/", "EREBYX on Facebook"]
+    ];
 
     var isHomePath = function () {
       var path = window.location.pathname || "/";
@@ -1252,6 +1258,32 @@
         };
         xhr.send();
       }));
+    };
+
+    var ensureHamburgerSocialFooter = function () {
+      document.querySelectorAll(".hamburger-panel.menu-panel, .menu-panel.hamburger-panel, .hamburger-panel .revamped.menu-panel").forEach(function (panel) {
+        if (!panel || panel.querySelector(".erebyx-hamburger-social")) return;
+        var target = panel.querySelector(".panel-body-contents") || panel.querySelector(".panel-body") || panel;
+        if (!target) return;
+
+        panel.classList.add("erebyx-hamburger-panel");
+        var footer = createNode("div", "erebyx-hamburger-social");
+        footer.setAttribute("role", "list");
+        footer.appendChild(createNode("span", "erebyx-hamburger-social__label", "Follow EREBYX"));
+
+        HAMBURGER_SOCIAL_LINKS.forEach(function (item) {
+          var link = createNode("a", "erebyx-hamburger-social__link erebyx-hamburger-social__link--" + item[0], item[1]);
+          link.href = item[2];
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.title = item[3];
+          link.setAttribute("aria-label", item[3]);
+          link.setAttribute("role", "listitem");
+          footer.appendChild(link);
+        });
+
+        target.appendChild(footer);
+      });
     };
 
     var hydrateHomepageWelcomeTopic = function () {
@@ -1673,6 +1705,7 @@
       ensureTopicBackButton();
       enhanceHomepageThreadColumn();
       enhanceRelatedTopicPosters();
+      ensureHamburgerSocialFooter();
     };
 
     var scheduleRun = function () {
@@ -1701,7 +1734,7 @@
     if (window.MutationObserver) {
       var categoryHeaderObserver = new MutationObserver(scheduleRun);
       var observeCategoryHeader = function () {
-        var outlet = document.querySelector("#main-outlet") || document.body;
+        var outlet = document.body || document.querySelector("#main-outlet");
         if (outlet) categoryHeaderObserver.observe(outlet, { childList: true, subtree: true });
       };
       if (document.readyState !== "loading") {
