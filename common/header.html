@@ -1340,6 +1340,7 @@
         .catch(function () {
           list.textContent = "";
           [
+            ["Staff", "/c/staff/3"],
             ["Start Here", "/c/start-here/5"],
             ["Signal Room", "/c/announcements/6"],
             ["Feature Requests", "/c/feature-requests/7"],
@@ -1379,6 +1380,7 @@
         if (!panel) return;
 
         panel.querySelectorAll('a[href="/c/staff/3"], a[href^="/c/staff/3"]').forEach(function (link) {
+          if (link.closest(".erebyx-hamburger-categories")) return;
           var row = link.closest(".sidebar-section-link-wrapper") || link.closest(".sidebar-row") || link;
           row.classList.add("erebyx-hamburger-staff-row");
         });
@@ -1391,6 +1393,9 @@
 
         var popover = buildHamburgerCategoryMenu(panel, trigger);
         if (!popover.id) popover.id = "erebyx-hamburger-categories-" + index;
+        if (window.matchMedia && window.matchMedia("(max-width: 900px)").matches) {
+          popover.removeAttribute("hidden");
+        }
         trigger.setAttribute("aria-controls", popover.id);
         trigger.setAttribute("aria-expanded", popover.hasAttribute("hidden") ? "false" : "true");
       });
