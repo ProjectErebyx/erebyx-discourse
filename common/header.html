@@ -1441,32 +1441,16 @@
             return /categories/i.test(node.textContent || "");
           })[0];
         var headerRow = categoryHeader ? (categoryHeader.closest(".sidebar-section-header-wrapper") || categoryHeader.closest(".sidebar-section-header") || categoryHeader) : null;
-        var launcher = panel.querySelector(".erebyx-hamburger-categories-launcher");
-        if (!launcher) {
-          launcher = createNode("button", "erebyx-hamburger-categories-launcher erebyx-hamburger-categories-trigger", "Categories");
-          launcher.type = "button";
+        var categoryDetails = panel.querySelector(".erebyx-hamburger-categories-details");
+        if (!categoryDetails) {
+          categoryDetails = createNode("details", "erebyx-hamburger-categories-details");
+          var categorySummary = createNode("summary", "erebyx-hamburger-categories-launcher", "Categories");
+          categoryDetails.appendChild(categorySummary);
           if (headerRow && headerRow.parentNode) {
-            headerRow.parentNode.insertBefore(launcher, headerRow.nextSibling);
+            headerRow.parentNode.insertBefore(categoryDetails, headerRow.nextSibling);
           } else {
-            (panel.querySelector(".panel-body-contents") || panel.querySelector(".panel-body") || panel).appendChild(launcher);
+            (panel.querySelector(".panel-body-contents") || panel.querySelector(".panel-body") || panel).appendChild(categoryDetails);
           }
-        }
-        launcher.setAttribute("aria-haspopup", "menu");
-        if (launcher.getAttribute("data-erebyx-category-launcher-bound") !== "true") {
-          launcher.setAttribute("data-erebyx-category-launcher-bound", "true");
-          launcher.addEventListener("click", function (event) {
-            var panel = launcher.closest(".hamburger-panel") || launcher.closest(".menu-panel");
-            var menu = panel ? panel.querySelector(".erebyx-hamburger-categories") : document.querySelector(".erebyx-hamburger-categories");
-            if (!menu) return;
-
-            event.preventDefault();
-            event.stopPropagation();
-            if (event.stopImmediatePropagation) event.stopImmediatePropagation();
-            var opening = menu.hasAttribute("hidden");
-            closeHamburgerCategoryMenus(opening ? menu : null);
-            menu.toggleAttribute("hidden", !opening);
-            launcher.setAttribute("aria-expanded", opening ? "true" : "false");
-          }, true);
         }
 
         var trigger = panel.querySelector('a[href="/categories"], a[href^="/categories"]');
@@ -1476,11 +1460,12 @@
           trigger.setAttribute("aria-haspopup", "menu");
         }
 
-        var popover = buildHamburgerCategoryMenu(panel, launcher || trigger);
+        var popover = buildHamburgerCategoryMenu(panel, categoryDetails || trigger);
         if (!popover.id) popover.id = "erebyx-hamburger-categories-" + index;
-        popover.setAttribute("hidden", "");
-        launcher.setAttribute("aria-controls", popover.id);
-        launcher.setAttribute("aria-expanded", "false");
+        popover.removeAttribute("hidden");
+        if (popover.parentNode !== categoryDetails) {
+          categoryDetails.appendChild(popover);
+        }
         if (trigger) {
           trigger.setAttribute("aria-controls", popover.id);
           trigger.setAttribute("aria-expanded", "false");

@@ -14071,12 +14071,19 @@ html:not(.erebyx-admin-route)
   html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     .hamburger-panel
+    .erebyx-hamburger-categories-details {
+    margin: 0.25rem 0.45rem 0.75rem !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
     .erebyx-hamburger-categories-launcher {
     display: flex !important;
     align-items: center !important;
     width: calc(100% - 0.9rem) !important;
     min-height: 2.35rem !important;
-    margin: 0.25rem 0.45rem 0.75rem !important;
+    margin: 0 !important;
     padding: 0.42rem 0.72rem !important;
     border: 0 !important;
     border-radius: 7px !important;
@@ -14087,6 +14094,13 @@ html:not(.erebyx-admin-route)
     text-align: left !important;
     box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06) !important;
     pointer-events: auto !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    .erebyx-hamburger-categories-launcher::-webkit-details-marker {
+    display: none !important;
   }
 
   html:not(.erebyx-admin-route)
@@ -14145,6 +14159,14 @@ html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     .hamburger-panel
     .erebyx-hamburger-categories[hidden] {
+    display: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    .erebyx-hamburger-categories-details:not([open])
+    .erebyx-hamburger-categories {
     display: none !important;
   }
 
