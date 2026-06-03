@@ -14046,4 +14046,32 @@ html:not(.erebyx-admin-route)
     color: rgb(255 255 255 / 0.96) !important;
     outline: none !important;
   }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    .sidebar-section-header-wrapper {
+    pointer-events: auto !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    .sidebar-section-header {
+    pointer-events: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    :is(.sidebar-section-content, .sidebar-section-link-wrapper, .sidebar-section-link, .sidebar-section-link a, .sidebar-section-content a) {
+    pointer-events: auto !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    .erebyx-hamburger-social {
+    margin-top: 2rem !important;
+  }
 }
