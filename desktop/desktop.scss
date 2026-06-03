@@ -20883,7 +20883,10 @@ html:not(.erebyx-admin-route)
   html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     .hamburger-panel
-    .sidebar-section-link-wrapper.erebyx-hamburger-staff-row {
+    :is(
+      .sidebar-section-link-wrapper.erebyx-hamburger-staff-row,
+      .sidebar-section-link-wrapper.erebyx-hamburger-native-category-row
+    ) {
     display: none !important;
   }
 

@@ -1292,6 +1292,40 @@
         .trim();
     };
 
+    var HAMBURGER_CATEGORY_FALLBACKS = [
+      { name: "Staff", slug: "staff", id: 3, href: "/c/staff/3", sigil: "S" },
+      { name: "Start Here", slug: "start-here", id: 5, href: "/c/start-here/5", sigil: "*" },
+      { name: "Signal Room", slug: "announcements", id: 6, href: "/c/announcements/6", sigil: "*" },
+      { name: "Feature Requests", slug: "feature-requests", id: 7, href: "/c/feature-requests/7", sigil: "^" },
+      { name: "Bug Reports", slug: "bug-reports", id: 8, href: "/c/bug-reports/8", sigil: "#" },
+      { name: "Genesis Lounge", slug: "genesis-lounge", id: 9, href: "/c/genesis-lounge/9", sigil: "*" },
+      { name: "Erebus Build Log", slug: "erebus-build-log", id: 10, href: "/c/erebus-build-log/10", sigil: "@" },
+      { name: "Nyx Nocturne", slug: "nyx-corner", id: 11, href: "/c/nyx-corner/11", sigil: "+" },
+      { name: "Arche Notes", slug: "notes-from-the-arche", id: 12, href: "/c/notes-from-the-arche/12", sigil: "<>" },
+      { name: "Site Feedback", slug: "site-feedback", id: 2, href: "/c/site-feedback/2", sigil: "S" },
+      { name: "General", slug: "general", id: 4, href: "/c/general/4", sigil: "G" }
+    ];
+
+    var renderHamburgerCategoryLinks = function (list, categories) {
+      list.textContent = "";
+      (categories && categories.length ? categories : HAMBURGER_CATEGORY_FALLBACKS).forEach(function (category) {
+        if (!category) return;
+
+        var href = category.href || (category.slug && category.id ? "/c/" + category.slug + "/" + category.id : "");
+        if (!href) return;
+
+        var rawName = category.name || "";
+        var link = createNode("a", "erebyx-hamburger-categories__link");
+        link.href = href;
+        link.setAttribute("role", "listitem");
+        if (category.id) link.setAttribute("data-category-id", category.id);
+        if (category.slug) link.setAttribute("data-category-slug", category.slug);
+        link.appendChild(createNode("span", "erebyx-hamburger-categories__sigil", category.sigil || rawName.trim().charAt(0) || "*"));
+        link.appendChild(createNode("span", "erebyx-hamburger-categories__name", cleanCategoryName(rawName)));
+        list.appendChild(link);
+      });
+    };
+
     var buildHamburgerCategoryMenu = function (panel, trigger) {
       var existing = panel.querySelector(".erebyx-hamburger-categories");
       if (existing) return existing;
@@ -1305,11 +1339,18 @@
       var list = createNode("div", "erebyx-hamburger-categories__list");
       list.setAttribute("role", "list");
       popover.appendChild(list);
+      renderHamburgerCategoryLinks(list, HAMBURGER_CATEGORY_FALLBACKS);
 
-      var row = trigger.closest(".sidebar-section-link-wrapper") || trigger.closest(".sidebar-row") || trigger.parentNode;
-      var target = row && row.parentNode ? row.parentNode : (panel.querySelector(".panel-body-contents") || panel.querySelector(".panel-body") || panel);
-      if (row && row.parentNode) {
-        row.parentNode.insertBefore(popover, row.nextSibling);
+      var categoryHeader = Array.from(panel.querySelectorAll(".sidebar-section-header-wrapper, .sidebar-section-header, .sidebar-section-header-button"))
+        .filter(function (node) {
+          return /categories/i.test(node.textContent || "");
+        })[0];
+      var headerRow = categoryHeader ? (categoryHeader.closest(".sidebar-section-header-wrapper") || categoryHeader.closest(".sidebar-section-header") || categoryHeader) : null;
+      var triggerRow = trigger ? (trigger.closest(".sidebar-section-link-wrapper") || trigger.closest(".sidebar-row") || trigger.parentNode) : null;
+      var insertAfter = headerRow || triggerRow;
+      var target = insertAfter && insertAfter.parentNode ? insertAfter.parentNode : (panel.querySelector(".panel-body-contents") || panel.querySelector(".panel-body") || panel);
+      if (insertAfter && insertAfter.parentNode) {
+        insertAfter.parentNode.insertBefore(popover, insertAfter.nextSibling);
       } else {
         target.appendChild(popover);
       }
@@ -1385,19 +1426,28 @@
           row.classList.add("erebyx-hamburger-staff-row");
         });
 
+        panel.querySelectorAll('a[href="/categories"], a[href^="/categories"], a[href^="/c/"]').forEach(function (link) {
+          if (link.closest(".erebyx-hamburger-categories")) return;
+          var row = link.closest(".sidebar-section-link-wrapper") || link.closest(".sidebar-row") || link;
+          row.classList.add("erebyx-hamburger-native-category-row");
+        });
+
         var trigger = panel.querySelector('a[href="/categories"], a[href^="/categories"]');
-        if (!trigger) return;
-        trigger.classList.add("erebyx-hamburger-categories-trigger");
-        trigger.setAttribute("role", "button");
-        trigger.setAttribute("aria-haspopup", "menu");
+        if (trigger) {
+          trigger.classList.add("erebyx-hamburger-categories-trigger");
+          trigger.setAttribute("role", "button");
+          trigger.setAttribute("aria-haspopup", "menu");
+        }
 
         var popover = buildHamburgerCategoryMenu(panel, trigger);
         if (!popover.id) popover.id = "erebyx-hamburger-categories-" + index;
         if (window.matchMedia && window.matchMedia("(max-width: 900px)").matches) {
           popover.removeAttribute("hidden");
         }
-        trigger.setAttribute("aria-controls", popover.id);
-        trigger.setAttribute("aria-expanded", popover.hasAttribute("hidden") ? "false" : "true");
+        if (trigger) {
+          trigger.setAttribute("aria-controls", popover.id);
+          trigger.setAttribute("aria-expanded", popover.hasAttribute("hidden") ? "false" : "true");
+        }
       });
     };
 
