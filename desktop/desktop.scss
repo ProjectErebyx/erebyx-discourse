@@ -20270,3 +20270,24 @@ html:not(.erebyx-admin-route)
     transform: translateX(-50%) !important;
   }
 }
+
+@media screen and (width <= 900px) {
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    > .erebyx-nav__inner
+    > .erebyx-nav__logo,
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    .erebyx-nav__wordmark {
+    display: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .d-header-icons
+    .search-dropdown {
+    display: none !important;
+  }
+}
