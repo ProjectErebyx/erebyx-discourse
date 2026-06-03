@@ -13821,3 +13821,67 @@ html:not(.erebyx-admin-route)
     box-shadow: inset 0 1px 0 rgb(255 247 214 / 0.07) !important;
   }
 }
+
+@media screen and (width <= 900px) {
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .d-header-icons
+    :is(.header-dropdown-toggle, .btn, button) {
+    border-color: rgb(96 165 250 / 0.32) !important;
+    background:
+      linear-gradient(135deg, rgb(68 146 252 / 0.16), rgb(30 41 59 / 0.18)),
+      rgb(3 7 18 / 0.92) !important;
+    box-shadow:
+      0 14px 34px rgb(3 7 18 / 0.44),
+      inset 0 1px 0 rgb(255 255 255 / 0.1) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .d-header-icons
+    :is(.header-dropdown-toggle, .btn, button):is(:hover, :focus, :focus-visible, .active) {
+    border-color: rgb(147 197 253 / 0.42) !important;
+    box-shadow:
+      0 14px 34px rgb(3 7 18 / 0.44),
+      inset 0 1px 0 rgb(255 255 255 / 0.12) !important;
+    outline: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .d-header-icons
+    #toggle-current-user,
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .d-header-icons
+    #toggle-current-user
+    img.avatar {
+    border-color: rgb(96 165 250 / 0.34) !important;
+    box-shadow:
+      0 14px 34px rgb(3 7 18 / 0.44),
+      inset 0 1px 0 rgb(255 255 255 / 0.12) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel {
+    border-color: rgb(148 163 184 / 0.12) !important;
+    outline: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    :is(.panel-body-bottom, .erebyx-hamburger-social) {
+    border-top-color: rgb(148 163 184 / 0.14) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    .erebyx-hamburger-social__link {
+    border-color: rgb(96 165 250 / 0.3) !important;
+    color: rgb(191 219 254 / 0.92) !important;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06) !important;
+  }
+}
