@@ -9,7 +9,7 @@
   EREBYX Arche — Discourse homepage hero
 
   Renders a constellation canvas banner above the category list on homepage
-  routes only (/, /categories). Self-removes elsewhere so it never
+  routes only (/). Self-removes elsewhere so it never
   conflicts with topic threads. Brand colors flow from theme settings via
   CSS custom properties (--erebyx-violet / --erebyx-blue / --erebyx-violet-
   light / --erebyx-gold) — no JS edits required to retune the palette.
@@ -55,7 +55,7 @@
     if (window.__erebyxHeroBound) return;
     window.__erebyxHeroBound = true;
 
-    var HOME_ROUTES = /^\/(categories|latest|top|hot|unread|new|)?\/?$/;
+    var HOME_ROUTES = /^\/(latest|top|hot|unread|new|)?\/?$/;
     var PAUSED = false;
     var rafId = null;
 
@@ -685,8 +685,7 @@
     window.__erebyxArcheInitialized = true;
 
     var DISCOVERY_ROUTES = [
-      "/",
-      "/categories"
+      "/"
     ];
     var THREAD_HOME_ROUTES = {
       "/top": "top",
@@ -1286,6 +1285,138 @@
       });
     };
 
+    var cleanCategoryName = function (name) {
+      return (name || "")
+        .replace(/^[\s✦✧△⧉✴⚙️⚙✿◈]+/, "")
+        .replace(/\s+/g, " ")
+        .trim();
+    };
+
+    var buildHamburgerCategoryMenu = function (panel, trigger) {
+      var existing = panel.querySelector(".erebyx-hamburger-categories");
+      if (existing) return existing;
+
+      var popover = createNode("div", "erebyx-hamburger-categories");
+      popover.setAttribute("role", "menu");
+      popover.setAttribute("aria-label", "All categories");
+      popover.setAttribute("hidden", "");
+      popover.appendChild(createNode("span", "erebyx-hamburger-categories__label", "All categories"));
+
+      var list = createNode("div", "erebyx-hamburger-categories__list");
+      list.setAttribute("role", "list");
+      popover.appendChild(list);
+
+      var row = trigger.closest(".sidebar-section-link-wrapper") || trigger.closest(".sidebar-row") || trigger.parentNode;
+      var target = row && row.parentNode ? row.parentNode : (panel.querySelector(".panel-body-contents") || panel.querySelector(".panel-body") || panel);
+      if (row && row.parentNode) {
+        row.parentNode.insertBefore(popover, row.nextSibling);
+      } else {
+        target.appendChild(popover);
+      }
+
+      requestJson("/categories.json")
+        .then(function (data) {
+          var categories = data && data.category_list && data.category_list.categories
+            ? data.category_list.categories.slice()
+            : [];
+          categories.sort(function (a, b) {
+            return (a.position || 0) - (b.position || 0);
+          });
+
+          list.textContent = "";
+          categories.forEach(function (category) {
+            if (!category || !category.slug || !category.id) return;
+
+            var link = createNode("a", "erebyx-hamburger-categories__link");
+            link.href = "/c/" + category.slug + "/" + category.id;
+            link.setAttribute("role", "listitem");
+            link.setAttribute("data-category-id", category.id);
+            link.setAttribute("data-category-slug", category.slug);
+            link.appendChild(createNode("span", "erebyx-hamburger-categories__sigil", (category.name || "").trim().charAt(0) || "•"));
+            link.appendChild(createNode("span", "erebyx-hamburger-categories__name", cleanCategoryName(category.name)));
+            list.appendChild(link);
+          });
+        })
+        .catch(function () {
+          list.textContent = "";
+          [
+            ["Start Here", "/c/start-here/5"],
+            ["Signal Room", "/c/announcements/6"],
+            ["Feature Requests", "/c/feature-requests/7"],
+            ["Bug Reports", "/c/bug-reports/8"],
+            ["Genesis Lounge", "/c/genesis-lounge/9"],
+            ["Erebus Build Log", "/c/erebus-build-log/10"],
+            ["Nyx Nocturne", "/c/nyx-corner/11"],
+            ["Arche Notes", "/c/notes-from-the-arche/12"],
+            ["Site Feedback", "/c/site-feedback/2"],
+            ["General", "/c/general/4"]
+          ].forEach(function (item) {
+            var link = createNode("a", "erebyx-hamburger-categories__link");
+            link.href = item[1];
+            link.setAttribute("role", "listitem");
+            link.appendChild(createNode("span", "erebyx-hamburger-categories__sigil", "•"));
+            link.appendChild(createNode("span", "erebyx-hamburger-categories__name", item[0]));
+            list.appendChild(link);
+          });
+        });
+
+      return popover;
+    };
+
+    var closeHamburgerCategoryMenus = function (except) {
+      document.querySelectorAll(".erebyx-hamburger-categories").forEach(function (menu) {
+        if (menu === except) return;
+        menu.setAttribute("hidden", "");
+      });
+      document.querySelectorAll(".erebyx-hamburger-categories-trigger[aria-expanded='true']").forEach(function (trigger) {
+        if (except && except.getAttribute("id") && trigger.getAttribute("aria-controls") === except.getAttribute("id")) return;
+        trigger.setAttribute("aria-expanded", "false");
+      });
+    };
+
+    var ensureHamburgerCategoriesMenu = function () {
+      document.querySelectorAll(".hamburger-panel.menu-panel, .menu-panel.hamburger-panel, .hamburger-panel .revamped.menu-panel").forEach(function (panel, index) {
+        if (!panel) return;
+
+        panel.querySelectorAll('a[href="/c/staff/3"], a[href^="/c/staff/3"]').forEach(function (link) {
+          var row = link.closest(".sidebar-section-link-wrapper") || link.closest(".sidebar-row") || link;
+          row.classList.add("erebyx-hamburger-staff-row");
+        });
+
+        var trigger = panel.querySelector('a[href="/categories"], a[href^="/categories"]');
+        if (!trigger) return;
+        trigger.classList.add("erebyx-hamburger-categories-trigger");
+        trigger.setAttribute("role", "button");
+        trigger.setAttribute("aria-haspopup", "menu");
+        trigger.setAttribute("aria-expanded", "false");
+
+        var popover = buildHamburgerCategoryMenu(panel, trigger);
+        if (!popover.id) popover.id = "erebyx-hamburger-categories-" + index;
+        trigger.setAttribute("aria-controls", popover.id);
+      });
+    };
+
+    document.addEventListener("click", function (event) {
+      var trigger = event.target && event.target.closest ? event.target.closest(".erebyx-hamburger-categories-trigger") : null;
+      if (trigger) {
+        var panel = trigger.closest(".hamburger-panel") || trigger.closest(".menu-panel");
+        var menu = panel ? panel.querySelector(".erebyx-hamburger-categories") : null;
+        if (!menu) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+        var opening = menu.hasAttribute("hidden");
+        closeHamburgerCategoryMenus(opening ? menu : null);
+        menu.toggleAttribute("hidden", !opening);
+        trigger.setAttribute("aria-expanded", opening ? "true" : "false");
+        return;
+      }
+
+      if (!event.target.closest || event.target.closest(".erebyx-hamburger-categories")) return;
+      if (event.target.closest(".hamburger-panel")) return;
+      closeHamburgerCategoryMenus(null);
+    }, true);
+
     var hydrateHomepageWelcomeTopic = function () {
       if (!isDiscoveryPath() || isAdminPath()) return;
       var card = document.querySelector(".erebyx-welcome-topic");
@@ -1706,6 +1837,7 @@
       enhanceHomepageThreadColumn();
       enhanceRelatedTopicPosters();
       ensureHamburgerSocialFooter();
+      ensureHamburgerCategoriesMenu();
     };
 
     var scheduleRun = function () {
@@ -1974,8 +2106,7 @@
     var FEATURED_USERS = COUNTERPARTS.concat(["mikey", "siarrah"]);
     var CLUSTER_WINDOW_MS = 30 * 60 * 1000;
     var DISCOVERY_ROUTES = [
-      "/",
-      "/categories"
+      "/"
     ];
     var THREAD_HOME_ROUTES = {
       "/top": "top",

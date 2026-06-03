@@ -20879,4 +20879,109 @@ html:not(.erebyx-admin-route)
     .erebyx-hamburger-social {
     margin-top: 2rem !important;
   }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    .erebyx-hamburger-staff-row {
+    display: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    .erebyx-hamburger-categories {
+    display: grid !important;
+    gap: 0.45rem !important;
+    margin: 0.35rem 0.45rem 0.9rem !important;
+    padding: 0.65rem !important;
+    border: 1px solid rgb(96 165 250 / 0.28) !important;
+    border-radius: 8px !important;
+    background:
+      linear-gradient(180deg, rgb(8 13 31 / 0.98), rgb(0 0 0 / 0.98)),
+      rgb(0 0 0) !important;
+    box-shadow:
+      0 18px 50px -36px rgb(0 0 0 / 0.95),
+      inset 0 1px 0 rgb(255 255 255 / 0.06) !important;
+    color: rgb(226 232 240 / 0.9) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    .erebyx-hamburger-categories[hidden] {
+    display: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    .erebyx-hamburger-categories__label {
+    color: rgb(147 197 253 / 0.62) !important;
+    font-family: var(--erebyx-font-mono) !important;
+    font-size: 0.68rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.12em !important;
+    line-height: 1 !important;
+    text-transform: uppercase !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    .erebyx-hamburger-categories__list {
+    display: grid !important;
+    gap: 0.18rem !important;
+    max-height: min(24rem, calc(100vh - 24rem)) !important;
+    overflow: hidden auto !important;
+    padding-right: 0.15rem !important;
+    scrollbar-color: rgb(96 165 250 / 0.34) transparent !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    .erebyx-hamburger-categories__link {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.55rem !important;
+    min-height: 2.25rem !important;
+    padding: 0.42rem 0.5rem !important;
+    border: 0 !important;
+    border-radius: 7px !important;
+    background: transparent !important;
+    color: rgb(191 219 254 / 0.9) !important;
+    text-decoration: none !important;
+    pointer-events: auto !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    .erebyx-hamburger-categories__link:is(:hover, :focus, :focus-visible) {
+    background: rgb(30 27 75 / 0.72) !important;
+    color: rgb(255 255 255 / 0.96) !important;
+    outline: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    .erebyx-hamburger-categories__sigil {
+    display: inline-grid !important;
+    place-items: center !important;
+    width: 1.25rem !important;
+    color: rgb(147 197 253 / 0.78) !important;
+    font-family: var(--erebyx-font-mono) !important;
+    font-size: 0.82rem !important;
+    line-height: 1 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .hamburger-panel
+    .erebyx-hamburger-categories__name {
+    min-width: 0 !important;
+    overflow-wrap: anywhere !important;
+  }
 }
