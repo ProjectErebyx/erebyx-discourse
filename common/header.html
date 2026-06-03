@@ -1354,6 +1354,10 @@
       } else {
         target.appendChild(popover);
       }
+      var socialFooter = panel.querySelector(".erebyx-hamburger-social");
+      if (socialFooter && socialFooter.parentNode === popover.parentNode) {
+        socialFooter.parentNode.insertBefore(popover, socialFooter);
+      }
 
       requestJson("/categories.json")
         .then(function (data) {
