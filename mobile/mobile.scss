@@ -10617,6 +10617,45 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body[class*="user-"]:not(.admin-interface)
   #main-outlet#main-outlet
+  .user-main
+  .about
+  #collapsed-info-panel {
+  color: rgb(226 232 240 / 0.94) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .user-main
+  .about
+  #collapsed-info-panel
+  :is(dl, dt, dd, span, div) {
+  color: rgb(226 232 240 / 0.92) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .user-main
+  .about
+  #collapsed-info-panel
+  :is(dd, .value, .number) {
+  color: rgb(248 250 252 / 0.96) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .user-main
+  .about
+  #collapsed-info-panel
+  a {
+  color: rgb(191 219 254 / 0.98) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
   .user-content {
   border: 1px solid rgb(250 178 50 / 0.18) !important;
   border-top: 0 !important;
