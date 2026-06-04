@@ -21138,6 +21138,9 @@ html:not(.erebyx-admin-route)
     min-width: 0 !important;
     max-width: calc(100vw - 2rem) !important;
     max-height: min(70vh, 34rem) !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
     overflow: hidden auto !important;
     transform: none !important;
     z-index: 4300 !important;
@@ -21169,7 +21172,7 @@ html:not(.erebyx-admin-route)
     body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
     .fk-d-menu-modal:not(.sidebar-more-section-content)
     .fk-d-menu-modal__grip {
-    background: rgb(148 163 184 / 0.62) !important;
+    display: none !important;
   }
 
   html:not(.erebyx-admin-route)
