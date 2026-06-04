@@ -17982,3 +17982,72 @@ html:not(.erebyx-admin-route)
   background: linear-gradient(180deg, rgb(12 8 24 / 0.98), rgb(0 0 0 / 0.98)), rgb(0 0 0) !important;
   color: rgb(255 247 214 / 0.96) !important;
 }
+
+/* Topic new-user notice: full-width amber treatment across topic layouts. */
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  article.topic-post
+  > .post__row.row:has(> .post-notice.new-user) {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  padding: clamp(0.72rem, 3vw, 0.95rem) clamp(0.85rem, 4vw, 1.15rem) !important;
+  border: 1px solid rgb(250 178 50 / 0.42) !important;
+  border-radius: 8px !important;
+  background:
+    radial-gradient(circle at 1.4rem 50%, rgb(250 178 50 / 0.2), transparent 5.5rem),
+    linear-gradient(90deg, rgb(250 178 50 / 0.16), transparent 12rem),
+    linear-gradient(135deg, rgb(58 42 8 / 0.82), rgb(7 9 18 / 0.94)) !important;
+  box-shadow:
+    inset 1px 0 0 rgb(255 231 163 / 0.22),
+    inset 0 1px 0 rgb(255 247 214 / 0.08),
+    0 16px 40px -34px rgb(250 178 50 / 0.74) !important;
+  overflow: visible !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  article.topic-post
+  > .post__row.row
+  > .post-notice.new-user {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  align-items: center !important;
+  gap: 0.6rem !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  color: rgb(255 247 214 / 0.95) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  article.topic-post
+  > .post__row.row
+  > .post-notice.new-user
+  p {
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+  color: rgb(255 247 214 / 0.95) !important;
+  font-size: clamp(0.82rem, 3.3vw, 0.95rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.archetype-regular:not(.admin-interface)
+  #main-outlet#main-outlet
+  article.topic-post
+  > .post__row.row
+  > .post-notice.new-user
+  .emoji {
+  flex: 0 0 auto !important;
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+}
