@@ -7409,7 +7409,26 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
       min-width: 2.75rem !important;
       min-height: 2.75rem !important;
       margin: 0 !important;
+      border-color: rgb(168 85 247 / 0.34) !important;
+      background:
+        linear-gradient(135deg, rgb(168 85 247 / 0.14), rgb(59 130 246 / 0.06)),
+        rgb(3 7 18 / 0.9) !important;
+      color: rgb(196 181 253 / 0.94) !important;
+      box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.08),
+        0 14px 32px rgb(0 0 0 / 0.28) !important;
       justify-self: end !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-controls
+      .inline-form
+      .open-edit-columns-btn
+      :is(.d-icon, svg) {
+      color: rgb(196 181 253 / 0.94) !important;
+      fill: currentColor !important;
     }
 
     &.users-page
