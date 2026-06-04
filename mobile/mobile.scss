@@ -7537,6 +7537,15 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
       #main-outlet
       .users-directory.directory
       .directory-table__row
+      .directory-table__label::after {
+      content: none !important;
+      display: none !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-table__row
       .directory-table__value {
       max-width: 100% !important;
       overflow: hidden !important;
