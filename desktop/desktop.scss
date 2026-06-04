@@ -22260,7 +22260,7 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #main-outlet#main-outlet
-  article.topic-post
+  :is(article.topic-post, article.boxed[data-user-id], article.boxed)
   > .post__row.row:has(> .post-notice.new-user) {
   display: flex !important;
   align-items: center !important;
@@ -22283,7 +22283,7 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #main-outlet#main-outlet
-  article.topic-post
+  :is(article.topic-post, article.boxed[data-user-id], article.boxed)
   > .post__row.row
   > .post-notice.new-user {
   display: flex !important;
@@ -22300,7 +22300,7 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #main-outlet#main-outlet
-  article.topic-post
+  :is(article.topic-post, article.boxed[data-user-id], article.boxed)
   > .post__row.row
   > .post-notice.new-user
   p {
@@ -22316,7 +22316,7 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #main-outlet#main-outlet
-  article.topic-post
+  :is(article.topic-post, article.boxed[data-user-id], article.boxed)
   > .post__row.row
   > .post-notice.new-user
   .emoji {
