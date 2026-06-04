@@ -14857,8 +14857,16 @@ html:not(.erebyx-admin-route)
     body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
     .category-title-header[class*="category-banner-"]
     .category-title {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    justify-self: center !important;
+    gap: 0.36rem !important;
+    width: 100% !important;
+    margin-inline: auto !important;
     font-size: clamp(1.75rem, 8vw, 3.25rem) !important;
     line-height: 1.04 !important;
+    text-align: center !important;
     text-wrap: balance !important;
   }
 
