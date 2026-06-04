@@ -14408,7 +14408,7 @@ html:not(.erebyx-admin-route)
   html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     .d-header-icons
-    #toggle-hamburger-menu {
+    .hamburger-dropdown {
     position: fixed !important;
     top: var(--erebyx-mobile-nav-top) !important;
     left: max(0.72rem, env(safe-area-inset-left)) !important;
@@ -14416,17 +14416,27 @@ html:not(.erebyx-admin-route)
   }
 
   html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .d-header-icons
+    .hamburger-dropdown
+    #toggle-hamburger-menu {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+  }
+
+  html:not(.erebyx-admin-route)
     body:not(.admin-interface):has(.hamburger-panel)
     .d-header-icons
-    #toggle-hamburger-menu,
+    .hamburger-dropdown,
   html:not(.erebyx-admin-route)
     body:not(.admin-interface):has(.menu-panel.hamburger-panel)
     .d-header-icons
-    #toggle-hamburger-menu,
+    .hamburger-dropdown,
   html:not(.erebyx-admin-route)
     body.erebyx-hamburger-open:not(.admin-interface)
     .d-header-icons
-    #toggle-hamburger-menu {
+    .hamburger-dropdown {
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
