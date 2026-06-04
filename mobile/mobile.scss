@@ -12732,6 +12732,35 @@ html:not(.erebyx-admin-route)
   html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    :is(li.notification.unread, .notification.unread, li.reviewable.pending, .reviewable.pending) {
+    border-bottom: 1px solid rgb(168 85 247 / 0.14) !important;
+    background:
+      linear-gradient(90deg, rgb(168 85 247 / 0.12), transparent 54%),
+      linear-gradient(180deg, rgb(15 23 42 / 0.88), rgb(3 7 18 / 0.96)),
+      rgb(3 7 18) !important;
+    color: rgb(203 213 225 / 0.95) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    :is(li.notification.unread, .notification.unread, li.reviewable.pending, .reviewable.pending)
+    :is(a, button, span, div, p, .item-label, .item-description, .notification-title, .notification-data) {
+    color: rgb(203 213 225 / 0.96) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    :is(li.notification.unread, .notification.unread, li.reviewable.pending, .reviewable.pending)
+    :is(.d-icon, svg) {
+    color: rgb(147 197 253 / 0.7) !important;
+    fill: currentColor !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
     :is([class^="user-menu-button-"], [class*=" user-menu-button-"]) {
     display: flex !important;
     flex: 1 1 auto !important;
