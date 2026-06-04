@@ -10669,6 +10669,52 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body[class*="user-"]:not(.admin-interface)
   #main-outlet#main-outlet
+  .user-content
+  .badges-section
+  .badge-card {
+  border: 1px solid rgb(250 178 50 / 0.32) !important;
+  border-radius: 8px !important;
+  background: rgb(5 8 18 / 0.92) !important;
+  box-shadow:
+    inset 1px 0 0 rgb(255 231 163 / 0.18),
+    inset 0 1px 0 rgb(255 247 214 / 0.06),
+    0 24px 72px -58px rgb(0 0 0 / 0.9) !important;
+  color: rgb(248 250 252 / 0.92) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .user-content
+  .badges-section
+  .badge-card
+  :is(.badge-info, .badge-info-item, .badge-name, .badge-link, .badge-summary, h3, p, a) {
+  color: rgb(248 250 252 / 0.9) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .user-content
+  .badges-section
+  .badge-card
+  :is(.badge-link, a) {
+  color: rgb(147 197 253 / 0.96) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .user-content
+  .badges-section
+  .badge-card
+  :is(.badge-icon, .d-icon, .fa) {
+  color: rgb(248 250 252 / 0.96) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
   .user-stream
   .user-stream-item {
   width: 100% !important;
