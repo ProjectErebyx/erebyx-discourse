@@ -15191,6 +15191,25 @@ html:not(.erebyx-admin-route)
 
   html:not(.erebyx-admin-route)
     body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    .fk-d-menu-modal.list-control-toggle-link-content
+    .d-modal__container {
+    align-self: stretch !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    max-height: 100% !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    .fk-d-menu-modal.list-control-toggle-link-content
+    :is(.d-modal__body, .fk-d-menu__inner-content, .dropdown-menu) {
+    height: 100% !important;
+    min-height: 100% !important;
+    max-height: 100% !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
     .fk-d-menu-modal:not(.sidebar-more-section-content)
     :is(a, button, .btn, li) {
     box-sizing: border-box !important;
