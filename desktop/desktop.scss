@@ -21273,6 +21273,47 @@ html:not(.erebyx-admin-route)
 // Districts are pinned via default_navigation_menu_categories; the generic
 // all-categories link is redundant. Header + district links untouched.
 // (Lives here, not common.scss, which is at the 1 MiB theme-field ceiling.)
+@media screen and (max-width: 900px) {
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    details.tag-drop[open]
+    > .select-kit-body.select-kit-body,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    .tag-drop.tag-drop
+    > .select-kit-body.select-kit-body {
+    box-sizing: border-box !important;
+    position: fixed !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: 50% !important;
+    width: min(calc(100vw - 3rem), 20rem) !important;
+    min-width: 0 !important;
+    max-width: min(calc(100vw - 3rem), 20rem) !important;
+    height: auto !important;
+    min-height: 10rem !important;
+    max-height: min(42vh, 18rem) !important;
+    transform: translateX(-50%) !important;
+    overflow: hidden auto !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    details.tag-drop[open]
+    > .select-kit-body.select-kit-body
+    .select-kit-collection,
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    .tag-drop.tag-drop
+    > .select-kit-body.select-kit-body
+    .select-kit-collection {
+    min-height: 5.75rem !important;
+    height: auto !important;
+    max-height: calc(min(42vh, 18rem) - 3.6rem) !important;
+    overflow: hidden auto !important;
+  }
+}
+
 .sidebar-section-link[data-link-name="all-categories"] {
   display: none;
 }
