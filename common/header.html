@@ -1045,6 +1045,8 @@
         welcomeLink.appendChild(createNode("h2", "erebyx-welcome-topic__title", WELCOME_TOPIC_TITLE));
         welcome.appendChild(welcomeLink);
         welcome.appendChild(createNode("div", "erebyx-welcome-topic__body cooked", "Loading the welcome topic..."));
+        welcome.appendChild(createNode("a", "erebyx-welcome-topic__open", "Open topic"));
+        welcome.querySelector(".erebyx-welcome-topic__open").href = welcomeLink.href;
         outlet.insertBefore(welcome, anchor || outlet.firstChild);
       }
 
@@ -1617,11 +1619,13 @@
           var body = card.querySelector(".erebyx-welcome-topic__body");
           var title = card.querySelector(".erebyx-welcome-topic__title");
           var link = card.querySelector(".erebyx-welcome-topic__link");
+          var openLink = card.querySelector(".erebyx-welcome-topic__open");
           var href = "/t/" + topic.slug + "/" + topic.id + "/1";
 
           if (title) title.textContent = topic.title || WELCOME_TOPIC_TITLE;
           if (body && cooked) body.innerHTML = cooked;
           if (link) link.href = href;
+          if (openLink) openLink.href = href;
           card.classList.add("erebyx-welcome-topic--open");
           card.classList.remove("erebyx-welcome-topic--loading");
           card.setAttribute("data-erebyx-welcome-topic-ready", "true");

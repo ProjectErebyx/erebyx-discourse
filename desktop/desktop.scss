@@ -20121,14 +20121,15 @@ html:not(.erebyx-admin-route)
   width: min(calc(100vw - clamp(2rem, 5vw, 4.5rem)), 74rem) !important;
   max-width: min(calc(100vw - clamp(2rem, 5vw, 4.5rem)), 74rem) !important;
   margin: clamp(0.85rem, 1.4vw, 1.15rem) auto clamp(1rem, 1.8vw, 1.45rem) !important;
-  border: 1px solid rgb(250 178 50 / 0.2) !important;
+  border: 1px solid rgb(250 178 50 / 0.18) !important;
   border-radius: 8px !important;
   background:
-    linear-gradient(135deg, rgb(250 178 50 / 0.12), transparent 36%),
-    linear-gradient(180deg, rgb(5 9 21 / 0.94), rgb(2 6 16 / 0.98)) !important;
+    linear-gradient(90deg, rgb(250 178 50 / 0.1), transparent 6rem),
+    linear-gradient(135deg, rgb(24 18 10 / 0.72), rgb(7 9 18 / 0.9)) !important;
   box-shadow:
-    inset 0 1px 0 rgb(255 247 214 / 0.08),
-    0 28px 84px -64px rgb(0 0 0 / 0.96) !important;
+    inset 1px 0 0 rgb(255 231 163 / 0.16),
+    inset 0 1px 0 rgb(255 247 214 / 0.05),
+    0 22px 78px -74px rgb(0 0 0 / 0.98) !important;
   overflow: hidden !important;
 }
 
@@ -20194,6 +20195,50 @@ html:not(.erebyx-admin-route)
   .erebyx-welcome-topic__body
   :is(p, ul, ol, blockquote):last-child {
   margin-bottom: 0 !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .erebyx-welcome-topic__open {
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: max-content !important;
+  max-width: calc(100% - clamp(2.2rem, 4.6vw, 3.6rem)) !important;
+  min-height: 2.35rem !important;
+  margin: 0 clamp(1.1rem, 2.3vw, 1.8rem) clamp(1rem, 1.7vw, 1.35rem) !important;
+  padding: 0.55rem 0.85rem !important;
+  border: 1px solid rgb(250 178 50 / 0.24) !important;
+  border-radius: 8px !important;
+  background:
+    linear-gradient(135deg, rgb(250 178 50 / 0.16), rgb(3 7 18 / 0.82)),
+    rgb(5 8 18 / 0.9) !important;
+  color: rgb(255 247 214 / 0.92) !important;
+  box-shadow:
+    inset 0 1px 0 rgb(255 247 214 / 0.08),
+    0 16px 38px -32px rgb(0 0 0 / 0.9) !important;
+  font-family: var(--erebyx-font-mono) !important;
+  font-size: 0.78rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .erebyx-welcome-topic__open:hover,
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .erebyx-welcome-topic__open:focus-visible {
+  border-color: rgb(250 178 50 / 0.42) !important;
+  color: #fff !important;
+  outline: none !important;
 }
 
 html:not(.erebyx-admin-route)
