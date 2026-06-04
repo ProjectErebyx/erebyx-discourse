@@ -1214,6 +1214,16 @@
         });
     };
 
+    var normalizeComposerActionTrigger = function () {
+      document
+        .querySelectorAll("#reply-control .composer-actions-btn")
+        .forEach(function (button) {
+          button.setAttribute("aria-label", "Composer options");
+          button.setAttribute("title", "Composer options");
+          button.setAttribute("name", "Composer options");
+        });
+    };
+
     var HOME_THREAD_FEEDS = {
       latest: {
         label: "Latest",
@@ -1946,6 +1956,7 @@
       enhanceCategoryTopicExcerpts();
       ensureTopicBackButton();
       ensureCategoryFeedMenuOptions();
+      normalizeComposerActionTrigger();
       enhanceHomepageThreadColumn();
       enhanceRelatedTopicPosters();
       ensureHamburgerSocialFooter();
