@@ -2,6 +2,7 @@
 
 $arche_map_relief: "$arche_map_relief" !default;
 $genesis_arche_logo: "$genesis_arche_logo" !default;
+$genesis_arche_full_wordmark: "$genesis_arche_full_wordmark" !default;
 $genesis_river_banner: "$genesis_river_banner" !default;
 $genesis_lounge_banner: "$genesis_lounge_banner" !default;
 $feature_requests_banner: "$feature_requests_banner" !default;
@@ -17251,4 +17252,79 @@ html:not(.erebyx-admin-route)
 
 .sidebar-section-link[data-link-name="all-categories"] {
   display: none;
+}
+
+/* Tablet nav polish: avoid bulky icon boxes and show the full GA wordmark. */
+@media screen and (width >= 768px) and (width <= 900px) {
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    > .erebyx-nav__inner
+    > .erebyx-nav__logo {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    display: inline-grid !important;
+    place-items: center !important;
+    inline-size: clamp(10.5rem, 28vw, 13.5rem) !important;
+    min-inline-size: clamp(10.5rem, 28vw, 13.5rem) !important;
+    max-inline-size: min(13.5rem, calc(100vw - 18rem)) !important;
+    block-size: 2.55rem !important;
+    min-block-size: 2.55rem !important;
+    max-block-size: 2.55rem !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    clip-path: none !important;
+    contain: layout paint !important;
+    overflow: visible !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    .erebyx-nav__wordmark {
+    display: block !important;
+    inline-size: 100% !important;
+    block-size: 100% !important;
+    min-inline-size: 100% !important;
+    min-block-size: 100% !important;
+    background: url($genesis_arche_full_wordmark) center / contain no-repeat !important;
+    filter: none !important;
+    mask: none !important;
+    -webkit-mask: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    :is(.erebyx-nav__sidebar, .erebyx-nav__dashboard, .erebyx-nav__social-link, .erebyx-nav__account),
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .d-header-icons
+    :is(.header-dropdown-toggle, .btn, button, #toggle-current-user) {
+    border: 0 !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    :is(.erebyx-nav__sidebar, .erebyx-nav__dashboard, .erebyx-nav__social-link, .erebyx-nav__account):is(:hover, :focus, :focus-visible, .active),
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .d-header-icons
+    :is(.header-dropdown-toggle, .btn, button, #toggle-current-user):is(:hover, :focus, :focus-visible, .active) {
+    border: 0 !important;
+    outline: none !important;
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+  }
 }
