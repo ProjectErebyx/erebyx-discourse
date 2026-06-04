@@ -14660,10 +14660,59 @@ html:not(.erebyx-admin-route)
     > .list-controls.list-controls
     .category-breadcrumb.category-breadcrumb {
     grid-area: crumbs !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.48rem !important;
+    align-items: center !important;
+    justify-items: start !important;
+    height: auto !important;
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
-    overflow: hidden !important;
+    overflow: visible !important;
+    white-space: normal !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
+    .category-breadcrumb.category-breadcrumb
+    > li {
+    box-sizing: border-box !important;
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    justify-content: flex-start !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
+    .category-breadcrumb.category-breadcrumb
+    > li:not(:first-child) {
+    width: auto !important;
+    justify-self: start !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
+    .category-breadcrumb.category-breadcrumb
+    :is(.category-breadcrumb__category-selector, .tag-drop) {
+    max-width: 100% !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
+    .category-breadcrumb.category-breadcrumb
+    .category-breadcrumb__category-selector {
+    width: 100% !important;
   }
 
   html:not(.erebyx-admin-route)
