@@ -20146,8 +20146,8 @@ html:not(.erebyx-admin-route)
   border: 1px solid rgb(250 178 50 / 0.22) !important;
   border-radius: 8px !important;
   background:
-    linear-gradient(90deg, rgb(3 7 18 / 0.62), rgb(3 7 18 / 0.28) 48%, rgb(3 7 18 / 0.58)),
-    linear-gradient(180deg, rgb(3 7 18 / 0.12), rgb(3 7 18 / 0.42)),
+    linear-gradient(90deg, rgb(3 7 18 / 0.34), rgb(3 7 18 / 0.1) 48%, rgb(3 7 18 / 0.3)),
+    linear-gradient(180deg, rgb(3 7 18 / 0.04), rgb(3 7 18 / 0.2)),
     url($genesis_river_banner) center / cover no-repeat,
     rgb(10 6 16) !important;
   box-shadow: none !important;
@@ -20252,6 +20252,54 @@ html:not(.erebyx-admin-route)
   .login-welcome.login-welcome
   .body-page-button-container {
   margin-top: clamp(1.7rem, 4vw, 2.4rem) !important;
+}
+
+@media screen and (width >= 768px) and (width <= 900px) {
+  html:not(.erebyx-admin-route)
+    body.login-page.static-login:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    .erebyx-nav__right {
+    display: flex !important;
+    justify-content: flex-end !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.login-page.static-login:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    .erebyx-nav__social {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 0.34rem !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.login-page.static-login:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    .erebyx-nav__social-link {
+    inline-size: 1.65rem !important;
+    block-size: 1.65rem !important;
+    min-inline-size: 1.65rem !important;
+    min-block-size: 1.65rem !important;
+    padding: 0 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.login-page.static-login:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    .erebyx-nav__social-icon {
+    inline-size: 1rem !important;
+    block-size: 1rem !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.login-page.static-login:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    .erebyx-nav__account {
+    display: none !important;
+  }
 }
 
 html:not(.erebyx-admin-route)
