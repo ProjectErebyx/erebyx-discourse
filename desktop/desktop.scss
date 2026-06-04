@@ -21833,3 +21833,100 @@ html:not(.erebyx-admin-route)
     box-shadow: none !important;
   }
 }
+
+/* Tablet category controls: keep all menus and buttons on one line. */
+@media screen and (width >= 700px) and (width <= 900px) {
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls {
+    min-height: 0 !important;
+    padding-block: 0.68rem !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
+    .navigation-container.navigation-container.category-navigation {
+    display: grid !important;
+    grid-template-columns: max-content max-content max-content minmax(0, 1fr) !important;
+    grid-template-areas: "category filters mode actions" !important;
+    align-items: center !important;
+    gap: 0.42rem !important;
+    min-height: 2.85rem !important;
+    overflow: visible !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
+    .category-breadcrumb.category-breadcrumb {
+    display: contents !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
+    .category-breadcrumb.category-breadcrumb
+    > li {
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
+    .category-breadcrumb.category-breadcrumb
+    > li:first-child {
+    grid-area: category !important;
+    max-width: min(14rem, 28vw) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
+    .category-breadcrumb.category-breadcrumb
+    > li:not(:first-child) {
+    grid-area: filters !important;
+    justify-self: start !important;
+    width: auto !important;
+    max-width: min(6.5rem, 14vw) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
+    .category-breadcrumb.category-breadcrumb
+    :is(.category-breadcrumb__category-selector, .category-drop, .tag-drop) {
+    width: auto !important;
+    max-width: 100% !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
+    .nav-pills.nav-pills {
+    grid-area: mode !important;
+    justify-self: start !important;
+    width: auto !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
+    .navigation-controls.navigation-controls {
+    grid-area: actions !important;
+    justify-self: end !important;
+    align-self: center !important;
+    width: auto !important;
+  }
+}
