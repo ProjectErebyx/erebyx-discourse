@@ -21019,6 +21019,17 @@ html:not(.erebyx-admin-route)
     body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
     #main-outlet#main-outlet
     > .list-controls.list-controls
+    .category-breadcrumb.category-breadcrumb
+    .category-breadcrumb__category-selector
+    .category-drop-header {
+    width: 100% !important;
+    justify-content: flex-start !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
     .nav-pills.nav-pills {
     grid-area: mode !important;
     justify-self: start !important;
