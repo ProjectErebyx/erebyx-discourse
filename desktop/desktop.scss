@@ -20995,6 +20995,10 @@ html:not(.erebyx-admin-route)
     body.category-start-here.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
     .category-title-header.category-banner-start-here
     .category-title-contents {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    grid-template-columns: minmax(0, 1fr) !important;
     justify-self: center !important;
     place-items: center !important;
     justify-items: center !important;
