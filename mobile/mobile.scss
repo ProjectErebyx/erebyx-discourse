@@ -14562,6 +14562,7 @@ html:not(.erebyx-admin-route)
     .category-breadcrumb.category-breadcrumb
     .category-breadcrumb__category-selector {
     width: 100% !important;
+    justify-content: flex-start !important;
   }
 
   html:not(.erebyx-admin-route)
