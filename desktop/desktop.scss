@@ -20312,8 +20312,25 @@ html:not(.erebyx-admin-route)
   min-height: 0 !important;
   aspect-ratio: 1 !important;
   padding: 0.68rem !important;
+  border-color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
   text-align: center !important;
   transform: none !important;
+}
+
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #main-outlet#main-outlet
+  > .erebyx-arche-map.erebyx-arche-map
+  .erebyx-arche-map__room::before,
+html:not(.erebyx-admin-route)
+  body:not(.admin-interface)
+  #main-outlet#main-outlet
+  > .erebyx-arche-map.erebyx-arche-map
+  .erebyx-arche-map__room::after {
+  content: none !important;
+  display: none !important;
 }
 
 html:not(.erebyx-admin-route)
@@ -20346,10 +20363,8 @@ html:not(.erebyx-admin-route)
   > .erebyx-arche-map.erebyx-arche-map
   .erebyx-arche-map__room--start {
   top: var(--erebyx-map-room-edge) !important;
-  right: calc(
-    var(--erebyx-map-room-edge) + var(--erebyx-map-room-size) +
-      var(--erebyx-map-room-gap)
-  ) !important;
+  left: var(--erebyx-map-room-edge) !important;
+  right: auto !important;
 }
 
 html:not(.erebyx-admin-route)
