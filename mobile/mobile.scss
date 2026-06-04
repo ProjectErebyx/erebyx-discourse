@@ -14909,7 +14909,7 @@ html:not(.erebyx-admin-route)
   :is(
     a.btn.user-admin,
     button.user-profile-toggle-btn,
-    .user-navigation.user-navigation :is(.nav-pills > li > a, a.ember-view),
+    .user-navigation.user-navigation :is(.nav-pills > li > a, a),
     .user-content.user-content :is(.btn, button, .select-kit-header)
   ) {
   border-color: rgb(168 85 247 / 0.26) !important;
@@ -14928,7 +14928,7 @@ html:not(.erebyx-admin-route)
   :is(
     a.btn.user-admin,
     button.user-profile-toggle-btn,
-    .user-navigation.user-navigation :is(.nav-pills > li > a, a.ember-view),
+    .user-navigation.user-navigation :is(.nav-pills > li > a, a),
     .user-content.user-content :is(.btn, button, .select-kit-header)
   ):is(:hover, :focus, :focus-visible, .active) {
   border-color: rgb(168 85 247 / 0.42) !important;
