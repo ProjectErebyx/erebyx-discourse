@@ -8792,6 +8792,126 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
   }
 }
 
+/* Final mobile topic card breathing room for the current Discourse card markup. */
+@media screen and (width <= 560px) {
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet#main-outlet
+    :is(.topic-list, .loading-container .topic-list)
+    > tbody.topic-list-body
+    > tr.topic-list-item.topic-list-item {
+    box-sizing: border-box !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: min(100%, calc(100vw - 2rem)) !important;
+    max-width: calc(100vw - 2rem) !important;
+    min-height: 14.75rem !important;
+    margin-inline: auto !important;
+    padding: 1.15rem !important;
+    overflow: visible !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet#main-outlet
+    :is(.topic-list, .loading-container .topic-list)
+    > tbody.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    > .topic-list-data {
+    box-sizing: border-box !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.78rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet#main-outlet
+    :is(.topic-list, .loading-container .topic-list)
+    > tbody.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    :is(.pull-left, .posters) {
+    position: static !important;
+    display: flex !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet#main-outlet
+    :is(.topic-list, .loading-container .topic-list)
+    > tbody.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    .topic-item-metadata {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.9rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet#main-outlet
+    :is(.topic-list, .loading-container .topic-list)
+    > tbody.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    .main-link {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet#main-outlet
+    :is(.topic-list, .loading-container .topic-list)
+    > tbody.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    :is(.title.raw-link, .raw-topic-link, .main-link a.title) {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: normal !important;
+    -webkit-line-clamp: unset !important;
+    font-size: clamp(1.55rem, 7vw, 2.15rem) !important;
+    line-height: 1.04 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet#main-outlet
+    :is(.topic-list, .loading-container .topic-list)
+    > tbody.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    .topic-item-stats {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.7rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 2.1rem !important;
+    margin-top: 0.1rem !important;
+    overflow: visible !important;
+  }
+}
+
 /* Final mobile map room placement: square room buttons on the map stage. */
 html:not(.erebyx-admin-route)
   body:not(.admin-interface)
