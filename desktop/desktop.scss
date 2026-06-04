@@ -20974,6 +20974,23 @@ html:not(.erebyx-admin-route)
   text-align: center !important;
 }
 
+@media screen and (width <= 900px) {
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    .category-title-header[class*="category-banner-"]
+    .category-title {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    justify-self: center !important;
+    gap: 0.36rem !important;
+    width: 100% !important;
+    margin-inline: auto !important;
+    text-align: center !important;
+    text-wrap: balance !important;
+  }
+}
+
 @media screen and (width >= 720px) and (width <= 1024px) {
   html:not(.erebyx-admin-route)
     body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
