@@ -17948,3 +17948,37 @@ html:not(.erebyx-admin-route)
     width: auto !important;
   }
 }
+
+/* Final user-preferences chrome override: win after shared user-page amber rules. */
+html:not(.erebyx-admin-route)
+  body.user-preferences-page:not(.admin-interface)
+  #main-outlet#main-outlet
+  .user-main.user-main
+  :is(.about.collapsed-info.no-background, .details.details),
+html:not(.erebyx-admin-route)
+  body.user-preferences-page:not(.admin-interface)
+  #main-outlet#main-outlet
+  .user-main.user-main
+  :is(.user-admin, .user-profile-toggle-btn, .user-navigation .nav-pills > li > a, .user-navigation a) {
+  border-color: rgb(168 85 247 / 0.26) !important;
+  background: linear-gradient(180deg, rgb(4 6 12 / 0.98), rgb(0 0 0 / 0.98)), rgb(0 0 0) !important;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.05),
+    inset -1px 0 0 rgb(168 85 247 / 0.16) !important;
+  color: rgb(226 232 240 / 0.94) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.user-preferences-page:not(.admin-interface)
+  #main-outlet#main-outlet
+  .user-main.user-main
+  :is(.user-admin, .user-profile-toggle-btn, .user-navigation .nav-pills > li > a, .user-navigation a):is(
+    :hover,
+    :focus,
+    :focus-visible,
+    .active
+  ) {
+  border-color: rgb(168 85 247 / 0.42) !important;
+  background: linear-gradient(180deg, rgb(12 8 24 / 0.98), rgb(0 0 0 / 0.98)), rgb(0 0 0) !important;
+  color: rgb(255 247 214 / 0.96) !important;
+}
