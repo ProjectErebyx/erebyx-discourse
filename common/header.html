@@ -1170,6 +1170,50 @@
       if (button.parentNode !== title) title.insertBefore(button, title.firstChild);
     };
 
+    var categoryFeedPath = function () {
+      var path = (window.location.pathname || "").replace(/\/$/, "");
+      var match = path.match(/^(\/c\/.+?\/\d+)(?:\/l\/(latest|hot|top))?$/);
+      if (!match) return null;
+
+      return {
+        base: match[1],
+        feed: match[2] || "latest"
+      };
+    };
+
+    var ensureCategoryFeedMenuOptions = function () {
+      var route = categoryFeedPath();
+      if (!route) return;
+
+      document
+        .querySelectorAll(".fk-d-menu-modal:not(.sidebar-more-section-content) .dropdown-menu")
+        .forEach(function (menu) {
+          var menuState = route.base + "|" + route.feed;
+          if (menu.getAttribute("data-erebyx-category-feeds") === menuState) return;
+
+          var options = [
+            { key: "latest", label: "Latest", href: route.base },
+            { key: "hot", label: "Hot", href: route.base + "/l/hot" },
+            { key: "top", label: "Top", href: route.base + "/l/top" }
+          ];
+
+          menu.innerHTML = "";
+          options.forEach(function (option) {
+            var item = document.createElement("li");
+            var link = document.createElement("a");
+            link.href = option.href;
+            link.textContent = option.label;
+            link.className = option.key === route.feed ? "active" : "";
+            link.setAttribute("data-erebyx-category-feed", option.key);
+            if (option.key === route.feed) link.setAttribute("aria-current", "page");
+            item.appendChild(link);
+            menu.appendChild(item);
+          });
+
+          menu.setAttribute("data-erebyx-category-feeds", menuState);
+        });
+    };
+
     var HOME_THREAD_FEEDS = {
       latest: {
         label: "Latest",
@@ -1901,6 +1945,7 @@
       updateCategoryBannerCopy();
       enhanceCategoryTopicExcerpts();
       ensureTopicBackButton();
+      ensureCategoryFeedMenuOptions();
       enhanceHomepageThreadColumn();
       enhanceRelatedTopicPosters();
       ensureHamburgerSocialFooter();
