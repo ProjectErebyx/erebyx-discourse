@@ -18151,6 +18151,10 @@ html:not(.erebyx-admin-route)
     max-width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
     transform: none !important;
   }
 
@@ -18161,6 +18165,23 @@ html:not(.erebyx-admin-route)
     .badge-category__wrapper.badge-category__wrapper {
     max-width: 100% !important;
     min-height: 1.65rem !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
     overflow: visible !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.archetype-regular:not(.admin-interface)
+    #main-outlet#main-outlet
+    #topic-title#topic-title
+    .topic-category.topic-category
+    :is(.badge-category, .badge-category__name) {
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
   }
 }
