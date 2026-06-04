@@ -20977,6 +20977,28 @@ html:not(.erebyx-admin-route)
 @media screen and (width <= 900px) {
   html:not(.erebyx-admin-route)
     body.category-genesis-lounge.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+    .category-title-header.category-banner-genesis-lounge,
+  html:not(.erebyx-admin-route)
+    body.category-feature-requests.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+    .category-title-header.category-banner-feature-requests,
+  html:not(.erebyx-admin-route)
+    body.category-announcements.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+    .category-title-header.category-banner-announcements,
+  html:not(.erebyx-admin-route)
+    body.category-bug-reports.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+    .category-title-header.category-banner-bug-reports,
+  html:not(.erebyx-admin-route)
+    body.category-start-here.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+    .category-title-header.category-banner-start-here {
+    grid-template-columns: minmax(0, 1fr) !important;
+    place-items: center !important;
+    justify-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category-genesis-lounge.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
     .category-title-header.category-banner-genesis-lounge
     .category-title-contents,
   html:not(.erebyx-admin-route)
