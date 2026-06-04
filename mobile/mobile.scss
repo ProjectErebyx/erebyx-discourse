@@ -12682,13 +12682,14 @@ html:not(.erebyx-admin-route)
     flex: 0 0 auto !important;
     flex-direction: row !important;
     align-items: center !important;
-    width: 100% !important;
+    width: auto !important;
     min-width: 0 !important;
-    gap: 0.25rem !important;
-    padding: 0.45rem !important;
-    border-bottom: 1px solid rgb(168 85 247 / 0.18) !important;
+    max-width: none !important;
+    gap: 0.18rem !important;
+    padding: 0.35rem !important;
+    border-bottom: 0 !important;
     background: rgb(0 0 0 / 0.7) !important;
-    overflow-x: auto !important;
+    overflow-x: visible !important;
     overflow-y: hidden !important;
   }
 
@@ -12696,12 +12697,12 @@ html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
     :is(.user-menu-tab, .nav-pills > li > a, .quick-access-panel__tab, .btn) {
-    flex: 0 0 2.75rem !important;
-    width: 2.75rem !important;
-    min-width: 2.75rem !important;
+    flex: 0 0 2.5rem !important;
+    width: 2.5rem !important;
+    min-width: 2.5rem !important;
     max-width: 100% !important;
-    height: 2.75rem !important;
-    min-height: 2.75rem !important;
+    height: 2.5rem !important;
+    min-height: 2.5rem !important;
     border-radius: 8px !important;
     border: 1px solid rgb(148 163 184 / 0.16) !important;
     background: rgb(3 7 18 / 0.78) !important;
