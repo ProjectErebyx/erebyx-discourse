@@ -10564,14 +10564,16 @@ html:not(.erebyx-admin-route)
   .about
   .details
   > .primary {
-  border: 1px solid rgb(168 85 247 / 0.26) !important;
+  border: 1px solid rgb(168 85 247 / 0.3) !important;
   border-radius: 8px 8px 0 0 !important;
   background:
-    radial-gradient(circle at 50% 8%, rgb(168 85 247 / 0.22), transparent 13rem),
-    linear-gradient(180deg, rgb(30 27 75 / 0.94), rgb(12 10 28 / 0.98)),
-    rgb(12 10 28) !important;
+    linear-gradient(135deg, rgb(168 85 247 / 0.12), transparent 54%),
+    linear-gradient(180deg, rgb(4 6 12 / 0.98), rgb(0 0 0 / 0.98)),
+    rgb(0 0 0) !important;
   color: rgb(248 250 252 / 0.96) !important;
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08) !important;
+  box-shadow:
+    20px 0 54px -42px rgb(168 85 247 / 0.5),
+    inset 0 1px 0 rgb(255 255 255 / 0.08) !important;
   overflow: hidden !important;
 }
 
@@ -10606,10 +10608,10 @@ html:not(.erebyx-admin-route)
   .details
   > .primary
   .user-profile-toggle-btn {
-  border-color: rgb(168 85 247 / 0.34) !important;
+  border-color: rgb(168 85 247 / 0.3) !important;
   background:
-    linear-gradient(135deg, rgb(168 85 247 / 0.2), rgb(59 130 246 / 0.08)),
-    rgb(15 23 42 / 0.78) !important;
+    linear-gradient(135deg, rgb(168 85 247 / 0.14), rgb(59 130 246 / 0.06)),
+    rgb(3 7 18 / 0.9) !important;
   color: rgb(248 250 252 / 0.96) !important;
   box-shadow: none !important;
 }
