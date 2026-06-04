@@ -8793,7 +8793,7 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
 }
 
 /* Final pass: keep current mobile topic cards roomy after all legacy card rules. */
-@media screen and (width <= 560px) {
+@media screen and (max-width: 560px) {
   html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     #main-outlet#main-outlet
@@ -8821,7 +8821,7 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
 }
 
 /* Final mobile topic card breathing room for the current Discourse card markup. */
-@media screen and (width <= 560px) {
+@media screen and (max-width: 560px) {
   html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     #main-outlet#main-outlet
