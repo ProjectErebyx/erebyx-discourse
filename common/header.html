@@ -995,6 +995,10 @@
       });
     };
 
+    var WELCOME_TOPIC_ID = 56;
+    var WELCOME_TOPIC_SLUG = "welcome-to-genesis-arche";
+    var WELCOME_TOPIC_TITLE = "✦ Welcome to Genesis Arche";
+
     var ensureDiscoverySurfaces = function () {
       if (isAdminPath()) {
         removeDiscoverySurfaces();
@@ -1036,9 +1040,9 @@
         welcome.setAttribute("data-erebyx-welcome-topic-ready", "false");
 
         var welcomeLink = createNode("a", "erebyx-welcome-topic__link");
-        welcomeLink.href = "/c/start-here/5";
+        welcomeLink.href = "/t/" + WELCOME_TOPIC_SLUG + "/" + WELCOME_TOPIC_ID + "/1";
         welcomeLink.appendChild(createNode("span", "erebyx-welcome-topic__eyebrow", "Start Here"));
-        welcomeLink.appendChild(createNode("h2", "erebyx-welcome-topic__title", "Welcome to the Arche"));
+        welcomeLink.appendChild(createNode("h2", "erebyx-welcome-topic__title", WELCOME_TOPIC_TITLE));
         welcome.appendChild(welcomeLink);
         welcome.appendChild(createNode("div", "erebyx-welcome-topic__body cooked", "Loading the welcome topic..."));
         outlet.insertBefore(welcome, anchor || outlet.firstChild);
@@ -1579,16 +1583,29 @@
       if (!card || card.getAttribute("data-erebyx-welcome-topic-ready") === "true") return;
 
       card.setAttribute("data-erebyx-welcome-topic-ready", "pending");
-      requestJson("/c/start-here/5/l/latest.json")
-        .then(function (data) {
-          var topics = data && data.topic_list && data.topic_list.topics ? data.topic_list.topics : [];
-          var topic = topics.filter(function (candidate) {
-            return candidate && candidate.id && candidate.slug && !candidate.deleted_at;
-          })[0];
-          if (!topic) throw new Error("Welcome topic unavailable");
-          return requestJson("/t/" + topic.slug + "/" + topic.id + ".json").then(function (topicData) {
-            return { topic: topic, topicData: topicData };
-          });
+      requestJson("/t/" + WELCOME_TOPIC_SLUG + "/" + WELCOME_TOPIC_ID + ".json")
+        .then(function (topicData) {
+          return {
+            topic: {
+              id: WELCOME_TOPIC_ID,
+              slug: WELCOME_TOPIC_SLUG,
+              title: WELCOME_TOPIC_TITLE
+            },
+            topicData: topicData
+          };
+        })
+        .catch(function () {
+          return requestJson("/c/start-here/5/l/latest.json")
+            .then(function (data) {
+              var topics = data && data.topic_list && data.topic_list.topics ? data.topic_list.topics : [];
+              var topic = topics.filter(function (candidate) {
+                return candidate && candidate.id && candidate.slug && !candidate.deleted_at;
+              })[0];
+              if (!topic) throw new Error("Welcome topic unavailable");
+              return requestJson("/t/" + topic.slug + "/" + topic.id + ".json").then(function (topicData) {
+                return { topic: topic, topicData: topicData };
+              });
+            });
         })
         .then(function (result) {
           var topic = result.topic;
@@ -1602,7 +1619,7 @@
           var link = card.querySelector(".erebyx-welcome-topic__link");
           var href = "/t/" + topic.slug + "/" + topic.id + "/1";
 
-          if (title) title.textContent = topic.title || "Welcome to the Arche";
+          if (title) title.textContent = topic.title || WELCOME_TOPIC_TITLE;
           if (body && cooked) body.innerHTML = cooked;
           if (link) link.href = href;
           card.classList.add("erebyx-welcome-topic--open");

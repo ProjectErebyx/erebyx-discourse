@@ -14625,14 +14625,14 @@ html:not(.erebyx-admin-route)
   flex: 1 1 100% !important;
 }
 
-html:not(.erebyx-admin-route)
-  body[data-erebyx-route="discovery"]:not(.admin-interface)
-  #main-outlet#main-outlet
-  .erebyx-welcome-topic {
-  box-sizing: border-box !important;
-  width: min(calc(100vw - 1.5rem), 74rem) !important;
-  max-width: min(calc(100vw - 1.5rem), 74rem) !important;
-  margin: 0.8rem auto 1rem !important;
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    .erebyx-welcome-topic {
+    box-sizing: border-box !important;
+    width: min(calc(100vw - 2rem), 74rem) !important;
+    max-width: calc(100% - 1rem) !important;
+    margin: 0.8rem auto 1rem !important;
   border: 1px solid rgb(250 178 50 / 0.2) !important;
   border-radius: 8px !important;
   background:
@@ -14683,11 +14683,17 @@ html:not(.erebyx-admin-route)
   body[data-erebyx-route="discovery"]:not(.admin-interface)
   #main-outlet#main-outlet
   .erebyx-welcome-topic__body {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
   margin: 0 !important;
   padding: 0.8rem 1rem 1rem !important;
   color: rgb(226 232 240 / 0.78) !important;
   font-size: 0.92rem !important;
   line-height: 1.48 !important;
+  overflow-x: clip !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
 }
 
 html:not(.erebyx-admin-route)
@@ -14695,8 +14701,18 @@ html:not(.erebyx-admin-route)
   #main-outlet#main-outlet
   .erebyx-welcome-topic__body
   :is(p, ul, ol, blockquote) {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
   margin-top: 0 !important;
   margin-bottom: 0.8rem !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[data-erebyx-route="discovery"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .erebyx-welcome-topic__body
+  :is(ul, ol) {
+  padding-left: 1.15rem !important;
 }
 
 html:not(.erebyx-admin-route)
