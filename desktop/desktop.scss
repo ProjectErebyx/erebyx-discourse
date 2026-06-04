@@ -20976,6 +20976,54 @@ html:not(.erebyx-admin-route)
 
 @media screen and (width <= 900px) {
   html:not(.erebyx-admin-route)
+    body.category-genesis-lounge.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+    .category-title-header.category-banner-genesis-lounge
+    .category-title-contents,
+  html:not(.erebyx-admin-route)
+    body.category-feature-requests.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+    .category-title-header.category-banner-feature-requests
+    .category-title-contents,
+  html:not(.erebyx-admin-route)
+    body.category-announcements.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+    .category-title-header.category-banner-announcements
+    .category-title-contents,
+  html:not(.erebyx-admin-route)
+    body.category-bug-reports.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+    .category-title-header.category-banner-bug-reports
+    .category-title-contents,
+  html:not(.erebyx-admin-route)
+    body.category-start-here.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+    .category-title-header.category-banner-start-here
+    .category-title-contents {
+    justify-self: center !important;
+    place-items: center !important;
+    justify-items: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category-genesis-lounge.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+    .category-title-header.category-banner-genesis-lounge
+    .category-title,
+  html:not(.erebyx-admin-route)
+    body.category-feature-requests.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+    .category-title-header.category-banner-feature-requests
+    .category-title,
+  html:not(.erebyx-admin-route)
+    body.category-announcements.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+    .category-title-header.category-banner-announcements
+    .category-title,
+  html:not(.erebyx-admin-route)
+    body.category-bug-reports.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+    .category-title-header.category-banner-bug-reports
+    .category-title,
+  html:not(.erebyx-admin-route)
+    body.category-start-here.category.navigation-category.category-header:not(.admin-interface):not(.archetype-regular)
+    .category-title-header.category-banner-start-here
+    .category-title,
+  html:not(.erebyx-admin-route)
     body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
     .category-title-header[class*="category-banner-"]
     .category-title {
