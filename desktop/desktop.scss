@@ -21023,4 +21023,75 @@ html:not(.erebyx-admin-route)
     grid-area: actions !important;
     justify-self: end !important;
   }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    .select-kit-body.select-kit-body {
+    box-sizing: border-box !important;
+    position: fixed !important;
+    inset: max(4.75rem, env(safe-area-inset-top)) 1rem auto 1rem !important;
+    width: min(32rem, calc(100vw - 2rem)) !important;
+    min-width: 0 !important;
+    max-width: calc(100vw - 2rem) !important;
+    max-height: min(70vh, 34rem) !important;
+    padding: 0.62rem !important;
+    overflow: hidden auto !important;
+    transform: none !important;
+    z-index: 4200 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    .select-kit-body.select-kit-body
+    :is(.select-kit-filter, .select-kit-collection, .dropdown-menu) {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    .select-kit-body.select-kit-body
+    :is(input, .filter-input) {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    min-height: 2.65rem !important;
+    max-width: 100% !important;
+    font-size: 1rem !important;
+    line-height: 1.2 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    .select-kit-body.select-kit-body
+    :is(.select-kit-row, .category-row.select-kit-row) {
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    min-height: 3rem !important;
+    height: auto !important;
+    padding: 0.72rem 0.78rem !important;
+    overflow: visible !important;
+    white-space: normal !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    .select-kit-body.select-kit-body
+    .category-row.select-kit-row
+    :is(.category-status, .badge-category__wrapper, .badge-category, .badge-category__name) {
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    white-space: normal !important;
+    text-overflow: clip !important;
+    overflow-wrap: anywhere !important;
+  }
 }
