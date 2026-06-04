@@ -1184,9 +1184,10 @@
     var ensureCategoryFeedMenuOptions = function () {
       var route = categoryFeedPath();
       if (!route) return;
+      if (!document.querySelector("#main-outlet > .list-controls .list-control-toggle-link-trigger[aria-expanded='true']")) return;
 
       document
-        .querySelectorAll(".fk-d-menu-modal:not(.sidebar-more-section-content) .dropdown-menu")
+        .querySelectorAll(".fk-d-menu-modal:not(.sidebar-more-section-content):not(.notifications-tracking-content) .dropdown-menu")
         .forEach(function (menu) {
           var menuState = route.base + "|" + route.feed;
           if (menu.getAttribute("data-erebyx-category-feeds") === menuState) return;
