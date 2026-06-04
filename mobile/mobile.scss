@@ -16875,11 +16875,64 @@ html:not(.erebyx-admin-route)
     > tr.topic-list-item.topic-list-item
     > td.topic-list-data {
     box-sizing: border-box !important;
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
     padding: 0 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    .custom-homepage-columns.custom-homepage-columns
+    > .col-2.erebyx-home-thread-feed
+    table.topic-list.topic-list
+    > tbody.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    .pull-left {
+    position: static !important;
+    align-self: center !important;
+    width: 3.25rem !important;
+    height: 3.25rem !important;
+    margin: 0 auto 0.1rem !important;
+    transform: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    .custom-homepage-columns.custom-homepage-columns
+    > .col-2.erebyx-home-thread-feed
+    table.topic-list.topic-list
+    > tbody.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    .pull-left
+    img.avatar {
+    width: 3.25rem !important;
+    height: 3.25rem !important;
+    max-width: 3.25rem !important;
+    max-height: 3.25rem !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    .custom-homepage-columns.custom-homepage-columns
+    > .col-2.erebyx-home-thread-feed
+    table.topic-list.topic-list
+    > tbody.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    .topic-item-metadata {
+    display: grid !important;
+    grid-template-rows: auto 1fr auto !important;
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    gap: 1rem !important;
   }
 
   html:not(.erebyx-admin-route)
@@ -16993,6 +17046,45 @@ html:not(.erebyx-admin-route)
     margin-top: auto !important;
     padding-right: 3.35rem !important;
     overflow: hidden !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    .custom-homepage-columns.custom-homepage-columns
+    > .col-2.erebyx-home-thread-feed
+    table.topic-list.topic-list
+    > tbody.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    .topic-item-stats {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-top: auto !important;
+    gap: 0.75rem !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    .custom-homepage-columns.custom-homepage-columns
+    > .col-2.erebyx-home-thread-feed
+    table.topic-list.topic-list
+    > tbody.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    .topic-item-stats
+    .num.activity.last {
+    position: static !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 2rem !important;
+    margin-left: auto !important;
+    padding: 0 !important;
+    text-align: right !important;
+    white-space: nowrap !important;
   }
 
   html:not(.erebyx-admin-route)
