@@ -1,6 +1,7 @@
 /* Mobile-specific overrides for EREBYX Arche theme */
 
 $arche_map_relief: "$arche_map_relief" !default;
+$genesis_arche_logo: "$genesis_arche_logo" !default;
 $genesis_river_banner: "$genesis_river_banner" !default;
 $genesis_lounge_banner: "$genesis_lounge_banner" !default;
 $feature_requests_banner: "$feature_requests_banner" !default;
@@ -14288,5 +14289,49 @@ html:not(.erebyx-admin-route)
     .d-header-icons
     #toggle-current-user {
     transform: translateY(1.45px) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    > .erebyx-nav__inner
+    > .erebyx-nav__logo {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    display: inline-grid !important;
+    place-items: center !important;
+    width: 2.55rem !important;
+    min-width: 2.55rem !important;
+    max-width: 2.55rem !important;
+    height: 2.55rem !important;
+    min-height: 2.55rem !important;
+    max-height: 2.55rem !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    clip-path: none !important;
+    contain: layout paint !important;
+    overflow: visible !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    .erebyx-nav__wordmark {
+    display: block !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    max-height: 100% !important;
+    background: url($genesis_arche_logo) center / contain no-repeat !important;
+    filter: none !important;
+    mask: none !important;
+    -webkit-mask: none !important;
   }
 }
