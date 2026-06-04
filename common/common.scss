@@ -37740,12 +37740,3 @@ html:not(.erebyx-admin-route)
   ) {
   cursor: auto;
 }
-
-// ── Sidebar: hide the "All categories" link ───────────────────────────────
-// We pin the curated districts (data-link-name="category-*") via
-// default_navigation_menu_categories, so the generic "All categories" link is
-// redundant. The collapsible "Categories" section header and the pinned
-// district links are untouched — only the all-categories link is hidden.
-.sidebar-section-link[data-link-name="all-categories"] {
-  display: none;
-}

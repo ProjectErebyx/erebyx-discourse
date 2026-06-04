@@ -21223,3 +21223,11 @@ html:not(.erebyx-admin-route)
     box-shadow: inset 0 0 0 1px rgb(250 178 50 / 0.22) !important;
   }
 }
+
+// ── Sidebar: hide the redundant "All categories" link ─────────────────────
+// Districts are pinned via default_navigation_menu_categories; the generic
+// all-categories link is redundant. Header + district links untouched.
+// (Lives here, not common.scss, which is at the 1 MiB theme-field ceiling.)
+.sidebar-section-link[data-link-name="all-categories"] {
+  display: none;
+}
