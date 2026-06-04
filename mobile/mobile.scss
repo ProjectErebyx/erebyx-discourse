@@ -15089,6 +15089,32 @@ html:not(.erebyx-admin-route)
 @media screen and (width <= 900px) {
   html:not(.erebyx-admin-route)
     body:not(.admin-interface)
+    #reply-control#reply-control.open:not(.fullscreen, .minimized),
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #reply-control#reply-control.open.draft:not(.fullscreen, .minimized) {
+    background:
+      linear-gradient(180deg, rgb(3 5 10 / 0.99), rgb(0 0 0 / 0.99)),
+      rgb(0 0 0) !important;
+    background-color: rgb(0 0 0) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #reply-control#reply-control.open:not(.fullscreen, .minimized)
+    :is(.d-editor-container, .d-editor, .d-editor-textarea-wrapper),
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #reply-control#reply-control.open.draft:not(.fullscreen, .minimized)
+    :is(.d-editor-container, .d-editor, .d-editor-textarea-wrapper) {
+    background:
+      linear-gradient(180deg, rgb(3 7 18 / 0.82), rgb(0 0 0 / 0.92)),
+      rgb(0 0 0) !important;
+    background-color: rgb(0 0 0) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
     #reply-control#reply-control.open:not(.fullscreen, .minimized)
     :is(.reply-area, .composer-fields, .d-editor-container, .d-editor, .d-editor-textarea-wrapper),
   html:not(.erebyx-admin-route)
