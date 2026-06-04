@@ -20138,10 +20138,17 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.login-page.static-login:not(.admin-interface)
   #main-outlet
+  .contents.body-page {
+  margin-top: clamp(1.25rem, 3vh, 2.5rem) !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.login-page.static-login:not(.admin-interface)
+  #main-outlet
   .login-welcome.login-welcome {
   width: min(52rem, calc(100vw - 2rem)) !important;
   max-width: min(52rem, calc(100vw - 2rem)) !important;
-  margin: clamp(4.75rem, 8vh, 6.5rem) auto 3rem !important;
+  margin: clamp(1.5rem, 4vh, 3rem) auto 3rem !important;
   padding: clamp(2rem, 3.4vw, 3rem) !important;
   border: 1px solid rgb(250 178 50 / 0.22) !important;
   border-radius: 8px !important;
