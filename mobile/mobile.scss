@@ -8792,6 +8792,34 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
   }
 }
 
+/* Final pass: keep current mobile topic cards roomy after all legacy card rules. */
+@media screen and (width <= 560px) {
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet#main-outlet
+    .loading-container.loading-container
+    .topic-list.topic-list,
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet#main-outlet
+    .loading-container.loading-container
+    .topic-list.topic-list
+    > tbody.topic-list-body.topic-list-body,
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet#main-outlet
+    .loading-container.loading-container
+    .topic-list.topic-list
+    > tbody.topic-list-body.topic-list-body
+    > tr.topic-list-item.topic-list-item {
+    box-sizing: border-box !important;
+    width: min(100%, calc(100vw - 1.5rem)) !important;
+    max-width: calc(100vw - 1.5rem) !important;
+    min-width: 0 !important;
+    margin-inline: auto !important;
+  }
+}
+
 /* Final mobile topic card breathing room for the current Discourse card markup. */
 @media screen and (width <= 560px) {
   html:not(.erebyx-admin-route)
