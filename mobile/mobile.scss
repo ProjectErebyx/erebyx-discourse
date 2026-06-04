@@ -14596,7 +14596,6 @@ html:not(.erebyx-admin-route)
 @media screen and (width <= 900px) {
   html:not(.erebyx-admin-route)
     body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
-    #main-outlet#main-outlet
     .category-title-header[class*="category-banner-"] {
     box-sizing: border-box !important;
     width: min(100%, calc(100vw - 2rem)) !important;
@@ -14608,7 +14607,6 @@ html:not(.erebyx-admin-route)
 
   html:not(.erebyx-admin-route)
     body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
-    #main-outlet#main-outlet
     .category-title-header[class*="category-banner-"]
     .category-title-contents {
     box-sizing: border-box !important;
@@ -14622,7 +14620,6 @@ html:not(.erebyx-admin-route)
 
   html:not(.erebyx-admin-route)
     body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
-    #main-outlet#main-outlet
     .category-title-header[class*="category-banner-"]
     :is(.category-title, .category-title-description, .category-title-description .cooked) {
     box-sizing: border-box !important;
@@ -14635,7 +14632,6 @@ html:not(.erebyx-admin-route)
 
   html:not(.erebyx-admin-route)
     body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
-    #main-outlet#main-outlet
     .category-title-header[class*="category-banner-"]
     .category-title {
     font-size: clamp(1.75rem, 8vw, 3.25rem) !important;
