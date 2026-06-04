@@ -14573,6 +14573,19 @@ html:not(.erebyx-admin-route)
     .category-breadcrumb__category-selector
     .category-drop-header {
     width: 100% !important;
+    max-width: 100% !important;
+    justify-content: flex-start !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
+    .category-breadcrumb.category-breadcrumb
+    .category-breadcrumb__category-selector
+    :is(.select-kit-header-wrapper, .select-kit-selected-name, .selected-name, .badge-category__wrapper) {
+    width: auto !important;
+    max-width: 100% !important;
     justify-content: flex-start !important;
   }
 
