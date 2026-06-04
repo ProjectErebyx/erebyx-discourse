@@ -20936,13 +20936,16 @@ html:not(.erebyx-admin-route)
     > .list-controls.list-controls
     .navigation-container.navigation-container.category-navigation {
     display: grid !important;
-    grid-template-columns: minmax(0, 1fr) auto !important;
+    grid-template-columns: minmax(0, 1fr) max-content !important;
     grid-template-areas:
-      "crumbs crumbs"
-      "mode actions" !important;
+      "category category"
+      "filters mode"
+      "actions actions" !important;
     align-items: center !important;
-    gap: 0.56rem !important;
-    overflow: hidden !important;
+    gap: 0.56rem 0.48rem !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
   }
 
   html:not(.erebyx-admin-route)
@@ -20950,18 +20953,7 @@ html:not(.erebyx-admin-route)
     #main-outlet#main-outlet
     > .list-controls.list-controls
     .category-breadcrumb.category-breadcrumb {
-    grid-area: crumbs !important;
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 0.48rem !important;
-    align-items: center !important;
-    justify-items: start !important;
-    height: auto !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    overflow: visible !important;
-    white-space: normal !important;
+    display: contents !important;
   }
 
   html:not(.erebyx-admin-route)
@@ -20983,8 +20975,18 @@ html:not(.erebyx-admin-route)
     #main-outlet#main-outlet
     > .list-controls.list-controls
     .category-breadcrumb.category-breadcrumb
+    > li:first-child {
+    grid-area: category !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
+    .category-breadcrumb.category-breadcrumb
     > li:not(:first-child) {
-    width: auto !important;
+    grid-area: filters !important;
+    width: 100% !important;
     justify-self: start !important;
   }
 
@@ -20994,6 +20996,7 @@ html:not(.erebyx-admin-route)
     > .list-controls.list-controls
     .category-breadcrumb.category-breadcrumb
     :is(.category-breadcrumb__category-selector, .tag-drop) {
+    width: 100% !important;
     max-width: 100% !important;
   }
 
@@ -21047,6 +21050,7 @@ html:not(.erebyx-admin-route)
     .nav-pills.nav-pills {
     grid-area: mode !important;
     justify-self: start !important;
+    max-width: 100% !important;
   }
 
   html:not(.erebyx-admin-route)
@@ -21056,6 +21060,7 @@ html:not(.erebyx-admin-route)
     .navigation-controls.navigation-controls {
     grid-area: actions !important;
     justify-self: end !important;
+    max-width: 100% !important;
   }
 
   html:not(.erebyx-admin-route)
@@ -21063,11 +21068,14 @@ html:not(.erebyx-admin-route)
     .select-kit-body.select-kit-body {
     box-sizing: border-box !important;
     position: fixed !important;
-    inset: max(4.75rem, env(safe-area-inset-top)) 1rem auto 1rem !important;
-    width: min(32rem, calc(100vw - 2rem)) !important;
+    inset: auto !important;
+    top: max(4.75rem, env(safe-area-inset-top)) !important;
+    right: max(1rem, env(safe-area-inset-right)) !important;
+    left: max(1rem, env(safe-area-inset-left)) !important;
+    width: auto !important;
     min-width: 0 !important;
     max-width: calc(100vw - 2rem) !important;
-    max-height: min(70vh, 34rem) !important;
+    max-height: min(60svh, 30rem) !important;
     padding: 0.62rem !important;
     overflow: hidden auto !important;
     transform: none !important;
