@@ -7278,6 +7278,143 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
     &.users-page
       #main-outlet
       .users-directory.directory
+      .directory-controls
+      :is(.period-controls, .inline-form) {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 0.62rem !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+      margin: 0 !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-controls
+      :is(.period-controls, .inline-form, .select-kit, .filter-name, .directory-last-updated, .total-rows) {
+      box-sizing: border-box !important;
+      min-width: 0 !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-controls
+      .period-controls
+      .period-chooser {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-controls
+      .period-controls
+      .period-chooser
+      .period-chooser-header {
+      justify-content: center !important;
+      width: 100% !important;
+      min-height: 2.7rem !important;
+      padding-inline: 0.88rem !important;
+      border-color: rgb(168 85 247 / 0.32) !important;
+      background:
+        linear-gradient(135deg, rgb(168 85 247 / 0.13), rgb(59 130 246 / 0.06)),
+        rgb(3 7 18 / 0.86) !important;
+      color: rgb(226 232 240 / 0.92) !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-controls
+      .directory-last-updated {
+      width: 100% !important;
+      color: rgb(186 198 219 / 0.86) !important;
+      font-size: 0.82rem !important;
+      line-height: 1.35 !important;
+      text-align: center !important;
+      white-space: normal !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-controls
+      .inline-form {
+      grid-template-columns: minmax(0, 1fr) auto !important;
+      align-items: end !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-controls
+      .inline-form
+      .total-rows {
+      grid-column: 1 / -1 !important;
+      width: 100% !important;
+      color: rgb(226 232 240 / 0.9) !important;
+      font-weight: 700 !important;
+      letter-spacing: 0 !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-controls
+      .inline-form
+      .filter-name {
+      grid-column: 1 / -1 !important;
+      width: 100% !important;
+      min-height: 2.75rem !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-controls
+      .inline-form
+      .directory-group-selector {
+      grid-column: 1 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      justify-self: stretch !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-controls
+      .inline-form
+      .directory-group-selector
+      .combo-box-header {
+      justify-content: space-between !important;
+      width: 100% !important;
+      min-height: 2.75rem !important;
+      padding-inline: 0.88rem !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-controls
+      .inline-form
+      .open-edit-columns-btn {
+      grid-column: 2 !important;
+      width: 2.75rem !important;
+      height: 2.75rem !important;
+      min-width: 2.75rem !important;
+      min-height: 2.75rem !important;
+      margin: 0 !important;
+      justify-self: end !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
       :is(
         .directory-table-container,
         .directory-table,
