@@ -18185,3 +18185,18 @@ html:not(.erebyx-admin-route)
     box-shadow: none !important;
   }
 }
+
+/* Topic-page related cards already use td.posters for the card avatar. */
+@media screen and (width <= 560px) {
+  html:not(.erebyx-admin-route)
+    body.archetype-regular:not(.admin-interface)
+    #main-outlet#main-outlet
+    :is(#suggested-topics, .more-topics__container, .more-topics)
+    table.topic-list.topic-list
+    > tbody.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    > td.main-link.topic-list-data
+    .pull-left {
+    display: none !important;
+  }
+}
