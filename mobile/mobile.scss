@@ -17366,3 +17366,132 @@ html:not(.erebyx-admin-route)
     display: none !important;
   }
 }
+
+/* Tablet Arche map: keep the desktop-style room placement, scaled down. */
+@media screen and (width >= 700px) and (width <= 900px) {
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    > .erebyx-arche-map.erebyx-arche-map {
+    min-height: clamp(25rem, 54vw, 30rem) !important;
+    height: clamp(25rem, 54vw, 30rem) !important;
+    padding: 0 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    > .erebyx-arche-map.erebyx-arche-map
+    .erebyx-arche-map__rooms {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    > .erebyx-arche-map.erebyx-arche-map
+    .erebyx-arche-map__room {
+    position: absolute !important;
+    inset: auto !important;
+    display: grid !important;
+    grid-template-columns: 1.8rem minmax(0, 1fr) !important;
+    align-items: center !important;
+    justify-content: start !important;
+    gap: 0.5rem !important;
+    inline-size: clamp(9.8rem, 23vw, 12rem) !important;
+    min-inline-size: clamp(9.8rem, 23vw, 12rem) !important;
+    max-inline-size: 12rem !important;
+    min-block-size: 2.85rem !important;
+    padding: 0.42rem 0.58rem !important;
+    transform: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    > .erebyx-arche-map.erebyx-arche-map
+    .erebyx-arche-map__sigil {
+    inline-size: 1.8rem !important;
+    block-size: 1.8rem !important;
+    font-size: 0.86rem !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    > .erebyx-arche-map.erebyx-arche-map
+    .erebyx-arche-map__name {
+    overflow: hidden !important;
+    text-align: left !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 0.78rem !important;
+    line-height: 1.05 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    > .erebyx-arche-map.erebyx-arche-map
+    .erebyx-arche-map__room--start {
+    top: 8.5% !important;
+    left: 5.2% !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    > .erebyx-arche-map.erebyx-arche-map
+    .erebyx-arche-map__room--announcements {
+    top: 8.5% !important;
+    right: 5.2% !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    > .erebyx-arche-map.erebyx-arche-map
+    .erebyx-arche-map__room--features {
+    top: 43% !important;
+    left: 3.4% !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    > .erebyx-arche-map.erebyx-arche-map
+    .erebyx-arche-map__room--bugs {
+    top: 43% !important;
+    right: 3.4% !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    > .erebyx-arche-map.erebyx-arche-map
+    .erebyx-arche-map__room--arche {
+    left: 50% !important;
+    bottom: 8.5% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    > .erebyx-arche-map.erebyx-arche-map
+    .erebyx-arche-map__room:is(:hover, :focus-visible) {
+    transform: translateY(-2px) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body[data-erebyx-route="discovery"]:not(.admin-interface)
+    #main-outlet#main-outlet
+    > .erebyx-arche-map.erebyx-arche-map
+    .erebyx-arche-map__room--arche:is(:hover, :focus-visible) {
+    transform: translateX(-50%) translateY(-2px) !important;
+  }
+}
