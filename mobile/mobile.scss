@@ -14964,6 +14964,8 @@ html:not(.erebyx-admin-route)
     > .list-controls.list-controls
     .nav-pills.nav-pills {
     grid-area: mode !important;
+    position: relative !important;
+    z-index: 1 !important;
     justify-self: start !important;
     min-width: 0 !important;
     max-width: 100% !important;
@@ -14975,9 +14977,42 @@ html:not(.erebyx-admin-route)
     > .list-controls.list-controls
     .navigation-controls.navigation-controls {
     grid-area: actions !important;
+    position: relative !important;
+    z-index: 5 !important;
+    display: grid !important;
+    grid-auto-flow: column !important;
+    grid-auto-columns: 2.65rem !important;
+    justify-content: end !important;
+    gap: 0.45rem !important;
     justify-self: end !important;
     min-width: 0 !important;
     max-width: 100% !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
+    .navigation-controls.navigation-controls
+    :is(.btn, button) {
+    position: relative !important;
+    width: 2.65rem !important;
+    min-width: 2.65rem !important;
+    max-width: 2.65rem !important;
+    height: 2.65rem !important;
+    min-height: 2.65rem !important;
+    padding: 0 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
+    .navigation-controls.navigation-controls
+    .category-notifications-tracking {
+    z-index: 7 !important;
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
   }
 
   html:not(.erebyx-admin-route)
@@ -15056,6 +15091,29 @@ html:not(.erebyx-admin-route)
 
   html:not(.erebyx-admin-route)
     body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    .fk-d-menu.notifications-tracking-content.-expanded {
+    z-index: 4400 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    .fk-d-menu.notifications-tracking-content.-expanded
+    .fk-d-menu__inner-content {
+    background:
+      linear-gradient(180deg, rgb(4 5 10 / 0.99), rgb(0 0 0 / 0.99)),
+      rgb(0 0 0) !important;
+    border: 1px solid rgb(168 85 247 / 0.3) !important;
+    border-radius: 8px !important;
+    box-shadow:
+      0 24px 70px -44px rgb(0 0 0 / 0.96),
+      inset 0 1px 0 rgb(255 255 255 / 0.06) !important;
+    color: rgb(226 232 240 / 0.94) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
     .fk-d-menu-modal:not(.sidebar-more-section-content) {
     position: fixed !important;
     inset: max(4.75rem, env(safe-area-inset-top)) 1rem auto 1rem !important;
@@ -15086,8 +15144,8 @@ html:not(.erebyx-admin-route)
     border: 0 !important;
     border-radius: 8px !important;
     background:
-      linear-gradient(180deg, rgb(8 13 31 / 0.98), rgb(3 7 18 / 0.98)),
-      rgb(3 7 18) !important;
+      linear-gradient(180deg, rgb(4 5 10 / 0.99), rgb(0 0 0 / 0.99)),
+      rgb(0 0 0) !important;
     box-shadow: none !important;
     color: rgb(226 232 240 / 0.94) !important;
     transform: none !important;
@@ -15110,6 +15168,8 @@ html:not(.erebyx-admin-route)
     min-width: 0 !important;
     max-height: inherit !important;
     padding: 0.5rem !important;
+    background: rgb(0 0 0) !important;
+    color: rgb(226 232 240 / 0.94) !important;
     overflow: hidden auto !important;
   }
 
@@ -15134,10 +15194,10 @@ html:not(.erebyx-admin-route)
     .dropdown-menu
     :is(a, button, .btn):is(.active, [aria-current="page"], :hover, :focus-visible) {
     background:
-      linear-gradient(135deg, rgb(250 178 50 / 0.18), rgb(37 99 235 / 0.18)),
-      rgb(15 23 42 / 0.92) !important;
+      linear-gradient(135deg, rgb(168 85 247 / 0.2), rgb(3 7 18 / 0.22)),
+      rgb(8 8 12 / 0.96) !important;
     color: rgb(255 247 214 / 0.96) !important;
-    box-shadow: inset 0 0 0 1px rgb(250 178 50 / 0.22) !important;
+    box-shadow: inset 0 0 0 1px rgb(168 85 247 / 0.28) !important;
   }
 }
 
