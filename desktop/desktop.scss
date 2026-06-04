@@ -20139,10 +20139,10 @@ html:not(.erebyx-admin-route)
   body.login-page.static-login:not(.admin-interface)
   #main-outlet
   .login-welcome.login-welcome {
-  width: min(34rem, calc(100vw - 2rem)) !important;
-  max-width: min(34rem, calc(100vw - 2rem)) !important;
-  margin: clamp(7rem, 16vh, 10rem) auto 3rem !important;
-  padding: clamp(1.25rem, 3vw, 1.8rem) !important;
+  width: min(52rem, calc(100vw - 2rem)) !important;
+  max-width: min(52rem, calc(100vw - 2rem)) !important;
+  margin: clamp(4.75rem, 8vh, 6.5rem) auto 3rem !important;
+  padding: clamp(2rem, 3.4vw, 3rem) !important;
   border: 1px solid rgb(250 178 50 / 0.22) !important;
   border-radius: 8px !important;
   background:
@@ -20171,10 +20171,10 @@ html:not(.erebyx-admin-route)
   #main-outlet
   .login-welcome.login-welcome
   .login-content.login-content {
-  width: min(100%, 26rem) !important;
-  max-width: 26rem !important;
+  width: min(100%, 36rem) !important;
+  max-width: 36rem !important;
   margin: 0 auto !important;
-  padding: clamp(1.55rem, 3vw, 2rem) !important;
+  padding: clamp(2rem, 3vw, 2.65rem) !important;
   border: 1px solid rgb(168 85 247 / 0.26) !important;
   border-radius: 8px !important;
   background:
@@ -20196,7 +20196,7 @@ html:not(.erebyx-admin-route)
   display: block !important;
   width: auto !important;
   height: auto !important;
-  margin: 0 0 0.85rem !important;
+  margin: 0 0 1rem !important;
   border: 0 !important;
   border-radius: 0 !important;
   background: transparent !important;
@@ -20204,7 +20204,7 @@ html:not(.erebyx-admin-route)
   content: "Welcome back Genesis Architect!" !important;
   color: rgb(255 247 214 / 0.96) !important;
   font-family: var(--erebyx-font-display, var(--font-family, sans-serif)) !important;
-  font-size: clamp(1.45rem, 2.8vw, 2rem) !important;
+  font-size: clamp(2rem, 2.7vw, 3rem) !important;
   font-weight: 800 !important;
   line-height: 1.08 !important;
   letter-spacing: 0 !important;
@@ -20241,9 +20241,11 @@ html:not(.erebyx-admin-route)
   #main-outlet
   .login-welcome.login-welcome
   .login-welcome__description {
-  max-width: 22rem !important;
+  max-width: 30rem !important;
   margin: 0 auto !important;
   color: rgb(216 226 242 / 0.9) !important;
+  font-size: clamp(0.98rem, 1.1vw, 1.18rem) !important;
+  line-height: 1.45 !important;
 }
 
 html:not(.erebyx-admin-route)
@@ -20251,7 +20253,7 @@ html:not(.erebyx-admin-route)
   #main-outlet
   .login-welcome.login-welcome
   .body-page-button-container {
-  margin-top: clamp(1.7rem, 4vw, 2.4rem) !important;
+  margin-top: clamp(1.45rem, 2.8vw, 2rem) !important;
 }
 
 @media screen and (width >= 768px) and (width <= 900px) {
