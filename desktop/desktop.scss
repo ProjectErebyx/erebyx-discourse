@@ -21002,6 +21002,15 @@ html:not(.erebyx-admin-route)
     #main-outlet#main-outlet
     > .list-controls.list-controls
     .category-breadcrumb.category-breadcrumb
+    .tag-drop.tag-drop {
+    padding-inline: 0 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet#main-outlet
+    > .list-controls.list-controls
+    .category-breadcrumb.category-breadcrumb
     .category-breadcrumb__category-selector {
     width: 100% !important;
   }
