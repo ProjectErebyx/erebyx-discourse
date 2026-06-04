@@ -15049,6 +15049,15 @@ html:not(.erebyx-admin-route)
     max-height: min(70vh, 32rem) !important;
     padding: 0.62rem !important;
     margin: 0 !important;
+    border: 1px solid rgb(168 85 247 / 0.3) !important;
+    border-radius: 8px !important;
+    background:
+      linear-gradient(180deg, rgb(4 5 10 / 0.99), rgb(0 0 0 / 0.99)),
+      rgb(0 0 0) !important;
+    box-shadow:
+      0 24px 70px -44px rgb(0 0 0 / 0.96),
+      inset 0 1px 0 rgb(255 255 255 / 0.06) !important;
+    color: rgb(226 232 240 / 0.94) !important;
     overflow: hidden auto !important;
     transform: translate(
       calc(-1 * var(--erebyx-select-kit-lift-x, 0px)),
@@ -15065,6 +15074,10 @@ html:not(.erebyx-admin-route)
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: rgb(226 232 240 / 0.94) !important;
   }
 
   html:not(.erebyx-admin-route)
@@ -15086,6 +15099,9 @@ html:not(.erebyx-admin-route)
     max-width: 100% !important;
     font-size: 1rem !important;
     line-height: 1.2 !important;
+    border-color: rgb(168 85 247 / 0.24) !important;
+    background: rgb(3 7 18 / 0.9) !important;
+    color: rgb(248 250 252 / 0.96) !important;
   }
 
   html:not(.erebyx-admin-route)
@@ -15103,6 +15119,32 @@ html:not(.erebyx-admin-route)
     padding: 0.72rem 0.78rem !important;
     overflow: visible !important;
     white-space: normal !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    .select-kit-body.select-kit-body
+    :is(.select-kit-row.is-highlighted:not(.is-selected), .select-kit-row:hover:not(.is-selected), .category-row.select-kit-row.is-highlighted:not(.is-selected)) {
+    background:
+      linear-gradient(135deg, rgb(168 85 247 / 0.16), rgb(3 7 18 / 0.28)),
+      rgb(3 7 18 / 0.82) !important;
+    border-color: rgb(168 85 247 / 0.3) !important;
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06) !important;
+    color: rgb(248 250 252 / 0.96) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    .select-kit-body.select-kit-body
+    :is(.select-kit-row.is-selected, .select-kit-row.is-selected.is-highlighted, .category-row.select-kit-row.is-selected) {
+    background:
+      linear-gradient(135deg, rgb(168 85 247 / 0.22), rgb(3 7 18 / 0.42)),
+      rgb(3 7 18 / 0.94) !important;
+    border-color: rgb(168 85 247 / 0.48) !important;
+    box-shadow:
+      inset 0 0 0 1px rgb(255 255 255 / 0.08),
+      0 16px 38px -30px rgb(168 85 247 / 0.9) !important;
+    color: rgb(255 255 255 / 0.98) !important;
   }
 
   html:not(.erebyx-admin-route)
