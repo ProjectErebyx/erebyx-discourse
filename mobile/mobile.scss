@@ -12837,6 +12837,91 @@ html:not(.erebyx-admin-route)
   }
 }
 
+@media screen and (width <= 900px) {
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet
+    :is(.review-item, .review-item__body, .review-item__details, .review-item__content) {
+    border-color: rgb(168 85 247 / 0.18) !important;
+    background:
+      linear-gradient(135deg, rgb(88 28 135 / 0.08), transparent 46%),
+      rgb(3 7 18 / 0.94) !important;
+    color: rgb(226 232 240 / 0.96) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet
+    .review-item__header {
+    border-color: rgb(168 85 247 / 0.2) !important;
+    background:
+      linear-gradient(135deg, rgb(15 23 42 / 0.94), rgb(3 7 18 / 0.98)),
+      rgb(3 7 18) !important;
+    color: rgb(226 232 240 / 0.96) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet
+    :is(.review-item__status, .review-item__status.--pending) {
+    background: rgb(30 41 59 / 0.92) !important;
+    color: rgb(203 213 225 / 0.94) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet
+    :is(.timeline-event, .reviewable-note-form, .reviewable-score, .reviewable-score__content) {
+    border-color: rgb(168 85 247 / 0.16) !important;
+    background:
+      linear-gradient(135deg, rgb(30 41 59 / 0.42), transparent 55%),
+      rgb(3 7 18 / 0.92) !important;
+    color: rgb(203 213 225 / 0.96) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet
+    :is(.timeline-event, .reviewable-note-form, .reviewable-score, .reviewable-score__content)
+    :is(a, button, span, div, p, label, h1, h2, h3, h4, h5, h6, strong) {
+    color: rgb(203 213 225 / 0.96) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet
+    :is(.timeline-event, .reviewable-note-form, .reviewable-score, .reviewable-score__content)
+    :is(.d-icon, svg) {
+    color: rgb(147 197 253 / 0.72) !important;
+    fill: currentColor !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet
+    :is(.reviewable-action, .reviewable-actions .btn, .reviewable-note-form .btn) {
+    border: 1px solid rgb(168 85 247 / 0.22) !important;
+    border-radius: 8px !important;
+    background:
+      linear-gradient(135deg, rgb(168 85 247 / 0.12), rgb(59 130 246 / 0.08)),
+      rgb(3 7 18 / 0.9) !important;
+    color: rgb(226 232 240 / 0.96) !important;
+    box-shadow: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    #main-outlet
+    :is(.reviewable-action, .reviewable-actions .btn, .reviewable-note-form .btn):is(:hover, :focus, :focus-visible) {
+    border-color: rgb(168 85 247 / 0.36) !important;
+    background:
+      linear-gradient(135deg, rgb(168 85 247 / 0.18), rgb(59 130 246 / 0.12)),
+      rgb(15 23 42 / 0.94) !important;
+    color: rgb(248 250 252 / 0.98) !important;
+    outline: none !important;
+  }
+}
+
 html:not(.erebyx-admin-route)
   body[data-erebyx-route="discovery"]:not(.admin-interface)
   #main-outlet#main-outlet
