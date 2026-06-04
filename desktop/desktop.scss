@@ -22256,7 +22256,7 @@ html:not(.erebyx-admin-route)
   color: rgb(255 247 214 / 0.96) !important;
 }
 
-/* Topic new-user notice: full-width amber treatment across topic layouts. */
+/* Topic new-user notice: full-width purple/blue treatment across topic layouts. */
 html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
   #main-outlet#main-outlet
@@ -22267,16 +22267,16 @@ html:not(.erebyx-admin-route)
   width: 100% !important;
   min-height: 0 !important;
   padding: clamp(0.8rem, 1.4vw, 1.1rem) clamp(1rem, 2vw, 1.5rem) !important;
-  border: 1px solid rgb(250 178 50 / 0.42) !important;
+  border: 1px solid rgb(96 165 250 / 0.48) !important;
   border-radius: 8px !important;
   background:
-    radial-gradient(circle at 1.8rem 50%, rgb(250 178 50 / 0.2), transparent 7rem),
-    linear-gradient(90deg, rgb(250 178 50 / 0.16), transparent 16rem),
-    linear-gradient(135deg, rgb(58 42 8 / 0.82), rgb(7 9 18 / 0.94)) !important;
+    radial-gradient(circle at 1.8rem 50%, rgb(168 85 247 / 0.28), transparent 7rem),
+    linear-gradient(90deg, rgb(59 130 246 / 0.2), transparent 16rem),
+    linear-gradient(135deg, rgb(30 20 62 / 0.88), rgb(5 12 32 / 0.94)) !important;
   box-shadow:
-    inset 1px 0 0 rgb(255 231 163 / 0.22),
-    inset 0 1px 0 rgb(255 247 214 / 0.08),
-    0 18px 46px -38px rgb(250 178 50 / 0.78) !important;
+    inset 1px 0 0 rgb(147 197 253 / 0.24),
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    0 18px 46px -38px rgb(96 165 250 / 0.82) !important;
   overflow: visible !important;
 }
 
