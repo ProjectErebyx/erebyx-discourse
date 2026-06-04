@@ -20339,8 +20339,9 @@ html:not(.erebyx-admin-route)
   > .erebyx-arche-map.erebyx-arche-map
   .erebyx-arche-map__sigil {
   flex: 0 0 auto !important;
-  width: clamp(2rem, 3vw, 2.45rem) !important;
-  height: clamp(2rem, 3vw, 2.45rem) !important;
+  width: clamp(2.3rem, 3.4vw, 2.8rem) !important;
+  height: clamp(2.3rem, 3.4vw, 2.8rem) !important;
+  font-size: clamp(1.06rem, 1.45vw, 1.28rem) !important;
 }
 
 html:not(.erebyx-admin-route)
@@ -20352,7 +20353,7 @@ html:not(.erebyx-admin-route)
   overflow: visible !important;
   text-overflow: clip !important;
   white-space: normal !important;
-  font-size: clamp(0.72rem, 1vw, 0.9rem) !important;
+  font-size: clamp(0.82rem, 1.12vw, 1rem) !important;
   line-height: 1.08 !important;
   text-align: center !important;
 }
@@ -20384,7 +20385,7 @@ html:not(.erebyx-admin-route)
   top: 42% !important;
   left: calc(
     50% - var(--erebyx-map-room-size) -
-      (var(--erebyx-map-room-gap) / 2)
+      var(--erebyx-map-room-gap)
   ) !important;
 }
 
@@ -20394,7 +20395,7 @@ html:not(.erebyx-admin-route)
   > .erebyx-arche-map.erebyx-arche-map
   .erebyx-arche-map__room--bugs {
   top: 42% !important;
-  left: calc(50% + (var(--erebyx-map-room-gap) / 2)) !important;
+  left: calc(50% + var(--erebyx-map-room-gap)) !important;
   right: auto !important;
 }
 
