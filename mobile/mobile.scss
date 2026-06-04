@@ -14839,4 +14839,46 @@ html:not(.erebyx-admin-route)
     text-overflow: clip !important;
     overflow-wrap: anywhere !important;
   }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    .fk-d-menu-modal:not(.sidebar-more-section-content) {
+    position: fixed !important;
+    inset: max(4.75rem, env(safe-area-inset-top)) 1rem auto 1rem !important;
+    width: calc(100vw - 2rem) !important;
+    min-width: 0 !important;
+    max-width: calc(100vw - 2rem) !important;
+    max-height: min(70vh, 32rem) !important;
+    overflow: hidden auto !important;
+    transform: none !important;
+    z-index: 4300 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    .fk-d-menu-modal:not(.sidebar-more-section-content)
+    :is(.fk-d-menu__inner-content, .dropdown-menu, .d-modal__body) {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    max-height: inherit !important;
+    padding: 0.5rem !important;
+    overflow: hidden auto !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    .fk-d-menu-modal:not(.sidebar-more-section-content)
+    :is(a, button, .btn, li) {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    min-height: 2.75rem !important;
+    justify-content: flex-start !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
 }
