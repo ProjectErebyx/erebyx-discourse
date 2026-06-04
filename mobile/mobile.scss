@@ -16850,7 +16850,7 @@ html:not(.erebyx-admin-route)
     > .col-2.erebyx-home-thread-feed
     table.topic-list.topic-list
     > tbody.topic-list-body
-    > tr.topic-list-item.topic-list-item.erebyx-home-thread-card {
+    > tr.topic-list-item.topic-list-item {
     box-sizing: border-box !important;
     position: relative !important;
     display: flex !important;
@@ -16872,7 +16872,7 @@ html:not(.erebyx-admin-route)
     > .col-2.erebyx-home-thread-feed
     table.topic-list.topic-list
     > tbody.topic-list-body
-    > tr.topic-list-item.topic-list-item.erebyx-home-thread-card
+    > tr.topic-list-item.topic-list-item
     > td.topic-list-data {
     box-sizing: border-box !important;
     display: block !important;
@@ -16889,7 +16889,7 @@ html:not(.erebyx-admin-route)
     > .col-2.erebyx-home-thread-feed
     table.topic-list.topic-list
     > tbody.topic-list-body
-    > tr.topic-list-item.topic-list-item.erebyx-home-thread-card
+    > tr.topic-list-item.topic-list-item
     > td.posters.topic-list-data {
     position: static !important;
     order: 1 !important;
@@ -16907,7 +16907,7 @@ html:not(.erebyx-admin-route)
     > .col-2.erebyx-home-thread-feed
     table.topic-list.topic-list
     > tbody.topic-list-body
-    > tr.topic-list-item.topic-list-item.erebyx-home-thread-card
+    > tr.topic-list-item.topic-list-item
     > td.posters.topic-list-data
     a.latest,
   html:not(.erebyx-admin-route)
@@ -16917,7 +16917,7 @@ html:not(.erebyx-admin-route)
     > .col-2.erebyx-home-thread-feed
     table.topic-list.topic-list
     > tbody.topic-list-body
-    > tr.topic-list-item.topic-list-item.erebyx-home-thread-card
+    > tr.topic-list-item.topic-list-item
     > td.posters.topic-list-data
     img.avatar {
     width: 3.25rem !important;
@@ -16933,7 +16933,7 @@ html:not(.erebyx-admin-route)
     > .col-2.erebyx-home-thread-feed
     table.topic-list.topic-list
     > tbody.topic-list-body
-    > tr.topic-list-item.topic-list-item.erebyx-home-thread-card
+    > tr.topic-list-item.topic-list-item
     > td.main-link.topic-list-data {
     order: 2 !important;
     display: grid !important;
@@ -16953,7 +16953,7 @@ html:not(.erebyx-admin-route)
     > .col-2.erebyx-home-thread-feed
     table.topic-list.topic-list
     > tbody.topic-list-body
-    > tr.topic-list-item.topic-list-item.erebyx-home-thread-card
+    > tr.topic-list-item.topic-list-item
     .link-top-line,
   html:not(.erebyx-admin-route)
     body[data-erebyx-route="discovery"]:not(.admin-interface)
@@ -16962,7 +16962,7 @@ html:not(.erebyx-admin-route)
     > .col-2.erebyx-home-thread-feed
     table.topic-list.topic-list
     > tbody.topic-list-body
-    > tr.topic-list-item.topic-list-item.erebyx-home-thread-card
+    > tr.topic-list-item.topic-list-item
     a.title.raw-topic-link {
     display: block !important;
     width: 100% !important;
@@ -16981,7 +16981,7 @@ html:not(.erebyx-admin-route)
     > .col-2.erebyx-home-thread-feed
     table.topic-list.topic-list
     > tbody.topic-list-body
-    > tr.topic-list-item.topic-list-item.erebyx-home-thread-card
+    > tr.topic-list-item.topic-list-item
     .link-bottom-line {
     display: flex !important;
     align-items: center !important;
@@ -17002,7 +17002,7 @@ html:not(.erebyx-admin-route)
     > .col-2.erebyx-home-thread-feed
     table.topic-list.topic-list
     > tbody.topic-list-body
-    > tr.topic-list-item.topic-list-item.erebyx-home-thread-card
+    > tr.topic-list-item.topic-list-item
     .badge-category__wrapper {
     max-width: 100% !important;
     min-width: 0 !important;
@@ -17015,7 +17015,7 @@ html:not(.erebyx-admin-route)
     > .col-2.erebyx-home-thread-feed
     table.topic-list.topic-list
     > tbody.topic-list-body
-    > tr.topic-list-item.topic-list-item.erebyx-home-thread-card
+    > tr.topic-list-item.topic-list-item
     > td.num.posts-map,
   html:not(.erebyx-admin-route)
     body[data-erebyx-route="discovery"]:not(.admin-interface)
@@ -17024,7 +17024,7 @@ html:not(.erebyx-admin-route)
     > .col-2.erebyx-home-thread-feed
     table.topic-list.topic-list
     > tbody.topic-list-body
-    > tr.topic-list-item.topic-list-item.erebyx-home-thread-card
+    > tr.topic-list-item.topic-list-item
     > td.num.views {
     display: none !important;
   }
@@ -17036,7 +17036,7 @@ html:not(.erebyx-admin-route)
     > .col-2.erebyx-home-thread-feed
     table.topic-list.topic-list
     > tbody.topic-list-body
-    > tr.topic-list-item.topic-list-item.erebyx-home-thread-card
+    > tr.topic-list-item.topic-list-item
     > td.num.activity {
     position: absolute !important;
     right: 1.15rem !important;
