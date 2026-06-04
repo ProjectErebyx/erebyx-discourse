@@ -1215,6 +1215,40 @@
         });
     };
 
+    var alignCategorySelectKitPanel = function () {
+      var body = document.body;
+      if (!body || !body.classList.contains("navigation-category") || body.classList.contains("archetype-regular")) return;
+
+      var header = document.querySelector("#main-outlet > .list-controls .category-breadcrumb__category-selector .category-drop-header[id]");
+      if (!header) return;
+
+      var panel = document.getElementById(header.id.replace("-header", "-body"));
+      if (!panel || !panel.getBoundingClientRect) return;
+      var style = window.getComputedStyle ? window.getComputedStyle(panel) : null;
+      if (style && (style.display === "none" || style.visibility === "hidden" || style.pointerEvents === "none")) return;
+
+      var measure = function () {
+        if (!panel.isConnected) return;
+
+        panel.style.setProperty("--erebyx-select-kit-lift-x", "0px");
+        panel.style.setProperty("--erebyx-select-kit-lift-y", "0px");
+
+        var rect = panel.getBoundingClientRect();
+        var desiredTop = Math.max(76, 16);
+        var desiredLeft = 16;
+        var liftX = Math.max(0, Math.round(rect.left - desiredLeft));
+        var liftY = Math.max(0, Math.round(rect.top - desiredTop));
+
+        panel.style.setProperty("--erebyx-select-kit-lift-x", liftX + "px");
+        panel.style.setProperty("--erebyx-select-kit-lift-y", liftY + "px");
+      };
+
+      window.requestAnimationFrame(measure);
+      window.setTimeout(measure, 120);
+      window.setTimeout(measure, 320);
+      window.setTimeout(measure, 700);
+    };
+
     var normalizeComposerActionTrigger = function () {
       document
         .querySelectorAll("#reply-control .composer-actions-btn")
@@ -1957,6 +1991,7 @@
       enhanceCategoryTopicExcerpts();
       ensureTopicBackButton();
       ensureCategoryFeedMenuOptions();
+      alignCategorySelectKitPanel();
       normalizeComposerActionTrigger();
       enhanceHomepageThreadColumn();
       enhanceRelatedTopicPosters();
@@ -1985,6 +2020,14 @@
     // Discourse fires `page:changed` on Ember route transitions
     document.addEventListener("discourse:page-changed", scheduleRun);
     document.addEventListener("page:changed", scheduleRun);
+    document.addEventListener("click", function (event) {
+      var target = event.target;
+      if (!target || !target.closest) return;
+      if (!target.closest("#main-outlet > .list-controls .category-breadcrumb__category-selector, .select-kit-body")) return;
+
+      window.setTimeout(scheduleRun, 80);
+      window.setTimeout(scheduleRun, 220);
+    }, true);
     window.setTimeout(scheduleRun, 250);
     window.setTimeout(scheduleRun, 1000);
 

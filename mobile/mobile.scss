@@ -15039,14 +15039,21 @@ html:not(.erebyx-admin-route)
     inset: auto !important;
     top: max(4.75rem, env(safe-area-inset-top)) !important;
     right: max(1rem, env(safe-area-inset-right)) !important;
+    bottom: auto !important;
     left: max(1rem, env(safe-area-inset-left)) !important;
-    width: auto !important;
+    width: calc(100vw - 2rem) !important;
     min-width: 0 !important;
+    height: min(70vh, 32rem) !important;
+    min-height: min(70vh, 32rem) !important;
     max-width: calc(100vw - 2rem) !important;
-    max-height: min(52svh, 24rem) !important;
+    max-height: min(70vh, 32rem) !important;
     padding: 0.62rem !important;
+    margin: 0 !important;
     overflow: hidden auto !important;
-    transform: none !important;
+    transform: translate(
+      calc(-1 * var(--erebyx-select-kit-lift-x, 0px)),
+      calc(-1 * var(--erebyx-select-kit-lift-y, 0px))
+    ) !important;
     z-index: 4200 !important;
   }
 
@@ -15058,6 +15065,15 @@ html:not(.erebyx-admin-route)
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    .select-kit-body.select-kit-body
+    .select-kit-collection {
+    height: calc(100% - 3.45rem) !important;
+    max-height: calc(100% - 3.45rem) !important;
+    overflow: hidden auto !important;
   }
 
   html:not(.erebyx-admin-route)
