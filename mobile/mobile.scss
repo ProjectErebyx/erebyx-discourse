@@ -12595,6 +12595,216 @@ html:not(.erebyx-admin-route)
   border-color: rgb(68 146 252 / 0.16) !important;
 }
 
+@media screen and (width <= 900px) {
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel) {
+    position: fixed !important;
+    top: calc(var(--erebyx-nav-height, 3.05rem) + max(0.45rem, env(safe-area-inset-top))) !important;
+    right: max(0.5rem, env(safe-area-inset-right)) !important;
+    left: max(0.5rem, env(safe-area-inset-left)) !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    max-height: calc(100dvh - var(--erebyx-nav-height, 3.05rem) - 1rem) !important;
+    border: 1px solid rgb(168 85 247 / 0.28) !important;
+    border-radius: 8px !important;
+    background:
+      var(--erebyx-particle-stars),
+      linear-gradient(180deg, rgb(4 6 12 / 0.98), rgb(0 0 0 / 0.98)),
+      rgb(0 0 0) !important;
+    background-size:
+      24rem 18rem,
+      auto,
+      auto !important;
+    color: rgb(226 232 240 / 0.96) !important;
+    box-shadow: 0 24px 58px rgb(0 0 0 / 0.72) !important;
+    overflow: hidden !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    :is(.panel-body, .panel-body-contents, .quick-access-panel, [id^="quick-access-"]) {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    max-height: calc(100dvh - var(--erebyx-nav-height, 3.05rem) - 5rem) !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background:
+      linear-gradient(135deg, rgb(88 28 135 / 0.08), transparent 48%),
+      rgb(0 0 0 / 0.94) !important;
+    color: rgb(226 232 240 / 0.96) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    .panel-body {
+    display: block !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    .panel-body-contents {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 0 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    .menu-tabs-container {
+    display: flex !important;
+    flex: 0 0 auto !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    border-bottom: 1px solid rgb(168 85 247 / 0.18) !important;
+    background: rgb(0 0 0 / 0.72) !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    :is(.user-menu-tabs-list, .tabs-list, .top-tabs, .bottom-tabs, .nav-pills, .quick-access-panel__header) {
+    display: flex !important;
+    flex: 0 0 auto !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    gap: 0.25rem !important;
+    padding: 0.45rem !important;
+    border-bottom: 1px solid rgb(168 85 247 / 0.18) !important;
+    background: rgb(0 0 0 / 0.7) !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    :is(.user-menu-tab, .nav-pills > li > a, .quick-access-panel__tab, .btn) {
+    flex: 0 0 2.75rem !important;
+    width: 2.75rem !important;
+    min-width: 2.75rem !important;
+    max-width: 100% !important;
+    height: 2.75rem !important;
+    min-height: 2.75rem !important;
+    border-radius: 8px !important;
+    border: 1px solid rgb(148 163 184 / 0.16) !important;
+    background: rgb(3 7 18 / 0.78) !important;
+    color: rgb(226 232 240 / 0.94) !important;
+    box-shadow: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    :is(.user-menu-tab.active, .nav-pills > li.active > a, .quick-access-panel__tab.active, .btn.active) {
+    border-color: rgb(168 85 247 / 0.4) !important;
+    background:
+      linear-gradient(135deg, rgb(168 85 247 / 0.18), rgb(59 130 246 / 0.1)),
+      rgb(3 7 18 / 0.94) !important;
+    color: rgb(248 250 252 / 0.98) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    :is(li, .notification, .reviewable, .item, .menu-item, .user-menu-button-profile > li) {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    :is([class^="user-menu-button-"], [class*=" user-menu-button-"]) {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    :is(a, button, .btn, .user-menu-tab, .profile-tab-btn, .notification-link, .item-link) {
+    max-width: 100% !important;
+    min-height: 2.75rem !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    text-align: left !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    :is(.item-label, .item-description, .d-button-label, .notification-title, .notification-data, span, p) {
+    max-width: 100% !important;
+    color: inherit !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    :is(.panel-body-bottom, .quick-access-panel-bottom, .show-all, .notifications-dismiss) {
+    width: 100% !important;
+    min-width: 0 !important;
+    border-top: 1px solid rgb(168 85 247 / 0.18) !important;
+    background: rgb(0 0 0 / 0.86) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    :is(.panel-body-bottom, .quick-access-panel-bottom) {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: center !important;
+    gap: 0.45rem !important;
+    padding: 0.55rem !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    .show-all {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    .notifications-dismiss {
+    width: auto !important;
+    min-width: 2.75rem !important;
+    padding-inline: 0.7rem !important;
+    white-space: nowrap !important;
+  }
+}
+
 html:not(.erebyx-admin-route)
   body[data-erebyx-route="discovery"]:not(.admin-interface)
   #main-outlet#main-outlet
