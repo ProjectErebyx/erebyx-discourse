@@ -12897,6 +12897,18 @@ html:not(.erebyx-admin-route)
 html:not(.erebyx-admin-route)
   body.navigation-topics:not(.admin-interface)
   #main-outlet#main-outlet
+  > .list-controls.list-controls {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+html:not(.erebyx-admin-route)
+  body.navigation-topics:not(.admin-interface)
+  #main-outlet#main-outlet
   .container.list-container.--topic-list {
   width: 100% !important;
   max-width: 100% !important;
