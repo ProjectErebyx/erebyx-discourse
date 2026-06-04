@@ -14352,3 +14352,128 @@ html:not(.erebyx-admin-route)
     -webkit-mask: none !important;
   }
 }
+
+/* Mobile category controls: keep breadcrumb, filters, and actions inside the banner. */
+@media screen and (width <= 900px) {
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet
+    > .list-controls {
+    overflow: visible !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet
+    > .list-controls
+    > .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet
+    > .list-controls
+    .navigation-container.category-navigation {
+    box-sizing: border-box !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    grid-template-areas:
+      "crumbs crumbs"
+      "mode actions" !important;
+    align-items: center !important;
+    gap: 0.56rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet
+    > .list-controls
+    :is(.category-breadcrumb, ol.category-breadcrumb) {
+    grid-area: crumbs !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 0.4rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet
+    > .list-controls
+    .nav-pills {
+    grid-area: mode !important;
+    justify-self: start !important;
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet
+    > .list-controls
+    .navigation-controls {
+    grid-area: actions !important;
+    justify-self: end !important;
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet
+    > .list-controls
+    :is(
+      .category-breadcrumb > li,
+      .category-breadcrumb .select-kit,
+      .category-breadcrumb .category-drop,
+      .category-breadcrumb .tag-drop
+    ) {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet
+    > .list-controls
+    :is(.category-drop-header, .tag-drop-header, .category-breadcrumb .select-kit-header) {
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
+    #main-outlet
+    > .list-controls
+    :is(
+      .select-kit-selected-name,
+      .selected-name,
+      .badge-category__wrapper,
+      .badge-category,
+      .badge-category__name,
+      .name
+    ) {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+}
