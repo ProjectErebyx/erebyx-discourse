@@ -17518,6 +17518,8 @@ html:not(.erebyx-admin-route)
     body.category.navigation-category:not(.admin-interface):not(.archetype-regular)
     #main-outlet#main-outlet
     > .list-controls.list-controls {
+    position: relative !important;
+    left: 5px !important;
     min-height: 0 !important;
     margin-top: 1.35rem !important;
     margin-bottom: 0.95rem !important;
