@@ -17327,4 +17327,42 @@ html:not(.erebyx-admin-route)
     background-image: none !important;
     box-shadow: none !important;
   }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    .erebyx-nav__dashboard {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    inline-size: auto !important;
+    min-inline-size: 0 !important;
+    max-inline-size: none !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    padding-inline: 0.18rem !important;
+    color: rgb(248 250 252 / 0.96) !important;
+    font-size: 0.86rem !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    letter-spacing: 0 !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+    white-space: nowrap !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    .erebyx-nav__dashboard::after {
+    content: "Dashboard" !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .erebyx-nav.erebyx-nav
+    .erebyx-nav__dashboard-icon {
+    display: none !important;
+  }
 }
