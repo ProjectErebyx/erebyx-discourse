@@ -1285,6 +1285,21 @@
       });
     };
 
+    var updateHamburgerOpenState = function () {
+      if (!document.body) return;
+      var panelOpen = Array.prototype.some.call(
+        document.querySelectorAll(".hamburger-panel.menu-panel, .menu-panel.hamburger-panel, .hamburger-panel .revamped.menu-panel"),
+        function (panel) {
+          if (!panel || !panel.isConnected) return false;
+          var style = window.getComputedStyle ? window.getComputedStyle(panel) : null;
+          if (style && (style.display === "none" || style.visibility === "hidden" || style.opacity === "0")) return false;
+          var rect = panel.getBoundingClientRect ? panel.getBoundingClientRect() : null;
+          return !!(rect && rect.width > 0 && rect.height > 0);
+        }
+      );
+      document.body.classList.toggle("erebyx-hamburger-open", panelOpen);
+    };
+
     var cleanCategoryName = function (name) {
       return (name || "")
         .replace(/^[\s✦✧△⧉✴⚙️⚙✿◈]+/, "")
@@ -1890,6 +1905,7 @@
       enhanceRelatedTopicPosters();
       ensureHamburgerSocialFooter();
       ensureHamburgerCategoriesMenu();
+      updateHamburgerOpenState();
     };
 
     var scheduleRun = function () {
