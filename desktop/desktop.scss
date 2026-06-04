@@ -21020,6 +21020,8 @@ html:not(.erebyx-admin-route)
     box-sizing: border-box !important;
     width: 100% !important;
     max-width: 100% !important;
+    inline-size: 100% !important;
+    max-inline-size: 100% !important;
     grid-template-columns: minmax(0, 1fr) !important;
     justify-self: center !important;
     place-items: center !important;
