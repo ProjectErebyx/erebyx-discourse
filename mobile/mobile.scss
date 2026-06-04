@@ -7450,6 +7450,130 @@ html:not(.erebyx-admin-route) body:not(.admin-interface) {
       overflow-x: clip !important;
     }
 
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-table {
+      display: block !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-table__body {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 0.9rem !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-table__row {
+      display: grid !important;
+      grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+      gap: 0 !important;
+      min-height: 0 !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-table__row
+      > .directory-table__cell {
+      display: grid !important;
+      box-sizing: border-box !important;
+      width: 100% !important;
+      min-width: 0 !important;
+      max-width: 100% !important;
+      min-height: 3.8rem !important;
+      margin: 0 !important;
+      padding: 0.44rem 0.35rem !important;
+      overflow: hidden !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-table__row
+      > .directory-table__cell[role="rowheader"] {
+      grid-column: 1 / -1 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      min-height: 4.75rem !important;
+      padding: 0.62rem 0.72rem !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-table__row
+      > .directory-table__cell[role="cell"] {
+      grid-template-columns: minmax(0, 1fr) !important;
+      place-items: center !important;
+      border-width: 1px 0 0 !important;
+      border-radius: 0 !important;
+      background: rgb(3 7 18 / 0.18) !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-table__row
+      .directory-table__label {
+      max-width: 100% !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      white-space: nowrap !important;
+      font-size: 0.62rem !important;
+      letter-spacing: 0.08em !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-table__row
+      .directory-table__value {
+      max-width: 100% !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      white-space: nowrap !important;
+      font-size: 0.96rem !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-table__row
+      .user-info {
+      min-width: 0 !important;
+      max-width: 100% !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-table__row
+      .user-info
+      .user-detail {
+      min-width: 0 !important;
+    }
+
+    &.users-page
+      #main-outlet
+      .users-directory.directory
+      .directory-table__row
+      .user-info
+      :is(.username, .name, .title) {
+      max-width: 100% !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      white-space: nowrap !important;
+    }
+
     &.navigation-topics:not(.archetype-regular),
     &.category.navigation-category:not(.archetype-regular) {
       #main-outlet
