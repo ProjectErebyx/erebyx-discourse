@@ -18195,7 +18195,44 @@ html:not(.erebyx-admin-route)
     table.topic-list.topic-list
     > tbody.topic-list-body
     > tr.topic-list-item.topic-list-item
-    > td.main-link.topic-list-data
+    > td.topic-list-data:not(.posters)
+    .pull-left {
+    display: none !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body.archetype-regular:not(.admin-interface)
+    #main-outlet#main-outlet
+    .more-topics__container.more-topics__container
+    #suggested-topics#suggested-topics
+    table.topic-list.topic-list
+    > tbody.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    > td.topic-list-data:not(.posters)
+    .pull-left,
+  html:not(.erebyx-admin-route)
+    body.archetype-regular:not(.admin-interface)
+    #main-outlet#main-outlet
+    #suggested-topics#suggested-topics
+    table.topic-list.topic-list
+    > tbody.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    > td.topic-list-data:not(.posters)
+    .pull-left {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  html:not(.erebyx-admin-route)
+    body.archetype-regular:not(.admin-interface)
+    #main-outlet#main-outlet
+    .more-topics__container.more-topics__container
+    #suggested-topics#suggested-topics
+    table.topic-list.topic-list
+    > tbody.topic-list-body
+    > tr.topic-list-item.topic-list-item
+    > td.topic-list-data:not(.posters)
     .pull-left {
     display: none !important;
   }
