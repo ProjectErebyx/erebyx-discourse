@@ -10541,7 +10541,18 @@ html:not(.erebyx-admin-route)
   body[class*="user-"]:not(.admin-interface)
   #main-outlet#main-outlet
   :is(.user-main .about, .user-content, .user-stream) {
+  box-sizing: border-box !important;
   width: 100% !important;
+  max-width: 100% !important;
+}
+
+html:not(.erebyx-admin-route)
+  body[class*="user-"]:not(.admin-interface)
+  #main-outlet#main-outlet
+  .user-main
+  .about
+  :is(.details, .details > .primary, #collapsed-info-panel, .user-navigation, .user-content) {
+  box-sizing: border-box !important;
   max-width: 100% !important;
 }
 
