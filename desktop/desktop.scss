@@ -22222,14 +22222,14 @@ html:not(.erebyx-admin-route)
   }
 }
 
-/* Final user-preferences chrome override: win after shared user-page amber rules. */
+/* Final user-page chrome override: win after shared user-page amber rules. */
 html:not(.erebyx-admin-route)
-  body.user-preferences-page:not(.admin-interface)
+  body[class*="user-"]:not(.admin-interface)
   #main-outlet#main-outlet
   .user-main.user-main
   :is(.about.collapsed-info.no-background, .details.details),
 html:not(.erebyx-admin-route)
-  body.user-preferences-page:not(.admin-interface)
+  body[class*="user-"]:not(.admin-interface)
   #main-outlet#main-outlet
   .user-main.user-main
   :is(.user-admin, .user-profile-toggle-btn, .user-navigation .nav-pills > li > a, .user-navigation a) {
@@ -22242,7 +22242,7 @@ html:not(.erebyx-admin-route)
 }
 
 html:not(.erebyx-admin-route)
-  body.user-preferences-page:not(.admin-interface)
+  body[class*="user-"]:not(.admin-interface)
   #main-outlet#main-outlet
   .user-main.user-main
   :is(.user-admin, .user-profile-toggle-btn, .user-navigation .nav-pills > li > a, .user-navigation a):is(
