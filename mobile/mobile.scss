@@ -18010,6 +18010,145 @@ html:not(.erebyx-admin-route)
   color: rgb(255 247 214 / 0.96) !important;
 }
 
+/* Final mobile hamburger/control chrome: keep native Discourse controls black-purple. */
+@media screen and (width <= 900px) {
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .d-header-icons
+    :is(.header-dropdown-toggle, .btn, button, #toggle-hamburger-menu) {
+    border-color: rgb(168 85 247 / 0.34) !important;
+    background:
+      linear-gradient(135deg, rgb(126 34 206 / 0.2), rgb(17 12 31 / 0.86)),
+      rgb(3 7 18 / 0.94) !important;
+    color: rgb(233 213 255 / 0.94) !important;
+    box-shadow:
+      0 14px 34px rgb(3 7 18 / 0.44),
+      inset 0 1px 0 rgb(255 255 255 / 0.1) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .d-header-icons
+    :is(.header-dropdown-toggle, .btn, button, #toggle-hamburger-menu):is(
+      :hover,
+      :focus,
+      :focus-visible,
+      .active
+    ) {
+    border-color: rgb(216 180 254 / 0.5) !important;
+    background:
+      linear-gradient(135deg, rgb(147 51 234 / 0.3), rgb(17 12 31 / 0.92)),
+      rgb(3 7 18 / 0.96) !important;
+    color: rgb(255 255 255 / 0.98) !important;
+    outline: none !important;
+    box-shadow:
+      0 16px 38px rgb(3 7 18 / 0.5),
+      inset 0 1px 0 rgb(255 255 255 / 0.12) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    .d-header-icons
+    :is(.header-dropdown-toggle, .btn, button, #toggle-hamburger-menu)
+    .d-icon {
+    color: currentColor !important;
+    fill: currentColor !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.menu-panel, .hamburger-panel, .user-menu.menu-panel, .search-menu),
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.fk-d-menu, .fk-d-menu-modal, .select-kit-body)
+    :is(.d-modal__container, .fk-d-menu__inner-content, .dropdown-menu) {
+    border-color: rgb(168 85 247 / 0.28) !important;
+    background:
+      linear-gradient(180deg, rgb(4 6 12 / 0.98), rgb(0 0 0 / 0.98)),
+      rgb(0 0 0) !important;
+    color: rgb(226 232 240 / 0.94) !important;
+    box-shadow:
+      0 24px 70px -44px rgb(0 0 0 / 0.96),
+      inset 0 1px 0 rgb(255 255 255 / 0.06) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.menu-panel, .hamburger-panel, .user-menu.menu-panel, .search-menu)
+    :is(a, button, .btn, .sidebar-section-link, .sidebar-section-link-wrapper),
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.fk-d-menu, .fk-d-menu-modal, .select-kit-body)
+    :is(a, button, .btn, li, .select-kit-row) {
+    color: rgb(233 213 255 / 0.9) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.menu-panel, .hamburger-panel, .user-menu.menu-panel, .search-menu)
+    :is(a, button, .btn, .sidebar-section-link, .sidebar-section-link-wrapper):is(
+      :hover,
+      :focus,
+      :focus-visible,
+      .active,
+      [aria-current="page"]
+    ),
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.fk-d-menu, .fk-d-menu-modal, .select-kit-body)
+    :is(a, button, .btn, li, .select-kit-row):is(
+      :hover,
+      :focus,
+      :focus-visible,
+      .active,
+      .is-highlighted,
+      .is-selected,
+      [aria-current="page"]
+    ) {
+    background:
+      linear-gradient(90deg, rgb(126 34 206 / 0.36), rgb(30 27 75 / 0.58)),
+      rgb(17 12 31 / 0.88) !important;
+    color: rgb(255 255 255 / 0.96) !important;
+    outline: none !important;
+    box-shadow:
+      inset 2px 0 0 rgb(216 180 254 / 0.72),
+      inset 0 1px 0 rgb(255 255 255 / 0.08) !important;
+  }
+
+  html:not(.erebyx-admin-route):has(body.erebyx-hamburger-open),
+  html:not(.erebyx-admin-route)
+    body.erebyx-hamburger-open:not(.admin-interface) {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: clip !important;
+  }
+
+  html:not(.erebyx-admin-route):has(body.erebyx-hamburger-open)
+    body.erebyx-hamburger-open:not(.admin-interface)
+    :is(#main, .ember-application, .d-header-wrap, .d-header, .erebyx-nav, .header-cloak) {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    inline-size: 100% !important;
+    max-inline-size: 100% !important;
+    overflow-x: clip !important;
+  }
+
+  @media screen and (width <= 560px) {
+    html:not(.erebyx-admin-route):has(body.erebyx-hamburger-open),
+    html:not(.erebyx-admin-route)
+      body.erebyx-hamburger-open:not(.admin-interface),
+    html:not(.erebyx-admin-route):has(body.erebyx-hamburger-open)
+      body.erebyx-hamburger-open:not(.admin-interface)
+      :is(#main, .ember-application, .d-header-wrap, .d-header, .erebyx-nav, .header-cloak) {
+      width: calc(100vw - 10px) !important;
+      max-width: calc(100vw - 10px) !important;
+      inline-size: calc(100vw - 10px) !important;
+      max-inline-size: calc(100vw - 10px) !important;
+    }
+  }
+}
+
 /* Topic new-user notice: full-width purple/blue treatment across topic layouts. */
 html:not(.erebyx-admin-route)
   body.archetype-regular:not(.admin-interface)
