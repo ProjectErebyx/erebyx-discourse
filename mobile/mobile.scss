@@ -13537,6 +13537,33 @@ html:not(.erebyx-admin-route)
   html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    :is([id^="quick-access-"], .quick-access-panel)
+    :is(li.notification.read, .notification.read) {
+    border-bottom: 1px solid rgb(168 85 247 / 0.14) !important;
+    background:
+      linear-gradient(90deg, rgb(59 130 246 / 0.1), transparent 54%),
+      linear-gradient(180deg, rgb(15 23 42 / 0.82), rgb(3 7 18 / 0.96)),
+      rgb(3 7 18) !important;
+    color: rgb(203 213 225 / 0.95) !important;
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.04),
+      inset 1px 0 0 rgb(168 85 247 / 0.12) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
+    :is([id^="quick-access-"], .quick-access-panel)
+    :is(li.notification.read, .notification.read):is(:hover, :focus-within) {
+    background:
+      linear-gradient(90deg, rgb(168 85 247 / 0.14), transparent 58%),
+      linear-gradient(180deg, rgb(23 15 44 / 0.9), rgb(3 7 18 / 0.98)),
+      rgb(3 7 18) !important;
+  }
+
+  html:not(.erebyx-admin-route)
+    body:not(.admin-interface)
+    :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
     :is(li.notification.unread, .notification.unread, li.reviewable.pending, .reviewable.pending) {
     border-bottom: 1px solid rgb(168 85 247 / 0.14) !important;
     background:
@@ -13549,7 +13576,7 @@ html:not(.erebyx-admin-route)
   html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
-    :is(li.notification.unread, .notification.unread, li.reviewable.pending, .reviewable.pending)
+    :is(li.notification.read, .notification.read, li.notification.unread, .notification.unread, li.reviewable.pending, .reviewable.pending)
     :is(a, button, span, div, p, .item-label, .item-description, .notification-title, .notification-data) {
     color: rgb(203 213 225 / 0.96) !important;
   }
@@ -13557,7 +13584,7 @@ html:not(.erebyx-admin-route)
   html:not(.erebyx-admin-route)
     body:not(.admin-interface)
     :is(.user-menu.menu-panel, .menu-panel.user-menu, .user-menu.revamped.menu-panel)
-    :is(li.notification.unread, .notification.unread, li.reviewable.pending, .reviewable.pending)
+    :is(li.notification.read, .notification.read, li.notification.unread, .notification.unread, li.reviewable.pending, .reviewable.pending)
     :is(.d-icon, svg) {
     color: rgb(147 197 253 / 0.7) !important;
     fill: currentColor !important;
