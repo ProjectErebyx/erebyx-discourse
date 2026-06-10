@@ -937,6 +937,23 @@
       });
     };
 
+    var orderSidebarEventsLink = function () {
+      if (!document.body || document.body.classList.contains("admin-interface")) return;
+
+      document.querySelectorAll("#d-sidebar .sidebar-sections").forEach(function (section) {
+        var topics = section.querySelector('[data-link-name="everything"]');
+        var events = section.querySelector('[data-link-name="upcoming-events"]');
+        if (!topics || !events) return;
+
+        var topicsRow = topics.closest(".sidebar-section-link-wrapper") || topics;
+        var eventsRow = events.closest(".sidebar-section-link-wrapper") || events;
+        if (!topicsRow.parentNode || topicsRow.parentNode !== eventsRow.parentNode) return;
+        if (topicsRow.nextElementSibling === eventsRow) return;
+
+        topicsRow.parentNode.insertBefore(eventsRow, topicsRow.nextElementSibling);
+      });
+    };
+
     var bindTopicCardNavigation = function () {
       if (bindTopicCardNavigation._bound) return;
       bindTopicCardNavigation._bound = true;
@@ -2033,6 +2050,7 @@
       bindPublicNavigationGuard();
       bindSidebarThreadNavigation();
       normalizeSidebarThreadLinks();
+      orderSidebarEventsLink();
       bindTopicCardNavigation();
       normalizeTopicCardTitleLinks();
       updateCategoryBannerCopy();
